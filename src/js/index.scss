@@ -1,0 +1,425 @@
+$pink: #ea4c89;
+
+body {
+  margin: 0px;
+}
+
+.header {
+  height: 45px;
+  background-color: lightblue;
+  position: relative;
+}
+
+.buttons {
+  height: 30px;
+  width: 85px;
+  background-color: $pink;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  text-align: center;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  position: absolute;
+}
+
+.login_btn {
+  right: 95px;
+  top: 7px;
+}
+
+.registration_btn {
+  right: 5px;
+  top: 7px;
+}
+
+.registration_btn:hover,
+.login_btn:hover {
+  background-color: #f082ac;
+}
+
+.logo_planner {
+  font-size: 35px;
+  color: $pink;
+  font-family: cursive, fantasy;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  line-height: 38px;
+  position: absolute;
+  left: 10px;
+  top: 2px;
+}
+
+.user-header-name {
+  right: 44px;
+  position: absolute;
+  font-size: 18px;
+}
+
+.user-header-profile {
+  right: 5px;
+  top: 9px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: $pink;
+  border-style: none;
+  color: white;
+  cursor: pointer;
+  line-height: 20px;
+  position: absolute;
+}
+
+.login_form {
+  border: 3px solid $pink;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-49%, -49%);
+  margin-top: 21px;
+}
+
+.login-title {
+  border: 3px solid $pink;
+  background-color: $pink;
+  color: white;
+}
+
+.field-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.field-icon {
+  background-color: lightpink;
+  border-radius: 5px 0px 0px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+}
+
+.field-icon i {
+  color: white;
+  width: 15px;
+}
+
+.field-input {
+  border: 1px solid lightgray;
+  color: gray;
+  padding: 2px 10px;
+  border-radius: 0px 5px 5px 0px;
+  height: 32px;
+}
+
+.field-input:focus-visible {
+  outline: none;
+  border-color: gray;
+}
+
+.password-field {
+  margin-bottom: 50px;
+}
+
+.submit-btn {
+  appearance: none;
+  background-color: $pink;
+  border: 1px solid $pink;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 16px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.submit-btn:hover {
+  background-color: lightpink;
+  border: lightpink;
+}
+
+.react-calendar {
+  width: 850px;
+  max-width: 100%;
+  background: white;
+  border: 1px solid #a0a096;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 6.125em;
+  margin-left: 370px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 10px 6.6667px;
+  background: none;
+  text-align: center;
+  line-height: 96px;
+}
+
+.calendar-position {
+  position: relative;
+}
+
+.add-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.dayName {
+  text-align: center;
+  color: #ea4c89;
+  font-family: cursive;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  font-size: 56px;
+}
+
+.dateStyle {
+  font-family: cursive;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding-top: 40px;
+  padding-left: 10px;
+  border-bottom: 2px solid $pink;
+}
+
+.note {
+  font-family: cursive;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  padding-left: 10px;
+  border-width: 0 0 2px;
+  border-color: $pink;
+  border-style: outset;
+  margin-bottom: auto;
+}
+
+.parent {
+  display: grid;
+  height: 169px;
+  width: 600px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  border-bottom: 2px solid lightpink;
+}
+
+.inputWithoutBorders {
+  border-width: 0px;
+  border: none;
+  width: 238px;
+  font-size: 16px;
+}
+
+.checkBox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 600px;
+}
+
+.checkboxForm {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  border-left: 0.5px solid lightpink;
+  box-shadow: inset -6px -9px 19px -6px lightpink;
+}
+
+.checkboxInput {
+  border-width: 0px;
+  border: none;
+  width: 255px;
+  font-size: 13px;
+  border-bottom: 1px solid #ea4c89;
+}
+
+.timeForm {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.timeInput {
+  border-width: 0px;
+  border: none;
+  width: 210px;
+  font-size: 13px;
+  border-bottom: 1px solid #ea4c89;
+}
+
+.moneyForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 0px;
+  width: 600px;
+  height: 50px;
+}
+
+.moneyIn {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.moneyOut {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.moneyInputStyle {
+  border: 2px solid #ea4c89;
+  padding-top: 13px;
+  border-radius: 15px;
+  padding-left: 10px;
+}
+
+.plannerFooter {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 600px;
+}
+
+.breakfast {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  border-bottom: 1px solid #ea4c89;
+  padding-bottom: 10px;
+}
+
+.lunch {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  border-bottom: 1px solid #ea4c89;
+  padding-bottom: 10px;
+}
+
+.dinner {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  border-bottom: 1px solid #ea4c89;
+  padding-bottom: 10px;
+}
+
+.snack {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  border-bottom: 1px solid #ea4c89;
+  padding-bottom: 10px;
+}
+
+.mealLetter {
+  padding-left: 10px;
+  font-family: cursive;
+  font-size: 20px;
+}
+
+.mealInput {
+  border-width: 0px;
+  border: none;
+  width: 115px;
+  font-size: 17px;
+}
+
+.exerciseAndHealthForm {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 600px;
+  height: 150px;
+}
+
+.inputWithoutBordersAll {
+  border-width: 0px;
+  border: none;
+}
+
+.steps {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.reverseInput {
+  transform: rotate(90deg);
+  width: 114px;
+  height: 30px;
+  margin-top: 60px;
+  border-color: #ea4c89;
+  margin-left: 28px;
+  border-radius: 10px;
+}
+
+.reverseInputForm {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.reverseText {
+  writing-mode: vertical-rl;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: cursive;
+  padding-top: 47px;
+}
+
+.exercisePart {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  width: 300px;
+}
