@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+
+import { getUsers } from "../api/users";
 
 export default function Login() {
   const { register, handleSubmit } = useForm;
@@ -11,6 +13,10 @@ export default function Login() {
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   };
+
+  useEffect(() => {
+    console.log(getUsers());
+  }, []);
 
   return (
     <>
