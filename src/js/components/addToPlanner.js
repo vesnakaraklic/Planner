@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Date } from "globalthis/implementation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { getUsers } from "../actions/users";
+import { useDispatch, useSelector } from "react-redux";
 
 var day = "Hello";
 var month = "";
@@ -36,6 +38,9 @@ const array5 = [0, 1, 2, 3, 4];
 const array8 = [0, 1, 2, 3, 4, 5, 6, 7];
 
 export default function AddToPlanner() {
+  const dispatch = useDispatch();
+  //const userList = useSelector(state => state.user.users)
+
   switch (new Date().getDay()) {
     case 0:
       day = "Sunday";
@@ -103,6 +108,10 @@ export default function AddToPlanner() {
   }
 
   console.log(new Date().getMonth());
+
+  useEffect(() => {
+    getUsers(dispatch);
+  });
 
   return (
     <>
@@ -205,7 +214,7 @@ export default function AddToPlanner() {
             {array5.map((number) => (
               <div style={{ paddingTop: "10px" }} key={"array5" + number}>
                 <span>
-                  <FontAwesomeIcon icon={faStar} />
+                  <FontAwesomeIcon icon={faStar} style={{ color: "#ea4c89" }} />
                 </span>
 
                 <input className="inputWithoutBordersAll"></input>

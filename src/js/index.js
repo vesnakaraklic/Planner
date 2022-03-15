@@ -1,6 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import App from "./App";
 import "./index.scss";
+import { store } from "./store/store";
 
-ReactDOM.render(<App />, document.getElementById("react-app"));
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("react-app")
+);

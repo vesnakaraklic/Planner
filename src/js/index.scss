@@ -1,13 +1,9 @@
+@import url("./components/header/header.scss");
+
 $pink: #ea4c89;
 
 body {
   margin: 0px;
-}
-
-.header {
-  height: 45px;
-  background-color: lightblue;
-  position: relative;
 }
 
 .buttons {

@@ -2,7 +2,7 @@ import React from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import Home from "../js/views/Home";
 import Login from "../js/views/Login";
-import Header from "../js/components/header";
+import Header from "../js/components/header/header";
 import Register from "../js/views/Register";
 import PlannerHome from "./views/PlannerHome";
 import UserHeader from "./components/userHeader";
