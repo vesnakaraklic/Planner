@@ -1,5 +1,35 @@
+$pink: #ea4c89;
+
 .header {
   height: 45px;
   background-color: lightblue;
   position: relative;
+}
+
+.logo_planner {
+  font-size: 35px;
+  color: $pink;
+  font-family: cursive, fantasy;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  line-height: 38px;
+  position: absolute;
+  left: 10px;
+  top: 2px;
+}
+
+.login_btn {
+  right: 95px;
+  top: 7px;
+}
+
+.registration_btn {
+  right: 5px;
+  top: 7px;
+}
+
+.registration_btn:hover,
+.login_btn:hover {
+  background-color: #f082ac;
 }

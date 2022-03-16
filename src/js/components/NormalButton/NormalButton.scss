@@ -1,0 +1,22 @@
+$pink: #ea4c89;
+
+.submit-btn {
+  appearance: none;
+  background-color: $pink;
+  border: 1px solid $pink;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 16px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 30px;
+}
+
+.submit-btn:hover {
+  background-color: lightpink;
+  border: 1px solid lightpink;
+}

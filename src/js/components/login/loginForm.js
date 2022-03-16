@@ -1,38 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Input from "../Input/Input";
+import { useDispatch, useSelector } from "react-redux";
+import NormalButton from "../NormalButton/NormalButton";
 import { getUsers } from "../../actions/users";
+import { useHistory } from "react-router-dom";
+import "./login.scss";
 
-const form = { email: "", password: "", error: "" };
-const Login = () => {
+const form = { email: "", password: "" };
+
+const LoginForm = () => {
   const { register, handleSubmit } = useForm();
   const [loginForm, setLoginForm] = useState(form);
-  const [listOfUsers, setListOfUsers] = useState();
+  const dispatch = useDispatch();
   const history = useHistory();
+  const userList = useSelector((state) => state.user.users);
+  let isSame = false;
 
   const onSubmit = (data) => {
-    setListOfUsers(getUsers).then(
-      listOfUsers.map((user) => {
-        if (
-          user.email === loginForm.email &&
-          user.password === loginForm.password
-        ) {
-          loginForm.error = "Email od password is incorect!";
-        } else {
-          history.push("/plannerHome");
-        }
-      })
-    );
+    console.log(loginForm.email);
+    userList.map((user) => {
+      if (loginForm.email === user.email && !isSame) {
+        console.log("Same email!");
+        history.push("/login");
+        isSame = true;
+      } else {
+        console.log("Jeej!!!");
+        history.push("/plannerHome");
+      }
+    });
   };
 
-  let handleInputChange = (event, key) => {
+  const handleInputChange = (event, key) => {
     setLoginForm({ ...loginForm, [key]: event.target.value });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getUsers(dispatch);
+  }, []);
+
+  useEffect(() => {
+    console.log(loginForm);
+  }, [loginForm]);
 
   return (
     <>
@@ -49,44 +60,28 @@ const Login = () => {
           </p>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} style={{ padding: "40px" }}>
-          <div className="field-container">
-            <span className="field-icon">
-              <FontAwesomeIcon icon={faEnvelope} style={{ color: "white" }} />
-            </span>
-            <input
-              {...register("email")}
-              name="email"
-              id="email"
-              placeholder="Email"
-              className="field-input"
-              onChange={(event) => handleInputChange(event, "email")}
-            />
-          </div>
-          <div className="field-container password-field">
-            <span className="field-icon">
-              <FontAwesomeIcon icon={faLock} style={{ color: "white" }} />
-            </span>
-            <input
-              {...register("password")}
-              name="password"
-              id="password"
-              placeholder="Password"
-              className="field-input"
-              onChange={(event) => handleInputChange(event, "password")}
-            />
-          </div>
-          <button type="submit" className="submit-btn">
-            Login
-          </button>
-          <p style={{ textAlign: "center", marginBottom: "0px" }}>
-            Not a member?{" "}
-            <Link to="/register" style={{ color: "lightpink" }}>
-              Signup now
-            </Link>
-          </p>
+          <Input
+            // {...register("email")}
+            icon={faEnvelope}
+            name={"email"}
+            placeholder={"Email"}
+            onChange={(event) => handleInputChange(event, "email")}
+          />
+          <Input
+            // {...register("password")}
+            icon={faLock}
+            name={"password"}
+            placeholder={"Password"}
+            onChange={(event) => handleInputChange(event, "password")}
+          />
+          <NormalButton
+            buttonName={"Login"}
+            linkName={"Signup Now"}
+            linkText={"Not a member? "}
+          />
         </form>
       </div>
     </>
   );
 };
-export default Login;
+export default LoginForm;

@@ -6,57 +6,57 @@ body {
   margin: 0px;
 }
 
-.buttons {
-  height: 30px;
-  width: 85px;
-  background-color: $pink;
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: white;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 20px;
-  list-style: none;
-  margin: 0;
-  outline: none;
-  text-align: center;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  position: absolute;
-}
+// .buttons {
+//   height: 30px;
+//   width: 85px;
+//   background-color: $pink;
+//   border-radius: 8px;
+//   border-style: none;
+//   box-sizing: border-box;
+//   color: white;
+//   cursor: pointer;
+//   font-size: 13px;
+//   font-weight: 500;
+//   line-height: 20px;
+//   list-style: none;
+//   margin: 0;
+//   outline: none;
+//   text-align: center;
+//   transition: color 100ms;
+//   vertical-align: baseline;
+//   user-select: none;
+//   -webkit-user-select: none;
+//   touch-action: manipulation;
+//   position: absolute;
+// }
 
-.login_btn {
-  right: 95px;
-  top: 7px;
-}
+// .login_btn {
+//   right: 95px;
+//   top: 7px;
+// }
 
-.registration_btn {
-  right: 5px;
-  top: 7px;
-}
+// .registration_btn {
+//   right: 5px;
+//   top: 7px;
+// }
 
-.registration_btn:hover,
-.login_btn:hover {
-  background-color: #f082ac;
-}
+// .registration_btn:hover,
+// .login_btn:hover {
+//   background-color: #f082ac;
+// }
 
-.logo_planner {
-  font-size: 35px;
-  color: $pink;
-  font-family: cursive, fantasy;
-  font-weight: bold;
-  font-style: italic;
-  margin: 0;
-  line-height: 38px;
-  position: absolute;
-  left: 10px;
-  top: 2px;
-}
+// .logo_planner {
+//   font-size: 35px;
+//   color: $pink;
+//   font-family: cursive, fantasy;
+//   font-weight: bold;
+//   font-style: italic;
+//   margin: 0;
+//   line-height: 38px;
+//   position: absolute;
+//   left: 10px;
+//   top: 2px;
+// }
 
 .user-header-name {
   right: 44px;
@@ -78,79 +78,79 @@ body {
   position: absolute;
 }
 
-.login_form {
-  border: 3px solid $pink;
-  border-radius: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-49%, -49%);
-  margin-top: 21px;
-}
+// .login_form {
+//   border: 3px solid $pink;
+//   border-radius: 10px;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-49%, -49%);
+//   margin-top: 21px;
+// }
 
-.login-title {
-  border: 3px solid $pink;
-  background-color: $pink;
-  color: white;
-}
+// .login-title {
+//   border: 3px solid $pink;
+//   background-color: $pink;
+//   color: white;
+// }
 
-.field-container {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 15px;
-}
+// .field-container {
+//   display: flex;
+//   flex-direction: row;
+//   margin-bottom: 15px;
+// }
 
-.field-icon {
-  background-color: lightpink;
-  border-radius: 5px 0px 0px 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 38px;
-  height: 38px;
-}
+// .field-icon {
+//   background-color: lightpink;
+//   border-radius: 5px 0px 0px 5px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 38px;
+//   height: 38px;
+// }
 
 .field-icon i {
   color: white;
   width: 15px;
 }
 
-.field-input {
-  border: 1px solid lightgray;
-  color: gray;
-  padding: 2px 10px;
-  border-radius: 0px 5px 5px 0px;
-  height: 32px;
-}
+// .field-input {
+//   border: 1px solid lightgray;
+//   color: gray;
+//   padding: 2px 10px;
+//   border-radius: 0px 5px 5px 0px;
+//   height: 32px;
+// }
 
-.field-input:focus-visible {
-  outline: none;
-  border-color: gray;
-}
+// .field-input:focus-visible {
+//   outline: none;
+//   border-color: gray;
+// }
 
 .password-field {
   margin-bottom: 50px;
 }
 
-.submit-btn {
-  appearance: none;
-  background-color: $pink;
-  border: 1px solid $pink;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  padding: 10px 16px;
-  width: 100%;
-  font-size: 14px;
-  font-weight: 600;
-}
+// .submit-btn {
+//   appearance: none;
+//   background-color: $pink;
+//   border: 1px solid $pink;
+//   border-radius: 6px;
+//   color: white;
+//   cursor: pointer;
+//   display: inline-block;
+//   text-align: center;
+//   padding: 10px 16px;
+//   width: 100%;
+//   font-size: 14px;
+//   font-weight: 600;
+// }
 
-.submit-btn:hover {
-  background-color: lightpink;
-  border: lightpink;
-}
+// .submit-btn:hover {
+//   background-color: lightpink;
+//   border: lightpink;
+// }
 
 .react-calendar {
   width: 850px;
@@ -244,37 +244,37 @@ body {
   width: 600px;
 }
 
-.checkboxForm {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  border-left: 0.5px solid lightpink;
-  box-shadow: inset -6px -9px 19px -6px lightpink;
-}
+// .checkboxForm {
+//   grid-column-start: 1;
+//   grid-column-end: 2;
+//   grid-row-start: 1;
+//   grid-row-end: 2;
+//   border-left: 0.5px solid lightpink;
+//   box-shadow: inset -6px -9px 19px -6px lightpink;
+// }
 
-.checkboxInput {
-  border-width: 0px;
-  border: none;
-  width: 255px;
-  font-size: 13px;
-  border-bottom: 1px solid #ea4c89;
-}
+// .checkboxInput {
+//   border-width: 0px;
+//   border: none;
+//   width: 255px;
+//   font-size: 13px;
+//   border-bottom: 1px solid #ea4c89;
+// }
 
-.timeForm {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
+// .timeForm {
+//   grid-column-start: 2;
+//   grid-column-end: 3;
+//   grid-row-start: 1;
+//   grid-row-end: 2;
+// }
 
-.timeInput {
-  border-width: 0px;
-  border: none;
-  width: 210px;
-  font-size: 13px;
-  border-bottom: 1px solid #ea4c89;
-}
+// .timeInput {
+//   border-width: 0px;
+//   border: none;
+//   width: 210px;
+//   font-size: 13px;
+//   border-bottom: 1px solid #ea4c89;
+// }
 
 .moneyForm {
   display: grid;

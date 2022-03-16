@@ -12,6 +12,7 @@ function createWindow() {
   window.loadFile("index.html");
   //window.setMenu(null);
   window.maximize();
+  window.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow);

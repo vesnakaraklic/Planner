@@ -14,11 +14,9 @@ export default function App() {
       <HashRouter>
         <Switch>
           <Route path="/login">
-            <Header />
             <Login />
           </Route>
           <Route path={"/register"}>
-            <Header />
             <Register />
           </Route>
           <Route exact path="/">

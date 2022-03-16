@@ -5,31 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { getUsers } from "../actions/users";
 import { useDispatch, useSelector } from "react-redux";
+import ToDoList from "./toDoList/toDoList";
+import Plans from "./plans/plans";
 
 var day = "Hello";
 var month = "";
 var date = new Date();
-const hours = [
-  "06:00 AM",
-  "07:00 AM",
-  "08:00 AM",
-  "09:00 AM",
-  "10:00 AM",
-  "11:00 AM",
-  "12:00 PM",
-  "01:00 PM",
-  "02:00 PM",
-  "03:00 PM",
-  "04:00 PM",
-  "05:00 PM",
-  "06:00 PM",
-  "07:00 PM",
-  "08:00 PM",
-  "09:00 PM",
-  "10:00 PM",
-  "11:00 PM",
-  "12:00 PM",
-];
 
 const array3 = [0, 1, 2];
 
@@ -126,7 +107,8 @@ export default function AddToPlanner() {
         </p>
       </div>
       <div className="checkBox">
-        <form className="checkboxForm">
+        <ToDoList />
+        {/* <form className="checkboxForm">
           <h4 style={{ marginLeft: "10px", marginBottom: "0px" }}>
             3 Priorities
           </h4>
@@ -152,8 +134,9 @@ export default function AddToPlanner() {
               </div>
             ))}
           </div>
-        </form>
-        <div>
+        </form> */}
+        <Plans></Plans>
+        {/* <div>
           <form className="timeForm">
             <h4 style={{ marginLeft: "30px", marginBottom: "0px" }}>
               Plans & Schedules
@@ -168,7 +151,7 @@ export default function AddToPlanner() {
               ))}
             </div>
           </form>
-        </div>
+        </div> */}
       </div>
       <br></br>
       <form className="moneyForm">
