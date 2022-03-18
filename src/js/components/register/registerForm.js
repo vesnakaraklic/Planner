@@ -1,26 +1,25 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import Input from "../Input/Input";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import NormalButton from "../NormalButton/NormalButton";
-import { getUsers } from "../../actions/users";
-import "./register.scss";
+import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getUsers } from "../../actions/users";
+import { userActions } from "../../store/actions/user.actions";
+import Input from "../Input/Input";
+import NormalButton from "../NormalButton/NormalButton";
+import "./register.scss";
 
 const form = { firstName: "", lastName: "", email: "", password: "" };
 
 export default function RegisterForm() {
-  const { handleSubmit } = useForm();
   const dispatch = useDispatch();
   const [registerForm, setRegisterForm] = useState(form);
   const history = useHistory();
 
-  const onSubmit = (data) => {
-    history.push("/plannerHome");
+  const onSubmit = () => {
+    console.log(registerForm);
+    dispatch(userActions.register(registerForm)).then(() => {
+      history.push("/plannerHome");
+    });
   };
 
   const handleInputChange = (event, key) => {
@@ -44,7 +43,7 @@ export default function RegisterForm() {
             Registration Form
           </p>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} style={{ padding: "40px" }}>
+        <div style={{ padding: "40px" }}>
           <Input
             icon={faUser}
             name={"firstName"}
@@ -73,8 +72,9 @@ export default function RegisterForm() {
             buttonName={"Register"}
             linkName={"Login Now"}
             linkText={"Already have an account? "}
+            onClick={onSubmit}
           />
-        </form>
+        </div>
       </div>
     </>
   );
