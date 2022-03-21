@@ -32,7 +32,36 @@ const register = (data) => {
   };
 };
 
+const login = (data) => {
+  const request = () => {
+    return { type: userConstants.AUTH_LOGIN_REQUEST };
+  };
+
+  const success = (user) => {
+    return { type: userConstants.AUTH_LOGIN_SUCCESS, user };
+  };
+
+  const failure = (error) => {
+    return { type: userConstants.AUTH_LOGIN_ERROR, error };
+  };
+
+  return (dispatch) => {
+    dispatch(request());
+    return api.login(data).then(
+      (user) => {
+        if (user) {
+          dispatch(success(user));
+        }
+      },
+      (error) => {
+        dispatch(failure(error));
+      }
+    );
+  };
+};
+
 export const userActions = {
   setUserList,
   register,
+  login,
 };

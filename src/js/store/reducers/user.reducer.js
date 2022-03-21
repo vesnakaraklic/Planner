@@ -15,14 +15,18 @@ export const user = (state = initialState, action) => {
       };
     case userConstants.AUTH_REGISTER_REQUEST:
     case userConstants.AUTH_REGISTER_ERROR:
+    case userConstants.AUTH_LOGIN_REQUEST:
+    case userConstants.AUTH_LOGIN_ERROR:
       return {
         ...state,
       };
     case userConstants.AUTH_REGISTER_SUCCESS:
+    case userConstants.AUTH_LOGIN_SUCCESS:
       return {
         ...state,
         user: action.user,
       };
+
     default:
       return state;
   }

@@ -8,6 +8,7 @@ import NormalButton from "../NormalButton/NormalButton";
 import { getUsers } from "../../actions/users";
 import { useHistory } from "react-router-dom";
 import "./login.scss";
+import { userActions } from "../../store/actions/user.actions";
 
 const form = { email: "", password: "" };
 
@@ -20,16 +21,19 @@ const LoginForm = () => {
   let isSame = false;
 
   const onSubmit = (data) => {
-    console.log(loginForm.email);
-    userList.map((user) => {
-      if (loginForm.email === user.email && !isSame) {
-        console.log("Same email!");
-        history.push("/login");
-        isSame = true;
-      } else {
-        console.log("Jeej!!!");
-        history.push("/plannerHome");
-      }
+    // console.log(loginForm.email);
+    // userList.map((user) => {
+    //   if (loginForm.email === user.email && !isSame) {
+    //     console.log("Same email!");
+    //     history.push("/login");
+    //     isSame = true;
+    //   } else {
+    //     console.log("Jeej!!!");
+    //     history.push("/plannerHome");
+    //   }
+    // });
+    dispatch(userActions.login(loginForm)).then(() => {
+      history.push("plannerHome");
     });
   };
 
