@@ -1,12 +1,10 @@
 import React from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
-import Home from "../js/views/Home";
-import Login from "../js/views/Login";
-import Header from "../js/components/header/header";
-import Register from "../js/views/Register";
+import LoginForm from "./views/login/login";
+import RegisterForm from "./views/register/register";
 import PlannerHome from "./views/PlannerHome";
-import UserHeader from "./components/userHeader";
-import AddToPlanner from "./components/addToPlanner";
+import UserHeader from "./components/userHeader/userHeader";
+import DailyPlanner from "./views/dailyPlanner/dailyPlanner";
 
 export default function App() {
   return (
@@ -14,22 +12,25 @@ export default function App() {
       <HashRouter>
         <Switch>
           <Route path="/login">
-            <Login />
+            <LoginForm />
           </Route>
+
           <Route path={"/register"}>
-            <Register />
+            <RegisterForm />
           </Route>
-          <Route exact path="/">
-            <Header />
-            <Home></Home>
-          </Route>
+
           <Route exact path="/plannerHome">
             <UserHeader />
             <PlannerHome></PlannerHome>
           </Route>
-          <Route exact path="/addToPlanner">
+
+          <Route exact path="/dailyPlanner">
             <UserHeader />
-            <AddToPlanner></AddToPlanner>
+            <DailyPlanner></DailyPlanner>
+          </Route>
+
+          <Route exact path="/">
+            <LoginForm />
           </Route>
         </Switch>
       </HashRouter>

@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Date } from "globalthis/implementation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import ToDoList from "./components/toDoList/toDoList";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { getUsers } from "../actions/users";
-import { useDispatch, useSelector } from "react-redux";
-import ToDoList from "./toDoList/toDoList";
-import Plans from "./plans/plans";
+import { getUsers } from "../../actions/users";
+import { useDispatch } from "react-redux";
+import Plans from "./components/plans/plans";
+import { useHistory } from "react-router-dom";
 
 var day = "Hello";
 var month = "";
@@ -18,9 +18,10 @@ const array5 = [0, 1, 2, 3, 4];
 
 const array8 = [0, 1, 2, 3, 4, 5, 6, 7];
 
-export default function AddToPlanner() {
+export default function DailyPlanner() {
   const dispatch = useDispatch();
   //const userList = useSelector(state => state.user.users)
+  const history = useHistory();
 
   switch (new Date().getDay()) {
     case 0:
@@ -88,7 +89,9 @@ export default function AddToPlanner() {
       month = "";
   }
 
-  console.log(new Date().getMonth());
+  const backToPlannerHome = () => {
+    history.push("/plannerHome");
+  };
 
   useEffect(() => {
     getUsers(dispatch);
@@ -108,50 +111,7 @@ export default function AddToPlanner() {
       </div>
       <div className="checkBox">
         <ToDoList />
-        {/* <form className="checkboxForm">
-          <h4 style={{ marginLeft: "10px", marginBottom: "0px" }}>
-            3 Priorities
-          </h4>
-          <br></br>
-          <div>
-            {array3.map((number) => (
-              <div key={"array3" + number} style={{ marginBottom: "10px" }}>
-                <input type="checkbox" />
-                <input className="checkboxInput"></input>
-              </div>
-            ))}
-          </div>
-          <br></br>
-          <h4 style={{ marginLeft: "10px", marginBottom: "0px" }}>
-            To Do List
-          </h4>
-          <br></br>
-          <div>
-            {array8.map((number) => (
-              <div key={"array8" + number} style={{ marginBottom: "10px" }}>
-                <input type="checkbox" />
-                <input className="checkboxInput"></input>
-              </div>
-            ))}
-          </div>
-        </form> */}
         <Plans></Plans>
-        {/* <div>
-          <form className="timeForm">
-            <h4 style={{ marginLeft: "30px", marginBottom: "0px" }}>
-              Plans & Schedules
-            </h4>
-            <br></br>
-            <div>
-              {hours.map((hour, index) => (
-                <div key={hour + index} style={{ marginBottom: "5px" }}>
-                  <label style={{ margin: "10px" }}>{hour}</label>
-                  <input className="timeInput"></input>
-                </div>
-              ))}
-            </div>
-          </form>
-        </div> */}
       </div>
       <br></br>
       <form className="moneyForm">
@@ -211,6 +171,7 @@ export default function AddToPlanner() {
         <div className="steps">
           <label className="reverseText">Steps</label>
         </div>
+        <button onClick={backToPlannerHome}>Back</button>
       </div>
     </>
   );

@@ -2,39 +2,27 @@ import React, { useEffect, useState } from "react";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
-import Input from "../Input/Input";
+import Input from "../../components/inputWithIcon/Input";
 import { useDispatch, useSelector } from "react-redux";
-import NormalButton from "../NormalButton/NormalButton";
+import NormalButton from "../../components/NormalButton/NormalButton";
 import { getUsers } from "../../actions/users";
-import { useHistory } from "react-router-dom";
-import "./login.scss";
+import { Link, useHistory } from "react-router-dom";
 import { userActions } from "../../store/actions/user.actions";
+import Header from "../../components/homeHeader/header";
+import "./login.scss";
 
 const form = { email: "", password: "" };
 
 const LoginForm = () => {
-  const { register, handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
   const [loginForm, setLoginForm] = useState(form);
   const dispatch = useDispatch();
   const history = useHistory();
-  const userList = useSelector((state) => state.user.users);
-  let isSame = false;
+  const user = useSelector((state) => state.user);
+  const [message, setMessage] = useState("");
 
-  const onSubmit = (data) => {
-    // console.log(loginForm.email);
-    // userList.map((user) => {
-    //   if (loginForm.email === user.email && !isSame) {
-    //     console.log("Same email!");
-    //     history.push("/login");
-    //     isSame = true;
-    //   } else {
-    //     console.log("Jeej!!!");
-    //     history.push("/plannerHome");
-    //   }
-    // });
-    dispatch(userActions.login(loginForm)).then(() => {
-      history.push("plannerHome");
-    });
+  const onSubmit = () => {
+    dispatch(userActions.login(loginForm));
   };
 
   const handleInputChange = (event, key) => {
@@ -42,15 +30,38 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
+    setMessage("");
     getUsers(dispatch);
+    dispatch(userActions.resetError());
   }, []);
 
   useEffect(() => {
-    console.log(loginForm);
-  }, [loginForm]);
+    if (Object.keys(user.user).length !== 0) {
+      localStorage.setItem("user", user.user);
+      history.push("plannerHome");
+    }
+  }, [user.user]);
+
+  useEffect(() => {
+    console.log(user.error);
+    switch (user.error.code) {
+      case "auth/invalid-email":
+      case "auth/wrong-password":
+        return setMessage("Invalid email or password");
+      case "auth/user-not-found":
+        return setMessage("User not found!");
+      default:
+        return setMessage("");
+    }
+  }, [user.error]);
+
+  useEffect(() => {
+    console.log(message);
+  }, [message]);
 
   return (
     <>
+      <Header />
       <div className="login_form">
         <div className="login-title">
           <p
@@ -78,11 +89,14 @@ const LoginForm = () => {
             placeholder={"Password"}
             onChange={(event) => handleInputChange(event, "password")}
           />
-          <NormalButton
-            buttonName={"Login"}
-            linkName={"Signup Now"}
-            linkText={"Not a member? "}
-          />
+          {message}
+          <NormalButton buttonName={"Login"} onClick={onSubmit} />
+          <p style={{ textAlign: "center", marginBottom: "0px" }}>
+            Not a member?
+            <Link to="/register" style={{ color: "lightpink" }}>
+              Signup Now
+            </Link>
+          </p>
         </form>
       </div>
     </>

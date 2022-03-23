@@ -1,11 +1,12 @@
 import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getUsers } from "../../actions/users";
 import { userActions } from "../../store/actions/user.actions";
-import Input from "../Input/Input";
-import NormalButton from "../NormalButton/NormalButton";
+import Input from "../../components/inputWithIcon/Input";
+import NormalButton from "../../components/NormalButton/NormalButton";
+import Header from "../../components/homeHeader/header";
 import "./register.scss";
 
 const form = { firstName: "", lastName: "", email: "", password: "" };
@@ -31,8 +32,9 @@ export default function RegisterForm() {
   }, []);
   return (
     <>
-      <div className="login_form">
-        <div className="login-title">
+      <Header />
+      <div className="register_form">
+        <div className="register-title">
           <p
             style={{
               padding: "0px 57px",
@@ -68,12 +70,13 @@ export default function RegisterForm() {
             placeholder={"password"}
             onChange={(event) => handleInputChange(event, "password")}
           ></Input>
-          <NormalButton
-            buttonName={"Register"}
-            linkName={"Login Now"}
-            linkText={"Already have an account? "}
-            onClick={onSubmit}
-          />
+          <NormalButton buttonName={"Register"} onClick={onSubmit} />
+          <p style={{ textAlign: "center", marginBottom: "0px" }}>
+            Already have an account?
+            <Link to="/login" style={{ color: "lightpink" }}>
+              Login Now
+            </Link>
+          </p>
         </div>
       </div>
     </>

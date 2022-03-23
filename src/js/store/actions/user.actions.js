@@ -6,6 +6,7 @@ const setUserList = (data) => {
     dispatch({ type: userConstants.USER_LIST, data });
   };
 };
+
 const register = (data) => {
   console.log("Register fun", data);
   const request = () => {
@@ -33,35 +34,36 @@ const register = (data) => {
 };
 
 const login = (data) => {
-  const request = () => {
-    return { type: userConstants.AUTH_LOGIN_REQUEST };
-  };
-
-  const success = (user) => {
-    return { type: userConstants.AUTH_LOGIN_SUCCESS, user };
-  };
-
-  const failure = (error) => {
-    return { type: userConstants.AUTH_LOGIN_ERROR, error };
-  };
-
   return (dispatch) => {
-    dispatch(request());
+    dispatch({ type: userConstants.AUTH_LOGIN_REQUEST });
     return api.login(data).then(
       (user) => {
         if (user) {
-          dispatch(success(user));
+          dispatch({ type: userConstants.AUTH_LOGIN_SUCCESS, user });
         }
       },
       (error) => {
-        dispatch(failure(error));
+        dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error });
       }
     );
   };
 };
 
+const resetError = () => {
+  return (dispatch) => {
+    dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error: {} });
+  };
+};
+
+const logout = () => (dispatch) =>
+  api.logout().then((_) => {
+    dispatch({ type: "AUTH_LOGOUT_SUCCESS" });
+  });
+
 export const userActions = {
   setUserList,
   register,
   login,
+  logout,
+  resetError,
 };

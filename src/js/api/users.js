@@ -34,3 +34,5 @@ export const login = async ({ email, password }) => {
   const userProfile = await getUserProfile(user.uid);
   return userProfile;
 };
+
+export const logout = () => firebase.auth().signOut();

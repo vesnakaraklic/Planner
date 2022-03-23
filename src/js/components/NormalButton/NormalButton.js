@@ -1,13 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./NormalButton.scss";
 
-export default function NormalButton({
-  buttonName,
-  linkName,
-  linkText,
-  onClick,
-}) {
+export default function NormalButton({ buttonName, onClick }) {
   const onClickHandle = () => {
     onClick && onClick();
   };
@@ -16,12 +10,6 @@ export default function NormalButton({
       <button onClick={onClickHandle} className="submit-btn">
         {buttonName}
       </button>
-      <p style={{ textAlign: "center", marginBottom: "0px" }}>
-        {linkText}
-        <Link to="/register" style={{ color: "lightpink" }}>
-          {linkName}
-        </Link>
-      </p>
     </>
   );
 }

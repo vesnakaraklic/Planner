@@ -3,7 +3,14 @@ import { userConstants } from "../constants/user.constants";
 const initialState = {
   users: [],
   user: {},
+  error: {},
 };
+
+const createLoginReducer = () =>
+  combineReducers({
+    isChecking: createIsFetchingReducer("AUTH_LOGIN"),
+    error: createErrorReducer("AUTH_LOGIN"),
+  });
 
 export const user = (state = initialState, action) => {
   switch (action.type) {
@@ -16,7 +23,6 @@ export const user = (state = initialState, action) => {
     case userConstants.AUTH_REGISTER_REQUEST:
     case userConstants.AUTH_REGISTER_ERROR:
     case userConstants.AUTH_LOGIN_REQUEST:
-    case userConstants.AUTH_LOGIN_ERROR:
       return {
         ...state,
       };
@@ -25,6 +31,17 @@ export const user = (state = initialState, action) => {
       return {
         ...state,
         user: action.user,
+      };
+    case userConstants.AUTH_LOGOUT_SUCCESS:
+      return {
+        ...state,
+        user: {},
+      };
+
+    case userConstants.AUTH_LOGIN_ERROR:
+      return {
+        ...state,
+        error: action.error,
       };
 
     default:

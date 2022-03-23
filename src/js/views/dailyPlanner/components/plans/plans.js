@@ -1,4 +1,5 @@
 import React from "react";
+import LineInput from "../../../../components/lineInput/lineInput";
 import "./plans.scss";
 
 const hours = [
@@ -24,6 +25,10 @@ const hours = [
 ];
 
 export default function Plans({}) {
+  const onChangeInput = (event) => {
+    console.log(event.target.value);
+  };
+
   return (
     <>
       <div>
@@ -36,7 +41,12 @@ export default function Plans({}) {
             {hours.map((hour, index) => (
               <div key={hour + index} style={{ marginBottom: "5px" }}>
                 <label style={{ margin: "10px" }}>{hour}</label>
-                <input className="timeInput"></input>
+                {/* <input className="timeInput"></input> */}
+                <LineInput
+                  withCheckbox={false}
+                  className="timeInput"
+                  onChange={onChangeInput(event)}
+                />
               </div>
             ))}
           </div>
