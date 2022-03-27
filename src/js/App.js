@@ -5,6 +5,7 @@ import RegisterForm from "./views/register/register";
 import PlannerHome from "./views/PlannerHome";
 import UserHeader from "./components/userHeader/userHeader";
 import DailyPlanner from "./views/dailyPlanner/dailyPlanner";
+import Sidebar from "./components/sidebar/sidebar";
 
 export default function App() {
   return (
@@ -20,12 +21,14 @@ export default function App() {
           </Route>
 
           <Route exact path="/plannerHome">
-            <UserHeader />
+            {/* <UserHeader /> */}
+            {/* <Sidebar /> */}
             <PlannerHome></PlannerHome>
           </Route>
 
           <Route exact path="/dailyPlanner">
-            <UserHeader />
+            {/* <UserHeader /> */}
+
             <DailyPlanner></DailyPlanner>
           </Route>
 

@@ -1,27 +1,42 @@
+@import "/src/js/styles/variables.scss";
 .field-container {
   display: flex;
   flex-direction: row;
-  margin-bottom: 15px;
-}
+  position: relative;
+  .field-icon {
+    background-color: lightpink;
+    border-radius: 5px 0px 0px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+  }
+  .field-input {
+    border: 1px solid lightgray;
+    color: gray;
+    padding: 2px 10px;
+    border-radius: 0px 5px 5px 0px;
+    height: 32px;
+    width: calc(100% - 60px);
+    &:invalid {
+      border-color: #ea4c89;
+    }
 
-.field-icon {
-  background-color: lightpink;
-  border-radius: 5px 0px 0px 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 38px;
-  height: 38px;
-}
-.field-input {
-  border: 1px solid lightgray;
-  color: gray;
-  padding: 2px 10px;
-  border-radius: 0px 5px 5px 0px;
-  height: 32px;
-}
-
-.field-input:focus-visible {
-  outline: none;
-  border-color: gray;
+    &:focus-visible {
+      outline: none;
+      border-color: gray;
+    }
+  }
+  .error-message {
+    margin: 0;
+    position: absolute;
+    bottom: -14px;
+    left: 45px;
+    font-size: 12px;
+    color: $errorMsg;
+  }
+  &.auth-input {
+    margin-top: 13px;
+  }
 }

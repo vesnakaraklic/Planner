@@ -6,12 +6,6 @@ const initialState = {
   error: {},
 };
 
-const createLoginReducer = () =>
-  combineReducers({
-    isChecking: createIsFetchingReducer("AUTH_LOGIN"),
-    error: createErrorReducer("AUTH_LOGIN"),
-  });
-
 export const user = (state = initialState, action) => {
   switch (action.type) {
     case userConstants.USER_LIST:
@@ -21,7 +15,6 @@ export const user = (state = initialState, action) => {
         users: action.data.users,
       };
     case userConstants.AUTH_REGISTER_REQUEST:
-    case userConstants.AUTH_REGISTER_ERROR:
     case userConstants.AUTH_LOGIN_REQUEST:
       return {
         ...state,
@@ -39,6 +32,7 @@ export const user = (state = initialState, action) => {
       };
 
     case userConstants.AUTH_LOGIN_ERROR:
+    case userConstants.AUTH_REGISTER_ERROR:
       return {
         ...state,
         error: action.error,

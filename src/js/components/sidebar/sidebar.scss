@@ -1,0 +1,19 @@
+$pink: #ea4c89;
+
+.sidebar {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: 50px;
+}
+
+.user-header-profile {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: $pink;
+  border-style: none;
+  color: white;
+  cursor: pointer;
+  line-height: 20px;
+}

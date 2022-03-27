@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import Plans from "./components/plans/plans";
 import { useHistory } from "react-router-dom";
 
-var day = "Hello";
+var day = "";
 var month = "";
 var date = new Date();
 

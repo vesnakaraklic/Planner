@@ -45,7 +45,7 @@ export default function Plans({}) {
                 <LineInput
                   withCheckbox={false}
                   className="timeInput"
-                  onChange={onChangeInput(event)}
+                  onChange={(event) => onChangeInput(event)}
                 />
               </div>
             ))}
