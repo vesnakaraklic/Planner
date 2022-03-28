@@ -1,10 +1,11 @@
 @import "/src/js/styles/variables.scss";
+
 .field-container {
   display: flex;
   flex-direction: row;
   position: relative;
   .field-icon {
-    background-color: lightpink;
+    background-color: $turquoise100;
     border-radius: 5px 0px 0px 5px;
     display: flex;
     justify-content: center;
@@ -19,8 +20,9 @@
     border-radius: 0px 5px 5px 0px;
     height: 32px;
     width: calc(100% - 60px);
+    position: relative;
     &:invalid {
-      border-color: #ea4c89;
+      border-color: $turquoise200;
     }
 
     &:focus-visible {
@@ -34,9 +36,17 @@
     bottom: -14px;
     left: 45px;
     font-size: 12px;
-    color: $errorMsg;
+    color: $turquoise100;
   }
   &.auth-input {
     margin-top: 13px;
+  }
+
+  .eyeIcon {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    color: $turquoise200;
+    cursor: pointer;
   }
 }

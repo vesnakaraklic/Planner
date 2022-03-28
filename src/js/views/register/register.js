@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLock,
+  faUser,
+  faEye,
+  faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import Input from "../../components/inputWithIcon/Input";
 import NormalButton from "../../components/NormalButton/NormalButton";
@@ -23,6 +29,7 @@ export default function RegisterForm() {
   const [errorMessages, setErrorMessages] = useState(defaultErrorMessages);
   const history = useHistory();
   const user = useSelector((state) => state.user);
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
 
   const onSubmit = () => {
     const tempErrorMessages = { ...defaultErrorMessages };
@@ -55,6 +62,10 @@ export default function RegisterForm() {
       }));
       return "";
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordShown(!isPasswordShown);
   };
 
   const validateEmail = (email) => {
@@ -168,7 +179,9 @@ export default function RegisterForm() {
             icon={faLock}
             name={"password"}
             placeholder={"Password"}
-            type={"password"}
+            type={isPasswordShown ? "text" : "password"}
+            iconEye={!isPasswordShown ? faEye : faEyeSlash}
+            onEyeClick={togglePasswordVisibility}
             onChange={(event) => handleInputChange(event, "password")}
             errorMsg={errorMessages.password}
           ></Input>
@@ -176,7 +189,7 @@ export default function RegisterForm() {
           <NormalButton buttonName={"Register"} onClick={onSubmit} />
           <p style={{ textAlign: "center", marginBottom: "0px" }}>
             Already have an account?
-            <Link to="/login" style={{ color: "lightpink" }}>
+            <Link to="/login" style={{ color: "#56DDD2" }}>
               {" Login Now"}
             </Link>
           </p>

@@ -149,7 +149,7 @@ const LoginForm = () => {
           <NormalButton buttonName={"Login"} onClick={onSubmit} />
           <p style={{ textAlign: "center", marginBottom: "0px" }}>
             Not a member?
-            <Link to="/register" style={{ color: "lightpink" }}>
+            <Link to="/register" style={{ color: "#56DDD2" }}>
               {" Signup Now"}
             </Link>
           </p>

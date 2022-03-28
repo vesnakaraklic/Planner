@@ -1,9 +1,9 @@
-$pink: #ea4c89;
+@import "./../../styles/variables.scss";
 
 .submit-btn {
   appearance: none;
-  background-color: $pink;
-  border: 1px solid $pink;
+  background-color: $turquoise200;
+  border: 1px solid $turquoise200;
   border-radius: 6px;
   color: white;
   cursor: pointer;
@@ -17,6 +17,6 @@ $pink: #ea4c89;
 }
 
 .submit-btn:hover {
-  background-color: lightpink;
-  border: 1px solid lightpink;
+  background-color: $turquoise100;
+  border: 1px solid $turquoise100;
 }

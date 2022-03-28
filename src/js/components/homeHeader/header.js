@@ -13,7 +13,6 @@ export default function Header() {
   return (
     <>
       <div className="header">
-        <p className="logo_planner">Planner</p>
         <SmallButton
           onClick={() => onClickHandler("/login")}
           className="login_btn"

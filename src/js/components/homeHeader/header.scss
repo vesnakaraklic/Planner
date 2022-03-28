@@ -1,14 +1,13 @@
-$pink: #ea4c89;
+@import "../../styles/variables.scss";
 
 .header {
   height: 45px;
-  background-color: lightblue;
   position: relative;
 }
 
 .logo_planner {
   font-size: 35px;
-  color: $pink;
+  color: $turquoise200;
   font-family: cursive, fantasy;
   font-weight: bold;
   font-style: italic;
@@ -31,5 +30,5 @@ $pink: #ea4c89;
 
 .registration_btn:hover,
 .login_btn:hover {
-  background-color: #f082ac;
+  background-color: $turquoise100;
 }

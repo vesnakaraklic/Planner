@@ -1,9 +1,9 @@
-$pink: #ea4c89;
+@import "./../../styles/variables.scss";
 
 .buttons {
   height: 30px;
   width: 85px;
-  background-color: $pink;
+  background-color: $turquoise200;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;

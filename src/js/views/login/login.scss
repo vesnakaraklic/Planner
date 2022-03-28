@@ -1,9 +1,9 @@
-$pink: #ea4c89;
+@import "./../../styles/variables.scss";
 
 .login_form {
   height: 372px;
   width: 329px;
-  border: 3px solid $pink;
+  border: 3px solid $turquoise200;
   border-radius: 10px;
   position: absolute;
   top: 50%;
@@ -12,7 +12,7 @@ $pink: #ea4c89;
 }
 
 .login-title {
-  border: 3px solid $pink;
-  background-color: $pink;
+  border: 3px solid $turquoise200;
+  background-color: $turquoise200;
   color: white;
 }

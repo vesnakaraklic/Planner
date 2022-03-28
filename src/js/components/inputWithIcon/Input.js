@@ -11,6 +11,9 @@ export default function Input({
   type,
   errorMsg = "",
   className,
+  iconEye,
+  onEyeClick,
+  maxLength = 20,
 }) {
   return (
     <div className={`field-container ${className}`}>
@@ -26,7 +29,15 @@ export default function Input({
         onChange={onChange}
         onBlur={onBlur}
         type={type}
+        maxLength={maxLength}
       ></input>
+      <div>
+        {iconEye && (
+          <span className="eyeIcon">
+            <FontAwesomeIcon icon={iconEye} onClick={onEyeClick} />
+          </span>
+        )}
+      </div>
       {errorMsg !== "" && <p className="error-message">{errorMsg}</p>}
     </div>
   );
