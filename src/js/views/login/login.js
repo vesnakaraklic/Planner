@@ -113,46 +113,49 @@ const LoginForm = () => {
 
   return (
     <>
-      <Header />
-      <div className="login_form">
-        <div className="login-title">
-          <p
-            style={{
-              padding: "0px 89px",
-              fontSize: "23px",
-              fontWeight: "bold",
-            }}
-          >
-            Login Form
-          </p>
-        </div>
-        <div style={{ padding: "40px" }}>
-          <Input
-            className="auth-input"
-            icon={faEnvelope}
-            name={"email"}
-            placeholder={"Email"}
-            type={"email"}
-            onChange={(event) => handleInputChange(event, "email")}
-            onBlur={(event) => validateEmail(event.target.value)}
-            errorMsg={errorMessages.email}
-          />
-          <Input
-            className="auth-input"
-            icon={faLock}
-            name={"password"}
-            placeholder={"Password"}
-            type={"password"}
-            onChange={(event) => handleInputChange(event, "password")}
-            errorMsg={errorMessages.password}
-          />
-          <NormalButton buttonName={"Login"} onClick={onSubmit} />
-          <p style={{ textAlign: "center", marginBottom: "0px" }}>
-            Not a member?
-            <Link to="/register" style={{ color: "#56DDD2" }}>
-              {" Signup Now"}
-            </Link>
-          </p>
+      <div className="backgroundImg">
+        <Header />
+
+        <div className="login_form">
+          <div className="login-title">
+            <p
+              style={{
+                padding: "0px 89px",
+                fontSize: "23px",
+                fontWeight: "bold",
+              }}
+            >
+              Login Form
+            </p>
+          </div>
+          <div style={{ padding: "40px" }}>
+            <Input
+              className="auth-input"
+              icon={faEnvelope}
+              name={"email"}
+              placeholder={"Email"}
+              type={"email"}
+              onChange={(event) => handleInputChange(event, "email")}
+              onBlur={(event) => validateEmail(event.target.value)}
+              errorMsg={errorMessages.email}
+            />
+            <Input
+              className="auth-input"
+              icon={faLock}
+              name={"password"}
+              placeholder={"Password"}
+              type={"password"}
+              onChange={(event) => handleInputChange(event, "password")}
+              errorMsg={errorMessages.password}
+            />
+            <NormalButton buttonName={"Login"} onClick={onSubmit} />
+            <p style={{ textAlign: "center", marginBottom: "0px" }}>
+              Not a member?
+              <Link to="/register" style={{ color: "#ae8b70" }}>
+                {" Signup Now"}
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </>

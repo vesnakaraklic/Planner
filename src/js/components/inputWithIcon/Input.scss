@@ -5,7 +5,7 @@
   flex-direction: row;
   position: relative;
   .field-icon {
-    background-color: $turquoise100;
+    background-color: $brown700;
     border-radius: 5px 0px 0px 5px;
     display: flex;
     justify-content: center;
@@ -20,6 +20,7 @@
     border-radius: 0px 5px 5px 0px;
     height: 32px;
     width: calc(100% - 60px);
+    background-color: $bck100;
     position: relative;
     &:invalid {
       border-color: $turquoise200;
@@ -36,7 +37,7 @@
     bottom: -14px;
     left: 45px;
     font-size: 12px;
-    color: $turquoise100;
+    color: $brown500;
   }
   &.auth-input {
     margin-top: 13px;
@@ -46,7 +47,11 @@
     position: absolute;
     right: 8px;
     top: 10px;
-    color: $turquoise200;
+    color: $brown700;
     cursor: pointer;
+  }
+
+  .iconColor {
+    color: $brown200;
   }
 }

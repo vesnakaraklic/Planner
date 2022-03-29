@@ -7,7 +7,7 @@
 
 .logo_planner {
   font-size: 35px;
-  color: $turquoise200;
+  color: $turquoise300;
   font-family: cursive, fantasy;
   font-weight: bold;
   font-style: italic;
@@ -21,14 +21,16 @@
 .login_btn {
   right: 95px;
   top: 7px;
+  position: absolute;
 }
 
 .registration_btn {
   right: 5px;
   top: 7px;
+  position: absolute;
 }
 
 .registration_btn:hover,
 .login_btn:hover {
-  background-color: $turquoise100;
+  background-color: $brown500;
 }

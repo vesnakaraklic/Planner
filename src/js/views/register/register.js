@@ -132,67 +132,69 @@ export default function RegisterForm() {
 
   return (
     <>
-      <Header />
-      <div className="register_form">
-        <div className="register-title">
-          <p
-            style={{
-              padding: "0px 57px",
-              fontSize: "23px",
-              fontWeight: "bold",
-            }}
-          >
-            Registration Form
-          </p>
-        </div>
-        <div style={{ padding: "40px" }}>
-          <Input
-            className="auth-input"
-            icon={faUser}
-            name={"firstName"}
-            placeholder={"Firstname"}
-            type={"text"}
-            onChange={(event) => handleInputChange(event, "firstName")}
-            errorMsg={errorMessages.firstName}
-          ></Input>
-          <Input
-            className="auth-input"
-            icon={faUser}
-            name={"lastName"}
-            placeholder={"Lastname"}
-            type={"text"}
-            onChange={(event) => handleInputChange(event, "lastName")}
-            errorMsg={errorMessages.lastName}
-          ></Input>
-          <Input
-            className="auth-input"
-            icon={faEnvelope}
-            name={"email"}
-            placeholder={"Email"}
-            type={"email"}
-            onChange={(event) => handleInputChange(event, "email")}
-            onBlur={(event) => validateEmail(event.target.value)}
-            errorMsg={errorMessages.email}
-          ></Input>
-          <Input
-            className="auth-input"
-            icon={faLock}
-            name={"password"}
-            placeholder={"Password"}
-            type={isPasswordShown ? "text" : "password"}
-            iconEye={!isPasswordShown ? faEye : faEyeSlash}
-            onEyeClick={togglePasswordVisibility}
-            onChange={(event) => handleInputChange(event, "password")}
-            errorMsg={errorMessages.password}
-          ></Input>
+      <div className="backgroundImg">
+        <Header />
+        <div className="register_form">
+          <div className="register-title">
+            <p
+              style={{
+                padding: "0px 57px",
+                fontSize: "23px",
+                fontWeight: "bold",
+              }}
+            >
+              Registration Form
+            </p>
+          </div>
+          <div style={{ padding: "40px" }}>
+            <Input
+              className="auth-input"
+              icon={faUser}
+              name={"firstName"}
+              placeholder={"Firstname"}
+              type={"text"}
+              onChange={(event) => handleInputChange(event, "firstName")}
+              errorMsg={errorMessages.firstName}
+            ></Input>
+            <Input
+              className="auth-input"
+              icon={faUser}
+              name={"lastName"}
+              placeholder={"Lastname"}
+              type={"text"}
+              onChange={(event) => handleInputChange(event, "lastName")}
+              errorMsg={errorMessages.lastName}
+            ></Input>
+            <Input
+              className="auth-input"
+              icon={faEnvelope}
+              name={"email"}
+              placeholder={"Email"}
+              type={"email"}
+              onChange={(event) => handleInputChange(event, "email")}
+              onBlur={(event) => validateEmail(event.target.value)}
+              errorMsg={errorMessages.email}
+            ></Input>
+            <Input
+              className="auth-input"
+              icon={faLock}
+              name={"password"}
+              placeholder={"Password"}
+              type={isPasswordShown ? "text" : "password"}
+              iconEye={!isPasswordShown ? faEye : faEyeSlash}
+              onEyeClick={togglePasswordVisibility}
+              onChange={(event) => handleInputChange(event, "password")}
+              errorMsg={errorMessages.password}
+            ></Input>
 
-          <NormalButton buttonName={"Register"} onClick={onSubmit} />
-          <p style={{ textAlign: "center", marginBottom: "0px" }}>
-            Already have an account?
-            <Link to="/login" style={{ color: "#56DDD2" }}>
-              {" Login Now"}
-            </Link>
-          </p>
+            <NormalButton buttonName={"Register"} onClick={onSubmit} />
+            <p style={{ textAlign: "center", marginBottom: "0px" }}>
+              Already have an account?
+              <Link to="/login" style={{ color: "#ae8b70" }}>
+                {" Login Now"}
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </>

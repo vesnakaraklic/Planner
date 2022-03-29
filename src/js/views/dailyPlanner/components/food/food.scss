@@ -1,0 +1,25 @@
+@import "./../../../../styles/variables.scss";
+.foodForm {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+}
+
+.foodBorder {
+  //   border-bottom: 1px solid $brown700;
+  padding-bottom: 10px;
+  flex: 40%;
+  box-sizing: border-box;
+}
+
+.mealLetter {
+  padding-left: 10px;
+  font-family: cursive;
+  font-size: 20px;
+}
+
+.mealInput {
+  border-width: 0px;
+  border: none;
+  font-size: 17px;
+}

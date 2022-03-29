@@ -1,0 +1,33 @@
+@import "./../../styles/variables.scss";
+.direction {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.direction1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonView {
+  display: flex;
+  justify-content: center;
+}
+
+.bckImage {
+  background: url("./../../assets/images/bck2.webp");
+  background-size: cover;
+}
+.btnView {
+  margin-right: 5px;
+  margin-top: 2px;
+
+  &:focus {
+    background: $brown500;
+    outline: none;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+  }
+}

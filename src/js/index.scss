@@ -1,34 +1,14 @@
 @import "./styles/variables.scss";
-// * {
-//   box-sizing: border-box;
-//   margin: 0;
-//   padding: 0;
-// }
+
 body,
 body > div,
 body > div > div,
 html {
-  // font-family: $font-primary;
   height: 100%;
   margin: 0;
   box-sizing: border-box;
   overflow-x: hidden;
   font-size: 16px;
-}
-
-.user-header-name {
-  right: 44px;
-  position: absolute;
-  font-size: 18px;
-}
-
-.field-icon i {
-  color: white;
-  width: 15px;
-}
-
-.password-field {
-  margin-bottom: 50px;
 }
 
 .react-calendar {
@@ -48,67 +28,10 @@ html {
   line-height: 96px;
 }
 
-// .calendar-position {
-//   position: relative;
-// }
-
 .add-button {
   position: absolute;
   right: 20px;
   top: 20px;
-}
-
-.dayName {
-  text-align: center;
-  color: $turquoise200;
-  font-family: cursive;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  font-size: 56px;
-}
-
-.dateStyle {
-  font-family: cursive;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  padding-top: 40px;
-  padding-left: 10px;
-  border-bottom: 2px solid $turquoise200;
-}
-
-.note {
-  font-family: cursive;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  padding-left: 10px;
-  border-width: 0 0 2px;
-  border-color: $turquoise200;
-  border-style: outset;
-  margin-bottom: auto;
-}
-
-.parent {
-  display: grid;
-  height: 169px;
-  width: 600px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  border-bottom: 2px solid lightpink;
-}
-
-.inputWithoutBorders {
-  border-width: 0px;
-  border: none;
-  width: 238px;
-  font-size: 16px;
 }
 
 .checkBox {
@@ -120,94 +43,63 @@ html {
   width: 600px;
 }
 
-.moneyForm {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 30px;
-  grid-row-gap: 0px;
-  width: 600px;
-  height: 50px;
-}
+// .plannerFooter {
+//   display: grid;
+//   grid-template-columns: repeat(4, 1fr);
+//   grid-template-rows: 1fr;
+//   grid-column-gap: 0px;
+//   grid-row-gap: 0px;
+//   width: 600px;
+// }
 
-.moneyIn {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 2;
-}
+// .breakfast {
+//   grid-column-start: 1;
+//   grid-column-end: 2;
+//   grid-row-start: 1;
+//   grid-row-end: 2;
+//   border-bottom: 1px solid $turquoise200;
+//   padding-bottom: 10px;
+// }
 
-.moneyOut {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 2;
-  grid-column-end: 3;
-}
+// .lunch {
+//   grid-column-start: 2;
+//   grid-column-end: 3;
+//   grid-row-start: 1;
+//   grid-row-end: 2;
+//   border-bottom: 1px solid $turquoise200;
+//   padding-bottom: 10px;
+// }
 
-.moneyInputStyle {
-  border: 2px solid $turquoise200;
-  padding-top: 13px;
-  border-radius: 15px;
-  padding-left: 10px;
-}
+// .dinner {
+//   grid-column-start: 3;
+//   grid-column-end: 4;
+//   grid-row-start: 1;
+//   grid-row-end: 2;
+//   border-bottom: 1px solid $turquoise200;
+//   padding-bottom: 10px;
+// }
 
-.plannerFooter {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  width: 600px;
-}
+// .snack {
+//   grid-column-start: 4;
+//   grid-column-end: 5;
+//   grid-row-start: 1;
+//   grid-row-end: 2;
+//   border-bottom: 1px solid $turquoise200;
+//   padding-bottom: 10px;
+// }
 
-.breakfast {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  border-bottom: 1px solid $turquoise200;
-  padding-bottom: 10px;
-}
+// .mealLetter {
+//   padding-left: 10px;
+//   font-family: cursive;
+//   font-size: 20px;
+// }
 
-.lunch {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  border-bottom: 1px solid $turquoise200;
-  padding-bottom: 10px;
-}
-
-.dinner {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  border-bottom: 1px solid $turquoise200;
-  padding-bottom: 10px;
-}
-
-.snack {
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  border-bottom: 1px solid $turquoise200;
-  padding-bottom: 10px;
-}
-
-.mealLetter {
-  padding-left: 10px;
-  font-family: cursive;
-  font-size: 20px;
-}
-
-.mealInput {
-  border-width: 0px;
-  border: none;
-  width: 115px;
-  font-size: 17px;
-}
+// .mealInput {
+//   border-width: 0px;
+//   border: none;
+//   width: 115px;
+//   font-size: 17px;
+// }
 
 .exerciseAndHealthForm {
   display: grid;

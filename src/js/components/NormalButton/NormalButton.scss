@@ -2,10 +2,10 @@
 
 .submit-btn {
   appearance: none;
-  background-color: $turquoise200;
-  border: 1px solid $turquoise200;
+  background-color: $brown700;
+  border: 1px solid $brown700;
   border-radius: 6px;
-  color: white;
+  color: $brown200;
   cursor: pointer;
   display: inline-block;
   text-align: center;
@@ -17,6 +17,6 @@
 }
 
 .submit-btn:hover {
-  background-color: $turquoise100;
-  border: 1px solid $turquoise100;
+  background-color: $brown500;
+  border: 1px solid $brown500;
 }

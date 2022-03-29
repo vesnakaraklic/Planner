@@ -1,0 +1,23 @@
+@import "./../../../../styles/variables.scss";
+.moneyForm {
+  width: 600px;
+  height: 85px;
+  display: flex;
+}
+
+.moneyIn {
+  width: 200px;
+  height: 50px;
+}
+
+.moneyOut {
+  width: 200px;
+  height: 50px;
+}
+
+.moneyInputStyle {
+  border: 2px solid $brown700;
+  padding-top: 13px;
+  border-radius: 15px;
+  text-align: center;
+}

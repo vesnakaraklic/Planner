@@ -19,7 +19,7 @@ export default function Input({
     <div className={`field-container ${className}`}>
       {icon && (
         <span className="field-icon">
-          <FontAwesomeIcon icon={icon} style={{ color: "white" }} />
+          <FontAwesomeIcon icon={icon} className="iconColor" />
         </span>
       )}
       <input

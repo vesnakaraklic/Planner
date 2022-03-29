@@ -40,7 +40,9 @@ export default function Plans({}) {
           <div>
             {hours.map((hour, index) => (
               <div key={hour + index} style={{ marginBottom: "5px" }}>
-                <label style={{ margin: "10px" }}>{hour}</label>
+                <label style={{ margin: "10px", color: "#4f0000" }}>
+                  {hour}
+                </label>
                 {/* <input className="timeInput"></input> */}
                 <LineInput
                   withCheckbox={false}

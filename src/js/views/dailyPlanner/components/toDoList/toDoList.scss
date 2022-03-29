@@ -1,8 +1,10 @@
+@import "./../../../../styles/variables.scss";
+
 .checkboxForm {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
-  border-left: 0.5px solid lightpink;
-  box-shadow: inset -6px -9px 19px -6px lightpink;
+  border-left: 0.5px solid $brown700;
+  box-shadow: inset -6px -9px 19px -6px $brown500;
 }

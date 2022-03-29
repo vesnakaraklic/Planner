@@ -3,16 +3,21 @@
 .register_form {
   height: 478px;
   width: 329px;
-  border: 3px solid $turquoise200;
+  border: 3px solid $brown700;
   border-radius: 10px;
   position: absolute;
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  transform: translate(-49%, -49%);
 }
 
 .register-title {
-  border: 3px solid $turquoise200;
-  background-color: $turquoise200;
+  border: 3px solid $brown700;
+  background-color: $brown700;
   color: white;
+}
+
+.backgroundImg {
+  background: url("./../../assets/images/bck2.webp");
+  background-size: cover;
 }
