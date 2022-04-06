@@ -1,0 +1,40 @@
+@import "./../../../../styles/variables.scss";
+
+.exerciseForm {
+display: flex;
+width: 600px;
+}
+
+.labelStyle {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    text-align: center;
+    font-size: 19px;
+}
+
+.inputWithoutBordersAll {
+    border-width: 0px;
+    border: none;
+    width: 330px;
+    margin-right: 50px;
+    margin-left: 3px;
+  }
+
+  .reverseInput {
+    transform: rotate(90deg);
+    width: 129px;
+    height: 30px;
+    margin-top: 60px;
+    border-color: $brown700;
+    // margin-left: 28px;
+    border-radius: 10px;
+  }
+
+  .reverseText {
+    writing-mode: vertical-rl;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: cursive;
+    padding-top: 47px;
+  }

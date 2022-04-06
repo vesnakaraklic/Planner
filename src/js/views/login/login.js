@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { useForm } from "react-hook-form";
+import {
+  faLock,
+  faEnvelope,
+  faEye,
+  faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
 import Input from "../../components/inputWithIcon/Input";
 import { useDispatch, useSelector } from "react-redux";
 import NormalButton from "../../components/NormalButton/NormalButton";
@@ -20,6 +23,7 @@ const LoginForm = () => {
   const history = useHistory();
   const user = useSelector((state) => state.user);
   const [errorMessages, setErrorMessages] = useState(defaultErrorMessages);
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
 
   const onSubmit = () => {
     const tempErrorMessages = { ...defaultErrorMessages };
@@ -85,6 +89,10 @@ const LoginForm = () => {
     return tempValidForm;
   };
 
+  const togglePasswordVisibility = () => {
+    setIsPasswordShown(!isPasswordShown);
+  };
+
   useEffect(() => {
     getUsers(dispatch);
     dispatch(userActions.resetError());
@@ -144,7 +152,9 @@ const LoginForm = () => {
               icon={faLock}
               name={"password"}
               placeholder={"Password"}
-              type={"password"}
+              type={isPasswordShown ? "text" : "password"}
+              iconEye={!isPasswordShown ? faEye : faEyeSlash}
+              onEyeClick={togglePasswordVisibility}
               onChange={(event) => handleInputChange(event, "password")}
               errorMsg={errorMessages.password}
             />

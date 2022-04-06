@@ -4,6 +4,7 @@ import LoginForm from "./views/login/login";
 import RegisterForm from "./views/register/register";
 import PlannerHome from "./views/plannerHome/plannerHome";
 import DailyPlanner from "./views/dailyPlanner/dailyPlanner";
+import WeeklyPlanner from "./views/weeklyPlanner/weeklyPlanner";
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
             <LoginForm />
           </Route>
 
-          <Route path={"/register"}>
+          <Route path="/register">
             <RegisterForm />
           </Route>
 
@@ -24,6 +25,10 @@ export default function App() {
 
           <Route exact path="/dailyPlanner">
             <DailyPlanner></DailyPlanner>
+          </Route>
+
+          <Route exact path="/weeklyPlanner">
+            <WeeklyPlanner />
           </Route>
 
           <Route exact path="/">

@@ -1,37 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/sidebar";
 import DailyPlanner from "../dailyPlanner/dailyPlanner";
 import SmallButton from "../../components/SmallButton/SmallButton";
+import WeeklyPlanner from "../weeklyPlanner/weeklyPlanner";
 import "./plannerHome.scss";
+import { useHistory } from "react-router-dom";
 
 export default function PlannerHome() {
-  const onClick = () => {
-    console.log("bbebbebeb");
+  const history = useHistory();
+  const [isDaily, setIsDaily] = useState(false);
+  const [isWeekly, setIsWeekly] = useState(false);
+
+  const onClickDaily = () => {
+    setIsDaily(true);
+    setIsWeekly(false);
   };
+
+  const onClickWeekly = () => {
+    setIsWeekly(true);
+    setIsDaily(false);
+  };
+
   return (
     <>
       <div className="bckImage">
-        <div className="direction">
+        <div className="sidebarDirection">
           <Sidebar />
-          <div className="direction1">
+          <div className="buttonsDirection">
             <div className="buttonView">
               <SmallButton
                 className={"btnView"}
                 buttonName={"Daily"}
-                onClick={onClick}
+                onClick={onClickDaily}
               />
               <SmallButton
                 className={"btnView"}
-                buttonName={"Monthly"}
-                onClick={onClick}
+                buttonName={"Weekly"}
+                onClick={onClickWeekly}
               />
               <SmallButton
                 className={"btnView"}
                 buttonName={"Calendar"}
-                onClick={onClick}
+                onClick={onClickDaily}
               />
             </div>
-            <DailyPlanner />
+            <div>{isDaily && <DailyPlanner />}</div>
+            <div>{isWeekly && <WeeklyPlanner />}</div>
           </div>
         </div>
       </div>
