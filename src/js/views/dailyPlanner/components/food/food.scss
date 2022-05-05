@@ -6,21 +6,28 @@
 }
 
 .foodBorder {
-  //   border-bottom: 1px solid $brown700;
   padding-bottom: 10px;
   flex: 40%;
   box-sizing: border-box;
 }
 
-.mealLetter {
+.mealIcon {
   padding-left: 10px;
   font-family: cursive;
   font-size: 20px;
+  color: $brown700;
 }
 
 .mealInput {
   border-width: 0px;
   border: none;
-  font-size: 17px;
+  font-size: 15px;
   text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 250px;
+  border-radius: 5px;
+
+  &:focus-visible {
+    outline: 2px solid $brown700;
+  }
 }

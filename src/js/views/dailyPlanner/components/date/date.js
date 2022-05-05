@@ -6,6 +6,7 @@ var month = "";
 var date = new Date();
 
 export default function DateHeader() {
+  console.log(new Date().getDay());
   switch (new Date().getDay()) {
     case 0:
       day = "Sunday";
@@ -27,46 +28,65 @@ export default function DateHeader() {
       break;
     case 6:
       day = "Saturday";
+      break;
     default:
       day = "";
   }
 
-  switch (new Date().getDay()) {
+  switch (new Date().getMonth()) {
     case 0:
-      day = "Sunday";
+      month = "January";
       break;
     case 1:
-      day = "Monday";
+      month = "February";
       break;
     case 2:
-      day = "Tuesday";
+      month = "March";
       break;
     case 3:
-      day = "Wednesday";
+      month = "April";
       break;
     case 4:
-      day = "Thursday";
+      month = "May";
       break;
     case 5:
-      day = "Friday";
+      month = "June";
       break;
     case 6:
-      day = "Saturday";
+      month = "July";
+      break;
+    case 7:
+      month = "August";
+      break;
+    case 8:
+      month = "September";
+      break;
+    case 9:
+      month = "October";
+      break;
+    case 10:
+      month = "November";
+      break;
+    case 11:
+      month = "December";
+      break;
     default:
-      day = "";
+      month = "";
   }
 
   return (
     <>
-      <div className="parent">
+      <div className="dateForm">
         <p className="dayName"> {day}</p>
-        <p className="dateStyle">
-          {" "}
-          Date: {month} {date.getDate()} , {date.getFullYear()}
-        </p>
-        <p className="note">
-          Note: <input className="inputWithoutBorders" />
-        </p>
+        <div className="dateInputForm">
+          <p className="dateStyle">
+            {" "}
+            Date: {month} {date.getDate()} , {date.getFullYear()}
+          </p>
+          <p className="note">
+            Note: <input type="text" className="inputWithoutBorders" />
+          </p>
+        </div>
       </div>
     </>
   );

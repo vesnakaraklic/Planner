@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import LoginForm from "./views/login/login";
 import RegisterForm from "./views/register/register";
 import PlannerHome from "./views/plannerHome/plannerHome";
-import DailyPlanner from "./views/dailyPlanner/dailyPlanner";
-import WeeklyPlanner from "./views/weeklyPlanner/weeklyPlanner";
+import { createHashHistory } from "history";
+import { useDispatch } from "react-redux";
+import { userActions } from "./store/actions/user.actions";
 
 export default function App() {
+  const history = createHashHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(userActions.listenToAuthChanges());
+  }, []);
   return (
     <>
-      <HashRouter>
+      <HashRouter history={history}>
         <Switch>
           <Route path="/login">
             <LoginForm />
@@ -21,14 +28,6 @@ export default function App() {
 
           <Route exact path="/plannerHome">
             <PlannerHome></PlannerHome>
-          </Route>
-
-          <Route exact path="/dailyPlanner">
-            <DailyPlanner></DailyPlanner>
-          </Route>
-
-          <Route exact path="/weeklyPlanner">
-            <WeeklyPlanner />
           </Route>
 
           <Route exact path="/">

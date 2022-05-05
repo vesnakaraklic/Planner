@@ -9,8 +9,10 @@ width: 600px;
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 12px;
-    text-align: center;
-    font-size: 19px;
+    font-size: 17px;
+    padding-left: 17%;
+    color: $brown700;
+    font-family: mv boli;
 }
 
 .inputWithoutBordersAll {
@@ -19,6 +21,17 @@ width: 600px;
     width: 330px;
     margin-right: 50px;
     margin-left: 3px;
+    background-color: #f0e7d6;
+    color: $brown700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 5px;
+
+    &:focus-visible {
+      outline: 2px solid $brown700;
+    }
+
+
+    
   }
 
   .reverseInput {
@@ -27,14 +40,19 @@ width: 600px;
     height: 30px;
     margin-top: 60px;
     border-color: $brown700;
-    // margin-left: 28px;
     border-radius: 10px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 21px;
+    color: #6c442f;
   }
 
   .reverseText {
     writing-mode: vertical-rl;
-    font-size: 17px;
+    font-size: 23px;
     font-weight: bold;
-    font-family: cursive;
+    font-family: mv boli;
     padding-top: 47px;
+    color: $brown700;
+    
   }

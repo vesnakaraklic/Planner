@@ -18,10 +18,12 @@
   width: 150px;
   border-width: 0px;
   border: none;
-  background-color: #f5efe3;
+  background-color: #f8f3e9;
   font-size: 16px;
   border-bottom: 1px solid brown;
   text-align: center;
+  
+  margin-right: 3px;
   /* Chrome */
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -32,4 +34,16 @@
   &[type=number] {
     -moz-appearance: textfield;
   }
+
+  &:focus-visible {
+    outline: 2px solid $brown700;
+    border-radius: 5px;
+  }
+}
+
+.moneyLabel {
+  font-weight: bold;
+  color: #4f0000;
+  padding-bottom: 5px;
+  font-family: mv boli;
 }

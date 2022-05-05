@@ -32,27 +32,19 @@ export default function Plans({}) {
   return (
     <>
       <div>
-        <form className="timeForm">
-          <h4 style={{ marginLeft: "30px", marginBottom: "0px" }}>
-            Plans & Schedules
-          </h4>
-          <br></br>
-          <div>
-            {hours.map((hour, index) => (
-              <div key={hour + index} style={{ marginBottom: "5px" }}>
-                <label style={{ margin: "10px", color: "#4f0000" }}>
-                  {hour}
-                </label>
-                {/* <input className="timeInput"></input> */}
-                <LineInput
-                  withCheckbox={false}
-                  className="timeInput"
-                  onChange={(event) => onChangeInput(event)}
-                />
-              </div>
-            ))}
-          </div>
-        </form>
+        <p className="title">Plans & Schedules</p>
+        <div>
+          {hours.map((hour, index) => (
+            <div key={hour + index} style={{ marginBottom: "5px" }}>
+              <label className="hourStyle">{hour}</label>
+              <LineInput
+                withCheckbox={false}
+                className="timeInput"
+                onChange={(event) => onChangeInput(event)}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

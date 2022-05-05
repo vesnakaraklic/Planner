@@ -1,0 +1,5 @@
+export const moneyConstants = {
+  GET_MONEY: "GET_MONEY",
+  CHANGE_MONEYIN: "CHANGE_MONEYIN",
+  CHANGE_MONEYOUT: "CHANGE_MONEYOUT",
+};

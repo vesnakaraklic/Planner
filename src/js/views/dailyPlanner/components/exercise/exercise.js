@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faVolleyballBall } from "@fortawesome/free-solid-svg-icons";
 import "./exercise.scss";
 
 const array5 = [0, 1, 2, 3, 4];
@@ -15,7 +15,7 @@ export default function Exercise() {
             <div style={{ paddingTop: "10px" }} key={"array5" + number}>
               <span>
                 <FontAwesomeIcon
-                  icon={faStar}
+                  icon={faVolleyballBall}
                   style={{ color: "rgb(79 2 0)" }}
                 />
               </span>

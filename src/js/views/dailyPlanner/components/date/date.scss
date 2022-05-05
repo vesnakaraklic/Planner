@@ -1,55 +1,55 @@
 @import "./../../../../styles/variables.scss";
 
-.parent {
-  display: grid;
+.dateForm {
   height: 169px;
-  width: 600px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   border-bottom: 2px solid $brown700;
+  display: flex;
+  font-weight: bold;
+
+  .dateInputForm {
+    display: flex;
+    flex-direction: column;
+  }
 
   .dayName {
     text-align: center;
     color: $brown700;
-    font-family: cursive;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 2;
+    font-family: mv boli;
     font-size: 56px;
+    width: 50%;
   }
 
   .dateStyle {
-    font-family: cursive;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 2;
-    grid-column-end: 3;
+    font-family: mv boli;
     padding-top: 40px;
     padding-left: 10px;
     border-bottom: 2px solid $brown500;
+    color: $brown700;
   }
 
   .note {
-    font-family: cursive;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 2;
-    grid-column-end: 3;
+    font-family: mv boli;
     padding-left: 10px;
     border-width: 0 0 2px;
     border-color: $brown300;
     border-style: outset;
     margin-bottom: auto;
+    color: $brown700;
   }
 
   .inputWithoutBorders {
     border-width: 0px;
     border: none;
-    width: 238px;
+    width: 260px;
     font-size: 16px;
     background: none;
+    border-radius: 5px;
+
+    &:focus-visible {
+      outline: 2px solid $brown700;
+    }
   }
+
+  
+
 }

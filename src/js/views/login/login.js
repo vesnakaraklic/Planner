@@ -8,11 +8,12 @@ import {
 import Input from "../../components/inputWithIcon/Input";
 import { useDispatch, useSelector } from "react-redux";
 import NormalButton from "../../components/NormalButton/NormalButton";
-import { getUsers } from "../../actions/users";
 import { Link, useHistory } from "react-router-dom";
 import { userActions } from "../../store/actions/user.actions";
 import Header from "../../components/homeHeader/header";
 import "./login.scss";
+
+import * as api from "../../api/users";
 
 const defaultForm = { email: "", password: "" };
 const defaultErrorMessages = { email: "", password: "" };
@@ -34,6 +35,9 @@ const LoginForm = () => {
       tempErrorMessages.email = validateEmail(loginForm.email);
     }
     isFormValid(tempErrorMessages) && dispatch(userActions.login(loginForm));
+  };
+  const onCheck = () => {
+    api.checkUser();
   };
 
   const handleInputChange = (event, key) => {
@@ -94,13 +98,12 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    getUsers(dispatch);
     dispatch(userActions.resetError());
   }, []);
 
   useEffect(() => {
-    if (Object.keys(user.user).length !== 0) {
-      localStorage.setItem("user", user.user);
+    if (user.user && Object.keys(user.user).length !== 0) {
+      localStorage.setItem("user", JSON.stringify(user.user));
       history.push("plannerHome");
     }
   }, [user.user]);
@@ -159,6 +162,7 @@ const LoginForm = () => {
               errorMsg={errorMessages.password}
             />
             <NormalButton buttonName={"Login"} onClick={onSubmit} />
+            <NormalButton buttonName={"Chck"} onClick={onCheck} />
             <p style={{ textAlign: "center", marginBottom: "0px" }}>
               Not a member?
               <Link to="/register" style={{ color: "#ae8b70" }}>

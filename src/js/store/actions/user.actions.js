@@ -1,5 +1,6 @@
 import { userConstants } from "../constants/user.constants";
 import * as api from "../../api/users";
+import { localStorageService } from "../../services/localStorage.service";
 
 const setUserList = (data) => {
   return (dispatch) => {
@@ -40,6 +41,21 @@ const login = (data) => {
   };
 };
 
+const listenToAuthChanges = () => {
+  return async (dispatch) => {
+    api.onAuthStateChanges(async (user) => {
+      if (user) {
+        const userData = await api.getUserProfile(user.uid);
+        // console.log(userData);
+        // const userData = localStorageService.get("user");
+        dispatch({ type: userConstants.AUTH_LOGIN_SUCCESS, user: userData });
+      } else {
+        dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error: "error" });
+      }
+    });
+  };
+};
+
 const resetError = () => {
   return (dispatch) => {
     dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error: {} });
@@ -48,6 +64,7 @@ const resetError = () => {
 
 const logout = () => (dispatch) =>
   api.logout().then((_) => {
+    localStorageService.delete("user");
     dispatch({ type: "AUTH_LOGOUT_SUCCESS" });
   });
 
@@ -57,4 +74,5 @@ export const userActions = {
   login,
   logout,
   resetError,
+  listenToAuthChanges,
 };

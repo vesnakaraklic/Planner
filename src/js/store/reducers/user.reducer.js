@@ -21,6 +21,7 @@ export const user = (state = initialState, action) => {
       };
     case userConstants.AUTH_REGISTER_SUCCESS:
     case userConstants.AUTH_LOGIN_SUCCESS:
+      console.log(action);
       return {
         ...state,
         user: action.user,

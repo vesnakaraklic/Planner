@@ -5,22 +5,38 @@
   width: 255px;
   font-size: 13px;
   border-bottom: 1px solid $brown700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .timeInput {
   border-width: 0px;
   border: none;
-  width: 210px;
-  font-size: 13px;
+  width: 290px;
+  font-size: 12px;
   border-bottom: 1px solid $brown700;
   background: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: $brown700;
+
+  &:focus-visible {
+    outline: 2px solid $brown700;
+    border-radius: 5px;
+  }
 }
 
 .checkboxInput {
   border-width: 0px;
   border: none;
-  width: 255px;
-  font-size: 13px;
+  width: 265px;
+  font-size: 12px;
   border-bottom: 1px solid $brown700;
   background: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: $brown700;
+
+  &:focus-visible {
+    outline: 2px solid $brown700;
+    border-radius: 5px;
+  }
 }
+
