@@ -36,9 +36,6 @@ const LoginForm = () => {
     }
     isFormValid(tempErrorMessages) && dispatch(userActions.login(loginForm));
   };
-  const onCheck = () => {
-    api.checkUser();
-  };
 
   const handleInputChange = (event, key) => {
     setLoginForm({ ...loginForm, [key]: event.target.value });
@@ -162,7 +159,6 @@ const LoginForm = () => {
               errorMsg={errorMessages.password}
             />
             <NormalButton buttonName={"Login"} onClick={onSubmit} />
-            <NormalButton buttonName={"Chck"} onClick={onCheck} />
             <p style={{ textAlign: "center", marginBottom: "0px" }}>
               Not a member?
               <Link to="/register" style={{ color: "#ae8b70" }}>

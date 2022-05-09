@@ -14,8 +14,8 @@ import { dataActions } from "../../store/actions/data.actions";
 
 export default function DailyPlanner() {
   const dispatch = useDispatch();
-  const money = useSelector((state) => state.money);
   const user = useSelector((state) => state.user.user);
+  const { money, food } = useSelector((state) => state);
 
   const click = () => {
     console.log({ MoneyIn: money.moneyIn, MoneyOut: money.moneyOut });
@@ -28,8 +28,21 @@ export default function DailyPlanner() {
       dataActions.update(
         "money",
         {
-          MoneyIn: money.moneyIn,
-          MoneyOut: money.moneyOut,
+          moneyIn: money.moneyIn,
+          moneyOut: money.moneyOut,
+        },
+        user.uid + date.getTime()
+      )
+    );
+
+    dispatch(
+      dataActions.update(
+        "food",
+        {
+          breakfast: food.breakfast,
+          lunch: food.lunch,
+          dinner: food.dinner,
+          snack: food.snack,
         },
         user.uid + date.getTime()
       )

@@ -1,4 +1,3 @@
-import db from "../../db/firestore";
 import { moneyConstants } from "./../constants/money.constants";
 import * as api from "../../api/money";
 
@@ -10,11 +9,11 @@ const getMoneyById = (id) => {
         const data = res.data();
         dispatch({
           type: moneyConstants.CHANGE_MONEYIN,
-          moneyIn: data.MoneyIn,
+          moneyIn: data.moneyIn,
         });
         dispatch({
           type: moneyConstants.CHANGE_MONEYOUT,
-          moneyOut: data.MoneyOut,
+          moneyOut: data.moneyOut,
         });
       },
       (error) => {

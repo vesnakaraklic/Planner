@@ -7,11 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Money() {
   const [result, setResult] = useState("0");
-  // const [moneyIn, setMoneyIn] = useState("0");
-  // const [moneyOut, setMoneyOut] = useState("0");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  const money = useSelector((state) => state.money);
   const moneyIn = useSelector((state) => state.money.moneyIn);
   const moneyOut = useSelector((state) => state.money.moneyOut);
 

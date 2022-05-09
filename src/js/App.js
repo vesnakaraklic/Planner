@@ -21,7 +21,6 @@ export default function App() {
           <Route path="/login">
             <LoginForm />
           </Route>
-
           <Route path="/register">
             <RegisterForm />
           </Route>
