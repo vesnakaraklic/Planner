@@ -8,9 +8,8 @@ import Food from "./components/food/food";
 import Water from "./components/water/water";
 import Exercise from "./components/exercise/exercise";
 import "./dailyPlanner.scss";
-import * as api from "../../api/money";
-import * as apiUsers from "../../api/users";
 import { dataActions } from "../../store/actions/data.actions";
+import NormalButton from "../../components/NormalButton/NormalButton";
 
 export default function DailyPlanner() {
   const dispatch = useDispatch();
@@ -48,36 +47,40 @@ export default function DailyPlanner() {
       )
     );
   };
-  const onCheck = () => {
-    apiUsers.checkUser();
-  };
 
   return (
     <>
-      <div className="dailyPlannerFrame">
-        <div className="dailyPlannerform1">
-          <DateHeader />
-          <div className="checkBox">
-            <ToDoList />
-            <Plans></Plans>
+      <div className="dailyViewFrame">
+        <div className="dailyPlannerFrame">
+          <div className="dailyPlannerform1">
+            <DateHeader />
+            <div className="checkBox">
+              <ToDoList />
+              <Plans></Plans>
+            </div>
+          </div>
+          <div className="dailyPlannerform2">
+            <Money />
+            <div className="shadowLine" />
+            <Food />
+            <div
+              style={{
+                borderBottom: "2px solid #4f0000",
+                margin: "10px",
+                width: "100%",
+              }}
+            ></div>
+            <Water />
+            <Exercise />
           </div>
         </div>
-        <div className="dailyPlannerform2">
-          <Money />
-          <div className="shadowLine" />
-          <Food />
-          <div
-            style={{
-              borderBottom: "2px solid #4f0000",
-              margin: "10px",
-              width: "100%",
-            }}
-          ></div>
-          <Water />
-          <Exercise />
-        </div>
-        <button onClick={click}>CLick</button>
-        <button onClick={onCheck}>chck</button>
+        <NormalButton
+          className="saveButton"
+          buttonName={"Save"}
+          onClick={click}
+        >
+          Save{" "}
+        </NormalButton>
       </div>
     </>
   );
