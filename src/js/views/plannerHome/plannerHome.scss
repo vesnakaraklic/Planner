@@ -6,29 +6,29 @@
 }
 
 .buttonsDirection {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   width: 100%;
 }
 
-.buttonView {
-  display: flex;
-  justify-content: center;
-}
+// .buttonView {
+//   display: flex;
+//   justify-content: center;
+// }
 
 .bckImage {
   background: url("./../../assets/images/bck2.webp");
   background-size: cover;
 }
-.btnView {
-  margin-right: 5px;
-  margin-top: 2px;
+// .btnView {
+//   margin-right: 5px;
+//   margin-top: 2px;
 
-  &:focus {
-    background: $brown500;
-    outline: none;
-    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-    box-shadow: inset 0px 0px 5px #c1c1c1;
-  }
-}
+//   &:focus {
+//     background: $brown500;
+//     outline: none;
+//     -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+//     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+//     box-shadow: inset 0px 0px 5px #c1c1c1;
+//   }
+// }
