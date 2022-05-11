@@ -1,13 +1,13 @@
 import React from "react";
 import "./NormalButton.scss";
 
-export default function NormalButton({ buttonName, onClick }) {
+export default function NormalButton({ buttonName, onClick, className }) {
   const onClickHandle = () => {
     onClick && onClick();
   };
   return (
     <>
-      <button onClick={onClickHandle} className="submit-btn">
+      <button onClick={onClickHandle} className={`submit-btn ${className}`}>
         {buttonName}
       </button>
     </>
