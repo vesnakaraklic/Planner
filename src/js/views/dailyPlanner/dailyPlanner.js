@@ -15,10 +15,10 @@ import getDateWithoutHours from "../../utils/getDateWithoutHours";
 export default function DailyPlanner() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  const { money, food } = useSelector((state) => state);
+  const { money, food, waterDrink } = useSelector((state) => state);
   const dateRedux = useSelector((state) => state.datePicker.date);
 
-  const click = () => {
+  const onSaveDaily = () => {
     const date = getDateWithoutHours(dateRedux);
     dispatch(
       dataActions.update(
@@ -42,6 +42,10 @@ export default function DailyPlanner() {
         },
         user.uid + date
       )
+    );
+
+    dispatch(
+      dataActions.update("water", { water: waterDrink.water }, user.uid + date)
     );
   };
 
@@ -74,7 +78,7 @@ export default function DailyPlanner() {
         <NormalButton
           className="saveButton"
           buttonName={"Save"}
-          onClick={click}
+          onClick={onSaveDaily}
         >
           Save{" "}
         </NormalButton>

@@ -1,6 +1,7 @@
 import { dataConstants } from "./../constants/data.constants";
 import * as apiMoney from "../../api/money";
 import * as apiFood from "../../api/food";
+import * as apiWater from "../../api/water";
 
 const update = (collection, data, id = "") => {
   return (dispatch) => {
@@ -12,6 +13,9 @@ const update = (collection, data, id = "") => {
       case "food":
         apiFood.createFood(id, data);
         break;
+      case "water":
+        apiWater.createWater(id, data);
+
       default:
         break;
     }
