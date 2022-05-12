@@ -113,7 +113,6 @@ export default function RegisterForm() {
   }, [user.user]);
 
   useEffect(() => {
-    console.log(user.error);
     switch (user.error.code) {
       case "auth/invalid-email":
         return setErrorMessages({

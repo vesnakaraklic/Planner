@@ -10,19 +10,16 @@ import Exercise from "./components/exercise/exercise";
 import "./dailyPlanner.scss";
 import { dataActions } from "../../store/actions/data.actions";
 import NormalButton from "../../components/NormalButton/NormalButton";
+import getDateWithoutHours from "../../utils/getDateWithoutHours";
 
 export default function DailyPlanner() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const { money, food } = useSelector((state) => state);
+  const dateRedux = useSelector((state) => state.datePicker.date);
 
   const click = () => {
-    console.log({ MoneyIn: money.moneyIn, MoneyOut: money.moneyOut });
-    const date = new Date();
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-    date.setMilliseconds(0);
+    const date = getDateWithoutHours(dateRedux);
     dispatch(
       dataActions.update(
         "money",
@@ -30,7 +27,7 @@ export default function DailyPlanner() {
           moneyIn: money.moneyIn,
           moneyOut: money.moneyOut,
         },
-        user.uid + date.getTime()
+        user.uid + date
       )
     );
 
@@ -43,7 +40,7 @@ export default function DailyPlanner() {
           dinner: food.dinner,
           snack: food.snack,
         },
-        user.uid + date.getTime()
+        user.uid + date
       )
     );
   };

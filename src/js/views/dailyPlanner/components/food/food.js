@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./food.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { foodActions } from "../../../../store/actions/food.actions";
+import getDateWithoutHours from "../../../../utils/getDateWithoutHours";
 
 export default function Food() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ export default function Food() {
   const dinner = useSelector((state) => state.food.dinner);
   const snack = useSelector((state) => state.food.snack);
   const user = useSelector((state) => state.user.user);
+  const dateRedux = useSelector((state) => state.datePicker.date);
 
   const setBreakfast = (value) => {
     dispatch(foodActions.updateBreakfast(value));
@@ -35,12 +37,8 @@ export default function Food() {
   };
 
   useEffect(() => {
-    const date = new Date();
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-    date.setMilliseconds(0);
-    let idUser = user.uid + date.getTime();
+    const date = getDateWithoutHours(dateRedux);
+    let idUser = user.uid + date;
     dispatch(foodActions.getFoodById(idUser));
   }, []);
 

@@ -9,14 +9,20 @@ const getFoodById = (id) => {
         const data = res.data();
         dispatch({
           type: foodConstants.CHANGE_BREAKFAST,
-          breakfast: data.breakfast,
+          breakfast: data ? data.breakfast : "",
         });
         dispatch({
           type: foodConstants.CHANGE_LUNCH,
-          lunch: data.lunch,
+          lunch: data ? data.lunch : "",
         });
-        dispatch({ type: foodConstants.CHANGE_DINNER, dinner: data.dinner });
-        dispatch({ type: foodConstants.CHANGE_SNACK, snack: data.snack });
+        dispatch({
+          type: foodConstants.CHANGE_DINNER,
+          dinner: data ? data.dinner : "",
+        });
+        dispatch({
+          type: foodConstants.CHANGE_SNACK,
+          snack: data ? data.snack : "",
+        });
       },
       (error) => {
         console.log(error);

@@ -26,12 +26,6 @@ export const register = async ({ email, password, firstName, lastName }) => {
 
   return userProfile;
 };
-export const checkUser = () => {
-  let user = firebase.auth().currentUser;
-  if (user) {
-  }
-  console.log(user);
-};
 
 export const login = async ({ email, password }) => {
   const { user } = await firebase

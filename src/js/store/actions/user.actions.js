@@ -9,7 +9,6 @@ const setUserList = (data) => {
 };
 
 const register = (data) => {
-  console.log("Register fun", data);
   return (dispatch) => {
     dispatch({ type: userConstants.AUTH_REGISTER_REQUEST });
     return api.register(data).then(
@@ -46,8 +45,6 @@ const listenToAuthChanges = () => {
     api.onAuthStateChanges(async (user) => {
       if (user) {
         const userData = await api.getUserProfile(user.uid);
-        // console.log(userData);
-        // const userData = localStorageService.get("user");
         dispatch({ type: userConstants.AUTH_LOGIN_SUCCESS, user: userData });
       } else {
         dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error: "error" });

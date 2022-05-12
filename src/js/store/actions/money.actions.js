@@ -9,11 +9,11 @@ const getMoneyById = (id) => {
         const data = res.data();
         dispatch({
           type: moneyConstants.CHANGE_MONEYIN,
-          moneyIn: data.moneyIn,
+          moneyIn: data ? data.moneyIn : 0,
         });
         dispatch({
           type: moneyConstants.CHANGE_MONEYOUT,
-          moneyOut: data.moneyOut,
+          moneyOut: data ? data.moneyOut : 0,
         });
       },
       (error) => {

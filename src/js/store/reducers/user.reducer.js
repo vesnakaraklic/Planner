@@ -9,7 +9,6 @@ const initialState = {
 export const user = (state = initialState, action) => {
   switch (action.type) {
     case userConstants.USER_LIST:
-      console.log(action);
       return {
         ...state,
         users: action.data.users,
@@ -21,7 +20,6 @@ export const user = (state = initialState, action) => {
       };
     case userConstants.AUTH_REGISTER_SUCCESS:
     case userConstants.AUTH_LOGIN_SUCCESS:
-      console.log(action);
       return {
         ...state,
         user: action.user,

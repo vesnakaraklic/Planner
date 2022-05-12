@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { moneyActions } from "../../../../store/actions/money.actions";
+import getDateWithoutHours from "../../../../utils/getDateWithoutHours";
 import "./money.scss";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,6 +12,7 @@ export default function Money() {
   const user = useSelector((state) => state.user.user);
   const moneyIn = useSelector((state) => state.money.moneyIn);
   const moneyOut = useSelector((state) => state.money.moneyOut);
+  const dateRedux = useSelector((state) => state.datePicker.date);
 
   const setMoneyInHandle = (value) => {
     if (value.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/)) {
@@ -75,30 +77,21 @@ export default function Money() {
       // setMoneyOut(parseFloat(moneyOut) || "");
     }
   };
+  // const setMoneyIn = (value) => {
+  //   dispatch(moneyActions.updateMoneyIn(value));
+  // };
 
-  // useEffect(() => {
-  //   dispatch(moneyActions.updateMoneyIn(moneyIn));
-  // }, [moneyIn]);
+  // const setMoneyOut = (value) => {
+  //   dispatch(moneyActions.updateMoneyOut(value));
+  // };
 
-  // useEffect(() => {
-  //   dispatch(moneyActions.updateMoneyOut(moneyOut));
-  // }, [moneyOut]);
   useEffect(() => {
-    const date = new Date();
-    console.log(date.getTime());
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-    date.setMilliseconds(0);
-    console.log(date.getTime());
-    let idUser = user.uid + date.getTime();
-    console.log(idUser);
+    const date = getDateWithoutHours(dateRedux);
+    let idUser = user.uid + date;
     dispatch(moneyActions.getMoneyById(idUser));
   }, []);
 
   useEffect(() => {
-    console.log(moneyIn);
-    console.log(moneyOut);
     setResult(moneyIn - moneyOut);
   }, [moneyIn, moneyOut]);
   return (

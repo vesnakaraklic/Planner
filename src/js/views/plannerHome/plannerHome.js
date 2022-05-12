@@ -4,6 +4,7 @@ import Switchtab from "../../components/switchtab/switchtab";
 import DailyPlanner from "../../views/dailyPlanner/dailyPlanner";
 import WeeklyPlanner from "../../views/weeklyPlanner/weeklyPlanner";
 import MonthlyPlanner from "../../views/monthlyPlanner/monthlyPlanner";
+import DatePicker from "../datePicker/datePicker";
 import "./plannerHome.scss";
 
 export default function PlannerHome() {
@@ -12,11 +13,8 @@ export default function PlannerHome() {
     { key: 1, label: "Daily" },
     { key: 2, label: "Weekly" },
     { key: 3, label: "Monthly" },
+    { key: 4, label: "DatePicker" },
   ];
-
-  useEffect(() => {
-    console.log(currentActive);
-  }, [currentActive]);
 
   return (
     <>
@@ -32,6 +30,7 @@ export default function PlannerHome() {
             {currentActive === 1 && <DailyPlanner />}
             {currentActive === 2 && <WeeklyPlanner />}
             {currentActive === 3 && <MonthlyPlanner />}
+            {currentActive === 4 && <DatePicker />}
           </div>
         </div>
       </div>

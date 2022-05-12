@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function getDateWithoutHours(date) {
   const newDate = new Date(date);
   newDate.setHours(0);

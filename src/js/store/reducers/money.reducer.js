@@ -8,13 +8,11 @@ const initialState = {
 export const money = (state = initialState, action) => {
   switch (action.type) {
     case moneyConstants.CHANGE_MONEYIN:
-      console.log(action);
       return {
         ...state,
         moneyIn: action.moneyIn,
       };
     case moneyConstants.CHANGE_MONEYOUT:
-      console.log(action);
       return {
         ...state,
         moneyOut: action.moneyOut,
