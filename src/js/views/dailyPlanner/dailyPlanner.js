@@ -11,11 +11,12 @@ import "./dailyPlanner.scss";
 import { dataActions } from "../../store/actions/data.actions";
 import NormalButton from "../../components/NormalButton/NormalButton";
 import getDateWithoutHours from "../../utils/getDateWithoutHours";
+import { exercise } from "../../store/reducers/exercise.reducer";
 
 export default function DailyPlanner() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  const { money, food, waterDrink } = useSelector((state) => state);
+  const { money, food, waterDrink, exercise } = useSelector((state) => state);
   const dateRedux = useSelector((state) => state.datePicker.date);
 
   const onSaveDaily = () => {
@@ -46,6 +47,21 @@ export default function DailyPlanner() {
 
     dispatch(
       dataActions.update("water", { water: waterDrink.water }, user.uid + date)
+    );
+
+    dispatch(
+      dataActions.update(
+        "exercise",
+        {
+          exercise_1: exercise.exercise_1,
+          exercise_2: exercise.exercise_2,
+          exercise_3: exercise.exercise_3,
+          exercise_4: exercise.exercise_4,
+          exercise_5: exercise.exercise_5,
+          steps: exercise.steps,
+        },
+        user.uid + date
+      )
     );
   };
 
