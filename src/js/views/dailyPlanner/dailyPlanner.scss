@@ -28,11 +28,39 @@
       margin-left: 20px;
       display: flex;
       flex-direction: column;
-      margin-top: 16%;
+      // margin-top: 16%;
   
       .shadowLine {
         border-bottom: 2px solid $brown700;
         margin-bottom: 15px;
+      }
+
+      .buttonArrow {
+        display: flex;
+        margin-bottom: 5rem;
+        margin-top: 10rem;
+        justify-content: center;
+
+        .buttonArrowStyle {
+          margin-right: 4px;
+          width: 3.5rem;
+          height: 1.5rem;
+          border-radius: 7px;
+          border-color: #4f0200;
+          background-color: #f0e7d6;
+          color: #4f0200;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        .buttonArrowStyle:hover {
+          background-color: #fbf7f0;
+        }
+
+        .buttonTodayStyle {
+          margin-left: 1.5rem;
+          font-family: mv boli;
+        }
+
       }
     }
   }

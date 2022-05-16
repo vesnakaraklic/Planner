@@ -18,8 +18,6 @@ export default function DatePicker() {
     dispatch(dateActions.updateDate(getDateWithoutHours(date)));
   };
 
-  useEffect(() => {}, [selectedDate]);
-
   return (
     <>
       <div className="monthlyFrame">

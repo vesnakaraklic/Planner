@@ -3,6 +3,7 @@ import * as apiMoney from "../../api/money";
 import * as apiFood from "../../api/food";
 import * as apiWater from "../../api/water";
 import * as apiExercise from "../../api/exercise";
+import * as apiPlans from "../../api/plans";
 
 const update = (collection, data, id = "") => {
   return (dispatch) => {
@@ -20,7 +21,9 @@ const update = (collection, data, id = "") => {
       case "exercise":
         apiExercise.createExercise(id, data);
         break;
-
+      case "plans":
+        apiPlans.createPlans(id, data);
+        break;
       default:
         break;
     }
