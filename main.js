@@ -3,9 +3,12 @@ const { app, BrowserWindow, Menu } = require("electron");
 function createWindow() {
   const window = new BrowserWindow({
     webPreferences: {
-      nodeIntegration: false,
+      // nodeIntegration: false,
+      nodeIntegration: true,
       worldSafeExecuteJavaScript: true,
-      contextIsolation: true,
+      // contextIsolation: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
     },
   });
 

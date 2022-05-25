@@ -29,47 +29,48 @@ const hours = {
   AM_12: "12:00 AM",
 };
 
-const Plans = () => {
-  const user = useSelector((state) => state.user.user);
-  const dateRedux = useSelector((state) => state.datePicker.date);
-  const plansRedux = useSelector((state) => state.plans);
-  const [plans, setPlans] = useState(cloneDeep(plansInitialState));
+const Plans = ({ plans, date }) => {
+  // const user = useSelector((state) => state.user.user);
+  // const dateRedux = useSelector((state) => state.datePicker.date);
+  // const [plansKeys, setPlansKeys] = useState([]);
   const dispatch = useDispatch();
 
   const onChangeInput = (value, key) => {
     dispatch(plansActions.updatePlan({ ...plans, [key]: value }));
   };
 
-  useEffect(() => {
-    const fetch = async () => {
-      const date = getDateWithoutHours(dateRedux);
-      let idUser = user.uid + date;
-      await dispatch(plansActions.getPlansById(idUser));
-    };
-    fetch();
-  }, []);
+  // useEffect(() => {
+  //   const fetch = async () => {
+  //     const date = getDateWithoutHours(dateRedux);
+  //     let idUser = user.uid + date;
+  //     await dispatch(plansActions.getPlansById(idUser));
+  //   };
+  //   fetch();
+  // }, [dateRedux]);
 
-  useEffect(() => {
-    if (Object.keys(plansRedux).length > 0) setPlans(plansRedux);
-  }, [plansRedux]);
+  // useEffect(() => {
+  //   console.warn(plans);
+  //   if (Object.keys(plans).length > 0) setPlansKeys(Object.keys(plans));
+  // }, [plans]);
 
   return (
     <>
       <div>
         <p className="title">Plans & Schedules</p>
         <div>
-          {Object.keys(plans).map((planKey, index) => (
-            <div key={planKey + index} style={{ marginBottom: "5px" }}>
-              <label className="hourStyle">{hours[planKey]}</label>
-              <LineInput
-                withCheckbox={false}
-                className="timeInput"
-                type="text"
-                value={plans[planKey] ?? ""}
-                onChange={(e) => onChangeInput(e.target.value, planKey)}
-              />
-            </div>
-          ))}
+          {Object.keys(plans).length > 0 &&
+            Object.keys(plans).map((planKey, index) => (
+              <div key={planKey + index + date} style={{ marginBottom: "7px" }}>
+                <label className="hourStyle">{hours[planKey]}</label>
+                <LineInput
+                  withCheckbox={false}
+                  className="timeInput"
+                  type="text"
+                  value={plans[planKey] ?? ""}
+                  onChange={(e) => onChangeInput(e.target.value, planKey)}
+                />
+              </div>
+            ))}
         </div>
       </div>
     </>

@@ -1,5 +1,4 @@
 export default function getDayFromDate(date) {
-  // const newDate = new Date(date);
   let day = "";
   switch (date.getDay()) {
     case 0:

@@ -1,4 +1,5 @@
 @import "./../../styles/variables.scss";
+
 .lineInput {
   border-width: 0px;
   border: none;
@@ -11,7 +12,7 @@
 .timeInput {
   border-width: 0px;
   border: none;
-  width: 290px;
+  width: 18rem;
   font-size: 12px;
   border-bottom: 1px solid $brown700;
   background: none;
@@ -39,4 +40,24 @@
     border-radius: 5px;
   }
 }
+
+
+.checkboxFrame {
+  border: 2px solid $brown700;
+  height: 17px;
+  width: 17px;
+  border-radius: 7px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.iconStyle {
+  color: $brown700;
+
+}
+
+.checkedText {
+  text-decoration: line-through;
+}
+
 

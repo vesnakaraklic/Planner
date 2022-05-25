@@ -6,9 +6,7 @@ const getPlansById = (id) => {
     dispatch({ type: plansConstants.GET_PLANS });
     return api.getPlansById(id).then(
       (res) => {
-        console.log(res);
         const data = res.data();
-
         dispatch({ type: plansConstants.CHANGE_PLANS, value: data });
       },
       (error) => {

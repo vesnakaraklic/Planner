@@ -4,6 +4,7 @@ import * as apiFood from "../../api/food";
 import * as apiWater from "../../api/water";
 import * as apiExercise from "../../api/exercise";
 import * as apiPlans from "../../api/plans";
+import * as apiPriorities from "../../api/priorities";
 
 const update = (collection, data, id = "") => {
   return (dispatch) => {
@@ -23,6 +24,9 @@ const update = (collection, data, id = "") => {
         break;
       case "plans":
         apiPlans.createPlans(id, data);
+        break;
+      case "priorities":
+        apiPriorities.createPriorities(id, data);
         break;
       default:
         break;

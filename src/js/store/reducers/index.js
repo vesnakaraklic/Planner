@@ -6,6 +6,7 @@ import { datePicker } from "../reducers/date.reducer";
 import { waterDrink } from "../reducers/water.reducer";
 import { exercise } from "../reducers/exercise.reducer";
 import { plans } from "../reducers/plans.reducer";
+import { priorities } from "../reducers/priorities.reducer";
 
 const appReducer = combineReducers({
   user,
@@ -15,6 +16,7 @@ const appReducer = combineReducers({
   waterDrink,
   exercise,
   plans,
+  priorities,
 });
 
 const rootReducer = (state, action) => {

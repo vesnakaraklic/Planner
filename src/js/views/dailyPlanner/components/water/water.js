@@ -21,7 +21,7 @@ export default function Water() {
     const date = getDateWithoutHours(dateRedux);
     let idUser = user.uid + date;
     dispatch(waterActions.getWaterById(idUser));
-  }, []);
+  }, [dateRedux]);
 
   return (
     <>

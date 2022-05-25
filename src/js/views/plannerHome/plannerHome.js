@@ -16,6 +16,10 @@ export default function PlannerHome() {
     { key: 4, label: "DatePicker" },
   ];
 
+  useEffect(() => {
+    setCurrentActive(1);
+  }, []);
+
   return (
     <>
       <div className="bckImage">

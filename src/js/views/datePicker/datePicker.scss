@@ -30,7 +30,7 @@
 
 .react-calendar button:enabled:hover {
   cursor: pointer;
-  background: #e6d5ba;
+  background: #cba79547;
   border-radius: 68px;
   color: white;
 }
@@ -181,7 +181,7 @@
   }
 
   .react-calendar__tile--active {
-    background: #d2b78b;
+    background: #cba795;
     color: white;
     border-radius: 68px;
     font-weight: bold;
@@ -192,12 +192,12 @@
   }
 
   .monthlyDayPreview {
-    border: 1px solid #d2b78b;
+    border: 1px solid #cba795;
     margin-top: 30px;
     width: 30%;
     margin-right: 20px;
     border-radius: 0 10px 10px 0;
-    background-color: #d2b78b;
+    background-color: #cba795;
   }
 
   .dateStyleMonthly {
