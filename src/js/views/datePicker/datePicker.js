@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Calendar from "react-calendar";
-import { GiNotebook } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { dateActions } from "../../store/actions/date.actions";
 import getDateWithoutHours from "../../utils/getDateWithoutHours";
@@ -25,11 +24,6 @@ export default function DatePicker() {
         <div className="monthlyDayPreview">
           <p className="dateStyleMonthly">{selectedDate.getDate()}</p>
           <p className="dayStyle">{day}</p>
-          <div className="notebookIconFrame">
-            <GiNotebook className="notebookIconStyle" />
-            <GiNotebook className="notebookIconStyle" />
-            <GiNotebook className="notebookIconStyle" />
-          </div>
         </div>
       </div>
     </>

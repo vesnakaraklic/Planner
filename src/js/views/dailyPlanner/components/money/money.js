@@ -2,17 +2,12 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { moneyActions } from "../../../../store/actions/money.actions";
-import getDateWithoutHours from "../../../../utils/getDateWithoutHours";
+import { useDispatch } from "react-redux";
 import "./money.scss";
-import { useDispatch, useSelector } from "react-redux";
 
-export default function Money() {
+export default function Money({ moneyOut, moneyIn }) {
   const [result, setResult] = useState("0");
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
-  const moneyIn = useSelector((state) => state.money.moneyIn);
-  const moneyOut = useSelector((state) => state.money.moneyOut);
-  const dateRedux = useSelector((state) => state.datePicker.date);
 
   const setMoneyInHandle = (value) => {
     if (value.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/)) {
@@ -84,12 +79,6 @@ export default function Money() {
   // const setMoneyOut = (value) => {
   //   dispatch(moneyActions.updateMoneyOut(value));
   // };
-
-  useEffect(() => {
-    const date = getDateWithoutHours(dateRedux);
-    let idUser = user.uid + date;
-    dispatch(moneyActions.getMoneyById(idUser));
-  }, []);
 
   useEffect(() => {
     setResult(moneyIn - moneyOut);

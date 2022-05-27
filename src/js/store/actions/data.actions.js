@@ -5,6 +5,7 @@ import * as apiWater from "../../api/water";
 import * as apiExercise from "../../api/exercise";
 import * as apiPlans from "../../api/plans";
 import * as apiPriorities from "../../api/priorities";
+import * as apiToDo from "../../api/toDo";
 
 const update = (collection, data, id = "") => {
   return (dispatch) => {
@@ -27,6 +28,9 @@ const update = (collection, data, id = "") => {
         break;
       case "priorities":
         apiPriorities.createPriorities(id, data);
+        break;
+      case "toDo":
+        apiToDo.createToDo(id, data);
         break;
       default:
         break;

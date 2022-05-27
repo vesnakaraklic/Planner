@@ -7,22 +7,7 @@ const getFoodById = (id) => {
     return api.getFoodById(id).then(
       (res) => {
         const data = res.data();
-        dispatch({
-          type: foodConstants.CHANGE_BREAKFAST,
-          breakfast: data ? data.breakfast : "",
-        });
-        dispatch({
-          type: foodConstants.CHANGE_LUNCH,
-          lunch: data ? data.lunch : "",
-        });
-        dispatch({
-          type: foodConstants.CHANGE_DINNER,
-          dinner: data ? data.dinner : "",
-        });
-        dispatch({
-          type: foodConstants.CHANGE_SNACK,
-          snack: data ? data.snack : "",
-        });
+        dispatch({ type: foodConstants.CHANGE_FOOD, value: data });
       },
       (error) => {
         console.log(error);
@@ -31,34 +16,13 @@ const getFoodById = (id) => {
   };
 };
 
-const updateBreakfast = (breakfast) => {
+const updateFood = (value) => {
   return (dispatch) => {
-    dispatch({ type: foodConstants.CHANGE_BREAKFAST, breakfast });
-  };
-};
-
-const updateLunch = (lunch) => {
-  return (dispatch) => {
-    dispatch({ type: foodConstants.CHANGE_LUNCH, lunch });
-  };
-};
-
-const updateDinner = (dinner) => {
-  return (dispatch) => {
-    dispatch({ type: foodConstants.CHANGE_DINNER, dinner });
-  };
-};
-
-const updateSnack = (snack) => {
-  return (dispatch) => {
-    dispatch({ type: foodConstants.CHANGE_SNACK, snack });
+    dispatch({ type: foodConstants.CHANGE_FOOD, value: value });
   };
 };
 
 export const foodActions = {
   getFoodById,
-  updateBreakfast,
-  updateLunch,
-  updateDinner,
-  updateSnack,
+  updateFood,
 };

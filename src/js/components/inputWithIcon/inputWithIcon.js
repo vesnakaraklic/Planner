@@ -1,8 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Input.scss";
+import "./InputWithIcon.scss";
 
-export default function Input({
+export default function InputWithIcon({
   icon,
   name,
   placeholder,

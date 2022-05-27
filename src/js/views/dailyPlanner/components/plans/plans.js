@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import LineInput from "../../../../components/lineInput/lineInput";
 import { plansActions } from "../../../../store/actions/plans.actions";
-import { plansInitialState } from "../../../../store/reducers/plans.reducer";
-import getDateWithoutHours from "../../../../utils/getDateWithoutHours";
-import { cloneDeep } from "lodash";
 import "./plans.scss";
 
 const hours = {
@@ -29,29 +26,12 @@ const hours = {
   AM_12: "12:00 AM",
 };
 
-const Plans = ({ plans, date }) => {
-  // const user = useSelector((state) => state.user.user);
-  // const dateRedux = useSelector((state) => state.datePicker.date);
-  // const [plansKeys, setPlansKeys] = useState([]);
+const Plans = ({ plans }) => {
   const dispatch = useDispatch();
 
   const onChangeInput = (value, key) => {
     dispatch(plansActions.updatePlan({ ...plans, [key]: value }));
   };
-
-  // useEffect(() => {
-  //   const fetch = async () => {
-  //     const date = getDateWithoutHours(dateRedux);
-  //     let idUser = user.uid + date;
-  //     await dispatch(plansActions.getPlansById(idUser));
-  //   };
-  //   fetch();
-  // }, [dateRedux]);
-
-  // useEffect(() => {
-  //   console.warn(plans);
-  //   if (Object.keys(plans).length > 0) setPlansKeys(Object.keys(plans));
-  // }, [plans]);
 
   return (
     <>
@@ -60,13 +40,13 @@ const Plans = ({ plans, date }) => {
         <div>
           {Object.keys(plans).length > 0 &&
             Object.keys(plans).map((planKey, index) => (
-              <div key={planKey + index + date} style={{ marginBottom: "7px" }}>
+              <div key={index} style={{ marginBottom: "7px" }}>
                 <label className="hourStyle">{hours[planKey]}</label>
                 <LineInput
                   withCheckbox={false}
                   className="timeInput"
                   type="text"
-                  value={plans[planKey] ?? ""}
+                  value={plans[planKey]}
                   onChange={(e) => onChangeInput(e.target.value, planKey)}
                 />
               </div>

@@ -3,31 +3,37 @@
   display: flex;
   flex-wrap: wrap;
   width: 600px;
-}
 
-.foodBorder {
-  padding-bottom: 10px;
-  flex: 40%;
-  box-sizing: border-box;
-}
+  .foodBorder {
+    padding-bottom: 10px;
+    flex: 40%;
+    box-sizing: border-box;
 
-.mealIcon {
-  padding-left: 10px;
-  font-family: cursive;
-  font-size: 20px;
-  color: $brown700;
-}
+    .mealIcon {
+      padding-left: 10px;
+      font-family: cursive;
+      font-size: 20px;
+      color: $brown700;
+    }
 
-.mealInput {
-  border-width: 0px;
-  border: none;
-  font-size: 15px;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  width: 250px;
-  border-radius: 5px;
-
-  &:focus-visible {
-    outline: 2px solid $brown700;
+    .mealInput {
+      border-width: 0px;
+      border: none;
+      font-size: 15px;
+      text-align: center;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      width: 250px;
+      border-radius: 5px;
+    
+      &:focus-visible {
+        outline: 2px solid $brown700;
+      }
   }
+}
+
+
+
+
+
+
 }

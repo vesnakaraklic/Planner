@@ -6,13 +6,15 @@
   border-left: 0.5px solid $brown700;
   box-shadow: inset -6px -9px 19px -6px $brown500;
   width: 320px;
+
+  .title {
+    margin-left: 4rem;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: mv boli;
+    color: $brown700;
+  }
 }
 
-.title {
-  margin-left: 4rem;
-  margin-bottom: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  font-family: mv boli;
-  color: $brown700;
-}
+

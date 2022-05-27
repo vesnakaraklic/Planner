@@ -5,15 +5,13 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import Input from "../../components/inputWithIcon/Input";
+import InportWithIcon from "../../components/inputWithIcon/inputWithIcon";
 import { useDispatch, useSelector } from "react-redux";
-import NormalButton from "../../components/NormalButton/NormalButton";
+import NormalButton from "../../components/normalButton/normalButton";
 import { Link, useHistory } from "react-router-dom";
 import { userActions } from "../../store/actions/user.actions";
 import Header from "../../components/homeHeader/header";
 import "./login.scss";
-
-import * as api from "../../api/users";
 
 const defaultForm = { email: "", password: "" };
 const defaultErrorMessages = { email: "", password: "" };
@@ -137,7 +135,7 @@ const LoginForm = () => {
             </p>
           </div>
           <div style={{ padding: "40px" }}>
-            <Input
+            <InportWithIcon
               className="auth-input"
               icon={faEnvelope}
               name={"email"}
@@ -147,7 +145,7 @@ const LoginForm = () => {
               onBlur={(event) => validateEmail(event.target.value)}
               errorMsg={errorMessages.email}
             />
-            <Input
+            <InportWithIcon
               className="auth-input"
               icon={faLock}
               name={"password"}

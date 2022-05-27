@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import SmallButton from "../SmallButton/SmallButton";
+import SmallButton from "../smallButton/smallButton";
 import "./header.scss";
 
 export default function Header() {

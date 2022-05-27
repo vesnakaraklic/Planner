@@ -3,34 +3,26 @@
 .header {
   height: 45px;
   position: relative;
+
+  .login_btn {
+    right: 95px;
+    top: 7px;
+    position: absolute;
+  }
+
+  .registration_btn {
+    right: 5px;
+    top: 7px;
+    position: absolute;
+  }
+  
+  .registration_btn:hover,
+  .login_btn:hover {
+    background-color: $brown500;
+  }
 }
 
-.logo_planner {
-  font-size: 35px;
-  color: $turquoise300;
-  font-family: cursive, fantasy;
-  font-weight: bold;
-  font-style: italic;
-  margin: 0;
-  line-height: 38px;
-  position: absolute;
-  left: 10px;
-  top: 2px;
-}
 
-.login_btn {
-  right: 95px;
-  top: 7px;
-  position: absolute;
-}
 
-.registration_btn {
-  right: 5px;
-  top: 7px;
-  position: absolute;
-}
 
-.registration_btn:hover,
-.login_btn:hover {
-  background-color: $brown500;
-}
+

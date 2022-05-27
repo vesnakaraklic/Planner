@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   faFish,
   faMugHot,
@@ -6,92 +6,38 @@ import {
   faHamburger,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./food.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { foodActions } from "../../../../store/actions/food.actions";
-import getDateWithoutHours from "../../../../utils/getDateWithoutHours";
+import "./food.scss";
 
-export default function Food() {
+const Food = ({ food }) => {
   const dispatch = useDispatch();
-  const breakfast = useSelector((state) => state.food.breakfast);
-  const lunch = useSelector((state) => state.food.lunch);
-  const dinner = useSelector((state) => state.food.dinner);
-  const snack = useSelector((state) => state.food.snack);
-  const user = useSelector((state) => state.user.user);
-  const dateRedux = useSelector((state) => state.datePicker.date);
+  const foodIcons = [faPizzaSlice, faHamburger, faFish, faMugHot];
 
-  const setBreakfast = (value) => {
-    dispatch(foodActions.updateBreakfast(value));
+  const onChangeInput = (value, key) => {
+    dispatch(foodActions.updateFood({ ...food, [key]: value }));
   };
-
-  const setLunch = (value) => {
-    dispatch(foodActions.updateLunch(value));
-  };
-
-  const setDinner = (value) => {
-    dispatch(foodActions.updateDinner(value));
-  };
-
-  const setSnack = (value) => {
-    dispatch(foodActions.updateSnack(value));
-  };
-
-  useEffect(() => {
-    const date = getDateWithoutHours(dateRedux);
-    let idUser = user.uid + date;
-    dispatch(foodActions.getFoodById(idUser));
-  }, []);
 
   return (
     <>
       <div className="foodForm">
-        <div className="foodBorder">
-          <FontAwesomeIcon className="mealIcon" icon={faPizzaSlice} />
-          <input
-            type={"text"}
-            value={breakfast}
-            onChange={(e) => {
-              setBreakfast(e.target.value);
-            }}
-            placeholder="Breakfast"
-            className="mealInput"
-            maxLength={15}
-          ></input>
-        </div>
-        <div className="foodBorder">
-          <FontAwesomeIcon className="mealIcon" icon={faHamburger} />
-          <input
-            type={"text"}
-            value={lunch}
-            placeholder="Lunch"
-            onChange={(e) => setLunch(e.target.value)}
-            className="mealInput"
-            maxLength={15}
-          ></input>
-        </div>
-        <div className="foodBorder">
-          <FontAwesomeIcon className="mealIcon" icon={faFish} />
-          <input
-            type={"text"}
-            value={dinner}
-            onChange={(e) => setDinner(e.target.value)}
-            placeholder="Dinner"
-            className="mealInput"
-            maxLength={15}
-          ></input>
-        </div>
-        <div className="foodBorder">
-          <FontAwesomeIcon className="mealIcon" icon={faMugHot} />
-          <input
-            type={"text"}
-            value={snack}
-            onChange={(e) => setSnack(e.target.value)}
-            placeholder="Snack"
-            className="mealInput"
-            maxLength={15}
-          ></input>
-        </div>
+        {Object.keys(food).length > 0 &&
+          Object.keys(food).map((foodKey, index) => (
+            <div key={index} className="foodBorder">
+              <FontAwesomeIcon className="mealIcon" icon={foodIcons[index]} />
+              <input
+                type={"text"}
+                value={food[foodKey]}
+                maxLength={15}
+                placeholder={foodKey}
+                className="mealInput"
+                onChange={(e) => onChangeInput(e.target.value, foodKey)}
+              />
+            </div>
+          ))}
       </div>
     </>
   );
-}
+};
+
+export default Food;

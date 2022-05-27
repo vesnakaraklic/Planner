@@ -1,6 +1,6 @@
 import React from "react";
 import "./switchtab.scss";
-import SmallButton from "../SmallButton/SmallButton";
+import SmallButton from "../smallButton/smallButton";
 
 export default function Switchtab({ options, active, setActive }) {
   return (

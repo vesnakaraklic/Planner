@@ -1,45 +1,44 @@
 import { exerciseConstants } from "../constants/exercise.constants";
+import cloneDeep from "lodash/cloneDeep";
 
 const initialState = {
-  exercise_1: "",
-  exercise_2: "",
-  exercise_3: "",
-  exercise_4: "",
-  exercise_5: "",
+  exercises: ["", "", "", "", ""],
   steps: "",
 };
 
 export const exercise = (state = initialState, action) => {
   switch (action.type) {
-    case exerciseConstants.CHANGE_EXERCISE_1:
+    case exerciseConstants.CHANGE_EXERCISE_AND_STEPS:
+      if (!action.value)
+        return {
+          ...initialState,
+        };
       return {
-        ...state,
-        exercise_1: action.exercise_1,
+        exercises:
+          action.value.exercises?.length < 5
+            ? initialState.exercises
+            : action.value.exercises,
+        steps: action.value.steps ?? initialState.steps,
       };
-    case exerciseConstants.CHANGE_EXERCISE_2:
+    case exerciseConstants.CHANGE_EXERCISE:
+      if (!action.value || action.value.length < 5)
+        return {
+          ...state,
+          exercises: initialState.exercises,
+        };
       return {
         ...state,
-        exercise_2: action.exercise_2,
-      };
-    case exerciseConstants.CHANGE_EXERCISE_3:
-      return {
-        ...state,
-        exercise_3: action.exercise_3,
-      };
-    case exerciseConstants.CHANGE_EXERCISE_4:
-      return {
-        ...state,
-        exercise_4: action.exercise_4,
-      };
-    case exerciseConstants.CHANGE_EXERCISE_5:
-      return {
-        ...state,
-        exercise_5: action.exercise_5,
+        exercises: action.value,
       };
     case exerciseConstants.CHANGE_STEPS:
+      if (!action.value)
+        return {
+          ...state,
+          steps: initialState.steps,
+        };
       return {
         ...state,
-        steps: action.steps,
+        steps: action.value,
       };
     default:
       return {

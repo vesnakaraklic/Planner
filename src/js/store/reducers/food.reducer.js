@@ -1,4 +1,5 @@
 import { foodConstants } from "../constants/food.constants";
+import cloneDeep from "lodash/cloneDeep";
 
 const initialState = {
   breakfast: "",
@@ -9,25 +10,14 @@ const initialState = {
 
 export const food = (state = initialState, action) => {
   switch (action.type) {
-    case foodConstants.CHANGE_BREAKFAST:
+    case foodConstants.CHANGE_FOOD:
+      const newState = cloneDeep(initialState);
+      if (action.value && Object.keys(action.value).length > 0)
+        Object.keys(newState).forEach((key) => {
+          if (action.value[key]) newState[key] = action.value[key];
+        });
       return {
-        ...state,
-        breakfast: action.breakfast,
-      };
-    case foodConstants.CHANGE_LUNCH:
-      return {
-        ...state,
-        lunch: action.lunch,
-      };
-    case foodConstants.CHANGE_DINNER:
-      return {
-        ...state,
-        dinner: action.dinner,
-      };
-    case foodConstants.CHANGE_SNACK:
-      return {
-        ...state,
-        snack: action.snack,
+        ...newState,
       };
     default:
       return {

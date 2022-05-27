@@ -7,8 +7,8 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import Input from "../../components/inputWithIcon/Input";
-import NormalButton from "../../components/NormalButton/NormalButton";
+import InputWithIcon from "../../components/inputWithIcon/inputWithIcon";
+import NormalButton from "../../components/normalButton/normalButton";
 import Header from "../../components/homeHeader/header";
 import { getUsers } from "../../api/users";
 import { userActions } from "../../store/actions/user.actions";
@@ -146,7 +146,7 @@ export default function RegisterForm() {
             </p>
           </div>
           <div style={{ padding: "40px" }}>
-            <Input
+            <InputWithIcon
               className="auth-input"
               icon={faUser}
               name={"firstName"}
@@ -154,8 +154,8 @@ export default function RegisterForm() {
               type={"text"}
               onChange={(event) => handleInputChange(event, "firstName")}
               errorMsg={errorMessages.firstName}
-            ></Input>
-            <Input
+            />
+            <InputWithIcon
               className="auth-input"
               icon={faUser}
               name={"lastName"}
@@ -163,8 +163,8 @@ export default function RegisterForm() {
               type={"text"}
               onChange={(event) => handleInputChange(event, "lastName")}
               errorMsg={errorMessages.lastName}
-            ></Input>
-            <Input
+            />
+            <InputWithIcon
               className="auth-input"
               icon={faEnvelope}
               name={"email"}
@@ -173,8 +173,8 @@ export default function RegisterForm() {
               onChange={(event) => handleInputChange(event, "email")}
               onBlur={(event) => validateEmail(event.target.value)}
               errorMsg={errorMessages.email}
-            ></Input>
-            <Input
+            />
+            <InputWithIcon
               className="auth-input"
               icon={faLock}
               name={"password"}
@@ -184,7 +184,7 @@ export default function RegisterForm() {
               onEyeClick={togglePasswordVisibility}
               onChange={(event) => handleInputChange(event, "password")}
               errorMsg={errorMessages.password}
-            ></Input>
+            />
 
             <NormalButton buttonName={"Register"} onClick={onSubmit} />
             <p style={{ textAlign: "center", marginBottom: "0px" }}>

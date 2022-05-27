@@ -3,6 +3,44 @@
 .exerciseForm {
 display: flex;
 width: 600px;
+
+.inputWithoutBordersAll {
+  border-width: 0px;
+  border: none;
+  width: 330px;
+  margin-right: 50px;
+  margin-left: 3px;
+  background-color: #f0e7d6;
+  color: $brown700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 5px;
+
+  &:focus-visible {
+    outline: 2px solid $brown700;
+  }
+}
+
+.reverseInput {
+  transform: rotate(90deg);
+  width: 129px;
+  height: 30px;
+  margin-top: 60px;
+  border-color: $brown700;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 21px;
+  color: #6c442f;
+}
+
+.reverseText {
+  writing-mode: vertical-rl;
+  font-size: 23px;
+  font-weight: bold;
+  font-family: mv boli;
+  padding-top: 47px;
+  color: $brown700;
+}
 }
 
 .labelStyle {
@@ -15,44 +53,6 @@ width: 600px;
     font-family: mv boli;
 }
 
-.inputWithoutBordersAll {
-    border-width: 0px;
-    border: none;
-    width: 330px;
-    margin-right: 50px;
-    margin-left: 3px;
-    background-color: #f0e7d6;
-    color: $brown700;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: 5px;
-
-    &:focus-visible {
-      outline: 2px solid $brown700;
-    }
 
 
-    
-  }
-
-  .reverseInput {
-    transform: rotate(90deg);
-    width: 129px;
-    height: 30px;
-    margin-top: 60px;
-    border-color: $brown700;
-    border-radius: 10px;
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 21px;
-    color: #6c442f;
-  }
-
-  .reverseText {
-    writing-mode: vertical-rl;
-    font-size: 23px;
-    font-weight: bold;
-    font-family: mv boli;
-    padding-top: 47px;
-    color: $brown700;
-    
-  }
+  

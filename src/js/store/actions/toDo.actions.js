@@ -8,7 +8,7 @@ const getToDoById = (id) => {
       (res) => {
         const data = res.data();
 
-        dispatch({ type: toDoConstants.CHANGE_TODO, value: data });
+        dispatch({ type: toDoConstants.CHANGE_TODO, value: data?.toDo });
       },
       (error) => {
         console.log(error);
