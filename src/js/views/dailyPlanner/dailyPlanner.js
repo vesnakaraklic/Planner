@@ -22,26 +22,18 @@ import ArrowButtons from "../../components/arrowButtons/arrowButtons";
 import { prioritiesActions } from "../../store/actions/priorities.actions";
 import { toDoActions } from "../../store/actions/toDo.actions";
 import "./dailyPlanner.scss";
+import { noteActions } from "../../store/actions/note.actions";
 
 export default function DailyPlanner() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
-  const { money, food, waterDrink, exercise, plans, priorities, toDo } =
+  const { money, food, waterDrink, exercise, plans, priorities, toDo, note } =
     useSelector((state) => state);
   const dateRedux = useSelector((state) => state.datePicker.date);
 
   const onSaveDaily = () => {
     const date = getDateWithoutHours(dateRedux);
-    dispatch(
-      dataActions.update(
-        "money",
-        {
-          moneyIn: money.moneyIn,
-          moneyOut: money.moneyOut,
-        },
-        user.uid + date
-      )
-    );
+    dispatch(dataActions.update("money", { ...money }, user.uid + date));
     dispatch(dataActions.update("food", { ...food }, user.uid + date));
     dispatch(
       dataActions.update("water", { water: waterDrink.water }, user.uid + date)
@@ -52,6 +44,7 @@ export default function DailyPlanner() {
       dataActions.update("priorities", { ...priorities }, user.uid + date)
     );
     dispatch(dataActions.update("toDo", { ...toDo }, user.uid + date));
+    dispatch(dataActions.update("note", { note: note.note }, user.uid + date));
   };
 
   const onClickRightArrow = () => {
@@ -75,6 +68,7 @@ export default function DailyPlanner() {
       dispatch(waterActions.getWaterById(user.uid + dateRedux));
       dispatch(prioritiesActions.getPrioritiesById(user.uid + dateRedux));
       dispatch(toDoActions.getToDoById(user.uid + dateRedux));
+      dispatch(noteActions.getNoteById(user.uid + dateRedux));
     }
   }, [dateRedux, user]);
 
@@ -83,7 +77,8 @@ export default function DailyPlanner() {
       <div className="dailyViewFrame">
         <div className="dailyPlannerFrame">
           <div className="dailyPlannerform1">
-            <DateHeader />
+            {console.log("LLLLL", note)}
+            <DateHeader note={note.note} />
             <div className="checkBox">
               <ToDoList priorities={priorities} toDo={toDo} />
               <Plans plans={plans}></Plans>

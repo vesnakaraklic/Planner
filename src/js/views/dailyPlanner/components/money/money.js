@@ -5,83 +5,55 @@ import { moneyActions } from "../../../../store/actions/money.actions";
 import { useDispatch } from "react-redux";
 import "./money.scss";
 
-export default function Money({ moneyOut, moneyIn }) {
+export default function Money({ moneyOut = "0", moneyIn = "0" }) {
   const [result, setResult] = useState("0");
   const dispatch = useDispatch();
 
-  const setMoneyInHandle = (value) => {
-    if (value.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/)) {
+  const getOnlyNumbersFromString = (value) => {
+    console.log(value === "");
+    if (value === "") return "0";
+    else if (value.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/)) {
       if (
         value.charAt(0) === "0" &&
         value.charAt(1) !== "." &&
         value.length > 1
       ) {
-        dispatch(moneyActions.updateMoneyIn(value.replace(/^0+/, "")));
-        // setMoneyIn(value.replace(/^0+/, ""));
+        return value.replace(/^0+/, "");
       } else {
-        dispatch(moneyActions.updateMoneyIn(value));
-        // setMoneyIn(value);
+        return value;
       }
     }
   };
 
-  const setMoneyOutHandle = (value) => {
-    if (value.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/)) {
-      if (
-        value.charAt(0) === "0" &&
-        value.charAt(1) !== "." &&
-        value.length > 1
-      ) {
-        dispatch(moneyActions.updateMoneyOut(value.replace(/^0+/, "")));
-        // setMoneyOut(value.replace(/^0+/, ""));
-      } else {
-        dispatch(moneyActions.updateMoneyOut(value));
-        // setMoneyOut(value);
+  const formatFloatNumbers = (value) => {
+    if (value.charAt(1) === "." && value.charAt(2) === "") {
+      return value + "0";
+    } else if (value.charAt(0) === "." && value.charAt(1) !== "") {
+      return "0" + value;
+    } else if (value === "") {
+      return 0;
+    } else {
+      return value;
+    }
+  };
+  const onMoneyInputChange = (type, value) => {
+    const resultValue = getOnlyNumbersFromString(value);
+    if (resultValue)
+      if (type === "moneyIn") {
+        dispatch(moneyActions.updateMoneyIn(resultValue));
+      } else if (type === "moneyOut") {
+        dispatch(moneyActions.updateMoneyOut(resultValue));
       }
+  };
+  const onMoneyInputBlur = (type, value) => {
+    if (type === "moneyIn") {
+      dispatch(moneyActions.updateMoneyIn(formatFloatNumbers(value)));
+    } else if (type === "moneyOut") {
+      dispatch(moneyActions.updateMoneyOut(formatFloatNumbers(value)));
     }
   };
-
-  const handleFloatMoneyIn = () => {
-    if (moneyIn.charAt(1) === "." && moneyIn.charAt(2) === "") {
-      dispatch(moneyActions.updateMoneyIn(moneyIn + "0"));
-      // setMoneyIn(moneyIn + "0");
-    } else if (moneyIn.charAt(0) === "." && moneyIn.charAt(1) !== "") {
-      dispatch(moneyActions.updateMoneyIn("0" + moneyIn));
-      // setMoneyIn("0" + moneyIn);
-    } else if (moneyIn === "") {
-      dispatch(moneyActions.updateMoneyIn(0));
-      // setMoneyIn(0);
-    } else {
-      dispatch(moneyActions.updateMoneyIn(parseFloat(moneyIn) || ""));
-      // setMoneyIn(parseFloat(moneyIn) || "");
-    }
-  };
-
-  const handleFloatMoneyOut = () => {
-    if (moneyOut.charAt(1) === "." && moneyOut.charAt(2) === "") {
-      dispatch(moneyActions.updateMoneyOut(moneyOut + "0"));
-      // setMoneyOut(moneyOut + "0");
-    } else if (moneyOut.charAt(0) === "." && moneyOut.charAt(1) !== "") {
-      dispatch(moneyActions.updateMoneyOut("0" + moneyOut));
-      // setMoneyOut("0" + moneyOut);
-    } else if (moneyOut === "") {
-      dispatch(moneyActions.updateMoneyOut(0));
-      // setMoneyOut(0);
-    } else {
-      dispatch(moneyActions.updateMoneyOut(parseFloat(moneyOut) || ""));
-      // setMoneyOut(parseFloat(moneyOut) || "");
-    }
-  };
-  // const setMoneyIn = (value) => {
-  //   dispatch(moneyActions.updateMoneyIn(value));
-  // };
-
-  // const setMoneyOut = (value) => {
-  //   dispatch(moneyActions.updateMoneyOut(value));
-  // };
-
   useEffect(() => {
-    setResult(moneyIn - moneyOut);
+    if (moneyIn && moneyOut) setResult(moneyIn - moneyOut);
   }, [moneyIn, moneyOut]);
   return (
     <>
@@ -92,9 +64,11 @@ export default function Money({ moneyOut, moneyIn }) {
             type={"text"}
             value={moneyIn}
             onChange={(e) => {
-              setMoneyInHandle(e.target.value);
+              onMoneyInputChange("moneyIn", e.target.value);
             }}
-            onBlur={handleFloatMoneyIn}
+            onBlur={(e) => {
+              onMoneyInputBlur("moneyIn", e.target.value);
+            }}
             className="moneyInput"
             maxLength={10}
           />
@@ -107,16 +81,18 @@ export default function Money({ moneyOut, moneyIn }) {
             maxLength={10}
             value={moneyOut}
             onChange={(e) => {
-              setMoneyOutHandle(e.target.value);
+              onMoneyInputChange("moneyOut", e.target.value);
             }}
-            onBlur={handleFloatMoneyOut}
+            onBlur={(e) => {
+              onMoneyInputBlur("moneyOut", e.target.value);
+            }}
             className="moneyInput"
           ></input>
           <FontAwesomeIcon icon={faDollarSign} />
         </div>
         <div className="moneyForm">
           <label className="moneyLabel">Total: </label>
-          <label style={{ background: "#f5efe3" }}>{result}</label>{" "}
+          <label className="moneyResult">{result}</label>{" "}
           <FontAwesomeIcon icon={faDollarSign} />
         </div>
       </div>

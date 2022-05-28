@@ -6,6 +6,7 @@ import * as apiExercise from "../../api/exercise";
 import * as apiPlans from "../../api/plans";
 import * as apiPriorities from "../../api/priorities";
 import * as apiToDo from "../../api/toDo";
+import * as apiNote from "../../api/note";
 
 const update = (collection, data, id = "") => {
   return (dispatch) => {
@@ -31,6 +32,10 @@ const update = (collection, data, id = "") => {
         break;
       case "toDo":
         apiToDo.createToDo(id, data);
+        break;
+      case "note":
+        console.log("action", data);
+        apiNote.createNote(id, data);
         break;
       default:
         break;

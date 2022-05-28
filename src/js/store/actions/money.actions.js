@@ -8,18 +8,19 @@ const getMoneyById = (id) => {
       (res) => {
         const data = res.data();
         dispatch({
-          type: moneyConstants.CHANGE_MONEYIN,
-          moneyIn: data ? data.moneyIn : 0,
-        });
-        dispatch({
-          type: moneyConstants.CHANGE_MONEYOUT,
-          moneyOut: data ? data.moneyOut : 0,
+          type: moneyConstants.CHANGE_MONEY,
+          money: data ?? {},
         });
       },
       (error) => {
         console.log(error);
       }
     );
+  };
+};
+const updateMoney = (money) => {
+  return (dispatch) => {
+    dispatch({ type: moneyConstants.CHANGE_MONEY, money });
   };
 };
 const updateMoneyIn = (moneyIn) => {
@@ -35,6 +36,7 @@ const updateMoneyOut = (moneyOut) => {
 
 export const moneyActions = {
   getMoneyById,
+  updateMoney,
   updateMoneyIn,
   updateMoneyOut,
 };

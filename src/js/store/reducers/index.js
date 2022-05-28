@@ -8,6 +8,7 @@ import { exercise } from "../reducers/exercise.reducer";
 import { plans } from "../reducers/plans.reducer";
 import { priorities } from "../reducers/priorities.reducer";
 import { toDo } from "../reducers/toDo.reducer";
+import { note } from "../reducers/note.reducer";
 
 const appReducer = combineReducers({
   user,
@@ -19,6 +20,7 @@ const appReducer = combineReducers({
   plans,
   priorities,
   toDo,
+  note,
 });
 
 const rootReducer = (state, action) => {

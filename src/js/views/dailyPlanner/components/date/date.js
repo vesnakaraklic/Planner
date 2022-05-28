@@ -1,22 +1,20 @@
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarCheck } from "@fortawesome/fontawesome-free-solid";
-import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dateActions } from "../../../../store/actions/date.actions";
 import getDayFromDate from "../../../../utils/getDayFromDate";
 import getMonthFromDate from "../../../../utils/getMonthFromDate";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { noteActions } from "../../../../store/actions/note.actions";
 import getDateWithoutHours from "../../../../utils/getDateWithoutHours";
+import "react-datepicker/dist/react-datepicker.css";
 import "./date.scss";
 
-export default function DateHeader() {
+export default function DateHeader({ note = "" }) {
   const dateRedux = useSelector((state) => state.datePicker.date);
   const date = new Date(dateRedux);
-  const [startDate, setStartDate] = useState(date);
   const [clicked, setClicked] = useState(false);
-  var month = getMonthFromDate(date);
-  var day = getDayFromDate(date);
   const dispatch = useDispatch();
 
   const onClickDatePicker = () => {
@@ -24,26 +22,23 @@ export default function DateHeader() {
   };
 
   const onChangeDatePicker = (selectedDate) => {
-    setStartDate(selectedDate);
     setClicked(!clicked);
+    dispatch(dateActions.updateDate(getDateWithoutHours(selectedDate)));
   };
 
-  useEffect(() => {
-    dispatch(dateActions.updateDate(getDateWithoutHours(startDate)));
-  }, [startDate]);
-
-  useEffect(() => {
-    setStartDate(new Date(dateRedux));
-  }, []);
+  const onChangeNote = (value) => {
+    dispatch(noteActions.updateNote(value));
+  };
 
   return (
     <>
       <div className="dateForm">
-        <p className="dayName">{day}</p>
+        <p className="dayName">{getDayFromDate(date)}</p>
         <div className="dateInputForm">
           <div className="dateStyle">
             {" "}
-            Date: {month} {date.getDate()} , {date.getFullYear()}
+            Date: {getMonthFromDate(date)} {date.getDate()} ,{" "}
+            {date.getFullYear()}
             <button onClick={onClickDatePicker} className="buttonDatePicker">
               <FontAwesomeIcon
                 icon={faCalendarCheck}
@@ -51,14 +46,20 @@ export default function DateHeader() {
               />
             </button>
             <DatePicker
-              selected={startDate}
+              selected={new Date(dateRedux)}
               open={clicked}
               onChange={(selectedDate) => onChangeDatePicker(selectedDate)}
               className="datePicker"
             />
           </div>
           <p className="note">
-            Note: <input type="text" className="inputWithoutBorders" />
+            Note:{" "}
+            <input
+              type="text"
+              value={note}
+              onChange={(e) => onChangeNote(e.target.value)}
+              className="inputWithoutBorders"
+            />
           </p>
         </div>
       </div>

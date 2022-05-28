@@ -3,22 +3,33 @@
   width: 600px;
   height: 85px;
   display: flex;
-
   .moneyForm {
     border: 2px solid $brown700;
-    padding-top: 13px;
+    padding: 13px;
     border-radius: 15px;
     text-align: center;
     width: 200px;
     height: 50px;
-
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     .moneyLabel {
       font-weight: bold;
       color: #4f0000;
       padding-bottom: 5px;
       font-family: mv boli;
+      width: 100%;
+      text-align: center;
     }
-
+    .moneyResult {
+      background: transparent;
+      width: 150px;
+      font-size: 16px;
+      border-bottom: 1px solid brown;
+      text-align: center;
+      margin-right: 3px;
+    }
     .moneyInput {
       width: 150px;
       border-width: 0px;
@@ -27,7 +38,7 @@
       font-size: 16px;
       border-bottom: 1px solid brown;
       text-align: center;
-      
+
       margin-right: 3px;
       /* Chrome */
       &::-webkit-outer-spin-button,
@@ -36,10 +47,10 @@
         margin: 0;
       }
       /* Firefox */
-      &[type=number] {
+      &[type="number"] {
         -moz-appearance: textfield;
       }
-    
+
       &:focus-visible {
         outline: 2px solid $brown700;
         border-radius: 5px;
@@ -47,9 +58,3 @@
     }
   }
 }
-
-
-
-
-
-

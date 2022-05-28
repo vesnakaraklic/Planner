@@ -9,7 +9,6 @@ const initialState = {
 };
 
 export const priorities = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case prioritiesConstants.CHANGE_PRIORITIES:
       if (!action.value)
