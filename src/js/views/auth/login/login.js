@@ -5,21 +5,18 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import InportWithIcon from "../../components/inputWithIcon/inputWithIcon";
 import { useDispatch, useSelector } from "react-redux";
-import NormalButton from "../../components/normalButton/normalButton";
-import { Link, useHistory } from "react-router-dom";
-import { userActions } from "../../store/actions/user.actions";
-import Header from "../../components/homeHeader/header";
+import { userActions } from "../../../store/actions/user.actions";
+import InputWithIcon from "../../../components/inputWithIcon/inputWithIcon";
+import NormalButton from "../../../components/normalButton/normalButton";
 import "./login.scss";
 
 const defaultForm = { email: "", password: "" };
 const defaultErrorMessages = { email: "", password: "" };
 
-const LoginForm = () => {
+const LoginForm = ({ setActive }) => {
   const dispatch = useDispatch();
   const [loginForm, setLoginForm] = useState(defaultForm);
-  const history = useHistory();
   const user = useSelector((state) => state.user);
   const [errorMessages, setErrorMessages] = useState(defaultErrorMessages);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -97,13 +94,6 @@ const LoginForm = () => {
   }, []);
 
   useEffect(() => {
-    if (user.user && Object.keys(user.user).length !== 0) {
-      localStorage.setItem("user", JSON.stringify(user.user));
-      history.push("plannerHome");
-    }
-  }, [user.user]);
-
-  useEffect(() => {
     switch (user.error.code) {
       case "auth/invalid-email":
       case "auth/user-not-found":
@@ -119,51 +109,47 @@ const LoginForm = () => {
 
   return (
     <>
-      <div className="backgroundImg">
-        <Header />
-
-        <div className="login_form">
-          <div className="login-title">
-            <p
-              style={{
-                padding: "0px 89px",
-                fontSize: "23px",
-                fontWeight: "bold",
-              }}
-            >
-              Login Form
-            </p>
-          </div>
-          <div style={{ padding: "40px" }}>
-            <InportWithIcon
-              className="auth-input"
-              icon={faEnvelope}
-              name={"email"}
-              placeholder={"Email"}
-              type={"email"}
-              onChange={(event) => handleInputChange(event, "email")}
-              onBlur={(event) => validateEmail(event.target.value)}
-              errorMsg={errorMessages.email}
-            />
-            <InportWithIcon
-              className="auth-input"
-              icon={faLock}
-              name={"password"}
-              placeholder={"Password"}
-              type={isPasswordShown ? "text" : "password"}
-              iconEye={!isPasswordShown ? faEye : faEyeSlash}
-              onEyeClick={togglePasswordVisibility}
-              onChange={(event) => handleInputChange(event, "password")}
-              errorMsg={errorMessages.password}
-            />
-            <NormalButton buttonName={"Login"} onClick={onSubmit} />
-            <p style={{ textAlign: "center", marginBottom: "0px" }}>
-              Not a member?
-              <Link to="/register" style={{ color: "#ae8b70" }}>
-                {" Signup Now"}
-              </Link>
-            </p>
-          </div>
+      <div className="login_form">
+        <div className="login-title">
+          <p
+            style={{
+              padding: "0px 89px",
+              fontSize: "23px",
+              fontWeight: "bold",
+            }}
+          >
+            Login Form
+          </p>
+        </div>
+        <div style={{ padding: "40px" }}>
+          <InputWithIcon
+            className="auth-input"
+            icon={faEnvelope}
+            name={"email"}
+            placeholder={"Email"}
+            type={"email"}
+            onChange={(event) => handleInputChange(event, "email")}
+            onBlur={(event) => validateEmail(event.target.value)}
+            errorMsg={errorMessages.email}
+          />
+          <InputWithIcon
+            className="auth-input"
+            icon={faLock}
+            name={"password"}
+            placeholder={"Password"}
+            type={isPasswordShown ? "text" : "password"}
+            iconEye={!isPasswordShown ? faEye : faEyeSlash}
+            onEyeClick={togglePasswordVisibility}
+            onChange={(event) => handleInputChange(event, "password")}
+            errorMsg={errorMessages.password}
+          />
+          <NormalButton buttonName={"Login"} onClick={onSubmit} />
+          <p style={{ textAlign: "center", marginBottom: "0px" }}>
+            Not a member?
+            <a onClick={() => setActive(2)} className="redirect-link">
+              {" Signup Now"}
+            </a>
+          </p>
         </div>
       </div>
     </>

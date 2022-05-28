@@ -7,12 +7,11 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import InputWithIcon from "../../components/inputWithIcon/inputWithIcon";
-import NormalButton from "../../components/normalButton/normalButton";
-import Header from "../../components/homeHeader/header";
-import { getUsers } from "../../api/users";
-import { userActions } from "../../store/actions/user.actions";
-import { Link, useHistory } from "react-router-dom";
+import InputWithIcon from "../../../components/inputWithIcon/inputWithIcon";
+import NormalButton from "../../../components/normalButton/normalButton";
+import { getUsers } from "../../../api/users";
+import { userActions } from "../../../store/actions/user.actions";
+import { Link } from "react-router-dom";
 import "./register.scss";
 
 const form = { firstName: "", lastName: "", email: "", password: "" };
@@ -23,11 +22,10 @@ const defaultErrorMessages = {
   password: "",
 };
 
-export default function RegisterForm() {
+export default function RegisterForm({ setActive }) {
   const dispatch = useDispatch();
   const [registerForm, setRegisterForm] = useState(form);
   const [errorMessages, setErrorMessages] = useState(defaultErrorMessages);
-  const history = useHistory();
   const user = useSelector((state) => state.user);
   const [isPasswordShown, setIsPasswordShown] = useState(false);
 
@@ -106,13 +104,6 @@ export default function RegisterForm() {
   }, []);
 
   useEffect(() => {
-    if (Object.keys(user.user).length !== 0) {
-      localStorage.setItem("user", user.user);
-      history.push("plannerHome");
-    }
-  }, [user.user]);
-
-  useEffect(() => {
     switch (user.error.code) {
       case "auth/invalid-email":
         return setErrorMessages({
@@ -131,69 +122,66 @@ export default function RegisterForm() {
 
   return (
     <>
-      <div className="backgroundImg">
-        <Header />
-        <div className="register_form">
-          <div className="register-title">
-            <p
-              style={{
-                padding: "0px 57px",
-                fontSize: "23px",
-                fontWeight: "bold",
-              }}
-            >
-              Registration Form
-            </p>
-          </div>
-          <div style={{ padding: "40px" }}>
-            <InputWithIcon
-              className="auth-input"
-              icon={faUser}
-              name={"firstName"}
-              placeholder={"Firstname"}
-              type={"text"}
-              onChange={(event) => handleInputChange(event, "firstName")}
-              errorMsg={errorMessages.firstName}
-            />
-            <InputWithIcon
-              className="auth-input"
-              icon={faUser}
-              name={"lastName"}
-              placeholder={"Lastname"}
-              type={"text"}
-              onChange={(event) => handleInputChange(event, "lastName")}
-              errorMsg={errorMessages.lastName}
-            />
-            <InputWithIcon
-              className="auth-input"
-              icon={faEnvelope}
-              name={"email"}
-              placeholder={"Email"}
-              type={"email"}
-              onChange={(event) => handleInputChange(event, "email")}
-              onBlur={(event) => validateEmail(event.target.value)}
-              errorMsg={errorMessages.email}
-            />
-            <InputWithIcon
-              className="auth-input"
-              icon={faLock}
-              name={"password"}
-              placeholder={"Password"}
-              type={isPasswordShown ? "text" : "password"}
-              iconEye={!isPasswordShown ? faEye : faEyeSlash}
-              onEyeClick={togglePasswordVisibility}
-              onChange={(event) => handleInputChange(event, "password")}
-              errorMsg={errorMessages.password}
-            />
+      <div className="register_form">
+        <div className="register-title">
+          <p
+            style={{
+              padding: "0px 57px",
+              fontSize: "23px",
+              fontWeight: "bold",
+            }}
+          >
+            Registration Form
+          </p>
+        </div>
+        <div style={{ padding: "40px" }}>
+          <InputWithIcon
+            className="auth-input"
+            icon={faUser}
+            name={"firstName"}
+            placeholder={"Firstname"}
+            type={"text"}
+            onChange={(event) => handleInputChange(event, "firstName")}
+            errorMsg={errorMessages.firstName}
+          />
+          <InputWithIcon
+            className="auth-input"
+            icon={faUser}
+            name={"lastName"}
+            placeholder={"Lastname"}
+            type={"text"}
+            onChange={(event) => handleInputChange(event, "lastName")}
+            errorMsg={errorMessages.lastName}
+          />
+          <InputWithIcon
+            className="auth-input"
+            icon={faEnvelope}
+            name={"email"}
+            placeholder={"Email"}
+            type={"email"}
+            onChange={(event) => handleInputChange(event, "email")}
+            onBlur={(event) => validateEmail(event.target.value)}
+            errorMsg={errorMessages.email}
+          />
+          <InputWithIcon
+            className="auth-input"
+            icon={faLock}
+            name={"password"}
+            placeholder={"Password"}
+            type={isPasswordShown ? "text" : "password"}
+            iconEye={!isPasswordShown ? faEye : faEyeSlash}
+            onEyeClick={togglePasswordVisibility}
+            onChange={(event) => handleInputChange(event, "password")}
+            errorMsg={errorMessages.password}
+          />
 
-            <NormalButton buttonName={"Register"} onClick={onSubmit} />
-            <p style={{ textAlign: "center", marginBottom: "0px" }}>
-              Already have an account?
-              <Link to="/login" style={{ color: "#ae8b70" }}>
-                {" Login Now"}
-              </Link>
-            </p>
-          </div>
+          <NormalButton buttonName={"Register"} onClick={onSubmit} />
+          <p style={{ textAlign: "center", marginBottom: "0px" }}>
+            Already have an account?
+            <a onClick={() => setActive(1)} className="redirect-link">
+              {" Login Now"}
+            </a>
+          </p>
         </div>
       </div>
     </>

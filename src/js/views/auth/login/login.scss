@@ -1,0 +1,27 @@
+@import "./../../../styles/variables.scss";
+
+.login_form {
+  height: 23.25rem;
+  width: 20.5rem;
+  border: 3px solid $brown700;
+  border-radius: 0.625rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $bck100;
+
+  .login-title {
+    border: 3px solid $brown700;
+    background-color: $brown700;
+    color: $brown200;
+  }
+
+  .redirect-link {
+    color: #ae8b70;
+    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

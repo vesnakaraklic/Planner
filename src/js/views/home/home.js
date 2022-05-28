@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/sidebar";
 import Switchtab from "../../components/switchtab/switchtab";
-import DailyPlanner from "../../views/dailyPlanner/dailyPlanner";
-import WeeklyPlanner from "../../views/weeklyPlanner/weeklyPlanner";
-import MonthlyPlanner from "../../views/monthlyPlanner/monthlyPlanner";
+import DailyPlanner from "../dailyPlanner/dailyPlanner";
+import WeeklyPlanner from "../weeklyPlanner/weeklyPlanner";
+import MonthlyPlanner from "../monthlyPlanner/monthlyPlanner";
 import DatePicker from "../datePicker/datePicker";
-import "./plannerHome.scss";
+import "./home.scss";
 
-export default function PlannerHome() {
-  const [currentActive, setCurrentActive] = useState(0);
+export default function Home() {
+  const [currentActive, setCurrentActive] = useState(1);
   const optionsArray = [
     { key: 1, label: "Daily" },
     { key: 2, label: "Weekly" },
     { key: 3, label: "Monthly" },
     { key: 4, label: "DatePicker" },
   ];
-
-  useEffect(() => {
-    setCurrentActive(1);
-  }, []);
 
   return (
     <>

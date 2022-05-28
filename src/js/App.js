@@ -1,39 +1,35 @@
 import React, { useEffect } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
-import LoginForm from "./views/login/login";
-import RegisterForm from "./views/register/register";
-import PlannerHome from "./views/plannerHome/plannerHome";
 import { createHashHistory } from "history";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "./store/actions/user.actions";
+import Home from "./views/home/home";
+import Auth from "./views/auth/auth";
 
 export default function App() {
   const history = createHashHistory();
   const dispatch = useDispatch();
+  const { loading, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(userActions.listenToAuthChanges());
   }, []);
+
+  useEffect(() => {}, [loading]);
+
   return (
     <>
-      <HashRouter history={history}>
-        <Switch>
-          <Route path="/login">
-            <LoginForm />
-          </Route>
-          <Route path="/register">
-            <RegisterForm />
-          </Route>
-
-          <Route exact path="/plannerHome">
-            <PlannerHome></PlannerHome>
-          </Route>
-
-          <Route exact path="/">
-            <LoginForm />
-          </Route>
-        </Switch>
-      </HashRouter>
+      <div className="landingPage">
+        {!loading && (
+          <HashRouter history={history}>
+            <Switch>
+              <Route path="/">
+                {user && Object.keys(user).length !== 0 ? <Home /> : <Auth />}
+              </Route>
+            </Switch>
+          </HashRouter>
+        )}
+      </div>
     </>
   );
 }
