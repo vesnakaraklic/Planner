@@ -1,19 +1,30 @@
-@import "./../../styles/variables.scss";
+@import './../../styles/variables.scss';
 
 .submit-btn {
+  border-radius: 1vh;
+  margin-top: 3.5vh;
+  height: 4vh;
   appearance: none;
-  background-color: $brown700;
-  border: 1px solid $brown700;
-  border-radius: 6px;
-  color: $brown200;
+  background-color: #4f0000;
+  border: 1px solid #4f0000;
+  color: #fdeee2;
   cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  padding: 10px 16px;
   width: 100%;
-  font-size: 14px;
+  font-size: 1.5vh;
   font-weight: 600;
-  margin-top: 20px;
+  // appearance: none;
+  // background-color: $brown700;
+  // border: 1px solid $brown700;
+  // border-radius: 6px;
+  // color: $brown200;
+  // cursor: pointer;
+  // display: inline-block;
+  // text-align: center;
+  // padding: 10px 16px;
+  // width: 100%;
+  // font-size: 14px;
+  // font-weight: 600;
+  // margin-top: 20px;
 }
 
 .submit-btn:hover {

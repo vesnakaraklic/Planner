@@ -74,7 +74,9 @@ export default function DailyPlanner() {
             </div>
           </div>
         </div>
-        <button className="saveBtn">Save</button>
+        <button className="saveBtn" onClick={onSaveDaily}>
+          Save
+        </button>
       </div>
     </>
   )

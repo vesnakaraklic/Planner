@@ -1,0 +1,28 @@
+.buttonStyle {
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  font-size: 2.3vh;
+  font-family: mv boli;
+  color: #4f0200b3;
+  border: 1px solid #4f0200;
+  border-radius: 50%;
+  height: 1.3vw;
+  width: 1.2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 2px 0px 4px 0px #4f0200db;
+}
+
+.buttonStyle:hover {
+  background: linear-gradient(to bottom, #e2d2b8 5%, #b5976d 100%);
+  background-color: #dbc8a5;
+}
+.buttonStyle:active {
+  position: relative;
+  top: 1px;
+}

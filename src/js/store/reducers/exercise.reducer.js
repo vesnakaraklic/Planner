@@ -1,8 +1,7 @@
 import { exerciseConstants } from '../constants/exercise.constants'
-import cloneDeep from 'lodash/cloneDeep'
 
 const initialState = {
-  exercises: ['', '', '', '', '', '', '', '', '', '', ''],
+  exercises: ['', '', '', '', '', ''],
   steps: ''
 }
 

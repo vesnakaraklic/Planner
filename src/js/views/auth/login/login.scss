@@ -1,10 +1,13 @@
-@import "./../../../styles/variables.scss";
+@import './../../../styles/variables.scss';
 
 .login_form {
-  height: 23.25rem;
-  width: 20.5rem;
+  // height: 23.25rem;
+  // width: 20.5rem;
+  height: 39vh;
+  width: 33vh;
   border: 3px solid $brown700;
-  border-radius: 0.625rem;
+  // border-radius: 0.625rem;
+  border-radius: 1vh;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -15,6 +18,12 @@
     border: 3px solid $brown700;
     background-color: $brown700;
     color: $brown200;
+
+    & > p {
+      font-size: 3vh;
+      font-weight: bold;
+      text-align: center;
+    }
   }
 
   .redirect-link {
