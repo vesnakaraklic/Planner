@@ -1,59 +1,66 @@
-@import "./../../../../styles/variables.scss";
-.money {
-  width: 600px;
-  height: 85px;
+@import './../../../../styles/variables.scss';
+.moneyWrapper {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  transform: translateY(-3vh);
   .moneyForm {
     border: 2px solid $brown700;
-    padding: 13px;
-    border-radius: 15px;
+    padding: 1vw;
     text-align: center;
-    width: 200px;
-    height: 50px;
+    width: 15vw;
+    height: 7vh;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    background: #e6d5bdad;
     justify-content: center;
+    gap: 0.7vh;
+    &.first {
+      border-width: 0 2px;
+    }
+    &.second {
+      border-bottom: 0;
+    }
+    &.third {
+      border-bottom-left-radius: 1vw;
+      border-bottom-right-radius: 1vw;
+    }
     .moneyLabel {
       font-weight: bold;
-      color: #4f0000;
-      padding-bottom: 5px;
+      color: $brown700;
       font-family: mv boli;
       width: 100%;
       text-align: center;
+      font-size: 2.2vh;
     }
-    .moneyResult {
-      background: transparent;
-      width: 150px;
-      font-size: 16px;
-      border-bottom: 1px solid brown;
-      text-align: center;
-      margin-right: 3px;
+    .dolarIcon {
+      color: $brown700;
+      font-size: 1vw;
     }
-    .moneyInput {
-      width: 150px;
-      border-width: 0px;
+    .moneyField {
       border: none;
       background-color: #f8f3e9;
-      font-size: 16px;
-      border-bottom: 1px solid brown;
+      font-size: 1vw;
       text-align: center;
+      margin-right: 0.3vw;
+      font-family: emoji;
+      border-radius: 1vw;
+      flex: auto;
+      &.input {
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        &[type='number'] {
+          -moz-appearance: textfield;
+        }
 
-      margin-right: 3px;
-      /* Chrome */
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-      /* Firefox */
-      &[type="number"] {
-        -moz-appearance: textfield;
-      }
-
-      &:focus-visible {
-        outline: 2px solid $brown700;
-        border-radius: 5px;
+        &:focus-visible {
+          outline: 0.15vw solid $brown700;
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
-import React from "react";
-import "./smallButton.scss";
+import React from 'react'
+import './smallButton.scss'
 
 export default function SmallButton({ buttonName, className, onClick }) {
   return (
@@ -8,5 +8,5 @@ export default function SmallButton({ buttonName, className, onClick }) {
         {buttonName}
       </button>
     </>
-  );
+  )
 }

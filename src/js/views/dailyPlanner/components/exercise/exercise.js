@@ -1,57 +1,57 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVolleyballBall } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
-import { exerciseActions } from "../../../../store/actions/exercise.actions";
-import "./exercise.scss";
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faVolleyballBall } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from 'react-redux'
+import { exerciseActions } from '../../../../store/actions/exercise.actions'
+import './exercise.scss'
 
 export default function Exercise({ exercise }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const onChangeInput = (value, key) => {
-    const newArray = [...exercise.exercises];
-    newArray[key] = value;
-    dispatch(exerciseActions.updateExercise(newArray));
-  };
+    const newArray = [...exercise.exercises]
+    newArray[key] = value
+    dispatch(exerciseActions.updateExercise(newArray))
+  }
 
-  const onChangeSteps = (value) => {
-    dispatch(exerciseActions.updateSteps(value));
-  };
+  const onChangeSteps = value => {
+    dispatch(exerciseActions.updateSteps(value))
+  }
 
   return (
     <>
-      <label className="labelStyle">Exercise & Health </label>
-      <div className="exerciseForm">
-        <div>
-          {exercise?.exercises?.map((exerciseValue, index) => (
-            <div key={index} style={{ paddingTop: "10px" }}>
-              <span>
-                <FontAwesomeIcon
-                  icon={faVolleyballBall}
-                  style={{ color: "rgb(79 2 0)" }}
+      <div className="exerciseWrapper">
+        <div className="exerciseContentContainer">
+          <div className="exerciseFormContainer">
+            <label className="exerciseFormTitle">Exercise & Health </label>
+            {exercise?.exercises?.map((exerciseValue, index) => (
+              <div key={index} className="exerciseFormInputContainer">
+                <span>
+                  <FontAwesomeIcon
+                    icon={faVolleyballBall}
+                    style={{ color: 'rgb(79 2 0)' }}
+                  />
+                </span>
+                <input
+                  type={'text'}
+                  className="exerciseFormInput"
+                  value={exerciseValue}
+                  onChange={e => onChangeInput(e.target.value, index)}
                 />
-              </span>
-              <input
-                type={"text"}
-                className="inputWithoutBordersAll"
-                value={exerciseValue}
-                onChange={(e) => onChangeInput(e.target.value, index)}
-              />
-            </div>
-          ))}
-        </div>
-        <div style={{ width: "100px" }}>
-          <input
-            type={"number"}
-            value={exercise.steps}
-            className="reverseInput"
-            onChange={(e) => onChangeSteps(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label className="reverseText">Steps</label>
+              </div>
+            ))}
+          </div>
+          <div className="exerciseStepContainer">
+            <input
+              type={'number'}
+              value={exercise.steps}
+              className="exerciseStepInput"
+              onChange={e => onChangeSteps(e.target.value)}
+            ></input>
+            <label className="exerciseStepTitle">Steps</label>
+          </div>
         </div>
       </div>
     </>
-  );
+  )
 }

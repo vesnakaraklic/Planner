@@ -1,4 +1,4 @@
-@import "./styles/variables.scss";
+@import './styles/variables.scss';
 
 body,
 body > div,
@@ -18,6 +18,54 @@ html {
 }
 
 .landingPage {
-  background: url("./assets/images/bck2.webp");
+  background: url('./assets/images/bck2.webp');
   background-size: cover;
+}
+@media screen and (min-width: 1920px) {
+  html,
+  body {
+    font-size: 16px !important;
+  }
+}
+@media screen and (max-width: 1919px) and (min-width: 1681px) {
+  html,
+  body {
+    font-size: 12px !important;
+  }
+}
+@media screen and (max-width: 1680px) and (min-width: 1600px) {
+  html,
+  body {
+    font-size: 11px !important;
+  }
+}
+@media screen and (max-width: 1599px) and (min-width: 1360px) {
+  html,
+  body {
+    font-size: 10px !important;
+  }
+}
+@media screen and (max-width: 1359px) and (min-width: 1024px) {
+  html,
+  body {
+    font-size: 8px !important;
+  }
+}
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+  html,
+  body {
+    font-size: 7px !important;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  html,
+  body {
+    font-size: 6px !important;
+  }
+}
+@media screen and (max-width: 319px) {
+  html,
+  body {
+    font-size: 6px !important;
+  }
 }

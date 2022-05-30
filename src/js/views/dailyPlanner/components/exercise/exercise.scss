@@ -1,58 +1,94 @@
-@import "./../../../../styles/variables.scss";
-
-.exerciseForm {
-display: flex;
-width: 600px;
-
-.inputWithoutBordersAll {
-  border-width: 0px;
-  border: none;
-  width: 330px;
-  margin-right: 50px;
-  margin-left: 3px;
-  background-color: #f0e7d6;
-  color: $brown700;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  border-radius: 5px;
-
-  &:focus-visible {
-    outline: 2px solid $brown700;
+@import './../../../../styles/variables.scss';
+.exerciseWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  .exerciseContentContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    .exerciseFormContainer {
+      display: flex;
+      width: 70%;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      .exerciseFormTitle {
+        font-weight: bold;
+        margin-top: 1vh;
+        margin-bottom: 1.5vh;
+        font-size: 1vw;
+        color: $brown700;
+        font-family: mv boli;
+      }
+      .exerciseFormInputContainer {
+        display: flex;
+        margin: 0.17vw;
+        width: 100%;
+        & > span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          & > svg {
+            font-size: 1vw;
+          }
+        }
+        .exerciseFormInput {
+          border-width: 0px;
+          border: none;
+          flex: auto;
+          margin-left: 0.3vw;
+          background-color: $brown250;
+          color: $brown700;
+          font-family: mv boli;
+          border-radius: 1vw;
+          padding-left: 0.5vw;
+          font-size: 1.6vh;
+          height: 70%;
+          &:focus-visible {
+            outline: 0.15vw solid $brown700;
+          }
+        }
+      }
+    }
+    .exerciseStepContainer {
+      display: flex;
+      flex-direction: column-reverse;
+      height: 100%;
+      width: 25%;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(90deg);
+      position: absolute;
+      padding-left: 3vw;
+      top: 0;
+      right: 0;
+      .exerciseStepInput {
+        width: 13vw;
+        height: 3vh;
+        margin-top: 2vh;
+        border: 0.15vw solid $brown700;
+        border-radius: 1vw;
+        text-align: center;
+        font-family: mv boli;
+        font-size: 1.2vw;
+        color: $brown700;
+        &:focus-visible {
+          outline: 0.15vw solid $brown700;
+        }
+      }
+      .exerciseStepTitle {
+        font-size: 1.2vw;
+        font-weight: bold;
+        font-family: mv boli;
+        color: $brown700;
+      }
+    }
   }
 }
-
-.reverseInput {
-  transform: rotate(90deg);
-  width: 129px;
-  height: 30px;
-  margin-top: 60px;
-  border-color: $brown700;
-  border-radius: 10px;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 21px;
-  color: #6c442f;
-}
-
-.reverseText {
-  writing-mode: vertical-rl;
-  font-size: 23px;
-  font-weight: bold;
-  font-family: mv boli;
-  padding-top: 47px;
-  color: $brown700;
-}
-}
-
-.labelStyle {
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 12px;
-    font-size: 17px;
-    padding-left: 17%;
-    color: $brown700;
-    font-family: mv boli;
-}
-
-
-
-  

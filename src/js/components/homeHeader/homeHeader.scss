@@ -1,0 +1,25 @@
+@import '/src/js/styles/variables.scss';
+.homeHeaderWrapper {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  .switchButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3vh;
+    position: fixed;
+    background: $brown700;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5vh 2vh;
+  }
+  .headerName {
+    color: #f0e7d6;
+    font-size: 1vw;
+    font-family: mv boli;
+  }
+}
