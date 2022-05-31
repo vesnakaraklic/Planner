@@ -1,0 +1,27 @@
+.dayofWeekStyle {
+  position: relative;
+  width: 33vh;
+  height: 32vh;
+  margin: 1px;
+  background: url('./../../assets/images/—Pngtree—sticker\ grid\ notes\ cute\ theme_6966109.png');
+  background-size: cover;
+
+  .dayTitle {
+    position: absolute;
+    text-align: center;
+    font-family: mv boli;
+    color: #4f0000ad;
+    font-size: 5vh;
+    right: 0.8vh;
+    top: 7vh;
+    left: 2vh;
+  }
+
+  .dateStyle {
+    position: absolute;
+    font-size: 7.4vh;
+    left: 1.5vh;
+    font-family: mv boli;
+    color: #ab1e00;
+  }
+}

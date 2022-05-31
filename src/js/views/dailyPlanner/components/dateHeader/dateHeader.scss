@@ -13,6 +13,10 @@
     flex-direction: column;
     flex: 1;
 
+    &.hidden {
+      opacity: 0;
+    }
+
     .dateStyle {
       font-family: mv boli;
       padding-top: 3rem;
@@ -126,6 +130,14 @@
       outline: none;
     }
   }
+}
+
+.withWeek {
+  font-size: 3.3vh !important;
+  font-family: mv boli;
+  text-align: center;
+  color: $brown700;
+  transform: translateY(2.5vh) !important;
 }
 
 // Date Picker Style

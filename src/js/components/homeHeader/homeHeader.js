@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import DateHeader from '../../views/dailyPlanner/components/dateHeader/dateHeader'
 import Switchtab from '../switchtab/switchtab'
@@ -73,7 +73,11 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
             )}
           </div>
         </div>
-        <DateHeader note={note} />
+        <DateHeader
+          displayDateAndNote={currentActive === 2 ? false : true}
+          currentActive={currentActive}
+          note={note}
+        />
       </div>
     </>
   )
