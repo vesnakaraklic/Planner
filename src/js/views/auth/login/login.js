@@ -109,11 +109,11 @@ const LoginForm = ({ setActive }) => {
 
   return (
     <>
-      <div className="login_form">
+      <div className="login-form">
         <div className="login-title">
           <p>Login Form</p>
         </div>
-        <div style={{ padding: '4vh' }}>
+        <div style={{ padding: '3vh' }}>
           <InputWithIcon
             className="auth-input"
             icon={faEnvelope}
@@ -136,7 +136,7 @@ const LoginForm = ({ setActive }) => {
             errorMsg={errorMessages.password}
           />
           <NormalButton buttonName={'Login'} onClick={onSubmit} />
-          <p style={{ textAlign: 'center', fontSize: '1.5vh' }}>
+          <p className="redirect-text">
             Not a member?
             <a onClick={() => setActive(2)} className="redirect-link">
               {' Signup Now'}

@@ -1,12 +1,9 @@
 @import './../../../styles/variables.scss';
 
-.login_form {
-  // height: 23.25rem;
-  // width: 20.5rem;
-  height: 39vh;
-  width: 33vh;
+.login-form {
+  height: 42vh;
+  width: 36vh;
   border: 3px solid $brown700;
-  // border-radius: 0.625rem;
   border-radius: 1vh;
   position: absolute;
   top: 50%;
@@ -26,11 +23,17 @@
     }
   }
 
-  .redirect-link {
-    color: #ae8b70;
-    text-decoration: underline;
-    &:hover {
-      cursor: pointer;
+  .redirect-text {
+    text-align: center;
+    font-size: 1.4vh;
+    font-family: mv boli;
+
+    .redirect-link {
+      color: #ae8b70;
+      text-decoration: underline;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

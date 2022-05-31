@@ -1,7 +1,7 @@
 import { exerciseConstants } from '../constants/exercise.constants'
 
 const initialState = {
-  exercises: ['', '', '', '', '', ''],
+  exercises: ['', '', '', '', '', '', ''],
   steps: ''
 }
 
@@ -14,13 +14,13 @@ export const exercise = (state = initialState, action) => {
         }
       return {
         exercises:
-          action.value.exercises?.length < 5
+          action.value.exercises?.length < 7
             ? initialState.exercises
             : action.value.exercises,
         steps: action.value.steps ?? initialState.steps
       }
     case exerciseConstants.CHANGE_EXERCISE:
-      if (!action.value || action.value.length < 5)
+      if (!action.value || action.value.length < 7)
         return {
           ...state,
           exercises: initialState.exercises

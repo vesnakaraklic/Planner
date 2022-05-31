@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import NormalButton from '../../components/normalButton/normalButton'
 import { dataActions } from '../../store/actions/data.actions'
 import { exerciseActions } from '../../store/actions/exercise.actions'
 import { foodActions } from '../../store/actions/food.actions'

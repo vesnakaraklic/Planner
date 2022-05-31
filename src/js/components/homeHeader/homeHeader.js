@@ -35,6 +35,8 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
     })
   }
 
+  const onProfileClick = () => {}
+
   return (
     <>
       <div className="homeHeaderWrapper">
@@ -50,6 +52,10 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
             </button>
             {open && (
               <div className="dropdownContent">
+                <button className="buttonInMenu" onClick={onProfileClick}>
+                  Profile
+                  <FontAwesomeIcon icon={faUser} />
+                </button>
                 <button
                   className="buttonInMenu"
                   id="notification"

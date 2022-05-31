@@ -1,72 +1,72 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 import {
   faEnvelope,
   faLock,
   faUser,
   faEye,
-  faEyeSlash,
-} from "@fortawesome/free-solid-svg-icons";
-import { useDispatch, useSelector } from "react-redux";
-import InputWithIcon from "../../../components/inputWithIcon/inputWithIcon";
-import NormalButton from "../../../components/normalButton/normalButton";
-import { getUsers } from "../../../api/users";
-import { userActions } from "../../../store/actions/user.actions";
-import { Link } from "react-router-dom";
-import "./register.scss";
+  faEyeSlash
+} from '@fortawesome/free-solid-svg-icons'
+import { useDispatch, useSelector } from 'react-redux'
+import InputWithIcon from '../../../components/inputWithIcon/inputWithIcon'
+import NormalButton from '../../../components/normalButton/normalButton'
+import { getUsers } from '../../../api/users'
+import { userActions } from '../../../store/actions/user.actions'
+import { Link } from 'react-router-dom'
+import './register.scss'
 
-const form = { firstName: "", lastName: "", email: "", password: "" };
+const form = { firstName: '', lastName: '', email: '', password: '' }
 const defaultErrorMessages = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-};
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: ''
+}
 
 export default function RegisterForm({ setActive }) {
-  const dispatch = useDispatch();
-  const [registerForm, setRegisterForm] = useState(form);
-  const [errorMessages, setErrorMessages] = useState(defaultErrorMessages);
-  const user = useSelector((state) => state.user);
-  const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const dispatch = useDispatch()
+  const [registerForm, setRegisterForm] = useState(form)
+  const [errorMessages, setErrorMessages] = useState(defaultErrorMessages)
+  const user = useSelector(state => state.user)
+  const [isPasswordShown, setIsPasswordShown] = useState(false)
 
   const onSubmit = () => {
-    const tempErrorMessages = { ...defaultErrorMessages };
-    Object.keys(registerForm).map((key) => {
-      tempErrorMessages[key] = validateField(key, registerForm[key]);
-    });
-    if (registerForm.email !== "") {
-      tempErrorMessages.email = validateEmail(registerForm.email);
+    const tempErrorMessages = { ...defaultErrorMessages }
+    Object.keys(registerForm).map(key => {
+      tempErrorMessages[key] = validateField(key, registerForm[key])
+    })
+    if (registerForm.email !== '') {
+      tempErrorMessages.email = validateEmail(registerForm.email)
     }
     isFormValid(tempErrorMessages) &&
-      dispatch(userActions.register(registerForm));
-  };
+      dispatch(userActions.register(registerForm))
+  }
 
   const handleInputChange = (event, key) => {
-    setRegisterForm({ ...registerForm, [key]: event.target.value });
-    validateField(key, event.target.value);
-  };
+    setRegisterForm({ ...registerForm, [key]: event.target.value })
+    validateField(key, event.target.value)
+  }
 
   const validateField = (key, value) => {
-    if (value === "") {
-      setErrorMessages((oldErrorMessages) => ({
+    if (value === '') {
+      setErrorMessages(oldErrorMessages => ({
         ...oldErrorMessages,
-        [key]: "Required",
-      }));
-      return "Required";
+        [key]: 'Required'
+      }))
+      return 'Required'
     } else {
-      setErrorMessages((oldErrorMessages) => ({
+      setErrorMessages(oldErrorMessages => ({
         ...oldErrorMessages,
-        [key]: "",
-      }));
-      return "";
+        [key]: ''
+      }))
+      return ''
     }
-  };
+  }
 
   const togglePasswordVisibility = () => {
-    setIsPasswordShown(!isPasswordShown);
-  };
+    setIsPasswordShown(!isPasswordShown)
+  }
 
-  const validateEmail = (email) => {
+  const validateEmail = email => {
     if (
       String(email)
         .toLowerCase()
@@ -76,118 +76,106 @@ export default function RegisterForm({ setActive }) {
     ) {
       setErrorMessages({
         ...errorMessages,
-        email: "",
-      });
-      return "";
+        email: ''
+      })
+      return ''
     } else {
       setErrorMessages({
         ...errorMessages,
-        email: "Email is badly formated",
-      });
-      return "Email is badly formated";
+        email: 'Email is badly formated'
+      })
+      return 'Email is badly formated'
     }
-  };
+  }
 
-  const isFormValid = (errorMsgs) => {
-    let tempValidForm = true;
-    Object.values(errorMsgs).map((errorMsg) => {
-      if (errorMsg !== "") {
-        tempValidForm = false;
+  const isFormValid = errorMsgs => {
+    let tempValidForm = true
+    Object.values(errorMsgs).map(errorMsg => {
+      if (errorMsg !== '') {
+        tempValidForm = false
       }
-    });
-    return tempValidForm;
-  };
+    })
+    return tempValidForm
+  }
 
   useEffect(() => {
-    getUsers(dispatch);
-    dispatch(userActions.resetError());
-  }, []);
+    getUsers(dispatch)
+    dispatch(userActions.resetError())
+  }, [])
 
   useEffect(() => {
     switch (user.error.code) {
-      case "auth/invalid-email":
+      case 'auth/invalid-email':
         return setErrorMessages({
           ...errorMessages,
-          password: "Email is badly formated",
-        });
-      case "auth/weak-password":
+          password: 'Email is badly formated'
+        })
+      case 'auth/weak-password':
         return setErrorMessages({
           ...errorMessages,
-          password: "Use at least 6 characers for password",
-        });
+          password: 'Use at least 6 characers for password'
+        })
       default:
-        return setErrorMessages(defaultErrorMessages);
+        return setErrorMessages(defaultErrorMessages)
     }
-  }, [user.error]);
+  }, [user.error])
 
   return (
     <>
-      <div className="register_form">
+      <div className="register-form">
         <div className="register-title">
-          <p
-            style={{
-              padding: "0px 57px",
-              fontSize: "23px",
-              fontWeight: "bold",
-            }}
-          >
-            Registration Form
-          </p>
+          <p>Registration Form</p>
         </div>
-        <div style={{ padding: "40px" }}>
+        <div style={{ padding: '3vh' }}>
           <InputWithIcon
             className="auth-input"
             icon={faUser}
-            name={"firstName"}
-            placeholder={"Firstname"}
-            type={"text"}
-            onChange={(event) => handleInputChange(event, "firstName")}
+            name={'firstName'}
+            placeholder={'Firstname'}
+            type={'text'}
+            onChange={event => handleInputChange(event, 'firstName')}
             errorMsg={errorMessages.firstName}
           />
           <InputWithIcon
             className="auth-input"
             icon={faUser}
-            name={"lastName"}
-            placeholder={"Lastname"}
-            type={"text"}
-            onChange={(event) => handleInputChange(event, "lastName")}
+            name={'lastName'}
+            placeholder={'Lastname'}
+            type={'text'}
+            onChange={event => handleInputChange(event, 'lastName')}
             errorMsg={errorMessages.lastName}
           />
           <InputWithIcon
             className="auth-input"
             icon={faEnvelope}
-            name={"email"}
-            placeholder={"Email"}
-            type={"email"}
-            onChange={(event) => handleInputChange(event, "email")}
-            onBlur={(event) => validateEmail(event.target.value)}
+            name={'email'}
+            placeholder={'Email'}
+            type={'email'}
+            onChange={event => handleInputChange(event, 'email')}
+            onBlur={event => validateEmail(event.target.value)}
             errorMsg={errorMessages.email}
           />
           <InputWithIcon
             className="auth-input"
             icon={faLock}
-            name={"password"}
-            placeholder={"Password"}
-            type={isPasswordShown ? "text" : "password"}
+            name={'password'}
+            placeholder={'Password'}
+            type={isPasswordShown ? 'text' : 'password'}
             iconEye={!isPasswordShown ? faEye : faEyeSlash}
             onEyeClick={togglePasswordVisibility}
-            onChange={(event) => handleInputChange(event, "password")}
+            onChange={event => handleInputChange(event, 'password')}
             errorMsg={errorMessages.password}
           />
 
-          <NormalButton buttonName={"Register"} onClick={onSubmit} />
-          <p style={{ textAlign: "center", marginBottom: "0px" }}>
+          <NormalButton buttonName={'Register'} onClick={onSubmit} />
+          <p className="redirect-text">
             Already have an account?
             <a onClick={() => setActive(1)} className="redirect-link">
-              {" Login Now"}
+              {' Login Now'}
             </a>
           </p>
         </div>
       </div>
     </>
-  );
+  )
 }
-
-// code: 'auth/invalid-email', message: 'The email address is badly formatted.'
-// code: 'auth/weak-password', message: 'The password must be 6 characters long or more.'
-// code: 'auth/email-already-in-use', message: 'The email address is already in use by another account.'

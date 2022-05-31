@@ -47,7 +47,7 @@ export default function Exercise({ exercise }) {
             </div>
 
             <div
-              className={exercise.exercises.length > 6 ? 'scrollExercise' : ''}
+              className={exercise.exercises.length > 7 ? 'scrollExercise' : ''}
             >
               {exercise?.exercises?.map((exerciseValue, index) => (
                 <div key={index} className="exerciseFormInputContainer">
@@ -64,7 +64,7 @@ export default function Exercise({ exercise }) {
                     onChange={e => onChangeInput(e.target.value, index)}
                   />
 
-                  {index > 5 && (
+                  {index > 6 && (
                     <FlexibleButton
                       onClick={() => onExerciseMinusClick(index)}
                       widht="1vw"

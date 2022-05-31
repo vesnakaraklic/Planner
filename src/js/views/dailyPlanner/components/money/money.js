@@ -55,6 +55,7 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
   useEffect(() => {
     if (moneyIn && moneyOut) setResult(moneyIn - moneyOut)
   }, [moneyIn, moneyOut])
+
   return (
     <>
       <div className="moneyWrapper">

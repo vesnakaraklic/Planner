@@ -4,12 +4,13 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
-  transform: translateY(-3vh);
+  transform: translate(-7vh, 3vh);
+  // transform: translateY(-3vh);
   .moneyForm {
     border: 2px solid $brown700;
     padding: 1vw;
     text-align: center;
-    width: 15vw;
+    width: 13vw;
     height: 7vh;
     display: flex;
     flex-wrap: wrap;
@@ -17,15 +18,24 @@
     background: #e6d5bdad;
     justify-content: center;
     gap: 0.7vh;
+    margin-top: 1vh;
     &.first {
-      border-width: 0 2px;
+      // border-width: 0 2px;
+      border-top-left-radius: 1vw;
+      border-top-right-radius: 1vw;
     }
     &.second {
-      border-bottom: 0;
+      // border-bottom: 0;
     }
     &.third {
       border-bottom-left-radius: 1vw;
       border-bottom-right-radius: 1vw;
+    }
+
+    & input,
+    label {
+      width: 22vh;
+      font-size: 2vh;
     }
     .moneyLabel {
       font-weight: bold;
@@ -33,7 +43,7 @@
       font-family: mv boli;
       width: 100%;
       text-align: center;
-      font-size: 2.2vh;
+      font-size: 1.7vh;
     }
     .dolarIcon {
       color: $brown700;
