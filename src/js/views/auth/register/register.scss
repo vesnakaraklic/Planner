@@ -1,0 +1,38 @@
+@import './../../../styles/variables.scss';
+
+.register-form {
+  height: 54vh;
+  width: 36vh;
+  border: 3px solid $brown700;
+  border-radius: 1vh;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+
+  .register-title {
+    border: 3px solid $brown700;
+    background-color: $brown700;
+    color: white;
+
+    & > p {
+      font-size: 3vh;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  .redirect-text {
+    text-align: center;
+    font-size: 1.4vh;
+    font-family: mv boli;
+
+    .redirect-link {
+      color: #ae8b70;
+      text-decoration: underline;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

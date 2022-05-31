@@ -4,6 +4,7 @@ const initialState = {
   users: [],
   user: {},
   error: {},
+  loading: true,
 };
 
 export const user = (state = initialState, action) => {
@@ -23,6 +24,7 @@ export const user = (state = initialState, action) => {
       return {
         ...state,
         user: action.user,
+        loading: false,
       };
     case userConstants.AUTH_LOGOUT_SUCCESS:
       return {
@@ -35,6 +37,7 @@ export const user = (state = initialState, action) => {
       return {
         ...state,
         error: action.error,
+        loading: false,
       };
 
     default:

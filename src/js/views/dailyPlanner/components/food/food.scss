@@ -1,39 +1,36 @@
-@import "./../../../../styles/variables.scss";
+@import './../../../../styles/variables.scss';
 .foodForm {
   display: flex;
   flex-wrap: wrap;
-  width: 600px;
+  width: 80%;
 
   .foodBorder {
-    padding-bottom: 10px;
-    flex: 40%;
+    padding-bottom: 2vh;
+    width: 50%;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .mealIcon {
-      padding-left: 10px;
+      padding-left: 0.7vw;
       font-family: cursive;
-      font-size: 20px;
+      font-size: 1.5vw;
       color: $brown700;
+      margin-right: 0.5vw;
     }
 
     .mealInput {
-      border-width: 0px;
       border: none;
-      font-size: 15px;
+      font-size: 1vw;
       text-align: center;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      width: 250px;
-      border-radius: 5px;
-    
+      font-family: mv boli;
+      flex: auto;
+      border-radius: 1vw;
+      color: $brown700;
       &:focus-visible {
-        outline: 2px solid $brown700;
+        outline: 0.15vw solid $brown700;
       }
+    }
   }
-}
-
-
-
-
-
-
 }

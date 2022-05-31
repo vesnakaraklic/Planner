@@ -1,0 +1,17 @@
+@import './../../styles/variables.scss';
+
+.homeWrapper {
+  height: calc(100% - 2vh);
+  width: calc(100% - 2vw);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1vh 1vw;
+
+  .viewContainer {
+    width: 100%;
+    height: 80vh;
+  }
+}

@@ -1,20 +1,74 @@
-@import "./../../../../styles/variables.scss";
+@import './../../../../styles/variables.scss';
 
 .checkboxForm {
   display: flex;
   flex-direction: column;
-  border-left: 0.5px solid $brown700;
-  box-shadow: inset -6px -9px 19px -6px $brown500;
-  width: 320px;
+  width: 40%;
 
-  .title {
-    margin-left: 4rem;
-    margin-bottom: 15px;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: mv boli;
-    color: $brown700;
+  .toDoHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .title {
+      margin-left: 22%;
+      margin-bottom: 2.5vh;
+      font-size: 1vw;
+      font-weight: bold;
+      font-family: mv boli;
+      color: $brown700;
+    }
+  }
+
+  .toDoInput {
+    & > div {
+      margin-bottom: 0.45vh;
+      display: flex;
+      height: 3vh;
+    }
   }
 }
 
+.scroll {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  height: 37.5vh;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px $brown700;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $brown700;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #cbac7ef2;
+} /* width */
+::-webkit-scrollbar {
+  width: 1vh;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px $brown700;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $brown700;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #cbac7ef2;
+}

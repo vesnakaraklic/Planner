@@ -1,6 +1,6 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./InputWithIcon.scss";
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import './inputWithIcon.scss'
 
 export default function InputWithIcon({
   icon,
@@ -9,11 +9,11 @@ export default function InputWithIcon({
   onChange,
   onBlur,
   type,
-  errorMsg = "",
+  errorMsg = '',
   className,
   iconEye,
   onEyeClick,
-  maxLength = 20,
+  maxLength = 20
 }) {
   return (
     <div className={`field-container ${className}`}>
@@ -38,7 +38,7 @@ export default function InputWithIcon({
           </span>
         )}
       </div>
-      {errorMsg !== "" && <p className="error-message">{errorMsg}</p>}
+      {errorMsg !== '' && <p className="error-message">{errorMsg}</p>}
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-@import "./../../styles/variables.scss";
+@import './../../styles/variables.scss';
 
 .lineInput {
   border-width: 0px;
@@ -12,52 +12,58 @@
 .timeInput {
   border-width: 0px;
   border: none;
-  width: 18rem;
-  font-size: 12px;
-  border-bottom: 1px solid $brown700;
+  font-size: 1.6vh;
+  height: 70%;
+  border-bottom: 0.1vw solid #4f0000;
   background: none;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: $brown700;
-
+  font-family: mv boli;
+  margin-bottom: 0.05vw;
+  flex: auto;
   &:focus-visible {
-    outline: 2px solid $brown700;
-    border-radius: 5px;
+    outline: none;
+    border-bottom: 0.15vw solid $brown700;
+    margin-bottom: 0;
   }
 }
-
-.checkboxInput {
-  border-width: 0px;
-  border: none;
-  width: 265px;
-  font-size: 12px;
-  border-bottom: 1px solid $brown700;
-  background: none;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: $brown700;
-
-  &:focus-visible {
-    outline: 2px solid $brown700;
-    border-radius: 5px;
-  }
-}
-
 
 .checkboxFrame {
-  border: 2px solid $brown700;
-  height: 17px;
-  width: 17px;
-  border-radius: 7px;
-  margin: 2px;
+  border: 0.15vw solid $brown700;
+  height: 1vw;
+  width: 1vw;
+  border-radius: 0.6vh;
+  margin-right: 0.15vw;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > svg {
+    font-size: 1vw;
+  }
+}
+.checkboxInput {
+  margin-bottom: 0;
+  border-width: 0px;
+  border: none;
+  font-size: 1.6vh;
+  height: 70%;
+  border-bottom: 0.1vw solid $brown700;
+  background: none;
+  color: $brown700;
+  font-family: mv boli;
+  flex: auto;
+
+  &:focus-visible {
+    outline: none;
+    border-bottom: 0.15vw solid $brown700;
+    margin-bottom: 0;
+  }
 }
 
 .iconStyle {
   color: $brown700;
-
 }
 
 .checkedText {
   text-decoration: line-through;
 }
-
-

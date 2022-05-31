@@ -41,11 +41,12 @@ const login = (data) => {
 };
 
 const listenToAuthChanges = () => {
-  return async (dispatch) => {
+  return (dispatch) => {
     api.onAuthStateChanges(async (user) => {
       if (user) {
         const userData = await api.getUserProfile(user.uid);
         dispatch({ type: userConstants.AUTH_LOGIN_SUCCESS, user: userData });
+        localStorage.setItem("user", JSON.stringify(user));
       } else {
         dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error: "error" });
       }

@@ -1,26 +1,37 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
-  .buttonView {
-    display: flex;
-    justify-content: center;
+.switchtab-wrapper {
+  display: flex;
+  justify-content: center;
 
-    .btnView {
-      margin-right: 5px;
-      margin-top: 2px;
-    
-      &:focus {
-        background: $brown500;
-        outline: none;
-        -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-        -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-        box-shadow: inset 0px 0px 5px #c1c1c1;
-      }
-  
-      &.activeButton {
-        background-color: #f0e7d6;
-        color: #4f0000;
-        font-weight: bold;
+  .switchtab-button {
+    margin-right: 0.7vw;
+
+    &:focus {
+      background: $brown500;
+      outline: none;
+      -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+      -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+      box-shadow: inset 0px 0px 5px #c1c1c1;
     }
+
+    &.activeButton {
+      background-color: #f0e7d6;
+      color: $brown700;
+      font-weight: bold;
     }
-    
+    &:hover {
+      cursor: pointer;
+      background-color: #f0e7d6;
+      color: $brown700;
+      font-weight: bold;
+    }
   }
+
+  .bold-label {
+    font-weight: bold;
+    border-width: 2px;
+    width: 11vh;
+    font-size: 1.5vh;
+  }
+}
