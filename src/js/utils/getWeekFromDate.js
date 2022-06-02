@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import getDateWithoutHours from './getDateWithoutHours'
 
 export default function getWeekFromDate(checkDate) {
-  console.log('Funkcija', checkDate.getDay())
   const week = {}
   switch (checkDate.getDay()) {
     case 1: {

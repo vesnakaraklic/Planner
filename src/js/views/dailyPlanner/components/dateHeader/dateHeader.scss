@@ -140,6 +140,32 @@
   transform: translateY(2.5vh) !important;
 }
 
+.optionFilter {
+  display: flex;
+  width: 50.5vh;
+
+  .labelFilter {
+    font-size: 2.5vh;
+    font-family: mv boli;
+    justify-content: center;
+    align-items: center;
+  }
+  .selectFilter {
+    width: 21vh;
+    background: #dcc4a3;
+    text-align: center;
+    color: #4f0200;
+    font-family: mv boli;
+    font-size: 1.5vh;
+    margin-left: 2vh;
+    border-radius: 2vh;
+    font-weight: bold;
+
+    .optionFilter {
+    }
+  }
+}
+
 // Date Picker Style
 .react-datepicker__tab-loop {
   position: relative !important;

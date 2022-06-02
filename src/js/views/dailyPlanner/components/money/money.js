@@ -10,7 +10,6 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
   const dispatch = useDispatch()
 
   const getOnlyNumbersFromString = value => {
-    console.log(value === '')
     if (value === '') return '0'
     else if (value.match(/^([0-9]{1,})?(\.)?([0-9]{1,})?$/)) {
       if (

@@ -15,6 +15,7 @@ import getDayFromDate from '../../../../utils/getDayFromDate'
 import getMonthFromDate from '../../../../utils/getMonthFromDate'
 import getNextDate from '../../../../utils/getNextDate'
 import getPreviousDate from '../../../../utils/getPreviousDate'
+import getPreviousMonday from '../../../../utils/getPreviousMonday'
 import getWeekFromDate from '../../../../utils/getWeekFromDate'
 import './dateHeader.scss'
 
@@ -71,7 +72,7 @@ export default function DateHeader({
     )
     dispatch(
       dateActions.updateDate(
-        new Date(getPreviousDate(getDateWithoutHours(Object.values(week)[0])))
+        new Date(getPreviousMonday(getDateWithoutHours(Object.values(week)[0])))
       )
     )
   }
@@ -83,33 +84,50 @@ export default function DateHeader({
   return (
     <>
       <div className="dateForm">
-        <div className={`dateInputForm ${displayDateAndNote ? '' : 'hidden'}`}>
-          <div className="dateStyle">
-            {' '}
-            <p>
-              Date: {getMonthFromDate(date)} {date.getDate()} ,{' '}
-              {date.getFullYear()}
-            </p>
-            <button onClick={onClickDatePicker} className="buttonDatePicker">
-              <FontAwesomeIcon icon={faCalendarCheck} />
-            </button>
-            <DatePicker
-              selected={new Date(dateRedux)}
-              open={clicked}
-              onChange={selectedDate => onChangeDatePicker(selectedDate)}
-              className="datePicker"
-            />
+        {!displayDateAndNote && (
+          <div className="optionFilter">
+            <label className="labelFilter">Filter: </label>
+            <select className="selectFilter">
+              <option className="optionStyle">Food</option>
+              <option className="optionStyle">To Do</option>
+              <option className="optionStyle">Exercise</option>
+              <option className="optionStyle">Money</option>
+            </select>
           </div>
-          <div className="noteContainer">
-            <p>Note:</p>
-            <input
-              type="text"
-              value={note}
-              onChange={e => onChangeNote(e.target.value)}
-              className="inputWithoutBorders"
-            />
+        )}
+
+        {displayDateAndNote && (
+          <div
+            // className={`dateInputForm ${displayDateAndNote ? '' : 'hidden'}`}
+            className="dateInputForm"
+          >
+            <div className="dateStyle">
+              {' '}
+              <p>
+                Date: {getMonthFromDate(date)} {date.getDate()} ,{' '}
+                {date.getFullYear()}
+              </p>
+              <button onClick={onClickDatePicker} className="buttonDatePicker">
+                <FontAwesomeIcon icon={faCalendarCheck} />
+              </button>
+              <DatePicker
+                selected={new Date(dateRedux)}
+                open={clicked}
+                onChange={selectedDate => onChangeDatePicker(selectedDate)}
+                className="datePicker"
+              />
+            </div>
+            <div className="noteContainer">
+              <p>Note:</p>
+              <input
+                type="text"
+                value={note}
+                onChange={e => onChangeNote(e.target.value)}
+                className="inputWithoutBorders"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         <div className={`dateMain ${currentActive === 2 ? 'withWeek' : ''}`}>
           <button
