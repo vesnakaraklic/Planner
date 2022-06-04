@@ -6,7 +6,6 @@ import { datePicker } from '../reducers/date.reducer'
 import { waterDrink } from '../reducers/water.reducer'
 import { exercise } from '../reducers/exercise.reducer'
 import { plans } from '../reducers/plans.reducer'
-import { priorities } from '../reducers/priorities.reducer'
 import { toDo } from '../reducers/toDo.reducer'
 import { note } from '../reducers/note.reducer'
 import { weekDays } from '../reducers/weekDays.reducer'
@@ -19,7 +18,6 @@ const appReducer = combineReducers({
   waterDrink,
   exercise,
   plans,
-  priorities,
   toDo,
   note,
   weekDays

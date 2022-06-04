@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { dataActions } from '../../store/actions/data.actions'
 import { exerciseActions } from '../../store/actions/exercise.actions'
 import { foodActions } from '../../store/actions/food.actions'
 import { moneyActions } from '../../store/actions/money.actions'
 import { noteActions } from '../../store/actions/note.actions'
 import { plansActions } from '../../store/actions/plans.actions'
-import { prioritiesActions } from '../../store/actions/priorities.actions'
 import { toDoActions } from '../../store/actions/toDo.actions'
 import { waterActions } from '../../store/actions/water.actions'
 import getDateWithoutHours from '../../utils/getDateWithoutHours'
@@ -21,29 +19,23 @@ import './dailyPlanner.scss'
 export default function DailyPlanner() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
-  const { money, food, waterDrink, exercise, plans, priorities, toDo, note } =
-    useSelector(state => state)
+  const { money, food, waterDrink, exercise, plans, toDo, note } = useSelector(
+    state => state
+  )
   const dateRedux = useSelector(state => state.datePicker.date)
 
   const onSaveDaily = () => {
     const date = getDateWithoutHours(dateRedux)
-    dispatch(dataActions.update('money', { ...money }, user.uid + date))
-    // dispatch(dataActions.update('food', { ...food }, user.uid + date))
+    dispatch(moneyActions.updateMoney(user.uid + date, { ...money }))
     dispatch(foodActions.updateFood(user.uid + date, { ...food }))
-    // dispatch(
-    //   dataActions.update('water', { water: waterDrink.water }, user.uid + date)
-    // )
     dispatch(
       waterActions.updateWater(user.uid + date, { water: waterDrink.water })
     )
-    dispatch(dataActions.update('plans', { ...plans }, user.uid + date))
-    dispatch(dataActions.update('exercise', { ...exercise }, user.uid + date))
-    dispatch(
-      dataActions.update('priorities', { ...priorities }, user.uid + date)
-    )
-    // dispatch(dataActions.update('toDo', { ...toDo }, user.uid + date))
+    dispatch(plansActions.updatePlans(user.uid + date, { ...plans }))
+    dispatch(exerciseActions.updateExercise(user.uid + date, { ...exercise }))
+
     dispatch(toDoActions.updateToDo(user.uid + date, { ...toDo }))
-    dispatch(dataActions.update('note', { note: note.note }, user.uid + date))
+    dispatch(noteActions.updateNote(user.uid + date, { note: note.note }))
   }
 
   useEffect(() => {
@@ -53,7 +45,6 @@ export default function DailyPlanner() {
       dispatch(exerciseActions.getExerciseById(user.uid + dateRedux))
       dispatch(foodActions.getFoodById(user.uid + dateRedux))
       dispatch(waterActions.getWaterById(user.uid + dateRedux))
-      dispatch(prioritiesActions.getPrioritiesById(user.uid + dateRedux))
       dispatch(toDoActions.getToDoById(user.uid + dateRedux))
       dispatch(noteActions.getNoteById(user.uid + dateRedux))
     }
@@ -72,7 +63,7 @@ export default function DailyPlanner() {
             <Money moneyIn={money.moneyIn} moneyOut={money.moneyOut} />
           </div>
           <div className="rightBottomContainer">
-            <ToDoList priorities={priorities} toDo={toDo} />
+            <ToDoList toDo={toDo} />
             <div className="exerciseContainer">
               <Exercise exercise={exercise} />
             </div>

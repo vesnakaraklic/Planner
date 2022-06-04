@@ -12,22 +12,22 @@ export default function Exercise({ exercise }) {
   const onChangeInput = (value, key) => {
     const newArray = [...exercise.exercises]
     newArray[key] = value
-    dispatch(exerciseActions.updateExercise(newArray))
+    dispatch(exerciseActions.changeExercise(newArray))
   }
 
   const onExerciseAddClick = () => {
     const newArray = [...exercise.exercises, '']
-    dispatch(exerciseActions.updateExercise(newArray))
+    dispatch(exerciseActions.changeExercise(newArray))
   }
 
   const onExerciseMinusClick = index => {
     const newArray = [...exercise.exercises]
     newArray.splice(index, 1)
-    dispatch(exerciseActions.updateExercise(newArray))
+    dispatch(exerciseActions.changeExercise(newArray))
   }
 
   const onChangeSteps = value => {
-    dispatch(exerciseActions.updateSteps(value))
+    dispatch(exerciseActions.changeSteps(value))
   }
 
   return (

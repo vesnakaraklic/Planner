@@ -26,6 +26,13 @@ const getWeekByDaysIds = (selectedFilter, arrayOfWeekDaysIds, userId) => {
   }
 }
 
+const changeFilter = data => {
+  return dispatch => {
+    dispatch({ type: weekDaysConstants.CHANGE_FILTER, value: data })
+  }
+}
+
 export const weekDaysActions = {
-  getWeekByDaysIds
+  getWeekByDaysIds,
+  changeFilter
 }

@@ -10,6 +10,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { dateActions } from '../../../../store/actions/date.actions'
 import { noteActions } from '../../../../store/actions/note.actions'
+import { weekDaysActions } from '../../../../store/actions/weekDays.action'
 import getDateWithoutHours from '../../../../utils/getDateWithoutHours'
 import getDayFromDate from '../../../../utils/getDayFromDate'
 import getMonthFromDate from '../../../../utils/getMonthFromDate'
@@ -40,7 +41,7 @@ export default function DateHeader({
   }
 
   const onChangeNote = value => {
-    dispatch(noteActions.updateNote(value))
+    dispatch(noteActions.changeNote(value))
   }
 
   const onClickRightArrowDaily = () => {
@@ -77,6 +78,10 @@ export default function DateHeader({
     )
   }
 
+  const onFilterChange = value => {
+    dispatch(weekDaysActions.changeFilter(value))
+  }
+
   useEffect(() => {
     setWeek(getWeekFromDate(date))
   }, [dateRedux])
@@ -87,11 +92,22 @@ export default function DateHeader({
         {!displayDateAndNote && currentActive === 2 && (
           <div className="optionFilter">
             <label className="labelFilter">Filter: </label>
-            <select className="selectFilter">
-              <option className="optionStyle">Food</option>
-              <option className="optionStyle">To Do</option>
-              <option className="optionStyle">Exercise</option>
-              <option className="optionStyle">Money</option>
+            <select
+              className="selectFilter"
+              onChange={e => onFilterChange(e.target.value)}
+            >
+              <option value="food" className="optionStyle">
+                Food
+              </option>
+              <option value="toDo" className="optionStyle">
+                To Do
+              </option>
+              <option value="exercise" className="optionStyle">
+                Exercise
+              </option>
+              <option value="money" className="optionStyle">
+                Money
+              </option>
             </select>
           </div>
         )}

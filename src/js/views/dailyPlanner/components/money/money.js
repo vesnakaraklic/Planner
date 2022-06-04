@@ -39,16 +39,16 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
     const resultValue = getOnlyNumbersFromString(value)
     if (resultValue)
       if (type === 'moneyIn') {
-        dispatch(moneyActions.updateMoneyIn(resultValue))
+        dispatch(moneyActions.changeMoneyIn(resultValue))
       } else if (type === 'moneyOut') {
-        dispatch(moneyActions.updateMoneyOut(resultValue))
+        dispatch(moneyActions.changeMoneyOut(resultValue))
       }
   }
   const onMoneyInputBlur = (type, value) => {
     if (type === 'moneyIn') {
-      dispatch(moneyActions.updateMoneyIn(formatFloatNumbers(value)))
+      dispatch(moneyActions.changeMoneyIn(formatFloatNumbers(value)))
     } else if (type === 'moneyOut') {
-      dispatch(moneyActions.updateMoneyOut(formatFloatNumbers(value)))
+      dispatch(moneyActions.changeMoneyOut(formatFloatNumbers(value)))
     }
   }
   useEffect(() => {

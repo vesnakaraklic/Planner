@@ -7,6 +7,7 @@ const initialState = {
 
 export const money = (state = initialState, action) => {
   switch (action.type) {
+    case moneyConstants.GET_MONEY_SUCCESS:
     case moneyConstants.CHANGE_MONEY:
       if (!action?.money) return { ...state }
       return {
@@ -25,6 +26,11 @@ export const money = (state = initialState, action) => {
         ...state,
         moneyOut: action.moneyOut
       }
+    case moneyConstants.GET_MONEY_REQUEST:
+    case moneyConstants.GET_MONEY_FAILURE:
+    case moneyConstants.UPDATE_MONEY_REQUEST:
+    case moneyConstants.UPDATE_MONEY_SUCCESS:
+    case moneyConstants.UPDATE_MONEY_FAILURE:
     default:
       return {
         ...state

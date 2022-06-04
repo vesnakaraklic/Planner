@@ -13,7 +13,7 @@ export default function WeeklyPlanner() {
 
   const dateRedux = useSelector(state => state.datePicker.date)
   const user = useSelector(state => state.user.user)
-  const weekDays = useSelector(state => state.weekDays.days)
+  const weekDays = useSelector(state => state.weekDays)
 
   const dispatch = useDispatch()
   const days = [
@@ -36,7 +36,7 @@ export default function WeeklyPlanner() {
           <WeeklyStickyNote
             day={days[i]}
             date={selectedDate}
-            content={weekDays[getDateWithoutHours(selectedDate)]}
+            content={weekDays.days[getDateWithoutHours(selectedDate)]}
           />
         </div>
       )
@@ -60,12 +60,12 @@ export default function WeeklyPlanner() {
     }
     dispatch(
       weekDaysActions.getWeekByDaysIds(
-        'food',
+        weekDays.filter,
         arrayOfIdsForCurrentDate,
         user.uid
       )
     )
-  }, [datesSticky])
+  }, [datesSticky, weekDays.filter])
 
   return (
     <>

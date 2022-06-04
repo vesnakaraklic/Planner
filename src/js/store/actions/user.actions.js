@@ -66,9 +66,13 @@ const logout = () => dispatch =>
     dispatch({ type: 'AUTH_LOGOUT_SUCCESS' })
   })
 
-const updateUser = value => {
+const updateUser = data => {
   return dispatch => {
-    dispatch({ type: userConstants.CHANGE_USER, value: value })
+    dispatch({ type: userConstants.UPDATE_USER_REQUEST })
+    return api
+      .updateUserProfile(data)
+      .then(() => dispatch({ type: userConstants.UPDATE_USER_SUCCESS }))
+      .catch(() => dispatch({ type: userConstants.UPDATE_USER_FAILURE }))
   }
 }
 

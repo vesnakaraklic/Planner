@@ -1,7 +1,8 @@
 import { weekDaysConstants } from '../constants/weekDays.constants'
 
 const initialState = {
-  days: {}
+  days: {},
+  filter: 'food'
 }
 
 export const weekDays = (state = initialState, action) => {
@@ -11,6 +12,13 @@ export const weekDays = (state = initialState, action) => {
       return {
         ...state,
         days: action.value
+      }
+
+    case weekDaysConstants.CHANGE_FILTER:
+      if (!action.value) return { ...state }
+      return {
+        ...state,
+        filter: action.value
       }
     case weekDaysConstants.GET_WEEK_DAYS_REQUEST:
     case weekDaysConstants.GET_WEEK_DAYS_FAILURE:
