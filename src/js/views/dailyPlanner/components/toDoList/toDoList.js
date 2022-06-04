@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { toDoActions } from '../../../../store/actions/toDo.actions'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinus, faPlus } from '@fortawesome/fontawesome-free-solid'
 import LineInput from '../../../../components/lineInput/lineInput'
-import './toDoList.scss'
 import FlexibleButton from '../../../../components/flexibleButton/flexibleButton'
+import './toDoList.scss'
 
 export default function ToDoList({ toDo }) {
   const dispatch = useDispatch()
@@ -16,23 +14,23 @@ export default function ToDoList({ toDo }) {
       value: newArray[key].value,
       finished: !newArray[key].finished
     }
-    dispatch(toDoActions.updateToDo(newArray))
+    dispatch(toDoActions.changeToDo(newArray))
   }
   const onChangeToDo = (value, key) => {
     const newArray = [...toDo.toDo]
     newArray[key] = { value, finished: newArray[key].finished }
-    dispatch(toDoActions.updateToDo(newArray))
+    dispatch(toDoActions.changeToDo(newArray))
   }
 
   const onToDoAddClick = () => {
     const newArray = [...toDo.toDo, { value: '', finished: false }]
-    dispatch(toDoActions.updateToDo(newArray))
+    dispatch(toDoActions.changeToDo(newArray))
   }
 
   const onToDoMinusClick = index => {
     const newArray = [...toDo.toDo]
     newArray.splice(index, 1)
-    dispatch(toDoActions.updateToDo(newArray))
+    dispatch(toDoActions.changeToDo(newArray))
   }
 
   return (

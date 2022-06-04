@@ -3,12 +3,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import WeeklyStickyNote from '../../components/weeklyStickyNote/weeklyStickyNote'
 import getDateWithoutHours from '../../utils/getDateWithoutHours'
 import getWeekFromDate from '../../utils/getWeekFromDate'
-import { foodActions } from '../../store/actions/food.actions'
 import './weeklyPlanner.scss'
+import { weekDaysActions } from '../../store/actions/weekDays.action'
+const NUMBER_OF_NOTES = 7
 
 export default function WeeklyPlanner() {
+  let arrayOfIdsForCurrentDate = []
+  const [datesSticky, setDatesSticky] = useState({})
+
   const dateRedux = useSelector(state => state.datePicker.date)
   const user = useSelector(state => state.user.user)
+  const weekDays = useSelector(state => state.weekDays.days)
+
+  const dispatch = useDispatch()
   const days = [
     'Monday',
     'Tuesday',
@@ -18,37 +25,51 @@ export default function WeeklyPlanner() {
     'Saturday',
     'Sunday'
   ]
-  const [dateSticky, setDateSticky] = useState({})
-  const index = [0, 1, 2, 3, 4, 5, 6]
-  let arrayForDisplay = []
-  const dispatch = useDispatch()
+
+  const renderNotes = () => {
+    const notes = []
+    let i = 0
+    while (i < NUMBER_OF_NOTES) {
+      const selectedDate = Object.values(datesSticky)[i]
+      notes.push(
+        <div key={i + 'key'}>
+          <WeeklyStickyNote
+            day={days[i]}
+            date={selectedDate}
+            content={weekDays[getDateWithoutHours(selectedDate)]}
+          />
+        </div>
+      )
+      i++
+    }
+    return notes
+  }
 
   useEffect(() => {
     let checkDate = new Date(dateRedux)
-    setDateSticky(getWeekFromDate(checkDate))
+    setDatesSticky(getWeekFromDate(checkDate))
   }, [dateRedux])
 
   useEffect(() => {
-    index.map(number =>
-      arrayForDisplay.push(
-        user.uid + getDateWithoutHours(Object.values(dateSticky)[number])
+    let i = 0
+    while (i < NUMBER_OF_NOTES) {
+      arrayOfIdsForCurrentDate.push(
+        user.uid + getDateWithoutHours(Object.values(datesSticky)[i])
+      )
+      i++
+    }
+    dispatch(
+      weekDaysActions.getWeekByDaysIds(
+        'food',
+        arrayOfIdsForCurrentDate,
+        user.uid
       )
     )
-    dispatch(foodActions.getFoodForWeek(arrayForDisplay))
-  }, [dateSticky])
+  }, [datesSticky])
 
   return (
     <>
-      <div className="weekFrame">
-        {index.map(number => (
-          <div key={number + 'key'}>
-            <WeeklyStickyNote
-              day={days[number]}
-              date={Object.values(dateSticky)[number]}
-            />
-          </div>
-        ))}
-      </div>
+      <div className="weekFrame">{renderNotes()}</div>
     </>
   )
 }

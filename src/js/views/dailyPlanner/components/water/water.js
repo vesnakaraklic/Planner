@@ -8,7 +8,7 @@ export default function Water({ water }) {
   const dispatch = useDispatch()
 
   const onChange = date => {
-    dispatch(waterActions.updateWater(date))
+    dispatch(waterActions.changeWater(date))
   }
 
   return (

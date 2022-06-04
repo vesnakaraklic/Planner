@@ -6,16 +6,18 @@ import {
   faHamburger
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { foodActions } from '../../../../store/actions/food.actions'
 import './food.scss'
 
 const Food = ({ food }) => {
   const dispatch = useDispatch()
+  const user = useSelector(state => state.user.user)
+  const dateReudx = useSelector(state => state.datePicker)
   const foodIcons = [faPizzaSlice, faHamburger, faFish, faMugHot]
 
   const onChangeInput = (value, key) => {
-    dispatch(foodActions.updateFood({ ...food, [key]: value }))
+    dispatch(foodActions.changeFood({ ...food, [key]: value }))
   }
 
   return (

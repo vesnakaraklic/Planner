@@ -1,12 +1,10 @@
 import { dataConstants } from './../constants/data.constants'
 import * as apiMoney from '../../api/money'
-import * as apiFood from '../../api/food'
-import * as apiWater from '../../api/water'
 import * as apiExercise from '../../api/exercise'
 import * as apiPlans from '../../api/plans'
 import * as apiPriorities from '../../api/priorities'
-import * as apiToDo from '../../api/toDo'
 import * as apiNote from '../../api/note'
+import * as apiUser from '../../api/users'
 
 const update = (collection, data, id = '') => {
   return dispatch => {
@@ -14,12 +12,6 @@ const update = (collection, data, id = '') => {
     switch (collection) {
       case 'money':
         apiMoney.createMoney(id, data)
-        break
-      case 'food':
-        apiFood.createFood(id, data)
-        break
-      case 'water':
-        apiWater.createWater(id, data)
         break
       case 'exercise':
         apiExercise.createExercise(id, data)
@@ -30,11 +22,14 @@ const update = (collection, data, id = '') => {
       case 'priorities':
         apiPriorities.createPriorities(id, data)
         break
-      case 'toDo':
-        apiToDo.createToDo(id, data)
-        break
       case 'note':
         apiNote.createNote(id, data)
+        break
+      case 'users':
+        apiUser
+          .updateUserProfile(data)
+          .then(() => dispatch({ type: dataConstants.DATA_UPDATE_SUCCESS }))
+          .catch(() => dispatch({ type: dataConstants.DATA_UPDATE_FAILURE }))
         break
 
       default:
@@ -42,7 +37,6 @@ const update = (collection, data, id = '') => {
     }
   }
 }
-
 export const dataActions = {
   update
 }

@@ -28,16 +28,21 @@ export default function DailyPlanner() {
   const onSaveDaily = () => {
     const date = getDateWithoutHours(dateRedux)
     dispatch(dataActions.update('money', { ...money }, user.uid + date))
-    dispatch(dataActions.update('food', { ...food }, user.uid + date))
+    // dispatch(dataActions.update('food', { ...food }, user.uid + date))
+    dispatch(foodActions.updateFood(user.uid + date, { ...food }))
+    // dispatch(
+    //   dataActions.update('water', { water: waterDrink.water }, user.uid + date)
+    // )
     dispatch(
-      dataActions.update('water', { water: waterDrink.water }, user.uid + date)
+      waterActions.updateWater(user.uid + date, { water: waterDrink.water })
     )
     dispatch(dataActions.update('plans', { ...plans }, user.uid + date))
     dispatch(dataActions.update('exercise', { ...exercise }, user.uid + date))
     dispatch(
       dataActions.update('priorities', { ...priorities }, user.uid + date)
     )
-    dispatch(dataActions.update('toDo', { ...toDo }, user.uid + date))
+    // dispatch(dataActions.update('toDo', { ...toDo }, user.uid + date))
+    dispatch(toDoActions.updateToDo(user.uid + date, { ...toDo }))
     dispatch(dataActions.update('note', { note: note.note }, user.uid + date))
   }
 

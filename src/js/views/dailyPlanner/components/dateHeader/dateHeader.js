@@ -83,8 +83,8 @@ export default function DateHeader({
 
   return (
     <>
-      <div className="dateForm">
-        {!displayDateAndNote && (
+      <div className={currentActive !== 4 ? 'dateForm' : 'hidden'}>
+        {!displayDateAndNote && currentActive === 2 && (
           <div className="optionFilter">
             <label className="labelFilter">Filter: </label>
             <select className="selectFilter">

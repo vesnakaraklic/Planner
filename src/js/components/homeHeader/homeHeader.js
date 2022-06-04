@@ -74,7 +74,7 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
           </div>
         </div>
         <DateHeader
-          displayDateAndNote={currentActive === 2 ? false : true}
+          displayDateAndNote={currentActive === 1 ? true : false}
           currentActive={currentActive}
           note={note}
         />
