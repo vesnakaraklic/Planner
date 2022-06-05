@@ -2,13 +2,13 @@
 
 @import './../../../../../../node_modules/react-datepicker/dist/react-datepicker.css';
 
-.dateForm {
+.date-form {
   border-bottom: 0.15vw solid $brown700;
   display: flex;
   font-weight: bold;
   align-items: flex-end;
 
-  .dateInputForm {
+  .date-input-form {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -17,7 +17,7 @@
       opacity: 0;
     }
 
-    .dateStyle {
+    .date-style {
       font-family: mv boli;
       padding-top: 3rem;
       padding-left: 0.625rem;
@@ -33,7 +33,7 @@
         font-size: 1vw;
       }
 
-      .buttonDatePicker {
+      .button-date-picker {
         position: absolute;
         right: 0%;
         bottom: 0.2vh;
@@ -53,7 +53,7 @@
         }
       }
 
-      .datePicker {
+      .date-picker {
         visibility: hidden;
         height: 0;
         padding: 0;
@@ -62,7 +62,7 @@
       }
     }
 
-    .noteContainer {
+    .note-container {
       padding-left: 0.625rem;
       border-width: 0 0 0.15vw;
       border-color: $brown700;
@@ -90,14 +90,14 @@
       }
     }
   }
-  .dateMain {
+  .date-main {
     display: flex;
     width: calc(100% - 21rem);
     justify-content: space-around;
     transform: translateY(3.5vh);
     align-items: center;
 
-    .dayName {
+    .day-name {
       text-align: center;
       color: $brown700;
       font-family: mv boli;
@@ -111,14 +111,14 @@
       color: $brown700;
     }
 
-    .arrowButton {
+    .arrow-button {
       background: transparent;
       border: none;
       cursor: pointer;
     }
   }
 
-  .inputWithoutBorders {
+  .input-without-borders {
     border-width: 0px;
     border: none;
     width: 20vw;
@@ -132,7 +132,7 @@
   }
 }
 
-.withWeek {
+.with-week {
   font-size: 3.3vh !important;
   font-family: mv boli;
   text-align: center;
@@ -140,17 +140,18 @@
   transform: translateY(2.5vh) !important;
 }
 
-.optionFilter {
+.option-filter {
   display: flex;
   width: 50.5vh;
 
-  .labelFilter {
+  .label-filter {
     font-size: 2.5vh;
     font-family: mv boli;
     justify-content: center;
     align-items: center;
+    color: $brown700;
   }
-  .selectFilter {
+  .select-filter {
     width: 21vh;
     background: #dcc4a3;
     text-align: center;
@@ -160,9 +161,6 @@
     margin-left: 2vh;
     border-radius: 2vh;
     font-weight: bold;
-
-    .optionFilter {
-    }
   }
 }
 

@@ -39,19 +39,19 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
 
   return (
     <>
-      <div className="homeHeaderWrapper">
-        <div className="switchButtonContainer">
+      <div className="home-header-wrapper">
+        <div className="switch-button-container">
           <Switchtab
             options={optionsArray}
             active={currentActive}
             setActive={setCurrentActive}
           />
-          <div className="dropdownContainer">
-            <button onClick={() => setOpen(!open)} className="dropbtn">
+          <div className="dropdown-container">
+            <button onClick={() => setOpen(!open)} className="drop-button">
               <FontAwesomeIcon icon={faListUl} />
             </button>
             {open && (
-              <div className="dropdownContent">
+              <div className="dropdown-content">
                 <button className="buttonInMenu" onClick={onProfileClick}>
                   Profile
                   <FontAwesomeIcon icon={faUser} />

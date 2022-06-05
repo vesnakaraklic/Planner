@@ -35,9 +35,9 @@ export default function ToDoList({ toDo }) {
 
   return (
     <>
-      <div className="checkboxForm">
+      <div className="checkbox-form">
         <div>
-          <div className="toDoHeader">
+          <div className="to-do-header">
             <p className="title">To Do List</p>
             <FlexibleButton
               onClick={onToDoAddClick}
@@ -47,11 +47,11 @@ export default function ToDoList({ toDo }) {
             />
           </div>
           <div className={toDo.toDo.length > 11 ? 'scroll' : ''}>
-            <div className={'toDoInput'}>
+            <div className={'to-do-input'}>
               {toDo?.toDo?.map(({ value, finished }, index) => (
                 <div key={index}>
                   <LineInput
-                    className="checkboxInput"
+                    className="checkbox-input "
                     withCheckbox={true}
                     onCheckChange={() => onCheckChangeToDo(index)}
                     isChecked={finished}

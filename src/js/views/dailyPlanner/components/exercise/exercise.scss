@@ -1,32 +1,48 @@
 @import './../../../../styles/variables.scss';
-.exerciseWrapper {
+.exercise-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
-  .exerciseContentContainer {
+  .exercise-content-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     height: 100%;
     width: 100%;
     position: relative;
-    .exerciseFormContainer {
+    .exercise-form-container {
       width: 70%;
       flex-direction: column;
       justify-content: flex-end;
       z-index: 10;
-      .exerciseFormTitle {
-        font-weight: bold;
-        margin-top: 1vh;
-        margin-bottom: 1.5vh;
-        font-size: 1vw;
-        color: $brown700;
-        font-family: mv boli;
+
+      .exercise-header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2vh;
+
+        .exercise-form-title {
+          font-weight: bold;
+          margin-top: 1vh;
+          margin-bottom: 1.5vh;
+          font-size: 1vw;
+          color: $brown700;
+          font-family: mv boli;
+        }
       }
-      .exerciseFormInputContainer {
+
+      .scroll-exercise {
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        height: 22vh;
+      }
+
+      .exercise-form-input-container {
         display: flex;
         margin: 0.17vw;
         width: 100%;
@@ -38,7 +54,7 @@
             font-size: 1vw;
           }
         }
-        .exerciseFormInput {
+        .exercise-form-input {
           border-width: 0px;
           border: none;
           flex: auto;
@@ -56,7 +72,7 @@
         }
       }
     }
-    .exerciseStepContainer {
+    .exercise-step-container {
       display: flex;
       flex-direction: column-reverse;
       height: 100%;
@@ -67,7 +83,7 @@
       padding-left: 3vw;
       top: 0;
       right: 0;
-      .exerciseStepInput {
+      .exercise-step-input {
         width: 22.5vh;
         height: 3vh;
         margin-top: 2vh;
@@ -81,7 +97,7 @@
           outline: 0.15vw solid $brown700;
         }
       }
-      .exerciseStepTitle {
+      .exercise-step-title {
         font-size: 1.2vw;
         font-weight: bold;
         font-family: mv boli;
@@ -91,19 +107,6 @@
       }
     }
   }
-}
-.exerciseHeader {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 2vh;
-}
-
-.scrollExercise {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  height: 22vh;
 }
 
 /* Track */

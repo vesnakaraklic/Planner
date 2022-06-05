@@ -10,7 +10,7 @@ export default function Switchtab({ options, active, setActive, buttonClass }) {
           return (
             <SmallButton
               className={`switchtab-button ${
-                active === option.key ? 'activeButton' : ''
+                active === option.key ? 'active-button' : ''
               } ${buttonClass}`}
               buttonName={option.label}
               onClick={() => setActive(option.key)}

@@ -1,11 +1,11 @@
 @import '/src/js/styles/variables.scss';
-.homeHeaderWrapper {
+.home-header-wrapper {
   width: 100%;
   height: 15vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  .switchButtonContainer {
+  .switch-button-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,19 +18,19 @@
     padding: 0.5vh 2vh;
     z-index: 10;
   }
-  .headerName {
+  .header-name {
     color: #f0e7d6;
     font-size: 1vw;
     font-family: mv boli;
   }
 
-  .dropdownContainer {
+  .dropdown-container {
     position: relative;
     display: inline-block;
     width: 19vh;
     text-align: right;
 
-    .dropbtn {
+    .drop-button {
       padding: 0;
       border: 0;
       cursor: pointer;
@@ -43,7 +43,7 @@
       }
     }
 
-    .dropdownContent {
+    .dropdown-content {
       position: absolute;
       border: 1px solid #e2d2b8;
       background: #e2d2b8;

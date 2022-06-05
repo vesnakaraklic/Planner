@@ -35,15 +35,15 @@ const Plans = ({ plans }) => {
 
   return (
     <>
-      <div className="plansWrapper">
+      <div className="plans-wrapper">
         <p className="title">Plans & Schedules</p>
         {Object.keys(plans).length > 0 &&
           Object.keys(plans).map((planKey, index) => (
-            <div key={index} className="planInput">
-              <label className="hourStyle">{hours[planKey]}</label>
+            <div key={index} className="plan-input">
+              <label className="hour-style">{hours[planKey]}</label>
               <LineInput
                 withCheckbox={false}
-                className="timeInput"
+                className="time-input"
                 type="text"
                 value={plans[planKey]}
                 onChange={e => onChangeInput(e.target.value, planKey)}

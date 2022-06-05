@@ -57,9 +57,9 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
 
   return (
     <>
-      <div className="moneyWrapper">
-        <div className="moneyForm first">
-          <label className="moneyLabel">Money In: </label>
+      <div className="money-wrapper">
+        <div className="money-form first">
+          <label className="money-label">Money In: </label>
           <input
             type={'text'}
             value={moneyIn}
@@ -69,13 +69,13 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
             onBlur={e => {
               onMoneyInputBlur('moneyIn', e.target.value)
             }}
-            className="moneyField input"
+            className="money-field input"
             maxLength={10}
           />
-          <FontAwesomeIcon icon={faDollarSign} className="dolarIcon" />
+          <FontAwesomeIcon icon={faDollarSign} className="dolar-icon" />
         </div>
-        <div className="moneyForm second">
-          <label className="moneyLabel">Money Out: </label>
+        <div className="money-form second">
+          <label className="money-label">Money Out: </label>
           <input
             type={'text'}
             maxLength={10}
@@ -86,14 +86,14 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
             onBlur={e => {
               onMoneyInputBlur('moneyOut', e.target.value)
             }}
-            className="moneyField input"
+            className="money-field input"
           ></input>
-          <FontAwesomeIcon icon={faDollarSign} className="dolarIcon" />
+          <FontAwesomeIcon icon={faDollarSign} className="dolar-icon" />
         </div>
-        <div className="moneyForm third">
-          <label className="moneyLabel">Total: </label>
-          <label className="moneyField">{result}</label>{' '}
-          <FontAwesomeIcon icon={faDollarSign} className="dolarIcon" />
+        <div className="money-form third">
+          <label className="money-label">Total: </label>
+          <label className="money-field">{result}</label>{' '}
+          <FontAwesomeIcon icon={faDollarSign} className="dolar-icon" />
         </div>
       </div>
     </>

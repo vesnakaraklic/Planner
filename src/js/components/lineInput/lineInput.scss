@@ -1,6 +1,6 @@
 @import './../../styles/variables.scss';
 
-.lineInput {
+.linenput {
   border-width: 0px;
   border: none;
   width: 255px;
@@ -9,7 +9,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.timeInput {
+.time-input {
   border-width: 0px;
   border: none;
   font-size: 1.6vh;
@@ -27,7 +27,7 @@
   }
 }
 
-.checkboxFrame {
+.checkbox-frame {
   border: 0.15vw solid $brown700;
   height: 1vw;
   width: 1vw;
@@ -41,7 +41,7 @@
     font-size: 1vw;
   }
 }
-.checkboxInput {
+.checkbox-input {
   margin-bottom: 0;
   border-width: 0px;
   border: none;
@@ -60,10 +60,10 @@
   }
 }
 
-.iconStyle {
+.icon-style {
   color: $brown700;
 }
 
-.checkedText {
+.checked-text {
   text-decoration: line-through;
 }

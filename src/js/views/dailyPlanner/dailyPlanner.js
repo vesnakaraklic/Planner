@@ -52,24 +52,24 @@ export default function DailyPlanner() {
 
   return (
     <>
-      <div className="dailyPlannerWrapper">
+      <div className="daily-planner-wrapper">
         <Plans plans={plans} />
-        <div className="rightContainer">
-          <div className="rightTopContainer">
-            <div className="waterFodContainer">
+        <div className="right-container">
+          <div className="right-top-container">
+            <div className="water-food-container">
               <Water water={waterDrink} />
               <Food food={food} />
             </div>
             <Money moneyIn={money.moneyIn} moneyOut={money.moneyOut} />
           </div>
-          <div className="rightBottomContainer">
+          <div className="right-bottom-container">
             <ToDoList toDo={toDo} />
-            <div className="exerciseContainer">
+            <div className="exercise-container">
               <Exercise exercise={exercise} />
             </div>
           </div>
         </div>
-        <button className="saveBtn" onClick={onSaveDaily}>
+        <button className="save-button" onClick={onSaveDaily}>
           Save
         </button>
       </div>

@@ -32,11 +32,11 @@ export default function Exercise({ exercise }) {
 
   return (
     <>
-      <div className="exerciseWrapper">
-        <div className="exerciseContentContainer">
-          <div className="exerciseFormContainer">
-            <div className="exerciseHeader">
-              <label className="exerciseFormTitle">Exercise & Health </label>
+      <div className="exercise-wrapper">
+        <div className="exercise-content-container ">
+          <div className="exercise-form-container">
+            <div className="exercise-header ">
+              <label className="exercise-form-title">Exercise & Health </label>
 
               <FlexibleButton
                 onClick={onExerciseAddClick}
@@ -47,10 +47,10 @@ export default function Exercise({ exercise }) {
             </div>
 
             <div
-              className={exercise.exercises.length > 7 ? 'scrollExercise' : ''}
+              className={exercise.exercises.length > 7 ? 'scroll-exercise' : ''}
             >
               {exercise?.exercises?.map((exerciseValue, index) => (
-                <div key={index} className="exerciseFormInputContainer">
+                <div key={index} className="exercise-form-input-container">
                   <span>
                     <FontAwesomeIcon
                       icon={faVolleyballBall}
@@ -59,7 +59,7 @@ export default function Exercise({ exercise }) {
                   </span>
                   <input
                     type={'text'}
-                    className="exerciseFormInput"
+                    className="exercise-form-input"
                     value={exerciseValue}
                     onChange={e => onChangeInput(e.target.value, index)}
                   />
@@ -76,14 +76,14 @@ export default function Exercise({ exercise }) {
               ))}
             </div>
           </div>
-          <div className="exerciseStepContainer">
+          <div className="exercise-step-container">
             <input
               type={'number'}
               value={exercise.steps}
-              className="exerciseStepInput"
+              className="exercise-step-input"
               onChange={e => onChangeSteps(e.target.value)}
             ></input>
-            <label className="exerciseStepTitle">Steps</label>
+            <label className="exercise-step-title">Steps</label>
           </div>
         </div>
       </div>

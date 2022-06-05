@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import WeeklyStickyNote from '../../components/weeklyStickyNote/weeklyStickyNote'
 import getDateWithoutHours from '../../utils/getDateWithoutHours'
 import getWeekFromDate from '../../utils/getWeekFromDate'
-import './weeklyPlanner.scss'
 import { weekDaysActions } from '../../store/actions/weekDays.action'
+import './weeklyPlanner.scss'
 const NUMBER_OF_NOTES = 7
 
 export default function WeeklyPlanner() {
@@ -69,7 +69,7 @@ export default function WeeklyPlanner() {
 
   return (
     <>
-      <div className="weekFrame">{renderNotes()}</div>
+      <div className="week-frame">{renderNotes()}</div>
     </>
   )
 }

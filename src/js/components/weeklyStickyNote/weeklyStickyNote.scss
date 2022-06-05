@@ -1,12 +1,13 @@
-.dayofWeekStyle {
+@import '/src//js/styles/variables.scss';
+.day-of-week {
   position: relative;
-  width: 33vh;
-  height: 32vh;
+  width: 35vh;
+  height: 35vh;
   margin: 1px;
   background: url('./../../assets/images/—Pngtree—sticker\ grid\ notes\ cute\ theme_6966109.png');
   background-size: cover;
 
-  .dayTitle {
+  .day-title {
     position: absolute;
     text-align: center;
     font-family: mv boli;
@@ -17,11 +18,69 @@
     left: 2vh;
   }
 
-  .dateStyle {
+  .date-style {
     position: absolute;
     font-size: 7.4vh;
     left: 1.5vh;
     font-family: mv boli;
     color: #ab1e00;
+  }
+
+  .content {
+    position: absolute;
+    left: 8vh;
+    top: 16vh;
+    font-family: mv boli;
+    width: 19.5vh;
+    font-size: 2vh;
+    overflow-wrap: anywhere;
+
+    .done {
+      text-decoration: line-through;
+    }
+
+    .first-letter-style {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      &.brown-border-bottom {
+        border-bottom: 0.1vw dashed $brown700;
+      }
+      .letter-color {
+        color: #ab1e00;
+        margin-right: 1vh;
+      }
+
+      .hour-style {
+        color: #ab1e00;
+        margin-right: 0.5vh;
+        // font-size: 1vw;
+        font-size: 1.5vh;
+      }
+
+      .text_size_plans {
+        // font-size: 1.2vw;
+        font-size: 1.7vh;
+      }
+
+      .text_size {
+        font-size: 1.9vh;
+      }
+
+      .center-money {
+        margin-left: 2vh;
+      }
+    }
+  }
+
+  .scroll-for-sticky {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    // overflow-x: auto;
+    height: 13vh;
+  }
+
+  .money_position {
+    margin-top: 3vh;
   }
 }

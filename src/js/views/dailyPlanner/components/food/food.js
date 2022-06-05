@@ -22,17 +22,17 @@ const Food = ({ food }) => {
 
   return (
     <>
-      <div className="foodForm">
+      <div className="food-form">
         {Object.keys(food).length > 0 &&
           Object.keys(food).map((foodKey, index) => (
-            <div key={index} className="foodBorder">
-              <FontAwesomeIcon className="mealIcon" icon={foodIcons[index]} />
+            <div key={index} className="food-border">
+              <FontAwesomeIcon className="meal-icon" icon={foodIcons[index]} />
               <input
                 type={'text'}
                 value={food[foodKey]}
                 maxLength={15}
                 placeholder={foodKey}
-                className="mealInput"
+                className="meal-input"
                 onChange={e => onChangeInput(e.target.value, foodKey)}
               />
             </div>

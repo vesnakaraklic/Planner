@@ -88,15 +88,15 @@ export default function DateHeader({
 
   return (
     <>
-      <div className={currentActive !== 4 ? 'dateForm' : 'hidden'}>
+      <div className={currentActive !== 4 ? 'date-form' : 'hidden'}>
         {!displayDateAndNote && currentActive === 2 && (
-          <div className="optionFilter">
-            <label className="labelFilter">Filter: </label>
+          <div className="option-filter">
+            <label className="label-filter">Filter: </label>
             <select
-              className="selectFilter"
+              className="select-filter"
               onChange={e => onFilterChange(e.target.value)}
             >
-              <option value="food" className="optionStyle">
+              <option defaultValue="food" value="food" className="optionStyle">
                 Food
               </option>
               <option value="toDo" className="optionStyle">
@@ -108,6 +108,9 @@ export default function DateHeader({
               <option value="money" className="optionStyle">
                 Money
               </option>
+              <option value="plans" className="optionStyle">
+                Plans
+              </option>
             </select>
           </div>
         )}
@@ -115,39 +118,42 @@ export default function DateHeader({
         {displayDateAndNote && (
           <div
             // className={`dateInputForm ${displayDateAndNote ? '' : 'hidden'}`}
-            className="dateInputForm"
+            className="date-input-form"
           >
-            <div className="dateStyle">
+            <div className="date-style">
               {' '}
               <p>
                 Date: {getMonthFromDate(date)} {date.getDate()} ,{' '}
                 {date.getFullYear()}
               </p>
-              <button onClick={onClickDatePicker} className="buttonDatePicker">
+              <button
+                onClick={onClickDatePicker}
+                className="button-date-picker"
+              >
                 <FontAwesomeIcon icon={faCalendarCheck} />
               </button>
               <DatePicker
                 selected={new Date(dateRedux)}
                 open={clicked}
                 onChange={selectedDate => onChangeDatePicker(selectedDate)}
-                className="datePicker"
+                className="date-picker"
               />
             </div>
-            <div className="noteContainer">
+            <div className="note-container">
               <p>Note:</p>
               <input
                 type="text"
                 value={note}
                 onChange={e => onChangeNote(e.target.value)}
-                className="inputWithoutBorders"
+                className="input-without-borders"
               />
             </div>
           </div>
         )}
 
-        <div className={`dateMain ${currentActive === 2 ? 'withWeek' : ''}`}>
+        <div className={`date-main ${currentActive === 2 ? 'with-week' : ''}`}>
           <button
-            className="arrowButton"
+            className="arrow-button"
             onClick={
               currentActive === 1
                 ? onClickLeftArrowDaily
@@ -157,7 +163,7 @@ export default function DateHeader({
             <FontAwesomeIcon icon={faAngleLeft} />
           </button>
           {currentActive === 1 && (
-            <p className="dayName">{getDayFromDate(date)}</p>
+            <p className="day-name">{getDayFromDate(date)}</p>
           )}
 
           {currentActive === 2 && (
@@ -176,7 +182,7 @@ export default function DateHeader({
           )}
 
           <button
-            className="arrowButton"
+            className="arrow-button"
             onClick={
               currentActive === 1
                 ? onClickRightArrowDaily
