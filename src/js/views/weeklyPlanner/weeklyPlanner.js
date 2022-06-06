@@ -7,7 +7,7 @@ import { weekDaysActions } from '../../store/actions/weekDays.action'
 import './weeklyPlanner.scss'
 const NUMBER_OF_NOTES = 7
 
-export default function WeeklyPlanner() {
+export default function WeeklyPlanner({ setCurrentActive }) {
   let arrayOfIdsForCurrentDate = []
   const [datesSticky, setDatesSticky] = useState({})
 
@@ -25,7 +25,6 @@ export default function WeeklyPlanner() {
     'Saturday',
     'Sunday'
   ]
-
   const renderNotes = () => {
     const notes = []
     let i = 0
@@ -36,12 +35,19 @@ export default function WeeklyPlanner() {
           <WeeklyStickyNote
             day={days[i]}
             date={selectedDate}
-            content={weekDays.days[getDateWithoutHours(selectedDate)]}
+            setCurrentActive={setCurrentActive}
+            content={
+              weekDays.days[getDateWithoutHours(selectedDate)] ?? {
+                type: weekDays.filter?.value,
+                value: {}
+              }
+            }
           />
         </div>
       )
       i++
     }
+
     return notes
   }
 
@@ -60,12 +66,12 @@ export default function WeeklyPlanner() {
     }
     dispatch(
       weekDaysActions.getWeekByDaysIds(
-        weekDays.filter,
+        weekDays.filter?.value,
         arrayOfIdsForCurrentDate,
         user.uid
       )
     )
-  }, [datesSticky, weekDays.filter])
+  }, [datesSticky, weekDays.filter?.value])
 
   return (
     <>

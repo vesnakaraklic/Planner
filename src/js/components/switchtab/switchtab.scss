@@ -16,13 +16,13 @@
     }
 
     &.active-button {
-      background-color: #f0e7d6;
+      background-color: $button_pressed;
       color: $brown700;
       font-weight: bold;
     }
     &:hover {
       cursor: pointer;
-      background-color: #f0e7d6;
+      background-color: $button_pressed;
       color: $brown700;
       font-weight: bold;
     }

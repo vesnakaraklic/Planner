@@ -18,7 +18,9 @@ export default function Home() {
 
         <div className="view-container">
           {currentActive === 1 && <DailyPlanner />}
-          {currentActive === 2 && <WeeklyPlanner />}
+          {currentActive === 2 && (
+            <WeeklyPlanner setCurrentActive={setCurrentActive} />
+          )}
           {currentActive === 3 && <DatePicker />}
         </div>
       </div>

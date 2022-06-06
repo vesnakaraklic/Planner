@@ -1,4 +1,5 @@
 @import '/src/js/styles/variables.scss';
+
 .home-header-wrapper {
   width: 100%;
   height: 15vh;
@@ -19,7 +20,7 @@
     z-index: 10;
   }
   .header-name {
-    color: #f0e7d6;
+    color: $button_pressed;
     font-size: 1vw;
     font-family: mv boli;
   }
@@ -37,7 +38,7 @@
       background-color: transparent;
 
       & > svg {
-        color: #f0e7d6;
+        color: $button_pressed;
         width: 3vh;
         height: 4vh;
       }
@@ -45,13 +46,13 @@
 
     .dropdown-content {
       position: absolute;
-      border: 1px solid #e2d2b8;
-      background: #e2d2b8;
+      border: 1px solid $brown250;
+      background: $brown250;
       height: 10vh;
       width: 19vh;
 
       & button {
-        background-color: #e2d2b8;
+        background-color: $brown250;
         width: 100%;
         cursor: pointer;
         border: none;
@@ -69,7 +70,7 @@
         }
 
         &:hover {
-          background-color: #d2bc9a;
+          background-color: $dropdown_hover;
         }
       }
 

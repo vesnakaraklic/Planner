@@ -2,7 +2,7 @@ import { weekDaysConstants } from '../constants/weekDays.constants'
 
 const initialState = {
   days: {},
-  filter: 'food'
+  filter: { value: 'food', label: 'Food' }
 }
 
 export const weekDays = (state = initialState, action) => {

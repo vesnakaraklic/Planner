@@ -51,7 +51,7 @@ export default function ToDoList({ toDo }) {
               {toDo?.toDo?.map(({ value, finished }, index) => (
                 <div key={index}>
                   <LineInput
-                    className="checkbox-input "
+                    className="checkbox-input"
                     withCheckbox={true}
                     onCheckChange={() => onCheckChangeToDo(index)}
                     isChecked={finished}

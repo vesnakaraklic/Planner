@@ -18,6 +18,7 @@ import getNextDate from '../../../../utils/getNextDate'
 import getPreviousDate from '../../../../utils/getPreviousDate'
 import getPreviousMonday from '../../../../utils/getPreviousMonday'
 import getWeekFromDate from '../../../../utils/getWeekFromDate'
+import Select from 'react-select'
 import './dateHeader.scss'
 
 export default function DateHeader({
@@ -30,6 +31,15 @@ export default function DateHeader({
   const [clicked, setClicked] = useState(false)
   const dispatch = useDispatch()
   const [week, setWeek] = useState({})
+  const selected = useSelector(state => state.weekDays.filter)
+
+  const options = [
+    { value: 'food', label: 'Food' },
+    { value: 'money', label: 'Money' },
+    { value: 'exercise', label: 'Exercise' },
+    { value: 'toDo', label: 'To Do' },
+    { value: 'plans', label: 'Plans' }
+  ]
 
   const onClickDatePicker = () => {
     setClicked(!clicked)
@@ -56,7 +66,7 @@ export default function DateHeader({
     )
     dispatch(
       dateActions.updateDate(
-        new Date(getNextDate(getDateWithoutHours(Object.values(week)[6])))
+        getNextDate(getDateWithoutHours(Object.values(week)[6]))
       )
     )
   }
@@ -73,12 +83,13 @@ export default function DateHeader({
     )
     dispatch(
       dateActions.updateDate(
-        new Date(getPreviousMonday(getDateWithoutHours(Object.values(week)[0])))
+        getPreviousMonday(getDateWithoutHours(Object.values(week)[0]))
       )
     )
   }
 
   const onFilterChange = value => {
+    console.log('value', selected)
     dispatch(weekDaysActions.changeFilter(value))
   }
 
@@ -92,26 +103,12 @@ export default function DateHeader({
         {!displayDateAndNote && currentActive === 2 && (
           <div className="option-filter">
             <label className="label-filter">Filter: </label>
-            <select
+            <Select
+              value={selected}
               className="select-filter"
-              onChange={e => onFilterChange(e.target.value)}
-            >
-              <option defaultValue="food" value="food" className="optionStyle">
-                Food
-              </option>
-              <option value="toDo" className="optionStyle">
-                To Do
-              </option>
-              <option value="exercise" className="optionStyle">
-                Exercise
-              </option>
-              <option value="money" className="optionStyle">
-                Money
-              </option>
-              <option value="plans" className="optionStyle">
-                Plans
-              </option>
-            </select>
+              onChange={selectedValue => onFilterChange(selectedValue)}
+              options={options}
+            />
           </div>
         )}
 

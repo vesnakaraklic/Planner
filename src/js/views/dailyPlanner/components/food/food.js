@@ -30,7 +30,7 @@ const Food = ({ food }) => {
               <input
                 type={'text'}
                 value={food[foodKey]}
-                maxLength={15}
+                maxLength={30}
                 placeholder={foodKey}
                 className="meal-input"
                 onChange={e => onChangeInput(e.target.value, foodKey)}

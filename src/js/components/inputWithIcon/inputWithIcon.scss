@@ -29,10 +29,10 @@
     border-radius: 0px 5px 5px 0px;
     font-size: 1.5vh;
     width: calc(100% - 5vh);
-    background-color: $bck100;
+    background-color: $field_input_bck;
     position: relative;
     &:invalid {
-      border-color: $turquoise200;
+      border-color: $brown500;
     }
 
     &:focus-visible {

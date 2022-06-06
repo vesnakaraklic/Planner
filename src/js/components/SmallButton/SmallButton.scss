@@ -5,9 +5,9 @@
   width: 5vw;
   background-color: $brown700;
   border-radius: 0.7vw;
-  border: 0.15vw solid #f0e7d6;
+  border: 0.15vw solid $button_pressed;
   box-sizing: border-box;
-  color: #f0e7d6;
+  color: $button_pressed;
   cursor: pointer;
   font-size: 0.9vw;
   font-weight: 500;

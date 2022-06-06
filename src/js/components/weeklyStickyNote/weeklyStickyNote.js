@@ -1,25 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { faPencilAlt } from '@fortawesome/fontawesome-free-solid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { dateActions } from '../../store/actions/date.actions'
+import getDateWithoutHours from '../../utils/getDateWithoutHours'
 import './weeklyStickyNote.scss'
 
-export default function WeeklyStickyNote({ date, day, content = false }) {
+export default function WeeklyStickyNote({
+  date,
+  day,
+  content = {},
+  setCurrentActive
+}) {
+  const dispatch = useDispatch()
+
   function renderFood(data) {
     return (
-      <div className="content">
+      <div className={`content ${'food-content'} `}>
         <div className="first-letter-style">
-          <label className="letter-color">B: </label>
-          <label>{data.breakfast}</label>
+          <label className="letter-color">B </label>
+          <label>{data?.breakfast}</label>
         </div>
         <div className="first-letter-style">
-          <label className="letter-color">L: </label>
-          <label>{data.lunch}</label>
+          <label className="letter-color">L </label>
+          <label>{data?.lunch}</label>
         </div>
         <div className="first-letter-style">
-          <label className="letter-color">D: </label>
-          <label>{data.dinner}</label>
+          <label className="letter-color">D </label>
+          <label>{data?.dinner}</label>
         </div>
         <div className="first-letter-style">
-          <label className="letter-color">S: </label>
-          <label>{data.snack}</label>
+          <label className="letter-color">S </label>
+          <label>{data?.snack}</label>
         </div>
       </div>
     )
@@ -27,14 +40,16 @@ export default function WeeklyStickyNote({ date, day, content = false }) {
 
   function renderMoney(data) {
     return (
-      <div className={`content ${'money_position'}`}>
+      <div className={`content ${'money-position'}`}>
         <div className="first-letter-style">
-          <label className="letter-color">In: </label>
-          <label className="center-money">{data.moneyIn}</label>
+          <label className="letter-color font-size-steps">In: </label>
+          <label className="data-color center-money">
+            {data?.moneyIn ?? 0}$
+          </label>
         </div>
         <div className="first-letter-style">
-          <label className="letter-color">Out: </label>
-          <label>{data.moneyOut}</label>
+          <label className="letter-color font-size-steps">Out: </label>
+          <label className="data-color">{data?.moneyOut ?? 0}$</label>
         </div>
       </div>
     )
@@ -44,15 +59,15 @@ export default function WeeklyStickyNote({ date, day, content = false }) {
     return (
       <div
         className={`content ${
-          data.exercises.length > 4 ? 'scroll-for-sticky' : ''
+          data?.exercises?.length > 4 ? 'scroll-for-sticky' : ''
         }`}
       >
         <div className="first-letter-style">
-          <label className="letter-color">Steps: </label>
-          <label>{data.steps}</label>
+          <label className="letter-color font-size-steps">Steps: </label>
+          <label className="data-color">{data.steps ? data.steps : '0'}</label>
         </div>
-        {/* <div className="steps">Steps: {data.steps}</div> */}
-        {data.exercises.map(
+        {/* <div className="steps">Steps: {data?.steps}</div> */}
+        {data?.exercises?.map(
           (el, index) =>
             el !== '' && (
               <div key={el + index} className="first-letter-style">
@@ -83,9 +98,11 @@ export default function WeeklyStickyNote({ date, day, content = false }) {
 
       //bez odradjenih to do
       <div
-        className={`content ${data.toDo.length > 4 ? 'scroll-for-sticky' : ''}`}
+        className={`content ${
+          data?.toDo?.length > 4 ? 'scroll-for-sticky' : ''
+        }`}
       >
-        {data.toDo.map(
+        {data?.toDo?.map(
           (el, index) =>
             el.value !== '' &&
             !el.finished && (
@@ -124,14 +141,10 @@ export default function WeeklyStickyNote({ date, day, content = false }) {
     }
 
     return (
-      <div
-        className={`content ${
-          Object.keys(data).length > 4 ? 'scroll-for-sticky' : ''
-        }`}
-      >
+      <div className="content plans-content">
         {Object.keys(plans).map(
           key =>
-            data[key] !== '' && (
+            data[key] && (
               <div
                 key={key}
                 className={
@@ -139,8 +152,9 @@ export default function WeeklyStickyNote({ date, day, content = false }) {
                   (content.type === 'plans' ? 'brown-border-bottom' : '')
                 }
               >
+                {console.log('lllll', data?.[key])}
                 <label className="hour-style">{plans[key]}</label>
-                <label className="text_size_plans">{data[key]}</label>
+                <label className="text_size_plans">{data?.[key]}</label>
               </div>
             )
         )}
@@ -149,26 +163,39 @@ export default function WeeklyStickyNote({ date, day, content = false }) {
   }
 
   function renderContent() {
-    if (content) {
-      switch (content.type) {
-        case 'food':
-          return renderFood(content.value)
-        case 'money':
-          return renderMoney(content.value)
-        case 'exercise':
-          return renderExercise(content.value)
-        case 'toDo':
-          return renderToDo(content.value)
-        case 'plans':
-          return renderPlans(content.value)
-      }
+    switch (content?.type) {
+      case 'food':
+        return renderFood(content?.value)
+      case 'money':
+        return renderMoney(content?.value)
+      case 'exercise':
+        return renderExercise(content?.value)
+      case 'toDo':
+        return renderToDo(content?.value)
+      case 'plans':
+        return renderPlans(content?.value)
     }
   }
+
+  const onEditClick = () => {
+    console.log('On click', date, getDateWithoutHours(date))
+    dispatch(dateActions.updateDate(getDateWithoutHours(date)))
+    setCurrentActive && setCurrentActive(1)
+  }
+
+  useEffect(() => {
+    console.log('Content', content)
+  }, [])
 
   return (
     <div className="day-of-week">
       <div className="date-style">{date?.getDate()} </div>
       <div className="day-title">{day}</div>
+
+      <button onClick={() => onEditClick()} className="edit-button">
+        <FontAwesomeIcon className="pencil" icon={faPencilAlt} />
+      </button>
+
       {renderContent()}
     </div>
   )

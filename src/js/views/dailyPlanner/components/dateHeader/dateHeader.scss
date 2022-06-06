@@ -37,7 +37,7 @@
         position: absolute;
         right: 0%;
         bottom: 0.2vh;
-        border: 0.15vw solid #4f0200;
+        border: 0.15vw solid $brown700;
         border-radius: 0.4vw;
         background-color: transparent;
         cursor: pointer;
@@ -155,12 +155,13 @@
     width: 21vh;
     background: #dcc4a3;
     text-align: center;
-    color: #4f0200;
+    color: $brown700;
     font-family: mv boli;
     font-size: 1.5vh;
     margin-left: 2vh;
     border-radius: 2vh;
     font-weight: bold;
+    border-color: #b3966b;
   }
 }
 
@@ -184,12 +185,12 @@
 .react-datepicker__month-read-view--down-arrow,
 .react-datepicker__month-year-read-view--down-arrow,
 .react-datepicker__navigation-icon::before {
-  border-color: #4f0200 !important;
+  border-color: $brown700 !important;
 }
 
 .react-datepicker__header {
-  background-color: #f0e7d6 !important;
-  border-bottom: 1px solid #4f0200 !important;
+  background-color: $button_pressed !important;
+  border-bottom: 1px solid $brown700 !important;
 }
 
 .react-datepicker {
@@ -209,14 +210,14 @@
 .react-datepicker__year-text--selected,
 .react-datepicker__year-text--in-selecting-range,
 .react-datepicker__year-text--in-range {
-  background-color: #4f0200 !important;
+  background-color: $brown700 !important;
 }
 
 .react-datepicker-popper[data-placement^='bottom']
   .react-datepicker__triangle::before {
   top: 0px;
   left: -3px;
-  border-bottom-color: #4f0200 !important;
+  border-bottom-color: $brown700 !important;
 }
 
 .react-datepicker-popper[data-placement^='bottom']
@@ -224,12 +225,12 @@
 .react-datepicker-popper[data-placement^='bottom']
   .react-datepicker__triangle::after {
   border-top: none;
-  border-bottom-color: #4f0200 !important;
+  border-bottom-color: $brown700 !important;
 }
 
 .react-datepicker-popper[data-placement^='bottom']
   .react-datepicker__triangle::before {
-  border-bottom-color: #4f0200 !important;
+  border-bottom-color: $brown700 !important;
   left: 3px !important;
 }
 
@@ -263,4 +264,74 @@
 }
 .react-datepicker-popper[data-placement^='bottom'] {
   padding-top: 0px !important;
+}
+
+.react-select__menu {
+  background-color: pink;
+}
+
+.css-1s2u09g-control {
+  background-color: #fff6ee !important;
+  border-color: hsl(0deg 100% 15%) !important;
+  border-radius: 3vh !important;
+}
+
+.css-14el2xx-placeholder {
+  color: hsl(0deg 100% 15%) !important;
+}
+
+.css-6j8wv5-Input {
+  color: hsl(0deg 100% 15%) !important;
+}
+
+.css-1okebmr-indicatorSeparator {
+  background-color: hsl(0deg 100% 15%) !important;
+}
+
+.css-tlfecz-indicatorContainer {
+  color: hsl(0deg 100% 15%) !important;
+}
+
+.css-1s2u09g-control:hover {
+  border-color: hsl(21deg 34% 69%) !important;
+}
+
+.css-1pahdxg-control:hover {
+  border-color: #cda996a3 !important;
+}
+
+.css-1pahdxg-control {
+  background-color: #fff6ee !important;
+  box-shadow: 0 0 0 1px $brown700 !important;
+  border: $brown700 !important;
+}
+
+.css-3191ph-ValueContainer {
+  background-color: #fff6ee !important;
+}
+
+.css-2613qy-menu {
+  background-color: #fff6ee !important;
+}
+.css-26l3qy-menu {
+  box-shadow: none !important;
+  background-color: transparent !important;
+  .css-4ljt47-MenuList {
+    background-color: #fff6ee !important;
+    border-radius: 1.2vh !important;
+    border: 0.1vw solid #5f1715 !important;
+    .css-1n7v3ny-option {
+      background-color: #cda996 !important;
+      color: #fff6ee !important;
+    }
+  }
+}
+
+.css-9gakcf-option {
+  background-color: #cca895 !important;
+}
+
+.css-26l3qy-menu .css-4ljt47-MenuList .css-1n7v3ny-option {
+  background-color: #b986706e !important;
+  color: #fff6ee !important;
 }
