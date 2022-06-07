@@ -1,6 +1,6 @@
 @import './../../../../styles/variables.scss';
 
-.plansWrapper {
+.plans-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,12 +16,12 @@
     font-family: mv boli;
     color: $brown700;
   }
-  .planInput {
+  .plan-input {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    .hourStyle {
+    .hour-style {
       margin: 0 0.5rem 0 0.5rem;
       color: $brown700;
       font-family: mv boli;

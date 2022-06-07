@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import "@fortawesome/fontawesome-free-solid";
-import { faCheck } from "@fortawesome/fontawesome-free-solid";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./lineInput.scss";
+import React, { useEffect, useState } from 'react'
+import '@fortawesome/fontawesome-free-solid'
+import { faCheck } from '@fortawesome/fontawesome-free-solid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import './lineInput.scss'
 
 export default function LineInput({
   withCheckbox,
@@ -10,37 +10,37 @@ export default function LineInput({
   onCheckChange,
   className,
   onChange,
-  value = "",
+  value = ''
 }) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('')
 
   useEffect(() => {
-    setInputValue(value);
-  }, [value]);
+    setInputValue(value)
+  }, [value])
 
   const onCheckHandle = () => {
-    onCheckChange && onCheckChange();
-  };
+    onCheckChange && onCheckChange()
+  }
 
-  const onChangeHandler = (event) => {
-    setInputValue(event.target.value);
-    onChange && onChange(event);
-  };
+  const onChangeHandler = event => {
+    setInputValue(event.target.value)
+    onChange && onChange(event)
+  }
 
   return (
     <>
       {withCheckbox && (
-        <div className="checkboxFrame" onClick={() => onCheckHandle()}>
+        <div className="checkbox-frame" onClick={() => onCheckHandle()}>
           {isChecked && (
-            <FontAwesomeIcon className="iconStyle" icon={faCheck} />
+            <FontAwesomeIcon className="icon-style" icon={faCheck} />
           )}
         </div>
       )}
       <input
         value={inputValue}
-        className={`${className} ${isChecked ? "checkedText" : ""} `}
+        className={`${className} ${isChecked ? 'checked-text' : ''} `}
         onChange={onChangeHandler}
       ></input>
     </>
-  );
+  )
 }

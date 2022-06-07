@@ -8,18 +8,18 @@ export default function Water({ water }) {
   const dispatch = useDispatch()
 
   const onChange = date => {
-    dispatch(waterActions.updateWater(date))
+    dispatch(waterActions.changeWater(date))
   }
 
   return (
     <>
-      <div className="waterWrapper">
-        <div className="waterImageContainer">
+      <div className="water-wrapper">
+        <div className="water-image-container">
           {waterImage.map(image => {
             if (waterImage[image] < water.water) {
-              return <div key={'Key' + image} className="waterFilled" />
+              return <div key={'Key' + image} className="water-filled" />
             } else {
-              return <div key={image} className="waterImage" />
+              return <div key={image} className="water-image" />
             }
           })}
         </div>
@@ -28,7 +28,7 @@ export default function Water({ water }) {
           min={0}
           max={10}
           step={1}
-          className="waterSlider"
+          className="water-slider"
           value={water.water}
           onChange={e => onChange(e.target.value)}
         />

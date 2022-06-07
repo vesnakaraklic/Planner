@@ -6,31 +6,33 @@ import {
   faHamburger
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { foodActions } from '../../../../store/actions/food.actions'
 import './food.scss'
 
 const Food = ({ food }) => {
   const dispatch = useDispatch()
+  const user = useSelector(state => state.user.user)
+  const dateReudx = useSelector(state => state.datePicker)
   const foodIcons = [faPizzaSlice, faHamburger, faFish, faMugHot]
 
   const onChangeInput = (value, key) => {
-    dispatch(foodActions.updateFood({ ...food, [key]: value }))
+    dispatch(foodActions.changeFood({ ...food, [key]: value }))
   }
 
   return (
     <>
-      <div className="foodForm">
+      <div className="food-form">
         {Object.keys(food).length > 0 &&
           Object.keys(food).map((foodKey, index) => (
-            <div key={index} className="foodBorder">
-              <FontAwesomeIcon className="mealIcon" icon={foodIcons[index]} />
+            <div key={index} className="food-border">
+              <FontAwesomeIcon className="meal-icon" icon={foodIcons[index]} />
               <input
                 type={'text'}
                 value={food[foodKey]}
-                maxLength={15}
+                maxLength={30}
                 placeholder={foodKey}
-                className="mealInput"
+                className="meal-input"
                 onChange={e => onChangeInput(e.target.value, foodKey)}
               />
             </div>

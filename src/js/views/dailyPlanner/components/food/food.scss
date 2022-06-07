@@ -1,10 +1,10 @@
 @import './../../../../styles/variables.scss';
-.foodForm {
+.food-form {
   display: flex;
   flex-wrap: wrap;
   width: 80%;
 
-  .foodBorder {
+  .food-border {
     padding-bottom: 2vh;
     width: 50%;
     box-sizing: border-box;
@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
 
-    .mealIcon {
+    .meal-icon {
       padding-left: 0.7vw;
       font-family: cursive;
       font-size: 1.5vw;
@@ -20,7 +20,7 @@
       margin-right: 0.5vw;
     }
 
-    .mealInput {
+    .meal-input {
       border: none;
       font-size: 1vw;
       text-align: center;

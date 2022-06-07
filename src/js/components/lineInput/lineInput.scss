@@ -1,6 +1,6 @@
 @import './../../styles/variables.scss';
 
-.lineInput {
+.line-input {
   border-width: 0px;
   border: none;
   width: 255px;
@@ -9,12 +9,12 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.timeInput {
+.time-input {
   border-width: 0px;
   border: none;
   font-size: 1.6vh;
   height: 70%;
-  border-bottom: 0.1vw solid #4f0000;
+  border-bottom: 0.1vw solid $brown700;
   background: none;
   color: $brown700;
   font-family: mv boli;
@@ -22,12 +22,12 @@
   flex: auto;
   &:focus-visible {
     outline: none;
-    border-bottom: 0.15vw solid $brown700;
+    border-bottom: 0.25vh solid $brown700;
     margin-bottom: 0;
   }
 }
 
-.checkboxFrame {
+.checkbox-frame {
   border: 0.15vw solid $brown700;
   height: 1vw;
   width: 1vw;
@@ -41,7 +41,7 @@
     font-size: 1vw;
   }
 }
-.checkboxInput {
+.checkbox-input {
   margin-bottom: 0;
   border-width: 0px;
   border: none;
@@ -55,15 +55,15 @@
 
   &:focus-visible {
     outline: none;
-    border-bottom: 0.15vw solid $brown700;
+    border-bottom: 0.25vh solid $brown700;
     margin-bottom: 0;
   }
 }
 
-.iconStyle {
+.icon-style {
   color: $brown700;
 }
 
-.checkedText {
+.checked-text {
   text-decoration: line-through;
 }

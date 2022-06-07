@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import AuthHeader from "../../components/authHeader/authHeader";
-import LoginForm from "./login/login";
-import RegisterForm from "./register/register";
+import React, { useState } from 'react'
+import AuthHeader from '../../components/authHeader/authHeader'
+import LoginForm from './login/login'
+import RegisterForm from './register/register'
 
 export default function Auth() {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(1)
 
   return (
     <>
-      <div className="authWrapper">
+      <div className="auth-wrapper">
         <AuthHeader active={active} setActive={setActive} />
         {active === 1 && <LoginForm setActive={setActive} />}
         {active === 2 && <RegisterForm setActive={setActive} />}
       </div>
     </>
-  );
+  )
 }

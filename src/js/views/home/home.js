@@ -10,15 +10,17 @@ export default function Home() {
 
   return (
     <>
-      <div className="homeWrapper">
+      <div className="home-wrapper">
         <HomeHeader
           currentActive={currentActive}
           setCurrentActive={setCurrentActive}
         />
 
-        <div className="viewContainer">
+        <div className="view-container">
           {currentActive === 1 && <DailyPlanner />}
-          {currentActive === 2 && <WeeklyPlanner />}
+          {currentActive === 2 && (
+            <WeeklyPlanner setCurrentActive={setCurrentActive} />
+          )}
           {currentActive === 3 && <DatePicker />}
         </div>
       </div>

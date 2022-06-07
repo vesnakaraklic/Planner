@@ -9,7 +9,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: $bck100;
+  background-color: $field_input_bck;
 
   .login-title {
     border: 3px solid $brown700;
@@ -29,7 +29,7 @@
     font-family: mv boli;
 
     .redirect-link {
-      color: #ae8b70;
+      color: $redirect;
       text-decoration: underline;
       &:hover {
         cursor: pointer;

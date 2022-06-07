@@ -7,6 +7,7 @@ const initialState = {
 
 export const exercise = (state = initialState, action) => {
   switch (action.type) {
+    case exerciseConstants.GET_EXERCISE_SUCCESS:
     case exerciseConstants.CHANGE_EXERCISE_AND_STEPS:
       if (!action.value)
         return {
@@ -39,6 +40,11 @@ export const exercise = (state = initialState, action) => {
         ...state,
         steps: action.value
       }
+    case exerciseConstants.GET_EXERCISE_REQUEST:
+    case exerciseConstants.GET_EXERCISE_FAILURE:
+    case exerciseConstants.UPDATE_EXERCISE_REQUEST:
+    case exerciseConstants.UPDATE_EXERCISE_SUCCESS:
+    case exerciseConstants.UPDATE_EXERCISE_FAILURE:
     default:
       return {
         ...state

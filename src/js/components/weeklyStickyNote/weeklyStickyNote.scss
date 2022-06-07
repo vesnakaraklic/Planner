@@ -1,0 +1,123 @@
+@import '/src//js/styles/variables.scss';
+.day-of-week {
+  position: relative;
+  width: 47vh;
+  height: 47vh;
+  margin: 1px;
+  background: url('./../../assets/images/—Pngtree—sticker\ grid\ notes\ cute\ theme_6966109.png');
+  background-size: cover;
+
+  .day-title {
+    position: absolute;
+    text-align: center;
+    font-family: mv boli;
+    color: $brown700;
+    font-size: 5.5vh;
+    right: 0.8vh;
+    top: 7vh;
+    left: 2vh;
+  }
+
+  .date-style {
+    position: absolute;
+    font-size: 9.4vh;
+    left: 3.5vh;
+    font-family: mv boli;
+    color: $dark_red100;
+  }
+  .food-content {
+    left: 10.5vh !important;
+    top: 21.5vh !important;
+    width: 31.5vh !important;
+    max-height: 40%;
+    overflow-y: auto;
+  }
+
+  .plans-content {
+    width: 32.5vh !important;
+    overflow-y: auto;
+    max-height: 25vh;
+    left: 10.5vh !important;
+  }
+
+  .content {
+    position: absolute;
+    left: 9vh;
+    top: 16vh;
+    font-family: mv boli;
+    width: 19.5vh;
+    font-size: 2vh;
+    overflow-wrap: anywhere;
+
+    .done {
+      text-decoration: line-through;
+    }
+
+    .first-letter-style {
+      display: flex;
+      justify-content: left;
+      align-items: flex-start;
+      &.brown-border-bottom {
+        // border-bottom: 0.1vw dashed $brown700;
+      }
+      .letter-color {
+        color: $dark_red100;
+        margin-right: 1vh;
+      }
+
+      .hour-style {
+        color: $dark_red100;
+        margin-right: 0.5vh;
+        font-size: 1.5vh;
+        font-weight: 600;
+      }
+
+      .text_size_plans {
+        font-size: 1.7vh;
+      }
+
+      .text_size {
+        font-size: 1.9vh;
+      }
+
+      .center-money {
+        margin-left: 2.3vh;
+      }
+    }
+  }
+
+  .scroll-for-sticky {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 25vh;
+    width: 31vh;
+  }
+
+  .money-position {
+    margin-top: 3vh;
+    // font-weight: 600;
+    left: 11vh !important;
+    top: 20vh !important;
+  }
+}
+.data-color {
+  color: #4f0000bd;
+}
+
+.font-size-steps {
+  font-size: 2.2vh !important;
+  font-weight: 600;
+}
+
+.edit-button {
+  transform: translate(37vh, 6vh);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  .pencil {
+    color: #4f0000;
+    width: 2vh;
+    height: 2vh;
+  }
+}

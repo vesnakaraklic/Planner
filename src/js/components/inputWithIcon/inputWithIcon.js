@@ -19,7 +19,7 @@ export default function InputWithIcon({
     <div className={`field-container ${className}`}>
       {icon && (
         <span className="field-icon">
-          <FontAwesomeIcon icon={icon} className="iconColor" />
+          <FontAwesomeIcon icon={icon} className="icon-color" />
         </span>
       )}
       <input
@@ -33,7 +33,7 @@ export default function InputWithIcon({
       ></input>
       <div>
         {iconEye && (
-          <span className="eyeIcon">
+          <span className="eye-icon">
             <FontAwesomeIcon icon={iconEye} onClick={onEyeClick} />
           </span>
         )}

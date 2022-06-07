@@ -1,25 +1,25 @@
 $sliderColor: #490c0c;
 $trackColor: #ffffff;
 
-.waterWrapper {
+.water-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
-  .waterImageContainer {
+  .water-image-container {
     display: flex;
     width: 80%;
     position: absolute;
     left: 3rem;
 
-    .waterImage {
+    .water-image {
       width: 3.45vw;
       height: 3.45vw;
       background: url('./../../../../assets/images/emptyGlass.png');
       background-size: contain;
       background-repeat: no-repeat;
     }
-    .waterFilled {
+    .water-filled {
       width: 3.45vw;
       height: 3.45vw;
       background: url('./../../../../assets/images/fullGlass.png');
@@ -30,7 +30,7 @@ $trackColor: #ffffff;
   }
 }
 
-.waterSlider {
+.water-slider {
   width: 35vw;
   margin-top: 4vw;
   margin-left: 0.7vw;

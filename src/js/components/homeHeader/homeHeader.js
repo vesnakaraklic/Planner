@@ -1,19 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import DateHeader from '../../views/dailyPlanner/components/dateHeader/dateHeader'
-import Switchtab from '../switchtab/switchtab'
-import './homeHeader.scss'
 import { faBell, faListUl, faUser } from '@fortawesome/fontawesome-free-solid'
 import { userActions } from '../../store/actions/user.actions'
 import { useHistory } from 'react-router-dom'
+import DateHeader from '../../views/dailyPlanner/components/dateHeader/dateHeader'
+import Switchtab from '../switchtab/switchtab'
+import './homeHeader.scss'
 
 export default function HomeHeader({ currentActive, setCurrentActive }) {
   const note = useSelector(state => state.note.note)
   const user = useSelector(state => state.user.user)
-  const [open, setOpen] = useState(false)
   const dispatch = useDispatch()
   const history = useHistory()
+  const [open, setOpen] = useState(false)
 
   const optionsArray = [
     { key: 1, label: 'Daily' },
@@ -39,19 +39,19 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
 
   return (
     <>
-      <div className="homeHeaderWrapper">
-        <div className="switchButtonContainer">
+      <div className="home-header-wrapper">
+        <div className="switch-button-container">
           <Switchtab
             options={optionsArray}
             active={currentActive}
             setActive={setCurrentActive}
           />
-          <div className="dropdownContainer">
-            <button onClick={() => setOpen(!open)} className="dropbtn">
+          <div className="dropdown-container">
+            <button onClick={() => setOpen(!open)} className="drop-button">
               <FontAwesomeIcon icon={faListUl} />
             </button>
             {open && (
-              <div className="dropdownContent">
+              <div className="dropdown-content">
                 <button className="buttonInMenu" onClick={onProfileClick}>
                   Profile
                   <FontAwesomeIcon icon={faUser} />
@@ -73,7 +73,11 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
             )}
           </div>
         </div>
-        <DateHeader note={note} />
+        <DateHeader
+          displayDateAndNote={currentActive === 1 ? true : false}
+          currentActive={currentActive}
+          note={note}
+        />
       </div>
     </>
   )

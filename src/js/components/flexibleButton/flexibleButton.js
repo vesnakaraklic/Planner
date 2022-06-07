@@ -6,7 +6,7 @@ export default function FlexibleButton({ onClick, widht, height, sign }) {
     <>
       <button
         onClick={onClick}
-        className="buttonStyle"
+        className="button-style"
         style={{ width: { widht }, height: { height } }}
       >
         {sign}

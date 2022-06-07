@@ -1,70 +1,80 @@
-import { userConstants } from "../constants/user.constants";
-import * as api from "../../api/users";
-import { localStorageService } from "../../services/localStorage.service";
+import { userConstants } from '../constants/user.constants'
+import * as api from '../../api/users'
+import { localStorageService } from '../../services/localStorage.service'
 
-const setUserList = (data) => {
-  return (dispatch) => {
-    dispatch({ type: userConstants.USER_LIST, data });
-  };
-};
+const setUserList = data => {
+  return dispatch => {
+    dispatch({ type: userConstants.USER_LIST, data })
+  }
+}
 
-const register = (data) => {
-  return (dispatch) => {
-    dispatch({ type: userConstants.AUTH_REGISTER_REQUEST });
+const register = data => {
+  return dispatch => {
+    dispatch({ type: userConstants.AUTH_REGISTER_REQUEST })
     return api.register(data).then(
-      (user) => {
+      user => {
         if (user) {
-          dispatch({ type: userConstants.AUTH_REGISTER_SUCCESS, user });
+          dispatch({ type: userConstants.AUTH_REGISTER_SUCCESS, user })
         }
       },
-      (error) => {
-        dispatch({ type: userConstants.AUTH_REGISTER_ERROR, error });
+      error => {
+        dispatch({ type: userConstants.AUTH_REGISTER_ERROR, error })
       }
-    );
-  };
-};
+    )
+  }
+}
 
-const login = (data) => {
-  return (dispatch) => {
-    dispatch({ type: userConstants.AUTH_LOGIN_REQUEST });
+const login = data => {
+  return dispatch => {
+    dispatch({ type: userConstants.AUTH_LOGIN_REQUEST })
     return api.login(data).then(
-      (user) => {
+      user => {
         if (user) {
-          dispatch({ type: userConstants.AUTH_LOGIN_SUCCESS, user });
+          dispatch({ type: userConstants.AUTH_LOGIN_SUCCESS, user })
         }
       },
-      (error) => {
-        dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error });
+      error => {
+        dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error })
       }
-    );
-  };
-};
+    )
+  }
+}
 
 const listenToAuthChanges = () => {
-  return (dispatch) => {
-    api.onAuthStateChanges(async (user) => {
+  return dispatch => {
+    api.onAuthStateChanges(async user => {
       if (user) {
-        const userData = await api.getUserProfile(user.uid);
-        dispatch({ type: userConstants.AUTH_LOGIN_SUCCESS, user: userData });
-        localStorage.setItem("user", JSON.stringify(user));
+        const userData = await api.getUserProfile(user.uid)
+        dispatch({ type: userConstants.AUTH_LOGIN_SUCCESS, user: userData })
+        localStorage.setItem('user', JSON.stringify(user))
       } else {
-        dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error: "error" });
+        dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error: 'error' })
       }
-    });
-  };
-};
+    })
+  }
+}
 
 const resetError = () => {
-  return (dispatch) => {
-    dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error: {} });
-  };
-};
+  return dispatch => {
+    dispatch({ type: userConstants.AUTH_LOGIN_ERROR, error: {} })
+  }
+}
 
-const logout = () => (dispatch) =>
-  api.logout().then((_) => {
-    localStorageService.delete("user");
-    dispatch({ type: "AUTH_LOGOUT_SUCCESS" });
-  });
+const logout = () => dispatch =>
+  api.logout().then(_ => {
+    localStorageService.delete('user')
+    dispatch({ type: 'AUTH_LOGOUT_SUCCESS' })
+  })
+
+const updateUser = data => {
+  return dispatch => {
+    dispatch({ type: userConstants.UPDATE_USER_REQUEST })
+    return api
+      .updateUserProfile(data)
+      .then(() => dispatch({ type: userConstants.UPDATE_USER_SUCCESS }))
+      .catch(() => dispatch({ type: userConstants.UPDATE_USER_FAILURE }))
+  }
+}
 
 export const userActions = {
   setUserList,
@@ -73,4 +83,5 @@ export const userActions = {
   logout,
   resetError,
   listenToAuthChanges,
-};
+  updateUser
+}

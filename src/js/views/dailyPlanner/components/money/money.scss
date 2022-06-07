@@ -1,12 +1,12 @@
 @import './../../../../styles/variables.scss';
-.moneyWrapper {
+.money-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
   transform: translate(-7vh, 3vh);
   // transform: translateY(-3vh);
-  .moneyForm {
+  .money-form {
     border: 2px solid $brown700;
     padding: 1vw;
     text-align: center;
@@ -24,9 +24,7 @@
       border-top-left-radius: 1vw;
       border-top-right-radius: 1vw;
     }
-    &.second {
-      // border-bottom: 0;
-    }
+
     &.third {
       border-bottom-left-radius: 1vw;
       border-bottom-right-radius: 1vw;
@@ -37,7 +35,7 @@
       width: 22vh;
       font-size: 2vh;
     }
-    .moneyLabel {
+    .money-label {
       font-weight: bold;
       color: $brown700;
       font-family: mv boli;
@@ -45,11 +43,11 @@
       text-align: center;
       font-size: 1.7vh;
     }
-    .dolarIcon {
+    .dolar-icon {
       color: $brown700;
       font-size: 1vw;
     }
-    .moneyField {
+    .money-field {
       border: none;
       background-color: #f8f3e9;
       font-size: 1vw;

@@ -10,13 +10,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // width: 38px;
-    // height: 38px;
     width: 3.5vh;
     height: 3.5vh;
 
     & > svg {
       width: 2vh;
+    }
+
+    .icon-color {
+      color: $brown200;
     }
   }
   .field-input {
@@ -27,10 +29,10 @@
     border-radius: 0px 5px 5px 0px;
     font-size: 1.5vh;
     width: calc(100% - 5vh);
-    background-color: $bck100;
+    background-color: $field_input_bck;
     position: relative;
     &:invalid {
-      border-color: $turquoise200;
+      border-color: $brown500;
     }
 
     &:focus-visible {
@@ -47,11 +49,10 @@
     color: $brown500;
   }
   &.auth-input {
-    // margin-top: 13px;
     margin-top: 2.5vh;
   }
 
-  .eyeIcon {
+  .eye-icon {
     position: absolute;
     color: $brown700;
     cursor: pointer;
@@ -62,9 +63,5 @@
     & > svg {
       width: 2vh;
     }
-  }
-
-  .iconColor {
-    color: $brown200;
   }
 }

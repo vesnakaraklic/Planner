@@ -13,7 +13,7 @@
   .register-title {
     border: 3px solid $brown700;
     background-color: $brown700;
-    color: white;
+    color: $white;
 
     & > p {
       font-size: 3vh;
@@ -28,7 +28,7 @@
     font-family: mv boli;
 
     .redirect-link {
-      color: #ae8b70;
+      color: $redirect;
       text-decoration: underline;
       &:hover {
         cursor: pointer;

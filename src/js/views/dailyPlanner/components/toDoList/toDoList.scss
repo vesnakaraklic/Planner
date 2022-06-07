@@ -1,11 +1,11 @@
 @import './../../../../styles/variables.scss';
 
-.checkboxForm {
+.checkbox-form {
   display: flex;
   flex-direction: column;
   width: 40%;
 
-  .toDoHeader {
+  .to-do-header {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -20,7 +20,7 @@
     }
   }
 
-  .toDoInput {
+  .to-do-input {
     & > div {
       margin-bottom: 0.45vh;
       display: flex;
