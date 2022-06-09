@@ -99,7 +99,7 @@ export default function DateHeader({
 
   return (
     <>
-      <div className={currentActive !== 4 ? 'date-form' : 'hidden'}>
+      <div className={currentActive !== 3 ? 'date-form' : 'hidden'}>
         {!displayDateAndNote && currentActive === 2 && (
           <div className="option-filter">
             <label className="label-filter">Filter: </label>
@@ -149,16 +149,18 @@ export default function DateHeader({
         )}
 
         <div className={`date-main ${currentActive === 2 ? 'with-week' : ''}`}>
-          <button
-            className="arrow-button"
-            onClick={
-              currentActive === 1
-                ? onClickLeftArrowDaily
-                : onClickLeftArrowWeekly
-            }
-          >
-            <FontAwesomeIcon icon={faAngleLeft} />
-          </button>
+          {currentActive !== 3 && (
+            <button
+              className="arrow-button"
+              onClick={
+                currentActive === 1
+                  ? onClickLeftArrowDaily
+                  : onClickLeftArrowWeekly
+              }
+            >
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </button>
+          )}
           {currentActive === 1 && (
             <p className="day-name">{getDayFromDate(date)}</p>
           )}
@@ -177,17 +179,18 @@ export default function DateHeader({
                   Object.values(week)[6].getFullYear()}
             </p>
           )}
-
-          <button
-            className="arrow-button"
-            onClick={
-              currentActive === 1
-                ? onClickRightArrowDaily
-                : onClickRightArrowWeekly
-            }
-          >
-            <FontAwesomeIcon icon={faAngleRight} />
-          </button>
+          {currentActive !== 3 && (
+            <button
+              className="arrow-button"
+              onClick={
+                currentActive === 1
+                  ? onClickRightArrowDaily
+                  : onClickRightArrowWeekly
+              }
+            >
+              <FontAwesomeIcon icon={faAngleRight} />
+            </button>
+          )}
         </div>
       </div>
     </>

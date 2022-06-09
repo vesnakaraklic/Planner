@@ -21,7 +21,9 @@ export default function Home() {
           {currentActive === 2 && (
             <WeeklyPlanner setCurrentActive={setCurrentActive} />
           )}
-          {currentActive === 3 && <DatePicker />}
+          {currentActive === 3 && (
+            <DatePicker setCurrentActive={setCurrentActive} />
+          )}
         </div>
       </div>
     </>
