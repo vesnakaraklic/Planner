@@ -63,7 +63,8 @@
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: $brown700;
+  color: #bb6527;
+  font-weight: 700;
 }
 
 .react-calendar__tile {
@@ -150,6 +151,13 @@
 
 .react-calendar__navigation button:enabled:hover {
   background-color: #cba795b3;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #757575 !important;
+  font-weight: 300 !important;
+}
+.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day {
+  border-bottom: 3px solid transparent;
 }
 .hour-style {
   color: white;
