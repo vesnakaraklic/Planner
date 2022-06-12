@@ -1,3 +1,4 @@
 export default function getPreviousDate(date) {
-  return date - 24 * 60 * 60 * 1000;
+  let newDate = new Date(date).setDate(new Date(date).getDate() - 1)
+  return newDate
 }

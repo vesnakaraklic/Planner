@@ -20,6 +20,7 @@ import getPreviousMonday from '../../../../utils/getPreviousMonday'
 import getWeekFromDate from '../../../../utils/getWeekFromDate'
 import Select from 'react-select'
 import './dateHeader.scss'
+import { updateMonthlyViewByDate } from '../../../monthlyPlanner/monthlyPlanner'
 
 export default function DateHeader({
   note = '',
@@ -32,6 +33,8 @@ export default function DateHeader({
   const dispatch = useDispatch()
   const [week, setWeek] = useState({})
   const selected = useSelector(state => state.weekDays.filter)
+
+  const user = useSelector(state => state.user.user)
 
   const options = [
     { value: 'food', label: 'Food' },
@@ -71,6 +74,10 @@ export default function DateHeader({
     )
   }
 
+  const onClickRightArrowMonthly = () => {
+    updateMonthlyViewByDate('next', dateRedux, user, dispatch)
+  }
+
   const onClickLeftArrowDaily = () => {
     dispatch(dateActions.updateDate(getPreviousDate(dateRedux)))
   }
@@ -88,8 +95,11 @@ export default function DateHeader({
     )
   }
 
+  const onClickLeftArrowMonthly = () => {
+    updateMonthlyViewByDate('prev', dateRedux, user, dispatch)
+  }
+
   const onFilterChange = value => {
-    console.log('value', selected)
     dispatch(weekDaysActions.changeFilter(value))
   }
 
@@ -99,7 +109,7 @@ export default function DateHeader({
 
   return (
     <>
-      <div className={currentActive !== 3 ? 'date-form' : 'hidden'}>
+      <div className="date-form">
         {!displayDateAndNote && currentActive === 2 && (
           <div className="option-filter">
             <label className="label-filter">Filter: </label>
@@ -148,23 +158,30 @@ export default function DateHeader({
           </div>
         )}
 
-        <div className={`date-main ${currentActive === 2 ? 'with-week' : ''}`}>
-          {currentActive !== 3 && (
-            <button
-              className="arrow-button"
-              onClick={
-                currentActive === 1
-                  ? onClickLeftArrowDaily
-                  : onClickLeftArrowWeekly
-              }
-            >
+        <div
+          className={`date-main ${currentActive === 2 ? 'with-week' : ''} ${
+            currentActive === 3 ? 'date-main-monthly' : ''
+          }`}
+        >
+          {currentActive === 1 && (
+            <button className="arrow-button" onClick={onClickLeftArrowDaily}>
               <FontAwesomeIcon icon={faAngleLeft} />
             </button>
           )}
+          {currentActive === 2 && (
+            <button className="arrow-button" onClick={onClickLeftArrowWeekly}>
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </button>
+          )}
+          {currentActive === 3 && (
+            <button className="arrow-button" onClick={onClickLeftArrowMonthly}>
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </button>
+          )}
+
           {currentActive === 1 && (
             <p className="day-name">{getDayFromDate(date)}</p>
           )}
-
           {currentActive === 2 && (
             <p className="week">
               {' '}
@@ -179,15 +196,24 @@ export default function DateHeader({
                   Object.values(week)[6].getFullYear()}
             </p>
           )}
-          {currentActive !== 3 && (
-            <button
-              className="arrow-button"
-              onClick={
-                currentActive === 1
-                  ? onClickRightArrowDaily
-                  : onClickRightArrowWeekly
-              }
-            >
+          {currentActive === 3 && (
+            <p className="month">
+              {getMonthFromDate(new Date(dateRedux))},{' '}
+              {new Date(dateRedux).getFullYear()}
+            </p>
+          )}
+          {currentActive === 1 && (
+            <button className="arrow-button" onClick={onClickRightArrowDaily}>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </button>
+          )}
+          {currentActive === 2 && (
+            <button className="arrow-button" onClick={onClickRightArrowWeekly}>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </button>
+          )}
+          {currentActive === 3 && (
+            <button className="arrow-button" onClick={onClickRightArrowMonthly}>
               <FontAwesomeIcon icon={faAngleRight} />
             </button>
           )}

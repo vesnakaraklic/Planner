@@ -31,7 +31,14 @@ const updateMonthDates = data => {
   }
 }
 
+const updateSelectedDate = data => {
+  return dispatch => {
+    dispatch({ type: monthDatesConstants.UPDATE_SELECTED_DATE, value: data })
+  }
+}
+
 export const monthDatesActions = {
   updateMonthDates,
-  getMonthDatesIds
+  getMonthDatesIds,
+  updateSelectedDate
 }
