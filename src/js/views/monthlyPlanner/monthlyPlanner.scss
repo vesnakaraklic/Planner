@@ -1,0 +1,203 @@
+@import './../../../../node_modules/react-calendar/dist/Calendar.css';
+@import './../../styles/variables.scss';
+
+.calendar {
+  display: block;
+  position: relative;
+  width: 100%;
+  background: #f4ede0;
+  border: 1px solid #d2b78b;
+}
+
+.react-calendar {
+  background: #f4ede0;
+  border: 1px solid #cba795;
+  border-radius: 2vh 0 0 2vh;
+}
+
+.react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
+  font-weight: bold;
+  color: $brown700;
+  font-size: 2vh;
+  font-family: mv boli;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #cba795;
+}
+
+.react-calendar button:enabled:hover {
+  cursor: pointer;
+  background: #cba79547;
+  border-radius: 10vh;
+  color: white;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__next-button {
+  font-weight: bold;
+  font-size: 2.5vh;
+  font-size: mv boli;
+  color: $brown700;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__next2-button {
+  font-weight: bold;
+  font-size: 2.5vh;
+  font-size: mv boli;
+  color: $brown700;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+  font-weight: bold;
+  font-size: 2.5vh;
+  font-size: mv boli;
+  color: $brown700;
+}
+
+.react-calendar__navigation__arrow.react-calendar__navigation__prev2-button {
+  font-weight: bold;
+  font-size: 2.5vh;
+  font-size: mv boli;
+  color: $brown700;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: $brown700 !important;
+  font-weight: 700;
+}
+
+.react-calendar__tile {
+  line-height: 7vh;
+  padding: 2vh 1.5vh;
+}
+
+.react-calendar__tile--now {
+  background: #f4ede0;
+}
+
+.calendar .header .icon {
+  cursor: pointer;
+  transition: 0.15s ease-out;
+}
+
+.react-calendar__tile--active {
+  background: #cba795;
+  color: white !important;
+  border-radius: 68px;
+  font-weight: bold;
+}
+
+.monthlyFrame {
+  display: flex;
+  margin-top: 3vh;
+  // margin-bottom: 5vh;
+  justify-content: center;
+}
+
+.monthlyDayPreview {
+  border: 1px solid #cba795;
+  width: 48vh;
+  border-radius: 0 2vh 2vh 0;
+  background-color: #cba795;
+  display: flex;
+  flex-direction: column;
+}
+
+.dateStyleMonthly {
+  font-size: 12vh;
+  color: white;
+  margin: 2vh;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.dayStyle {
+  margin: 0px;
+  text-align: center;
+  font-size: 6vh;
+  color: white;
+  font-family: mv boli;
+  margin-bottom: 5vh;
+}
+.react-calendar__navigation {
+  display: none;
+}
+.react-calendar__navigation button {
+  min-width: 7vh !important;
+  background: none;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  flex: 0 0 13.5vh !important;
+  overflow: hidden;
+  font-family: mv boli;
+  font-size: 2vh;
+}
+
+.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day {
+  flex: 0 0 13.5vh !important;
+  font-family: mv boli;
+  font-size: 2vh;
+}
+
+.react-calendar__tile.react-calendar__tile--active.react-calendar__tile--range.react-calendar__tile--rangeStart.react-calendar__tile--rangeEnd.react-calendar__tile--rangeBothEnds.react-calendar__month-view__days__day.react-calendar__month-view__days__day--weekend {
+  flex: 0 0 13.5vh !important;
+}
+.react-calendar__month-view__weekdays__weekday {
+  color: $brown700;
+}
+
+.react-calendar__navigation button:enabled:focus {
+  background-color: #f4ede0;
+}
+
+.react-calendar__navigation button:enabled:hover {
+  background-color: #cba795b3;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #757575 !important;
+  font-weight: 300 !important;
+  // visibility: hidden !important;
+}
+.react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day {
+  border-bottom: 3px solid transparent;
+  color: #4f0000b8;
+}
+.react-calendar__month-view__weekdays__weekday {
+  padding: 2em 0.5em 0.5em 0.5em;
+}
+.hour-style {
+  color: white;
+  margin-left: 2vh;
+  margin-right: 1vh;
+  font-family: mv boli;
+  font-size: 1.7vh;
+  width: 9vh;
+}
+
+.data-style {
+  font-family: mv boli;
+  font-size: 1.7vh;
+  color: #4f0000;
+}
+
+.plans-frame {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button-date {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.plans-wrapper-in-monthly-planner {
+  max-height: 44.5vh;
+  overflow-y: auto;
+}
+
+.react-datepicker__day--outside-month {
+  visibility: hidden !important;
+}

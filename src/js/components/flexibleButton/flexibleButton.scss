@@ -18,13 +18,14 @@
   justify-content: center;
   align-items: center;
   box-shadow: inset 2px 0px 4px 0px $brown700;
-}
 
-.button-style:hover {
-  background: linear-gradient(to bottom, $brown250 5%, #b5976d 100%);
-  background-color: #dbc8a5;
-}
-.button-style:active {
-  position: relative;
-  top: 1px;
+  &:hover {
+    background: linear-gradient(to bottom, $brown250 5%, #b5976d 100%);
+    background-color: #dbc8a5;
+  }
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
 }

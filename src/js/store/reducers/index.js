@@ -9,6 +9,7 @@ import { plans } from '../reducers/plans.reducer'
 import { toDo } from '../reducers/toDo.reducer'
 import { note } from '../reducers/note.reducer'
 import { weekDays } from '../reducers/weekDays.reducer'
+import { monthDates } from './monthDates.reducer'
 
 const appReducer = combineReducers({
   user,
@@ -20,7 +21,8 @@ const appReducer = combineReducers({
   plans,
   toDo,
   note,
-  weekDays
+  weekDays,
+  monthDates
 })
 
 const rootReducer = (state, action) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import HomeHeader from '../../components/homeHeader/homeHeader'
 import DailyPlanner from '../dailyPlanner/dailyPlanner'
-import DatePicker from '../datePicker/datePicker'
+import MonthlyPlanner from '../monthlyPlanner/monthlyPlanner'
 import WeeklyPlanner from '../weeklyPlanner/weeklyPlanner'
 import './home.scss'
 
@@ -21,7 +21,9 @@ export default function Home() {
           {currentActive === 2 && (
             <WeeklyPlanner setCurrentActive={setCurrentActive} />
           )}
-          {currentActive === 3 && <DatePicker />}
+          {currentActive === 3 && (
+            <MonthlyPlanner setCurrentActive={setCurrentActive} />
+          )}
         </div>
       </div>
     </>

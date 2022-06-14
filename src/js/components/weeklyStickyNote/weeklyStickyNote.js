@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { faPencilAlt } from '@fortawesome/fontawesome-free-solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 import { dateActions } from '../../store/actions/date.actions'
 import getDateWithoutHours from '../../utils/getDateWithoutHours'
 import './weeklyStickyNote.scss'
@@ -51,6 +50,16 @@ export default function WeeklyStickyNote({
           <label className="letter-color font-size-steps">Out: </label>
           <label className="data-color">{data?.moneyOut ?? 0}$</label>
         </div>
+      </div>
+    )
+  }
+
+  function renderWater(data) {
+    return (
+      <div className="water-container-weekly">
+        <div className="water-icon-weekly"> </div>
+        <div className="x-style">x</div>
+        <div className="number-of-water-glass">{data?.water ?? 0}</div>
       </div>
     )
   }
@@ -152,7 +161,6 @@ export default function WeeklyStickyNote({
                   (content.type === 'plans' ? 'brown-border-bottom' : '')
                 }
               >
-                {console.log('lllll', data?.[key])}
                 <label className="hour-style">{plans[key]}</label>
                 <label className="text_size_plans">{data?.[key]}</label>
               </div>
@@ -174,11 +182,12 @@ export default function WeeklyStickyNote({
         return renderToDo(content?.value)
       case 'plans':
         return renderPlans(content?.value)
+      case 'water':
+        return renderWater(content?.value)
     }
   }
 
   const onEditClick = () => {
-    console.log('On click', date, getDateWithoutHours(date))
     dispatch(dateActions.updateDate(getDateWithoutHours(date)))
     setCurrentActive && setCurrentActive(1)
   }

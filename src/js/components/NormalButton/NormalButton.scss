@@ -12,22 +12,9 @@
   width: 100%;
   font-size: 1.5vh;
   font-weight: 600;
-  // appearance: none;
-  // background-color: $brown700;
-  // border: 1px solid $brown700;
-  // border-radius: 6px;
-  // color: $brown200;
-  // cursor: pointer;
-  // display: inline-block;
-  // text-align: center;
-  // padding: 10px 16px;
-  // width: 100%;
-  // font-size: 14px;
-  // font-weight: 600;
-  // margin-top: 20px;
-}
 
-.submit-btn:hover {
-  background-color: $brown500;
-  border: 1px solid $brown500;
+  &:hover {
+    background-color: $brown500;
+    border: 1px solid $brown500;
+  }
 }

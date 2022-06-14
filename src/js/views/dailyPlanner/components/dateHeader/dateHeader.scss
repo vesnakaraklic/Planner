@@ -19,8 +19,7 @@
 
     .date-style {
       font-family: mv boli;
-      padding-top: 3rem;
-      padding-left: 0.625rem;
+      padding-left: 0.7vh;
       border-bottom: 0.15vw solid $brown700;
       color: $brown700;
       position: relative;
@@ -63,7 +62,7 @@
     }
 
     .note-container {
-      padding-left: 0.625rem;
+      padding-left: 0.7vh;
       border-width: 0 0 0.15vw;
       border-color: $brown700;
       border-style: solid;
@@ -334,4 +333,16 @@
 .css-26l3qy-menu .css-4ljt47-MenuList .css-1n7v3ny-option {
   background-color: #b986706e !important;
   color: #fff6ee !important;
+}
+
+.date-main-monthly {
+  transform: none !important;
+  width: 100% !important;
+}
+
+.month {
+  font-size: 3.5vh;
+  font-family: mv boli;
+  color: #4f0000;
+  width: 31vh;
 }
