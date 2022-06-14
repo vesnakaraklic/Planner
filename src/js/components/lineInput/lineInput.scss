@@ -39,6 +39,10 @@
   align-items: center;
   & > svg {
     font-size: 1vw;
+
+    .icon-style {
+      color: $brown700;
+    }
   }
 }
 .checkbox-input {
@@ -58,10 +62,6 @@
     border-bottom: 0.25vh solid $brown700;
     margin-bottom: 0;
   }
-}
-
-.icon-style {
-  color: $brown700;
 }
 
 .checked-text {

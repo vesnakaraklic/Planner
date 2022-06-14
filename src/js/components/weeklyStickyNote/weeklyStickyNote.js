@@ -54,6 +54,16 @@ export default function WeeklyStickyNote({
     )
   }
 
+  function renderWater(data) {
+    return (
+      <div className="water-container-weekly">
+        <div className="water-icon-weekly"> </div>
+        <div className="x-style">x</div>
+        <div className="number-of-water-glass">{data?.water ?? 0}</div>
+      </div>
+    )
+  }
+
   function renderExercise(data) {
     return (
       <div
@@ -172,6 +182,8 @@ export default function WeeklyStickyNote({
         return renderToDo(content?.value)
       case 'plans':
         return renderPlans(content?.value)
+      case 'water':
+        return renderWater(content?.value)
     }
   }
 

@@ -41,7 +41,8 @@ export default function DateHeader({
     { value: 'money', label: 'Money' },
     { value: 'exercise', label: 'Exercise' },
     { value: 'toDo', label: 'To Do' },
-    { value: 'plans', label: 'Plans' }
+    { value: 'plans', label: 'Plans' },
+    { value: 'water', label: 'Water' }
   ]
 
   const onClickDatePicker = () => {

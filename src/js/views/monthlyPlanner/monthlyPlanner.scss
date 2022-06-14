@@ -63,7 +63,7 @@
 }
 
 .react-calendar__month-view__days__day--weekend {
-  color: #bb6527;
+  color: $brown700 !important;
   font-weight: 700;
 }
 
@@ -83,7 +83,7 @@
 
 .react-calendar__tile--active {
   background: #cba795;
-  color: white;
+  color: white !important;
   border-radius: 68px;
   font-weight: bold;
 }
@@ -158,9 +158,11 @@
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #757575 !important;
   font-weight: 300 !important;
+  // visibility: hidden !important;
 }
 .react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day {
   border-bottom: 3px solid transparent;
+  color: #4f0000b8;
 }
 .react-calendar__month-view__weekdays__weekday {
   padding: 2em 0.5em 0.5em 0.5em;
@@ -189,4 +191,13 @@
   border: none;
   background: transparent;
   cursor: pointer;
+}
+
+.plans-wrapper-in-monthly-planner {
+  max-height: 44.5vh;
+  overflow-y: auto;
+}
+
+.react-datepicker__day--outside-month {
+  visibility: hidden !important;
 }

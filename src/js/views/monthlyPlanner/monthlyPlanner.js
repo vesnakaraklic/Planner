@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Calendar from 'react-calendar'
 import { useDispatch, useSelector } from 'react-redux'
 import { dateActions } from '../../store/actions/date.actions'
@@ -154,18 +154,19 @@ export default function MonthlyPlanner({ setCurrentActive }) {
             <p className="dateStyleMonthly">{new Date(dateRedux).getDate()}</p>
           </button>
           <p className="dayStyle">{getDayFromDate(new Date(dateRedux))}</p>
-
-          {Object.keys(plans).map(
-            (plan, index) =>
-              plansForOneDayRedux[plan] && (
-                <div key={'pl' + plan + index} className="plans-frame">
-                  <label className="hour-style">{plans[plan]}</label>
-                  <label className="data-style">
-                    {plansForOneDayRedux[plan]}
-                  </label>
-                </div>
-              )
-          )}
+          <div className="plans-wrapper-in-monthly-planner ">
+            {Object.keys(plans).map(
+              (plan, index) =>
+                plansForOneDayRedux[plan] && (
+                  <div key={'pl' + plan + index} className="plans-frame">
+                    <label className="hour-style">{plans[plan]}</label>
+                    <label className="data-style">
+                      {plansForOneDayRedux[plan]}
+                    </label>
+                  </div>
+                )
+            )}
+          </div>
         </div>
       </div>
     </>
