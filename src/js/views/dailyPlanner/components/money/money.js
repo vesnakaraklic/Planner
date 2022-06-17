@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
 import { moneyActions } from '../../../../store/actions/money.actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './money.scss'
+import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
 
 export default function Money({ moneyOut = '0', moneyIn = '0' }) {
   const [result, setResult] = useState('0')
   const dispatch = useDispatch()
+  const changesToSave = useSelector(state => state.changesToSave.changesToSave)
 
   const getOnlyNumbersFromString = value => {
     if (value === '') return '0'
@@ -43,6 +45,8 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
       } else if (type === 'moneyOut') {
         dispatch(moneyActions.changeMoneyOut(resultValue))
       }
+    if (!changesToSave.includes('money'))
+      dispatch(changesToSaveActions.pushChanges('money'))
   }
   const onMoneyInputBlur = (type, value) => {
     if (type === 'moneyIn') {
@@ -50,6 +54,9 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
     } else if (type === 'moneyOut') {
       dispatch(moneyActions.changeMoneyOut(formatFloatNumbers(value)))
     }
+
+    if (!changesToSave.includes('money'))
+      dispatch(changesToSaveActions.pushChanges('money'))
   }
   useEffect(() => {
     if (moneyIn && moneyOut) setResult(moneyIn - moneyOut)

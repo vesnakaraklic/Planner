@@ -9,14 +9,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { foodActions } from '../../../../store/actions/food.actions'
 import './food.scss'
+import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
 
 const Food = ({ food }) => {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user.user)
-  const dateReudx = useSelector(state => state.datePicker)
+  const changesToSave = useSelector(state => state.changesToSave.changesToSave)
   const foodIcons = [faPizzaSlice, faHamburger, faFish, faMugHot]
 
   const onChangeInput = (value, key) => {
+    if (!changesToSave.includes('food'))
+      dispatch(changesToSaveActions.pushChanges('food'))
     dispatch(foodActions.changeFood({ ...food, [key]: value }))
   }
 
