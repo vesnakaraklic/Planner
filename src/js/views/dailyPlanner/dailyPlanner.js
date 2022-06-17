@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { changesToSaveActions } from '../../store/actions/changesToSave.actions'
 import { exerciseActions } from '../../store/actions/exercise.actions'
 import { foodActions } from '../../store/actions/food.actions'
 import { moneyActions } from '../../store/actions/money.actions'
@@ -8,6 +9,7 @@ import { plansActions } from '../../store/actions/plans.actions'
 import { toDoActions } from '../../store/actions/toDo.actions'
 import { waterActions } from '../../store/actions/water.actions'
 import getDateWithoutHours from '../../utils/getDateWithoutHours'
+import { dateActions } from '../../store/actions/date.actions'
 import Exercise from './components/exercise/exercise'
 import Food from './components/food/food'
 import Money from './components/money/money'
@@ -22,20 +24,59 @@ export default function DailyPlanner() {
   const { money, food, waterDrink, exercise, plans, toDo, note } = useSelector(
     state => state
   )
+  const changesToSave = useSelector(state => state.changesToSave.changesToSave)
   const dateRedux = useSelector(state => state.datePicker.date)
 
   const onSaveDaily = () => {
     const date = getDateWithoutHours(dateRedux)
-    dispatch(moneyActions.updateMoney(user.uid + date, { ...money }))
-    dispatch(foodActions.updateFood(user.uid + date, { ...food }))
-    dispatch(
-      waterActions.updateWater(user.uid + date, { water: waterDrink.water })
-    )
-    dispatch(plansActions.updatePlans(user.uid + date, { ...plans }))
-    dispatch(exerciseActions.updateExercise(user.uid + date, { ...exercise }))
+    if (changesToSave.length > 0) {
+      changesToSave.map(word => {
+        if (word === 'plans') {
+          dispatch(plansActions.updatePlans(user.uid + date, { ...plans }))
+        } else if (word === 'money') {
+          dispatch(moneyActions.updateMoney(user.uid + date, { ...money }))
+        } else if (word === 'food') {
+          dispatch(foodActions.updateFood(user.uid + date, { ...food }))
+        } else if (word === 'water') {
+          dispatch(
+            waterActions.updateWater(user.uid + date, {
+              water: waterDrink.water
+            })
+          )
+        } else if (word === 'exercise') {
+          dispatch(
+            exerciseActions.updateExercise(user.uid + date, { ...exercise })
+          )
+        } else if (word === 'toDo') {
+          dispatch(toDoActions.updateToDo(user.uid + date, { ...toDo }))
+        } else if (word === 'note') {
+          dispatch(noteActions.updateNote(user.uid + date, { note: note.note }))
+        }
+      })
+    }
 
-    dispatch(toDoActions.updateToDo(user.uid + date, { ...toDo }))
-    dispatch(noteActions.updateNote(user.uid + date, { note: note.note }))
+    dispatch(changesToSaveActions.clearArray())
+  }
+
+  const onCancleClick = () => {
+    changesToSave.map(word => {
+      if (word === 'plans') {
+        dispatch(plansActions.getPlansById(user.uid + dateRedux))
+      } else if (word === 'money') {
+        dispatch(moneyActions.getMoneyById(user.uid + dateRedux))
+      } else if (word === 'food') {
+        dispatch(foodActions.getFoodById(user.uid + dateRedux))
+      } else if (word === 'water') {
+        dispatch(waterActions.getWaterById(user.uid + dateRedux))
+      } else if (word === 'exercise') {
+        dispatch(exerciseActions.getExerciseById(user.uid + dateRedux))
+      } else if (word === 'toDo') {
+        dispatch(toDoActions.getToDoById(user.uid + dateRedux))
+      } else if (word === 'note') {
+        dispatch(noteActions.getNoteById(user.uid + dateRedux))
+      }
+    })
+    dispatch(changesToSaveActions.clearArray())
   }
 
   useEffect(() => {
@@ -63,15 +104,27 @@ export default function DailyPlanner() {
             <Money moneyIn={money.moneyIn} moneyOut={money.moneyOut} />
           </div>
           <div className="right-bottom-container">
-            <ToDoList toDo={toDo} />
+            <div className="form-with-buttons">
+              <ToDoList toDo={toDo} />
+              <div
+                className={`buttons-wrapper ${
+                  changesToSave.length > 0 ? 'visible' : ''
+                }`}
+              >
+                <button className="cancel-button" onClick={onCancleClick}>
+                  Cancel
+                </button>
+                <button className="save-button" onClick={onSaveDaily}>
+                  Save
+                </button>
+              </div>
+            </div>
+
             <div className="exercise-container">
               <Exercise exercise={exercise} />
             </div>
           </div>
         </div>
-        <button className="save-button" onClick={onSaveDaily}>
-          Save
-        </button>
       </div>
     </>
   )

@@ -21,6 +21,7 @@ import getWeekFromDate from '../../../../utils/getWeekFromDate'
 import Select from 'react-select'
 import './dateHeader.scss'
 import { updateMonthlyViewByDate } from '../../../monthlyPlanner/monthlyPlanner'
+import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
 
 export default function DateHeader({
   note = '',
@@ -33,6 +34,7 @@ export default function DateHeader({
   const dispatch = useDispatch()
   const [week, setWeek] = useState({})
   const selected = useSelector(state => state.weekDays.filter)
+  const changesToSave = useSelector(state => state.changesToSave.changesToSave)
 
   const user = useSelector(state => state.user.user)
 
@@ -56,6 +58,9 @@ export default function DateHeader({
 
   const onChangeNote = value => {
     dispatch(noteActions.changeNote(value))
+    if (!changesToSave.includes('note')) {
+      dispatch(changesToSaveActions.pushChanges('note'))
+    }
   }
 
   const onClickRightArrowDaily = () => {

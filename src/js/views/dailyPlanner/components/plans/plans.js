@@ -1,6 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import LineInput from '../../../../components/lineInput/lineInput'
+import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
 import { plansActions } from '../../../../store/actions/plans.actions'
 import './plans.scss'
 
@@ -28,8 +29,11 @@ const hours = {
 
 const Plans = ({ plans }) => {
   const dispatch = useDispatch()
+  const changesToSave = useSelector(state => state.changesToSave.changesToSave)
 
   const onChangeInput = (value, key) => {
+    if (!changesToSave.includes('plans'))
+      dispatch(changesToSaveActions.pushChanges('plans'))
     dispatch(plansActions.changePlans({ ...plans, [key]: value }))
   }
 

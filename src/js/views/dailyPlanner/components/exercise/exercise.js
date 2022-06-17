@@ -1,33 +1,43 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faVolleyballBall } from '@fortawesome/free-solid-svg-icons'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { exerciseActions } from '../../../../store/actions/exercise.actions'
 import './exercise.scss'
 import FlexibleButton from '../../../../components/flexibleButton/flexibleButton'
+import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
 
 export default function Exercise({ exercise }) {
   const dispatch = useDispatch()
+  const changesToSave = useSelector(state => state.changesToSave.changesToSave)
 
+  const addExerciseOnChanges = () => {
+    if (!changesToSave.includes('exercise'))
+      dispatch(changesToSaveActions.pushChanges('exercise'))
+  }
   const onChangeInput = (value, key) => {
     const newArray = [...exercise.exercises]
     newArray[key] = value
     dispatch(exerciseActions.changeExercise(newArray))
+    addExerciseOnChanges()
   }
 
   const onExerciseAddClick = () => {
     const newArray = [...exercise.exercises, '']
     dispatch(exerciseActions.changeExercise(newArray))
+    addExerciseOnChanges()
   }
 
   const onExerciseMinusClick = index => {
     const newArray = [...exercise.exercises]
     newArray.splice(index, 1)
     dispatch(exerciseActions.changeExercise(newArray))
+    addExerciseOnChanges()
   }
 
   const onChangeSteps = value => {
     dispatch(exerciseActions.changeSteps(value))
+    addExerciseOnChanges()
   }
 
   return (

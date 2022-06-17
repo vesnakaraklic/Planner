@@ -11,7 +11,6 @@ export const toDoInitialState = {
     { value: '', finished: false },
     { value: '', finished: false },
     { value: '', finished: false },
-    { value: '', finished: false },
     { value: '', finished: false }
   ]
 }

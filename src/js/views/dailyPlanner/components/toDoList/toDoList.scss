@@ -3,7 +3,6 @@
 .checkbox-form {
   display: flex;
   flex-direction: column;
-  width: 40%;
 
   .to-do-header {
     display: flex;
@@ -27,13 +26,12 @@
       height: 3vh;
     }
   }
-}
-
-.scroll {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  height: 37.5vh;
+  .scroll {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    height: 34.5vh;
+  }
 }
 
 /* Track */
