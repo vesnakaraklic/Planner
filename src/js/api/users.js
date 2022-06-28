@@ -7,6 +7,8 @@ const extractSnapshotData = snapshot =>
 export const updateUserProfile = async userProfile =>
   await db.collection('users').doc(userProfile.uid).set(userProfile)
 
+export const getUserById = id => db.collection('users').doc(id).get()
+
 export const getUsers = () =>
   db.collection('users').get().then(extractSnapshotData)
 
@@ -39,3 +41,21 @@ export const logout = () => firebase.auth().signOut()
 
 export const onAuthStateChanges = onAuth =>
   firebase.auth().onAuthStateChanged(onAuth)
+
+export const updateUserEmail = async data => {
+  let user = firebase.auth().currentUser
+  await firebase.auth().signInWithEmailAndPassword(user.email, '123456')
+
+  let userObject = await (await getUserById(user.uid)).data()
+  console.log('user object', userObject)
+
+  user.updateEmail(data)
+  const userProfile = {
+    uid: userObject.uid,
+    firstName: userObject.firstName,
+    lastName: userObject.lastName,
+    email: data
+  }
+  updateUserProfile(userProfile)
+  return userProfile
+}

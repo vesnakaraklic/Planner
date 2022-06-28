@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+
+.confirm-button {
+  width: 10vh;
+  height: 3vh;
+  color: $brown700;
+  border-radius: 1vw;
+  outline: none;
+  border: 0.15vw solid $brown700;
+  font-size: 1.1vw;
+  color: $brown700;
+  font-family: mv boli;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: translateY(0.1vh);
+  }
+}
+.save-button {
+  @extend .confirm-button;
+  background: #d1b99c;
+  box-shadow: inset 0 0.1vw 0.2vw 0.2vw #b19266;
+}
+.cancel-button {
+  @extend .confirm-button;
+  background: #f4eddf;
+  box-shadow: inset 0 0.1vw 0.2vw 0.2vw #cdb58c;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import HomeHeader from '../../components/homeHeader/homeHeader'
+import UserProfile from '../../components/userProfile/userProfile'
 import DailyPlanner from '../dailyPlanner/dailyPlanner'
 import MonthlyPlanner from '../monthlyPlanner/monthlyPlanner'
 import WeeklyPlanner from '../weeklyPlanner/weeklyPlanner'
@@ -23,6 +24,9 @@ export default function Home() {
           )}
           {currentActive === 3 && (
             <MonthlyPlanner setCurrentActive={setCurrentActive} />
+          )}
+          {currentActive === 4 && (
+            <UserProfile setCurrentActive={setCurrentActive} />
           )}
         </div>
       </div>

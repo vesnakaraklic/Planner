@@ -35,7 +35,9 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
     })
   }
 
-  const onProfileClick = () => {}
+  const onProfileClick = () => {
+    setCurrentActive(4)
+  }
 
   return (
     <>

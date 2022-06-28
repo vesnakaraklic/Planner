@@ -76,6 +76,21 @@ const updateUser = data => {
   }
 }
 
+const changeUser = data => {
+  return dispatch => {
+    dispatch({ type: userConstants.CHANGE_USER, value: data })
+  }
+}
+
+const updateUserEmail = data => {
+  return dispatch => {
+    dispatch({ type: userConstants.UPDATE_USER_EMAIL_REQUEST })
+    return api.updateUserEmail(data)
+    // .then(() => dispatch({ type: userConstants.UPDATE_USER_EMAIL_SUCCESS }))
+    // .catch(() => dispatch({ type: userConstants.UPDATE_USER_EMAIL_FAILURE }))
+  }
+}
+
 export const userActions = {
   setUserList,
   register,
@@ -83,5 +98,7 @@ export const userActions = {
   logout,
   resetError,
   listenToAuthChanges,
-  updateUser
+  updateUser,
+  changeUser,
+  updateUserEmail
 }
