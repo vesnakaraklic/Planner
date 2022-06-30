@@ -2,13 +2,14 @@
   display: flex;
   flex-direction: column;
   color: #4f0000;
-  border-bottom: 2px solid #4f0200;
+  // border-bottom: 2px solid #4f0200;
   padding-bottom: 2vh;
   .user-profile-row {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 1vh;
+    margin-left: 2vh;
 
     & > svg {
       color: #4f0000;
@@ -33,6 +34,8 @@
       text-align: center;
       border-radius: 1vh;
       border-color: #4f0000;
+      color: #4f0200;
+      background: #ecdec6d1;
     }
   }
 }
@@ -52,18 +55,60 @@
   display: flex;
   justify-content: center;
   margin-top: 2vh;
+
+  border-bottom: 2px solid #4f0200;
+  padding-top: 3vh;
+}
+
+.user-profile-box-background {
+  @extend .user-profile-box;
+  background-color: #f6f1e5c4;
+  border-radius: 3vh;
+
+  .user-profile-row {
+    & > input {
+      background-color: #f9f6ee;
+    }
+  }
 }
 .password-font-size {
   font-size: 2vh !important;
 }
 
 .button-non-visible {
-  visibility: hidden;
-  margin-left: 5vh;
+  // visibility: hidden;
+  @extend .edit-profile-button;
+  // margin-left: 5vh;
+  opacity: 0;
 }
 
 .user-profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  background: url('./../../assets/images/userProfile.jpg');
+  background-size: contain;
+  border-radius: 5vh;
+  box-shadow: 2px 4px 6px 2px #cdb491;
+}
+
+.cancel-and-save-buttons-container {
+  display: flex;
+  margin-top: 3vh;
+}
+
+.save-button,
+.cancel-button {
+  margin-left: 2vh !important;
+  width: 14vh !important;
+  margin-bottom: 1.5vh !important;
+}
+
+.text-style {
+  color: #4f0000db;
+  font-size: 3.5rem;
+  font-family: mv boli;
+  border-bottom: 2px solid #4f0000;
 }

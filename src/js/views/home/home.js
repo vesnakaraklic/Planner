@@ -4,6 +4,9 @@ import UserProfile from '../../components/userProfile/userProfile'
 import DailyPlanner from '../dailyPlanner/dailyPlanner'
 import MonthlyPlanner from '../monthlyPlanner/monthlyPlanner'
 import WeeklyPlanner from '../weeklyPlanner/weeklyPlanner'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import '../../styles/toast.scss'
 import './home.scss'
 
 export default function Home() {
@@ -29,6 +32,11 @@ export default function Home() {
             <UserProfile setCurrentActive={setCurrentActive} />
           )}
         </div>
+        <ToastContainer
+          className="toast"
+          toastClassName="toast-wrapper"
+          bodyClassName="toast-body"
+        />
       </div>
     </>
   )

@@ -1,6 +1,8 @@
 import { userConstants } from '../constants/user.constants'
 import * as api from '../../api/users'
 import { localStorageService } from '../../services/localStorage.service'
+import { toastService } from '../../services/toast.service'
+import { toast } from 'react-toastify'
 
 const setUserList = data => {
   return dispatch => {
@@ -71,7 +73,12 @@ const updateUser = data => {
     dispatch({ type: userConstants.UPDATE_USER_REQUEST })
     return api
       .updateUserProfile(data)
-      .then(() => dispatch({ type: userConstants.UPDATE_USER_SUCCESS }))
+      .then(() => {
+        dispatch({ type: userConstants.UPDATE_USER_SUCCESS, value: data })
+        toastService('success', 'Details updated!', {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+      })
       .catch(() => dispatch({ type: userConstants.UPDATE_USER_FAILURE }))
   }
 }
@@ -82,12 +89,30 @@ const changeUser = data => {
   }
 }
 
-const updateUserEmail = data => {
+const updateUserEmail = (data, oldPassword) => {
   return dispatch => {
     dispatch({ type: userConstants.UPDATE_USER_EMAIL_REQUEST })
-    return api.updateUserEmail(data)
-    // .then(() => dispatch({ type: userConstants.UPDATE_USER_EMAIL_SUCCESS }))
-    // .catch(() => dispatch({ type: userConstants.UPDATE_USER_EMAIL_FAILURE }))
+    return api.updateUserEmail(data, oldPassword).then(
+      res => {
+        dispatch({ type: userConstants.UPDATE_USER_EMAIL_SUCCESS, value: res })
+        toastService('success', 'Email updated!', {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+        return res
+      },
+      error => {
+        dispatch({ type: userConstants.UPDATE_USER_EMAIL_FAILURE, error })
+
+        return null
+      }
+    )
+  }
+}
+
+const updateUserPassword = (newPassword, oldPassword) => {
+  return dispatch => {
+    dispatch({ type: userConstants.UPDATE_USER_PASSWORD_REQUEST })
+    return api.updateUserPassword(newPassword, oldPassword)
   }
 }
 
@@ -100,5 +125,6 @@ export const userActions = {
   listenToAuthChanges,
   updateUser,
   changeUser,
-  updateUserEmail
+  updateUserEmail,
+  updateUserPassword
 }

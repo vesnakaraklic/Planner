@@ -42,19 +42,34 @@ export const logout = () => firebase.auth().signOut()
 export const onAuthStateChanges = onAuth =>
   firebase.auth().onAuthStateChanged(onAuth)
 
-export const updateUserEmail = async data => {
+export const updateUserEmail = async (newEmail, oldPassword) => {
   let user = firebase.auth().currentUser
-  await firebase.auth().signInWithEmailAndPassword(user.email, '123456')
+  await firebase.auth().signInWithEmailAndPassword(user.email, oldPassword)
 
   let userObject = await (await getUserById(user.uid)).data()
-  console.log('user object', userObject)
 
-  user.updateEmail(data)
+  user.updateEmail(newEmail)
   const userProfile = {
     uid: userObject.uid,
     firstName: userObject.firstName,
     lastName: userObject.lastName,
-    email: data
+    email: newEmail
+  }
+  updateUserProfile(userProfile)
+  return userProfile
+}
+
+export const updateUserPassword = async (newPassword, oldPassword) => {
+  let user = firebase.auth().currentUser
+  await firebase.auth().signInWithEmailAndPassword(user.email, oldPassword)
+  let userObject = await (await getUserById(user.uid)).data()
+
+  user.updatePassword(newPassword)
+  const userProfile = {
+    uid: userObject.uid,
+    firstName: userObject.firstName,
+    lastName: userObject.lastName,
+    email: userObject.email
   }
   updateUserProfile(userProfile)
   return userProfile

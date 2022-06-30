@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { faBell, faListUl, faUser } from '@fortawesome/fontawesome-free-solid'
 import { userActions } from '../../store/actions/user.actions'
@@ -14,6 +14,7 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
   const dispatch = useDispatch()
   const history = useHistory()
   const [open, setOpen] = useState(false)
+  const menuDropdownRef = useRef(null)
 
   const optionsArray = [
     { key: 1, label: 'Daily' },
@@ -39,6 +40,22 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
     setCurrentActive(4)
   }
 
+  const handleClickOutside = event => {
+    if (
+      menuDropdownRef.current &&
+      !menuDropdownRef.current.contains(event.target)
+    ) {
+      setOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true)
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true)
+    }
+  }, [])
+
   return (
     <>
       <div className="home-header-wrapper">
@@ -49,11 +66,15 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
             setActive={setCurrentActive}
           />
           <div className="dropdown-container">
-            <button onClick={() => setOpen(!open)} className="drop-button">
+            <button
+              id="menu"
+              onClick={() => setOpen(!open)}
+              className="drop-button"
+            >
               <FontAwesomeIcon icon={faListUl} />
             </button>
             {open && (
-              <div className="dropdown-content">
+              <div ref={menuDropdownRef} className="dropdown-content">
                 <button className="buttonInMenu" onClick={onProfileClick}>
                   Profile
                   <FontAwesomeIcon icon={faUser} />

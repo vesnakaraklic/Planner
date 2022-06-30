@@ -39,7 +39,8 @@ export const user = (state = initialState, action) => {
         error: action.error,
         loading: false
       }
-
+    case userConstants.UPDATE_USER_EMAIL_SUCCESS:
+    case userConstants.UPDATE_USER_SUCCESS:
     case userConstants.CHANGE_USER:
       if (!action.value)
         return {
@@ -50,9 +51,7 @@ export const user = (state = initialState, action) => {
         user: action.value
       }
     case userConstants.UPDATE_USER_EMAIL_REQUEST:
-    case userConstants.UPDATE_USER_EMAIL_SUCCESS:
     case userConstants.UPDATE_USER_EMAIL_FAILURE:
-    case userConstants.UPDATE_USER_SUCCESS:
     case userConstants.UPDATE_USER_REQUEST:
     case userConstants.UPDATE_USER_FAILURE:
     default:
