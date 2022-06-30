@@ -115,7 +115,7 @@ export default function DateHeader({
 
   return (
     <>
-      <div className="date-form">
+      <div className={currentActive !== 4 ? 'date-form' : 'hidden-border'}>
         {!displayDateAndNote && currentActive === 2 && (
           <div className="option-filter">
             <label className="label-filter">Filter: </label>

@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import HomeHeader from '../../components/homeHeader/homeHeader'
+import UserProfile from '../../components/userProfile/userProfile'
 import DailyPlanner from '../dailyPlanner/dailyPlanner'
 import MonthlyPlanner from '../monthlyPlanner/monthlyPlanner'
 import WeeklyPlanner from '../weeklyPlanner/weeklyPlanner'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import '../../styles/toast.scss'
 import './home.scss'
 
 export default function Home() {
@@ -24,7 +28,15 @@ export default function Home() {
           {currentActive === 3 && (
             <MonthlyPlanner setCurrentActive={setCurrentActive} />
           )}
+          {currentActive === 4 && (
+            <UserProfile setCurrentActive={setCurrentActive} />
+          )}
         </div>
+        <ToastContainer
+          className="toast"
+          toastClassName="toast-wrapper"
+          bodyClassName="toast-body"
+        />
       </div>
     </>
   )

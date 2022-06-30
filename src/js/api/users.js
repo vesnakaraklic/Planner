@@ -7,6 +7,8 @@ const extractSnapshotData = snapshot =>
 export const updateUserProfile = async userProfile =>
   await db.collection('users').doc(userProfile.uid).set(userProfile)
 
+export const getUserById = id => db.collection('users').doc(id).get()
+
 export const getUsers = () =>
   db.collection('users').get().then(extractSnapshotData)
 
@@ -39,3 +41,36 @@ export const logout = () => firebase.auth().signOut()
 
 export const onAuthStateChanges = onAuth =>
   firebase.auth().onAuthStateChanged(onAuth)
+
+export const updateUserEmail = async (newEmail, oldPassword) => {
+  let user = firebase.auth().currentUser
+  await firebase.auth().signInWithEmailAndPassword(user.email, oldPassword)
+
+  let userObject = await (await getUserById(user.uid)).data()
+
+  user.updateEmail(newEmail)
+  const userProfile = {
+    uid: userObject.uid,
+    firstName: userObject.firstName,
+    lastName: userObject.lastName,
+    email: newEmail
+  }
+  updateUserProfile(userProfile)
+  return userProfile
+}
+
+export const updateUserPassword = async (newPassword, oldPassword) => {
+  let user = firebase.auth().currentUser
+  await firebase.auth().signInWithEmailAndPassword(user.email, oldPassword)
+  let userObject = await (await getUserById(user.uid)).data()
+
+  user.updatePassword(newPassword)
+  const userProfile = {
+    uid: userObject.uid,
+    firstName: userObject.firstName,
+    lastName: userObject.lastName,
+    email: userObject.email
+  }
+  updateUserProfile(userProfile)
+  return userProfile
+}

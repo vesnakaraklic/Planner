@@ -1,0 +1,50 @@
+// React toast
+@import './variables.scss';
+
+.toast {
+  z-index: 999999999 !important;
+  margin-right: 0.625rem;
+}
+
+.toast-wrapper {
+  border-radius: 0;
+  padding-left: 0.813rem;
+  font-family: 'Roboto';
+  font-size: 1.3875rem;
+  font-weight: 500;
+}
+
+.Toastify__progress-bar {
+  height: 0.45rem;
+  background-color: #bfa37b;
+}
+
+.Toastify__toast--success {
+  background: #e5d5b8;
+  color: $brown700;
+  border-left: 0.25rem solid $brown700;
+  font-size: 1.6rem !important;
+  font-family: mv boli !important;
+  .Toastify__toast-icon {
+    background-image: url('./../assets/images/checkIcon.png') !important;
+  }
+}
+
+.Toastify__toast--error {
+  background: #e5d5b8;
+  color: red;
+  border-left: 0.25rem solid red;
+  font-size: 1.6rem !important;
+  font-family: mv boli !important;
+  .Toastify__toast-icon {
+    background-image: url('./../assets/images/errorIcon.png') !important;
+  }
+}
+.Toastify__toast-icon {
+  height: 1.75rem;
+  width: 1.75rem;
+  background-size: contain;
+  svg {
+    display: none;
+  }
+}

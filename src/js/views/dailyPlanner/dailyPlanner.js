@@ -17,6 +17,7 @@ import Plans from './components/plans/plans'
 import ToDoList from './components/toDoList/toDoList'
 import Water from './components/water/water'
 import './dailyPlanner.scss'
+import SaveAndCancelButtons from '../../components/saveAndCancelButtons/saveAndCancelButtons'
 
 export default function DailyPlanner() {
   const dispatch = useDispatch()
@@ -58,7 +59,7 @@ export default function DailyPlanner() {
     dispatch(changesToSaveActions.clearArray())
   }
 
-  const onCancleClick = () => {
+  const onCancelClick = () => {
     changesToSave.map(word => {
       if (word === 'plans') {
         dispatch(plansActions.getPlansById(user.uid + dateRedux))
@@ -111,12 +112,16 @@ export default function DailyPlanner() {
                   changesToSave.length > 0 ? 'visible' : ''
                 }`}
               >
-                <button className="cancel-button" onClick={onCancleClick}>
+                <SaveAndCancelButtons
+                  onCancel={onCancelClick}
+                  onSave={onSaveDaily}
+                />
+                {/* <button className="cancel-button" onClick={onCancleClick}>
                   Cancel
                 </button>
                 <button className="save-button" onClick={onSaveDaily}>
                   Save
-                </button>
+                </button> */}
               </div>
             </div>
 
