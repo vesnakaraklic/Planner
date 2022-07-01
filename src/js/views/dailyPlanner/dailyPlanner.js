@@ -9,18 +9,19 @@ import { plansActions } from '../../store/actions/plans.actions'
 import { toDoActions } from '../../store/actions/toDo.actions'
 import { waterActions } from '../../store/actions/water.actions'
 import getDateWithoutHours from '../../utils/getDateWithoutHours'
-import { dateActions } from '../../store/actions/date.actions'
 import Exercise from './components/exercise/exercise'
 import Food from './components/food/food'
 import Money from './components/money/money'
 import Plans from './components/plans/plans'
 import ToDoList from './components/toDoList/toDoList'
 import Water from './components/water/water'
-import './dailyPlanner.scss'
 import SaveAndCancelButtons from '../../components/saveAndCancelButtons/saveAndCancelButtons'
+import { notificationActions } from '../../store/actions/notification.actions'
+import './dailyPlanner.scss'
 
 export default function DailyPlanner() {
   const dispatch = useDispatch()
+  const todayDate = new Date()
   const user = useSelector(state => state.user.user)
   const { money, food, waterDrink, exercise, plans, toDo, note } = useSelector(
     state => state
@@ -34,6 +35,11 @@ export default function DailyPlanner() {
       changesToSave.map(word => {
         if (word === 'plans') {
           dispatch(plansActions.updatePlans(user.uid + date, { ...plans }))
+          if (user.uid + date === user.uid + getDateWithoutHours(todayDate)) {
+            dispatch(
+              notificationActions.getPlansForNotificationById(user.uid + date)
+            )
+          }
         } else if (word === 'money') {
           dispatch(moneyActions.updateMoney(user.uid + date, { ...money }))
         } else if (word === 'food') {
