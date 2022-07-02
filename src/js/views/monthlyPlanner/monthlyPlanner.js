@@ -125,7 +125,6 @@ export default function MonthlyPlanner({ setCurrentActive }) {
             if (value && value !== '') nonEmptyPlansLenght++
           })
         }
-        console.log('eee', nonEmptyPlansLenght)
         if (nonEmptyPlansLenght >= 1 && nonEmptyPlansLenght < 5)
           tile.parentElement.style.borderBottom = '3px solid #77DD77'
         else if (nonEmptyPlansLenght > 5 && nonEmptyPlansLenght < 12)
