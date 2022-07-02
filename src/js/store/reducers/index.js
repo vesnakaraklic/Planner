@@ -11,7 +11,7 @@ import { note } from '../reducers/note.reducer'
 import { weekDays } from '../reducers/weekDays.reducer'
 import { monthDates } from './monthDates.reducer'
 import { changesToSave } from './changesToSave.reducer'
-import { notification } from './notification.reducer'
+import { notifications } from './notifications.reducer'
 
 const appReducer = combineReducers({
   user,
@@ -26,7 +26,7 @@ const appReducer = combineReducers({
   weekDays,
   monthDates,
   changesToSave,
-  notification
+  notifications
 })
 
 const rootReducer = (state, action) => {

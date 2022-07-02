@@ -16,7 +16,7 @@ import Plans from './components/plans/plans'
 import ToDoList from './components/toDoList/toDoList'
 import Water from './components/water/water'
 import SaveAndCancelButtons from '../../components/saveAndCancelButtons/saveAndCancelButtons'
-import { notificationActions } from '../../store/actions/notification.actions'
+import { notificationsActions } from '../../store/actions/notifications.actions'
 import './dailyPlanner.scss'
 
 export default function DailyPlanner() {
@@ -37,7 +37,7 @@ export default function DailyPlanner() {
           dispatch(plansActions.updatePlans(user.uid + date, { ...plans }))
           if (user.uid + date === user.uid + getDateWithoutHours(todayDate)) {
             dispatch(
-              notificationActions.getPlansForNotificationById(user.uid + date)
+              notificationsActions.getPlansForNotificationsById(user.uid + date)
             )
           }
         } else if (word === 'money') {
