@@ -2,7 +2,7 @@
 
 .submit-btn {
   border-radius: 1vh;
-  margin-top: 7vh;
+  margin-top: 6vh;
   height: 4vh;
   appearance: none;
   background-color: $brown700;
@@ -17,4 +17,9 @@
     background-color: $brown500;
     border: 1px solid $brown500;
   }
+}
+
+.reset-buttons {
+  height: 3vh !important;
+  margin-left: 0.5vh !important;
 }

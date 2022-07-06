@@ -81,6 +81,7 @@
       }
       input {
         height: 1vw;
+        font-weight: bold;
         margin: 0 0.2rem;
         color: $brown700;
         line-height: 1vw;
@@ -129,6 +130,10 @@
       outline: none;
     }
   }
+}
+
+.week {
+  width: 65vh;
 }
 
 .with-week {

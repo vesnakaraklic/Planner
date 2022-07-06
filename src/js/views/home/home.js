@@ -54,11 +54,11 @@ export default function Home() {
       Object.keys(notifications).map(key => {
         if (notifications[key] !== '') {
           let res = getTimeByString(key)
-          if (todayDate.getTime() < res.getTime() - 300000) {
+          if (todayDate.getTime() < res.getTime() - 600000) {
             let time = res.getTime() - todayDate.getTime()
             const t = setTimeout(
               () => notificationsForPlans(notifications[key], key),
-              time - 300000
+              time - 600000
             )
             setTimeouts(oldTimeouts => [...oldTimeouts, t])
           }

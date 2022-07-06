@@ -74,3 +74,9 @@ export const updateUserPassword = async (newPassword, oldPassword) => {
   updateUserProfile(userProfile)
   return userProfile
 }
+
+export const resetPassword = email => {
+  let auth = firebase.auth()
+
+  auth.sendPasswordResetEmail(email)
+}
