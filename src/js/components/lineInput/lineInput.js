@@ -9,10 +9,13 @@ export default function LineInput({
   isChecked = false,
   onCheckChange,
   className,
+  wrapperClass,
   onChange,
+  expandable = false,
   value = ''
 }) {
   const [inputValue, setInputValue] = useState('')
+  const [isExpanderOpened, setIsExpanderOpened] = useState(false)
 
   useEffect(() => {
     setInputValue(value)
@@ -27,20 +30,48 @@ export default function LineInput({
     onChange && onChange(event)
   }
 
+  useEffect(() => {
+    console.log('isExpanderOpened', isExpanderOpened)
+  }, [isExpanderOpened])
   return (
     <>
-      {withCheckbox && (
-        <div className="checkbox-frame" onClick={() => onCheckHandle()}>
-          {isChecked && (
-            <FontAwesomeIcon className="icon-style" icon={faCheck} />
-          )}
-        </div>
-      )}
-      <input
-        value={inputValue}
-        className={`${className} ${isChecked ? 'checked-text' : ''} `}
-        onChange={onChangeHandler}
-      ></input>
+      <div className={wrapperClass}>
+        {withCheckbox && (
+          <div className="checkbox-frame" onClick={() => onCheckHandle()}>
+            {isChecked && (
+              <FontAwesomeIcon className="icon-style" icon={faCheck} />
+            )}
+          </div>
+        )}
+        <input
+          value={inputValue}
+          className={`${className} ${isChecked ? 'checked-text' : ''} `}
+          onChange={onChangeHandler}
+        ></input>
+        {expandable && (
+          <div
+            className={
+              isExpanderOpened
+                ? 'line-input-expander-btn-closed'
+                : 'line-input-expander-btn-opened'
+            }
+            onClick={() => setIsExpanderOpened(!isExpanderOpened)}
+          >
+            {'>'}
+          </div>
+        )}
+        {expandable && (
+          <div
+            className={
+              isExpanderOpened
+                ? 'line-input-expander-content-opened'
+                : 'line-input-expander-content-closed'
+            }
+          >
+            Test
+          </div>
+        )}
+      </div>
     </>
   )
 }

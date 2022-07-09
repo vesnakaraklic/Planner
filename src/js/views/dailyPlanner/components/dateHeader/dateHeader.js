@@ -116,8 +116,7 @@ export default function DateHeader({
       !datePickerButtonRef.current.contains(event.target)
     ) {
       setClicked(false)
-      console.log('ref', false)
-    } else console.log('ref', true)
+    }
   }
 
   useEffect(() => {

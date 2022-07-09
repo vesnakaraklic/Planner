@@ -30,5 +30,11 @@
       text-align: right;
       display: inline-block;
     }
+    .plans-line-input-wrapper {
+      flex: auto;
+      input {
+        width: 100%;
+      }
+    }
   }
 }

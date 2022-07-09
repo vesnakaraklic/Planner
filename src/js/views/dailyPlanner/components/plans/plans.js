@@ -51,6 +51,7 @@ const Plans = ({ plans }) => {
                 type="text"
                 value={plans[planKey]}
                 onChange={e => onChangeInput(e.target.value, planKey)}
+                wrapperClass={'plans-line-input-wrapper'}
               />
             </div>
           ))}

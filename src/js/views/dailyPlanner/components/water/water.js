@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
 import { waterActions } from '../../../../store/actions/water.actions'
@@ -6,26 +6,34 @@ import './water.scss'
 
 export default function Water({ water }) {
   const waterImage = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  const [waterValue, setWaterValue] = useState(0)
   const dispatch = useDispatch()
   const changesToSave = useSelector(state => state.changesToSave.changesToSave)
 
-  const onChange = date => {
+  const onChange = data => {
     if (!changesToSave.includes('water'))
       dispatch(changesToSaveActions.pushChanges('water'))
-    dispatch(waterActions.changeWater(date))
+    dispatch(waterActions.changeWater(data))
+    setWaterValue(data)
   }
+
+  useEffect(() => {
+    setWaterValue(water.water)
+  }, [water])
 
   return (
     <>
       <div className="water-wrapper">
         <div className="water-image-container">
-          {waterImage.map(image => {
-            if (waterImage[image] < water.water) {
-              return <div key={'Key' + image} className="water-filled" />
-            } else {
-              return <div key={image} className="water-image" />
-            }
-          })}
+          {waterImage.map(image => (
+            <div
+              key={'key' + image}
+              onClick={() => onChange(image + 1)}
+              className={
+                waterImage[image] < waterValue ? 'water-filled' : 'water-image'
+              }
+            />
+          ))}
         </div>
         <input
           type="range"
@@ -33,7 +41,7 @@ export default function Water({ water }) {
           max={10}
           step={1}
           className="water-slider"
-          value={water.water}
+          value={waterValue}
           onChange={e => onChange(e.target.value)}
         />
       </div>
