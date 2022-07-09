@@ -97,11 +97,12 @@
 
 .monthlyDayPreview {
   border: 1px solid #cba795;
-  width: 48vh;
+  width: 33vw;
   border-radius: 0 2vh 2vh 0;
   background-color: #cba795;
   display: flex;
   flex-direction: column;
+  height: 75vh;
 }
 
 .dateStyleMonthly {
@@ -129,14 +130,14 @@
 }
 
 .react-calendar__month-view__weekdays__weekday {
-  flex: 0 0 13.5vh !important;
+  flex: 0 0 8vw !important;
   overflow: hidden;
   font-family: mv boli;
   font-size: 2vh;
 }
 
 .react-calendar__tile.react-calendar__month-view__days__day.react-calendar__month-view__days__day {
-  flex: 0 0 13.5vh !important;
+  flex: 0 0 8vw !important;
   font-family: mv boli;
   font-size: 2vh;
 }
@@ -196,8 +197,13 @@
 .plans-wrapper-in-monthly-planner {
   max-height: 44.5vh;
   overflow-y: auto;
+  padding-bottom: 2vh;
 }
 
 .react-datepicker__day--outside-month {
   visibility: hidden !important;
+}
+
+.react-calendar {
+  width: 58vw !important;
 }

@@ -62,6 +62,13 @@ const resetError = () => {
   }
 }
 
+const resetPassword = email => {
+  return dispatch => {
+    dispatch({ type: userConstants.AUTH_RESET_PASSWORD_REQUEST })
+    return api.resetPassword(email)
+  }
+}
+
 const logout = () => dispatch =>
   api.logout().then(_ => {
     localStorageService.delete('user')
@@ -112,7 +119,23 @@ const updateUserEmail = (data, oldPassword) => {
 const updateUserPassword = (newPassword, oldPassword) => {
   return dispatch => {
     dispatch({ type: userConstants.UPDATE_USER_PASSWORD_REQUEST })
-    return api.updateUserPassword(newPassword, oldPassword)
+    return api.updateUserPassword(newPassword, oldPassword).then(
+      res => {
+        dispatch({
+          type: userConstants.UPDATE_USER_PASSWORD_SUCCESS,
+          value: res
+        })
+        toastService('success', 'Pasword updated!', {
+          position: toast.POSITION.BOTTOM_RIGHT
+        })
+        return res
+      },
+      error => {
+        dispatch({ type: userConstants.UPDATE_USER_PASSWORD_FAILURE, error })
+
+        return null
+      }
+    )
   }
 }
 
@@ -126,5 +149,6 @@ export const userActions = {
   updateUser,
   changeUser,
   updateUserEmail,
-  updateUserPassword
+  updateUserPassword,
+  resetPassword
 }

@@ -1,7 +1,7 @@
 @import './../../../styles/variables.scss';
 
 .login-form {
-  height: 42vh;
+  height: 45vh;
   width: 36vh;
   border: 3px solid $brown700;
   border-radius: 1vh;
@@ -36,4 +36,26 @@
       }
     }
   }
+}
+
+.reset-password-link {
+  color: #ae8b70;
+  font-family: mv boli;
+  font-size: 1.4vh;
+  text-decoration: underline;
+  margin-left: 14vh;
+  cursor: pointer;
+}
+
+.reset-password-buttons {
+  display: flex;
+}
+
+.enter-email-for-reset {
+  font-family: mv boli;
+  text-align: center;
+  color: #4f0200;
+  margin-bottom: 5vh;
+  font-size: 1.7vh;
+  font-weight: bold;
 }

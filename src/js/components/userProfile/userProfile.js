@@ -16,7 +16,7 @@ import './userProfile.scss'
 export default function UserProfile() {
   const user = useSelector(state => state.user.user)
   const [isClickedDetailsEdit, setIsClickedDetailsEdit] = useState(false)
-  const [isClickedPasswordEddit, setIsClickedPasswordEdit] = useState(false)
+  const [isClickedPasswordEdit, setIsClickedPasswordEdit] = useState(false)
   const [isClickedEmailEdit, setIsClickedEmailEdit] = useState(false)
   const [displayButton, setDisplayButton] = useState(false)
   const [userProfile, setUserProfile] = useState(user)
@@ -30,10 +30,12 @@ export default function UserProfile() {
   }
   const onEditPasswordClick = () => {
     setIsClickedPasswordEdit(true)
+    setOldPassword('')
   }
 
   const onEditEmailClick = () => {
     setIsClickedEmailEdit(true)
+    setOldPassword('')
   }
 
   const onSaveClick = async () => {
@@ -48,47 +50,59 @@ export default function UserProfile() {
         const res = await dispatch(
           userActions.updateUserEmail(userProfile.email, oldPassword)
         )
-        console.log('res', res)
         if (res) {
           setIsClickedEmailEdit(false)
           setDisplayButton(false)
         } else {
-          toastService('error', 'Current password incorect!', {
+          toastService('error', 'Current password incorrect!', {
             position: toast.POSITION.BOTTOM_RIGHT
           })
         }
       } else {
-        toastService('error', 'Current password incorect!', {
+        toastService('error', 'Current password incorrect!', {
           position: toast.POSITION.BOTTOM_RIGHT
         })
       }
     }
 
-    if (isClickedPasswordEddit) {
+    if (isClickedPasswordEdit) {
       if (
         oldPassword !== '' &&
         newPassword === repeatNewPassword &&
         newPassword !== ''
       ) {
-        dispatch(userActions.updateUserPassword(newPassword, oldPassword))
-        // toast('Password updated!', { position: toast.POSITION.BOTTOM_RIGHT })
-        setIsClickedPasswordEdit(false)
-      }
-
-      if (oldPassword === '') {
-        // toast.warning('Current password incorect!', {
-        //   position: toast.POSITION.BOTTOM_RIGHT
-        // })
-      }
-
-      if (newPassword !== repeatNewPassword || newPassword === '') {
-        // toast.warning('Incorect new password!', {
-        //   position: toast.POSITION.BOTTOM_RIGHT
-        // })
+        const res = await dispatch(
+          userActions.updateUserPassword(newPassword, oldPassword)
+        )
+        console.log('res', res)
+        if (res) {
+          setIsClickedPasswordEdit(false)
+          setDisplayButton(false)
+        } else {
+          toastService('error', 'Incorrect current password!', {
+            position: toast.POSITION.BOTTOM_RIGHT
+          })
+        }
+      } else {
+        if (oldPassword === '' && newPassword === '') {
+          toastService('error', 'Please, fill in all fields.', {
+            position: toast.POSITION.BOTTOM_RIGHT
+          })
+        } else if (oldPassword === '') {
+          toastService('error', 'Please, enter the current password.', {
+            position: toast.POSITION.BOTTOM_RIGHT
+          })
+        } else if (newPassword !== repeatNewPassword || newPassword === '') {
+          toastService('error', 'New password incorrect!', {
+            position: toast.POSITION.BOTTOM_RIGHT
+          })
+        } else {
+          toastService('error', 'Incorrect data!', {
+            position: toast.POSITION.BOTTOM_RIGHT
+          })
+        }
       }
     }
-
-    // setIsClickedPasswordEdit(false)
   }
 
   const onCancelClick = () => {
@@ -103,9 +117,10 @@ export default function UserProfile() {
       setIsClickedEmailEdit(false)
     }
 
-    if (isClickedPasswordEddit) {
+    if (isClickedPasswordEdit) {
       setNewPassword('')
       setOldPassword('')
+      setRepeatNewPassword('')
       setIsClickedPasswordEdit(false)
     }
 
@@ -114,7 +129,6 @@ export default function UserProfile() {
 
   const handleInputChange = (event, key) => {
     setUserProfile({ ...userProfile, [key]: event })
-    // dispatch(userActions.updateUser(userProfile))
   }
 
   useEffect(() => {
@@ -122,14 +136,14 @@ export default function UserProfile() {
       setDisplayButton(true)
     }
 
-    if (isClickedPasswordEddit) {
+    if (isClickedPasswordEdit) {
       setDisplayButton(true)
     }
 
     if (isClickedEmailEdit) {
       setDisplayButton(true)
     }
-  }, [isClickedDetailsEdit, isClickedPasswordEddit, isClickedEmailEdit])
+  }, [isClickedDetailsEdit, isClickedPasswordEdit, isClickedEmailEdit])
 
   return (
     <>
@@ -176,7 +190,7 @@ export default function UserProfile() {
             onClick={onEditDetailsClick}
             className={
               isClickedEmailEdit ||
-              isClickedPasswordEddit ||
+              isClickedPasswordEdit ||
               isClickedDetailsEdit
                 ? 'button-non-visible'
                 : 'edit-profile-button'
@@ -223,7 +237,7 @@ export default function UserProfile() {
             onClick={onEditEmailClick}
             className={
               isClickedEmailEdit ||
-              isClickedPasswordEddit ||
+              isClickedPasswordEdit ||
               isClickedDetailsEdit
                 ? 'button-non-visible'
                 : 'edit-profile-button'
@@ -236,13 +250,13 @@ export default function UserProfile() {
         {/* CHANGE PASSWORD */}
         <div
           className={
-            isClickedPasswordEddit
+            isClickedPasswordEdit
               ? 'user-profile-box-background'
               : 'user-profile-box'
           }
         >
           <div className="user-profile-wrapper">
-            {isClickedPasswordEddit && (
+            {isClickedPasswordEdit && (
               <div className="user-profile-row">
                 <FontAwesomeIcon icon={faLock} />
                 <label className="password-font-size">Current Password:</label>
@@ -255,24 +269,24 @@ export default function UserProfile() {
             <div className="user-profile-row">
               <FontAwesomeIcon icon={faLock} />
               <label className="password-font-size"> New Password:</label>
-              {isClickedPasswordEddit && (
+              {isClickedPasswordEdit && (
                 <input
                   value={newPassword}
                   onChange={e => setNewPassword(e.target.value)}
                 ></input>
               )}
-              {!isClickedPasswordEddit && <input disabled></input>}
+              {!isClickedPasswordEdit && <input disabled></input>}
             </div>
             <div className="user-profile-row">
               <FontAwesomeIcon icon={faLock} />
               <label className="password-font-size"> Confirm Password:</label>
-              {isClickedPasswordEddit && (
+              {isClickedPasswordEdit && (
                 <input
                   value={repeatNewPassword}
                   onChange={e => setRepeatNewPassword(e.target.value)}
                 ></input>
               )}
-              {!isClickedPasswordEddit && (
+              {!isClickedPasswordEdit && (
                 <input value={user.password} disabled></input>
               )}
             </div>
@@ -282,7 +296,7 @@ export default function UserProfile() {
             onClick={onEditPasswordClick}
             className={
               isClickedEmailEdit ||
-              isClickedPasswordEddit ||
+              isClickedPasswordEdit ||
               isClickedDetailsEdit
                 ? 'button-non-visible'
                 : 'edit-profile-button'

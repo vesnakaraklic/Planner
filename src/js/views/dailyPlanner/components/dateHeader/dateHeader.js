@@ -4,7 +4,7 @@ import {
   faCalendarCheck
 } from '@fortawesome/fontawesome-free-solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,9 +19,9 @@ import getPreviousDate from '../../../../utils/getPreviousDate'
 import getPreviousMonday from '../../../../utils/getPreviousMonday'
 import getWeekFromDate from '../../../../utils/getWeekFromDate'
 import Select from 'react-select'
-import './dateHeader.scss'
 import { updateMonthlyViewByDate } from '../../../monthlyPlanner/monthlyPlanner'
 import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
+import './dateHeader.scss'
 
 export default function DateHeader({
   note = '',
@@ -35,6 +35,7 @@ export default function DateHeader({
   const [week, setWeek] = useState({})
   const selected = useSelector(state => state.weekDays.filter)
   const changesToSave = useSelector(state => state.changesToSave.changesToSave)
+  const datePickerButtonRef = useRef(null)
 
   const user = useSelector(state => state.user.user)
 
@@ -109,6 +110,23 @@ export default function DateHeader({
     dispatch(weekDaysActions.changeFilter(value))
   }
 
+  const handleClickOutsideDatePicker = event => {
+    if (
+      datePickerButtonRef.current &&
+      !datePickerButtonRef.current.contains(event.target)
+    ) {
+      setClicked(false)
+      console.log('ref', false)
+    } else console.log('ref', true)
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutsideDatePicker, true)
+    return () => {
+      document.removeEventListener('click', handleClickOutsideDatePicker, true)
+    }
+  }, [])
+
   useEffect(() => {
     setWeek(getWeekFromDate(date))
   }, [dateRedux])
@@ -129,11 +147,8 @@ export default function DateHeader({
         )}
 
         {displayDateAndNote && (
-          <div
-            // className={`dateInputForm ${displayDateAndNote ? '' : 'hidden'}`}
-            className="date-input-form"
-          >
-            <div className="date-style">
+          <div className="date-input-form">
+            <div className="date-style" ref={datePickerButtonRef}>
               {' '}
               <p>
                 Date: {getMonthFromDate(date)} {date.getDate()} ,{' '}

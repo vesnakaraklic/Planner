@@ -13,7 +13,7 @@ export default function InputWithIcon({
   className,
   iconEye,
   onEyeClick,
-  maxLength = 20
+  maxLength = 30
 }) {
   return (
     <div className={`field-container ${className}`}>

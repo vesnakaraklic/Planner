@@ -122,12 +122,6 @@ export default function DailyPlanner() {
                   onCancel={onCancelClick}
                   onSave={onSaveDaily}
                 />
-                {/* <button className="cancel-button" onClick={onCancleClick}>
-                  Cancel
-                </button>
-                <button className="save-button" onClick={onSaveDaily}>
-                  Save
-                </button> */}
               </div>
             </div>
 

@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { userActions } from '../../../store/actions/user.actions'
 import InputWithIcon from '../../../components/inputWithIcon/inputWithIcon'
 import NormalButton from '../../../components/normalButton/normalButton'
+import { toastService } from '../../../services/toast.service'
+import { toast, ToastContainer } from 'react-toastify'
 import './login.scss'
 
 const defaultForm = { email: '', password: '' }
@@ -20,6 +22,8 @@ const LoginForm = ({ setActive }) => {
   const user = useSelector(state => state.user)
   const [errorMessages, setErrorMessages] = useState(defaultErrorMessages)
   const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [isForgetPasswordClicked, setIsForgetPasswordClicked] = useState(false)
+  const [emailForResetPassword, setEmailForResetPassword] = useState('')
 
   const onSubmit = () => {
     const tempErrorMessages = { ...defaultErrorMessages }
@@ -89,6 +93,26 @@ const LoginForm = ({ setActive }) => {
     setIsPasswordShown(!isPasswordShown)
   }
 
+  const onForgetClick = () => {
+    setIsForgetPasswordClicked(true)
+  }
+
+  const onSendEmailClick = () => {
+    dispatch(userActions.resetPassword(emailForResetPassword))
+    toastService('success', 'Email sent! Check your inbox.', {
+      position: toast.POSITION.BOTTOM_RIGHT
+    })
+    setIsForgetPasswordClicked(false)
+  }
+
+  const handleResetEmailChange = event => {
+    setEmailForResetPassword(event.target.value)
+  }
+
+  const onCancelClick = () => {
+    setIsForgetPasswordClicked(false)
+  }
+
   useEffect(() => {
     dispatch(userActions.resetError())
   }, [])
@@ -113,37 +137,68 @@ const LoginForm = ({ setActive }) => {
         <div className="login-title">
           <p>Login Form</p>
         </div>
-        <div style={{ padding: '3vh' }}>
-          <InputWithIcon
-            className="auth-input"
-            icon={faEnvelope}
-            name={'email'}
-            placeholder={'Email'}
-            type={'email'}
-            onChange={event => handleInputChange(event, 'email')}
-            onBlur={event => validateEmail(event.target.value)}
-            errorMsg={errorMessages.email}
-          />
-          <InputWithIcon
-            className="auth-input"
-            icon={faLock}
-            name={'password'}
-            placeholder={'Password'}
-            type={isPasswordShown ? 'text' : 'password'}
-            iconEye={!isPasswordShown ? faEye : faEyeSlash}
-            onEyeClick={togglePasswordVisibility}
-            onChange={event => handleInputChange(event, 'password')}
-            errorMsg={errorMessages.password}
-          />
-          <NormalButton buttonName={'Login'} onClick={onSubmit} />
-          <p className="redirect-text">
-            Not a member?
-            <a onClick={() => setActive(2)} className="redirect-link">
-              {' Signup Now'}
+        {!isForgetPasswordClicked && (
+          <div style={{ padding: '3vh' }}>
+            <InputWithIcon
+              className="auth-input"
+              icon={faEnvelope}
+              name={'email'}
+              placeholder={'Email'}
+              type={'email'}
+              onChange={event => handleInputChange(event, 'email')}
+              onBlur={event => validateEmail(event.target.value)}
+              errorMsg={errorMessages.email}
+            />
+            <InputWithIcon
+              className="auth-input"
+              icon={faLock}
+              name={'password'}
+              placeholder={'Password'}
+              type={isPasswordShown ? 'text' : 'password'}
+              iconEye={!isPasswordShown ? faEye : faEyeSlash}
+              onEyeClick={togglePasswordVisibility}
+              onChange={event => handleInputChange(event, 'password')}
+              errorMsg={errorMessages.password}
+            />
+            <a onClick={() => onForgetClick()} className="reset-password-link">
+              {' Forgot your password?'}
             </a>
-          </p>
-        </div>
+            <NormalButton buttonName={'Login'} onClick={onSubmit} />
+            <p className="redirect-text">
+              Not a member?
+              <a onClick={() => setActive(2)} className="redirect-link">
+                {' Signup Now'}
+              </a>
+            </p>
+          </div>
+        )}
+        {isForgetPasswordClicked && (
+          <div style={{ padding: '3vh' }}>
+            <p className="enter-email-for-reset">
+              Enter email for reset password
+            </p>
+            <InputWithIcon
+              className="auth-input"
+              icon={faEnvelope}
+              name={'email'}
+              placeholder={'Email'}
+              type={'email'}
+              onChange={event => handleResetEmailChange(event)}
+              onBlur={event => validateEmail(event.target.value)}
+              errorMsg={errorMessages.email}
+            />{' '}
+            <div className="reset-password-buttons">
+              <NormalButton
+                className="reset-buttons"
+                buttonName={'Send email'}
+                onClick={onSendEmailClick}
+              />
+              <NormalButton buttonName={'Cancel'} onClick={onCancelClick} />{' '}
+            </div>
+          </div>
+        )}
       </div>
+      <ToastContainer />
     </>
   )
 }

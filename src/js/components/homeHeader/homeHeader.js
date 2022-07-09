@@ -65,16 +65,12 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
             active={currentActive}
             setActive={setCurrentActive}
           />
-          <div className="dropdown-container">
-            <button
-              id="menu"
-              onClick={() => setOpen(!open)}
-              className="drop-button"
-            >
+          <div className="dropdown-container" ref={menuDropdownRef}>
+            <button onClick={() => setOpen(!open)} className="drop-button">
               <FontAwesomeIcon icon={faListUl} />
             </button>
             {open && (
-              <div ref={menuDropdownRef} className="dropdown-content">
+              <div className="dropdown-content">
                 <button className="buttonInMenu" onClick={onProfileClick}>
                   Profile
                   <FontAwesomeIcon icon={faUser} />
