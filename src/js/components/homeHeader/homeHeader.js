@@ -22,13 +22,13 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
     { key: 3, label: 'Monthly' }
   ]
 
-  const onNotificationClick = () => {
-    const NOTIFICATION_TITLE = 'Notification'
-    const NOTIFICATION_BODY = 'Welcome '
-    new Notification(NOTIFICATION_TITLE, {
-      body: NOTIFICATION_BODY + ' ' + user.firstName + ' ' + user.lastName
-    })
-  }
+  // const onNotificationClick = () => {
+  //   const NOTIFICATION_TITLE = 'Notification'
+  //   const NOTIFICATION_BODY = 'Welcome '
+  //   new Notification(NOTIFICATION_TITLE, {
+  //     body: NOTIFICATION_BODY + ' ' + user.firstName + ' ' + user.lastName
+  //   })
+  // }
 
   const onLogoutClick = () => {
     dispatch(userActions.logout()).then(() => {
@@ -75,7 +75,7 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
                   Profile
                   <FontAwesomeIcon icon={faUser} />
                 </button>
-                <button
+                {/* <button
                   className="buttonInMenu"
                   id="notification"
                   onClick={onNotificationClick}
@@ -83,7 +83,7 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
                   {' '}
                   <label>Notification</label>
                   <FontAwesomeIcon icon={faBell} />
-                </button>
+                </button> */}
                 <button className="buttonInMenu" onClick={onLogoutClick}>
                   Logout
                   <FontAwesomeIcon icon={faUser} />

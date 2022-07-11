@@ -2,16 +2,16 @@ import { toDoConstants } from '../constants/toDo.constants'
 
 export const toDoInitialState = {
   toDo: [
-    { value: '', finished: false },
-    { value: '', finished: false },
-    { value: '', finished: false },
-    { value: '', finished: false },
-    { value: '', finished: false },
-    { value: '', finished: false },
-    { value: '', finished: false },
-    { value: '', finished: false },
-    { value: '', finished: false },
-    { value: '', finished: false }
+    { value: '', finished: false, description: '' },
+    { value: '', finished: false, description: '' },
+    { value: '', finished: false, description: '' },
+    { value: '', finished: false, description: '' },
+    { value: '', finished: false, description: '' },
+    { value: '', finished: false, description: '' },
+    { value: '', finished: false, description: '' },
+    { value: '', finished: false, description: '' },
+    { value: '', finished: false, description: '' },
+    { value: '', finished: false, description: '' }
   ]
 }
 

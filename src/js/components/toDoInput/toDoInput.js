@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   faCheck,
   faAngleDown,
@@ -6,26 +6,37 @@ import {
 } from '@fortawesome/fontawesome-free-solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './toDoInput.scss'
+import { useSelector } from 'react-redux'
 
 export default function ToDoInput({
   onCheckChange,
   isChecked = false,
   inputValue = '',
   onInputChange,
-  className
+  descriptionValue = '',
+  onDescriptionChange,
+  onExpanderClick,
+  isOpened
 }) {
-  const [expanded, setExpanded] = useState(false)
-
   const onCheckHandle = () => {
     onCheckChange && onCheckChange()
   }
 
-  const onChangeHandler = event => {
+  const onChangeInputHandler = event => {
     onInputChange && onInputChange(event)
   }
 
+  const onCheckDescriptionHandler = event => {
+    onDescriptionChange && onDescriptionChange(event)
+  }
+
+  const onExpanderArrowClick = () => {
+    onExpanderClick && onExpanderClick()
+    // setExpanded(!expanded)
+  }
+
   return (
-    <div className={`to-do-input-wrapper ${className}`}>
+    <div className={'to-do-input-wrapper'}>
       <div className="to-do-line-input-with-checkbox">
         <div className="to-do-checkbox" onClick={() => onCheckHandle()}>
           {isChecked && (
@@ -34,23 +45,24 @@ export default function ToDoInput({
         </div>
         <input
           value={inputValue}
-          onChange={onChangeHandler}
+          onChange={onChangeInputHandler}
           className={`to-do-input ${isChecked ? 'checked-text' : ''}`}
-          maxLength={25}
         />
         <div
-          onClick={() => setExpanded(!expanded)}
+          onClick={() => onExpanderArrowClick()}
           className="to-do-expander-btn"
         >
-          <FontAwesomeIcon icon={!expanded ? faAngleDown : faAngleUp} />
+          <FontAwesomeIcon icon={!isOpened ? faAngleDown : faAngleUp} />
         </div>
       </div>
 
-      <div className={`to-do-expanding-content ${expanded ? 'opened' : ''}`}>
+      <div className={`to-do-expanding-content ${isOpened ? 'opened' : ''}`}>
         <textarea
           placeholder="Description..."
           rows={5}
           className="to-do-textarea"
+          value={descriptionValue}
+          onChange={onCheckDescriptionHandler}
         ></textarea>
       </div>
     </div>

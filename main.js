@@ -7,14 +7,7 @@ const appIcon = path.join(__dirname, 'list.png')
 function createWindow() {
   const window = new BrowserWindow({
     icon: appIcon,
-    // titleBarStyle: {
-
-    // },
-    // titleBarOverlay: {
-    //   color: 'red',
-    //   symbolColor: '#blue'
-    // },
-    webPreferences: {
+    ferences: {
       // nodeIntegration: false,
       nodeIntegration: true,
       worldSafeExecuteJavaScript: true,
