@@ -1,6 +1,70 @@
 @import './../../../../node_modules/react-calendar/dist/Calendar.css';
 @import './../../styles/variables.scss';
 
+.monthly-frame {
+  display: flex;
+  margin-top: 3vh;
+  justify-content: center;
+
+  .monthly-day-preview {
+    border: 1px solid #cba795;
+    width: 33vw;
+    border-radius: 0 2vh 2vh 0;
+    background-color: #cba795;
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+
+    .button-date {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+
+      .date-style-monthly {
+        font-size: 12vh;
+        color: white;
+        margin: 2vh;
+        font-weight: bold;
+        margin-bottom: 0;
+      }
+    }
+
+    .day-style {
+      margin: 0px;
+      text-align: center;
+      font-size: 6vh;
+      color: white;
+      font-family: mv boli;
+      margin-bottom: 5vh;
+    }
+    .plans-wrapper-in-monthly-planner {
+      max-height: 44.5vh;
+      overflow-y: auto;
+      padding-bottom: 2vh;
+
+      .plans-frame {
+        display: flex;
+        justify-content: flex-start;
+
+        .hour-style {
+          color: white;
+          margin-left: 2vh;
+          margin-right: 1vh;
+          font-family: mv boli;
+          font-size: 1.7vh;
+          width: 9vh;
+        }
+
+        .data-style {
+          font-family: mv boli;
+          font-size: 1.7vh;
+          color: #4f0000;
+        }
+      }
+    }
+  }
+}
+
 .calendar {
   display: block;
   position: relative;
@@ -13,6 +77,11 @@
   background: #f4ede0;
   border: 1px solid #cba795;
   border-radius: 2vh 0 0 2vh;
+  width: 58vw !important;
+}
+
+.react-calendar__navigation {
+  display: none;
 }
 
 .react-calendar__navigation__label__labelText.react-calendar__navigation__label__labelText--from {
@@ -30,37 +99,37 @@
 .react-calendar button:enabled:hover {
   cursor: pointer;
   background: #cba79547;
-  border-radius: 10vh;
+  border-radius: 3vh;
   color: white;
 }
 
-.react-calendar__navigation__arrow.react-calendar__navigation__next-button {
-  font-weight: bold;
-  font-size: 2.5vh;
-  font-size: mv boli;
-  color: $brown700;
-}
+// .react-calendar__navigation__arrow.react-calendar__navigation__next-button {
+//   font-weight: bold;
+//   font-size: 2.5vh;
+//   font-size: mv boli;
+//   color: $brown700;
+// }
 
-.react-calendar__navigation__arrow.react-calendar__navigation__next2-button {
-  font-weight: bold;
-  font-size: 2.5vh;
-  font-size: mv boli;
-  color: $brown700;
-}
+// .react-calendar__navigation__arrow.react-calendar__navigation__next2-button {
+//   font-weight: bold;
+//   font-size: 2.5vh;
+//   font-size: mv boli;
+//   color: $brown700;
+// }
 
-.react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
-  font-weight: bold;
-  font-size: 2.5vh;
-  font-size: mv boli;
-  color: $brown700;
-}
+// .react-calendar__navigation__arrow.react-calendar__navigation__prev-button {
+//   font-weight: bold;
+//   font-size: 2.5vh;
+//   font-size: mv boli;
+//   color: $brown700;
+// }
 
-.react-calendar__navigation__arrow.react-calendar__navigation__prev2-button {
-  font-weight: bold;
-  font-size: 2.5vh;
-  font-size: mv boli;
-  color: $brown700;
-}
+// .react-calendar__navigation__arrow.react-calendar__navigation__prev2-button {
+//   font-weight: bold;
+//   font-size: 2.5vh;
+//   font-size: mv boli;
+//   color: $brown700;
+// }
 
 .react-calendar__month-view__days__day--weekend {
   color: $brown700 !important;
@@ -81,49 +150,15 @@
   transition: 0.15s ease-out;
 }
 
-.react-calendar__tile--active {
+.react-calendar__tile.react-calendar__tile--active {
   background: #cba795;
   color: white !important;
-  border-radius: 68px;
+  border-radius: 3vh;
   font-weight: bold;
+  box-shadow: inset 1px 2px 7px 1px #b18c7ae0;
+  border: 1px solid #b79686 !important;
 }
 
-.monthlyFrame {
-  display: flex;
-  margin-top: 3vh;
-  // margin-bottom: 5vh;
-  justify-content: center;
-}
-
-.monthlyDayPreview {
-  border: 1px solid #cba795;
-  width: 33vw;
-  border-radius: 0 2vh 2vh 0;
-  background-color: #cba795;
-  display: flex;
-  flex-direction: column;
-  height: 75vh;
-}
-
-.dateStyleMonthly {
-  font-size: 12vh;
-  color: white;
-  margin: 2vh;
-  font-weight: bold;
-  margin-bottom: 0;
-}
-
-.dayStyle {
-  margin: 0px;
-  text-align: center;
-  font-size: 6vh;
-  color: white;
-  font-family: mv boli;
-  margin-bottom: 5vh;
-}
-.react-calendar__navigation {
-  display: none;
-}
 .react-calendar__navigation button {
   min-width: 7vh !important;
   background: none;
@@ -140,10 +175,11 @@
   flex: 0 0 8vw !important;
   font-family: mv boli;
   font-size: 2vh;
+  position: relative;
 }
 
 .react-calendar__tile.react-calendar__tile--active.react-calendar__tile--range.react-calendar__tile--rangeStart.react-calendar__tile--rangeEnd.react-calendar__tile--rangeBothEnds.react-calendar__month-view__days__day.react-calendar__month-view__days__day--weekend {
-  flex: 0 0 13.5vh !important;
+  flex: 0 0 8vw !important;
 }
 .react-calendar__month-view__weekdays__weekday {
   color: $brown700;
@@ -168,42 +204,37 @@
 .react-calendar__month-view__weekdays__weekday {
   padding: 2em 0.5em 0.5em 0.5em;
 }
-.hour-style {
-  color: white;
-  margin-left: 2vh;
-  margin-right: 1vh;
-  font-family: mv boli;
-  font-size: 1.7vh;
-  width: 9vh;
-}
-
-.data-style {
-  font-family: mv boli;
-  font-size: 1.7vh;
-  color: #4f0000;
-}
-
-.plans-frame {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.button-date {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-.plans-wrapper-in-monthly-planner {
-  max-height: 44.5vh;
-  overflow-y: auto;
-  padding-bottom: 2vh;
-}
 
 .react-datepicker__day--outside-month {
   visibility: hidden !important;
 }
 
-.react-calendar {
-  width: 58vw !important;
+.react-calendar__tile--now {
+  border: 1px solid #9d8071 !important;
+  border-radius: 3vh;
+  box-shadow: inset 0px -1px 3px 2px #9d807157;
+}
+
+.pin-icon {
+  height: 4vh;
+  width: 4vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0.5vh;
+}
+
+.green-pin {
+  @extend .pin-icon;
+  background-image: url('./../../assets/images/green-pin.png');
+}
+
+.yellow-pin {
+  @extend .pin-icon;
+  background-image: url('./../../assets/images/yellow-pin.png');
+}
+
+.red-pin {
+  @extend .pin-icon;
+  background-image: url('./../../assets/images/red-pin.png');
 }

@@ -68,3 +68,32 @@
 .checked-text {
   text-decoration: line-through;
 }
+.line-input-wrapper {
+  display: flex;
+  width: 98%;
+  gap: 0.2vw;
+}
+.line-input-expander-btn-opened {
+  padding: 0.3vh 0.3vw;
+  font-size: 1.65vw;
+  font-weight: 700;
+  font-family: mv boli;
+  color: $brown700;
+  transform: rotateZ(90deg) rotateY(0deg);
+  transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+}
+.line-input-expander-btn-closed {
+  @extend .line-input-expander-btn-opened;
+  transform: rotateZ(90deg) rotateY(180deg);
+}
+.line-input-expander-content-opened {
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  overflow: hidden;
+}
+.line-input-expander-content-closed {
+  @extend .line-input-expander-content-opened;
+  height: 0;
+}

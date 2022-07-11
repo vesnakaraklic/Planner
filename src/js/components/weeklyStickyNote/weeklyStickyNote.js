@@ -50,6 +50,16 @@ export default function WeeklyStickyNote({
           <label className="letter-color font-size-steps">Out: </label>
           <label className="data-color">{data?.moneyOut ?? 0}$</label>
         </div>
+        <div className="total-style">
+          <label className="letter-color font-size-steps">Total: </label>
+          <label className="data-color">
+            {console.log(data.moneyIn)}
+            {data.moneyIn && data.moneyOut
+              ? parseFloat(data.moneyIn - data.moneyOut)
+              : 0}
+            $
+          </label>
+        </div>
       </div>
     )
   }
@@ -191,10 +201,6 @@ export default function WeeklyStickyNote({
     dispatch(dateActions.updateDate(getDateWithoutHours(date)))
     setCurrentActive && setCurrentActive(1)
   }
-
-  useEffect(() => {
-    console.log('Content', content)
-  }, [])
 
   return (
     <div className="day-of-week">

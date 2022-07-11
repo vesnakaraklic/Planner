@@ -67,6 +67,7 @@ export default function MonthlyPlanner({ setCurrentActive }) {
   const datesOfMonthRedux = useSelector(state => state.monthDates.dates)
   const dispatch = useDispatch()
   const calendarRef = useRef(null)
+  const todayDate = new Date()
   const selectedDateFromRedux = useSelector(
     state => state.monthDates.selectedDate
   )
@@ -125,12 +126,25 @@ export default function MonthlyPlanner({ setCurrentActive }) {
             if (value && value !== '') nonEmptyPlansLenght++
           })
         }
-        if (nonEmptyPlansLenght >= 1 && nonEmptyPlansLenght < 5)
-          tile.parentElement.style.borderBottom = '3px solid #77DD77'
-        else if (nonEmptyPlansLenght > 5 && nonEmptyPlansLenght < 12)
-          tile.parentElement.style.borderBottom = '3px solid #d9a462'
-        else if (nonEmptyPlansLenght >= 12)
-          tile.parentElement.style.borderBottom = '3px solid #ff6961'
+        const div = document.createElement('div')
+
+        if (nonEmptyPlansLenght >= 1 && nonEmptyPlansLenght < 5) {
+          div.classList.add('green-pin')
+          tile.parentElement.appendChild(div)
+        }
+        // tile.parentElement.style.borderBottom = '3px solid #77DD77'
+
+        // 'url(./assets/images/green-pin.png)'
+        else if (nonEmptyPlansLenght > 5 && nonEmptyPlansLenght < 12) {
+          div.classList.add('yellow-pin')
+          tile.parentElement.appendChild(div)
+        }
+        // tile.parentElement.style.borderBottom = '3px solid #d9a462'
+        else if (nonEmptyPlansLenght >= 12) {
+          div.classList.add('red-pin')
+          tile.parentElement.appendChild(div)
+        }
+        // tile.parentElement.style.borderBottom = '3px solid #ff6961'
       })
     }
   }, [datesOfMonthRedux])
@@ -141,18 +155,20 @@ export default function MonthlyPlanner({ setCurrentActive }) {
 
   return (
     <>
-      <div className="monthlyFrame">
+      <div className="monthly-frame">
         <Calendar
           key={dateRedux}
           inputRef={calendarRef}
           onChange={onChange}
           value={selectedDateFromRedux}
         />
-        <div className="monthlyDayPreview">
+        <div className="monthly-day-preview">
           <button className="button-date" onClick={onButtonDateClick}>
-            <p className="dateStyleMonthly">{new Date(dateRedux).getDate()}</p>
+            <p className="date-style-monthly">
+              {new Date(dateRedux).getDate()}
+            </p>
           </button>
-          <p className="dayStyle">{getDayFromDate(new Date(dateRedux))}</p>
+          <p className="day-style">{getDayFromDate(new Date(dateRedux))}</p>
           <div className="plans-wrapper-in-monthly-planner ">
             {Object.keys(plans).map(
               (plan, index) =>

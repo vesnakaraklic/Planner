@@ -3,6 +3,7 @@
 .checkbox-form {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 
   .to-do-header {
     display: flex;
@@ -23,7 +24,9 @@
     & > div {
       margin-bottom: 0.45vh;
       display: flex;
-      height: 3vh;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1vw;
     }
   }
   .scroll {
@@ -69,4 +72,12 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #cbac7ef2;
+}
+
+.collapsible {
+  border: none;
+  background: transparent;
+  width: 1.5vw;
+  font-size: xx-large;
+  cursor: pointer;
 }

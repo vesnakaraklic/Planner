@@ -1,7 +1,8 @@
 import { changesToSaveConstants } from '../constants/changesToSave.constants'
 
 const initialState = {
-  changesToSave: []
+  changesToSave: [],
+  isSaved: false
 }
 
 export const changesToSave = (state = initialState, action) => {
@@ -9,11 +10,13 @@ export const changesToSave = (state = initialState, action) => {
     case changesToSaveConstants.PUSH_CHANGES_TO_SAVE:
       return {
         ...state,
-        changesToSave: [...state.changesToSave, action.value]
+        changesToSave: [...state.changesToSave, action.value],
+        isSaved: false
       }
     case changesToSaveConstants.CLEAR_ARRAY:
       return {
-        changesToSave: []
+        changesToSave: [],
+        isSaved: true
       }
     default:
       return {

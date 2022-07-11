@@ -74,7 +74,6 @@ export default function UserProfile() {
         const res = await dispatch(
           userActions.updateUserPassword(newPassword, oldPassword)
         )
-        console.log('res', res)
         if (res) {
           setIsClickedPasswordEdit(false)
           setDisplayButton(false)

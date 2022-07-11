@@ -335,6 +335,15 @@
   }
 }
 
+.react-datepicker__day--today,
+.react-datepicker__month-text--today,
+.react-datepicker__quarter-text--today,
+.react-datepicker__year-text--today {
+  font-weight: bold;
+  border: 1.5px solid #4f0200;
+  border-radius: 1vh;
+}
+
 .css-9gakcf-option {
   background-color: #cca895 !important;
 }
