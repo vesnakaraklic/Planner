@@ -27,7 +27,7 @@ const hours = {
   AM_12: '12:00 AM'
 }
 
-const Plans = ({ plans }) => {
+const Plans = ({ plans, user, dateRedux }) => {
   const dispatch = useDispatch()
   const changesToSave = useSelector(state => state.changesToSave.changesToSave)
 
@@ -35,6 +35,15 @@ const Plans = ({ plans }) => {
     if (!changesToSave.includes('plans'))
       dispatch(changesToSaveActions.pushChanges('plans'))
     dispatch(plansActions.changePlans({ ...plans, [key]: value }))
+  }
+
+  const onFocusOutPlansSave = (event) => {
+    if(event?.relatedTarget?.id === "cancelId") {
+      dispatch(plansActions.getPlansById(user.uid + dateRedux))
+    } else {
+      dispatch(plansActions.updatePlans(user.uid + dateRedux, { ...plans }))
+    }
+    dispatch(changesToSaveActions.clearArray())
   }
 
   return (
@@ -46,12 +55,12 @@ const Plans = ({ plans }) => {
             <div key={index} className="plan-input">
               <label className="hour-style">{hours[planKey]}</label>
               <LineInput
-                withCheckbox={false}
                 className="time-input"
                 type="text"
                 value={plans[planKey]}
                 onChange={e => onChangeInput(e.target.value, planKey)}
                 wrapperClass={'plans-line-input-wrapper'}
+                onFocusOutPlansSave={(event) => onFocusOutPlansSave(event)}
               />
             </div>
           ))}

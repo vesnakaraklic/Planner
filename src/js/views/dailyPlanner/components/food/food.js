@@ -11,7 +11,7 @@ import { foodActions } from '../../../../store/actions/food.actions'
 import './food.scss'
 import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
 
-const Food = ({ food }) => {
+const Food = ({ food, user, dateRedux}) => {
   const dispatch = useDispatch()
   const changesToSave = useSelector(state => state.changesToSave.changesToSave)
   const foodIcons = [faPizzaSlice, faHamburger, faFish, faMugHot]
@@ -20,6 +20,15 @@ const Food = ({ food }) => {
     if (!changesToSave.includes('food'))
       dispatch(changesToSaveActions.pushChanges('food'))
     dispatch(foodActions.changeFood({ ...food, [key]: value }))
+  }
+
+  const onFocusOutFoodSave = (event) => {
+    if(event?.relatedTarget?.id === "cancelId") {
+      dispatch(foodActions.getFoodById(user.uid + dateRedux))
+    } else {
+      dispatch(foodActions.updateFood(user.uid + dateRedux, { ...food }))
+    }
+    dispatch(changesToSaveActions.clearArray())
   }
 
   return (
@@ -36,6 +45,7 @@ const Food = ({ food }) => {
                 placeholder={foodKey}
                 className="meal-input"
                 onChange={e => onChangeInput(e.target.value, foodKey)}
+                onBlur={event => onFocusOutFoodSave(event)}
               />
             </div>
           ))}

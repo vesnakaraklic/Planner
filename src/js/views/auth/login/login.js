@@ -33,7 +33,14 @@ const LoginForm = ({ setActive }) => {
     if (loginForm.email !== '') {
       tempErrorMessages.email = validateEmail(loginForm.email)
     }
-    isFormValid(tempErrorMessages) && dispatch(userActions.login(loginForm))
+    isFormValid(tempErrorMessages) &&
+      navigator.onLine &&
+      dispatch(userActions.login(loginForm))
+    if (!navigator.onLine) {
+      toastService('error', 'No internet connection!', {
+        position: toast.POSITION.BOTTOM_RIGHT
+      })
+    }
   }
 
   const handleInputChange = (event, key) => {
@@ -125,6 +132,11 @@ const LoginForm = ({ setActive }) => {
         return setErrorMessages({
           ...errorMessages,
           password: 'Invalid email or password'
+        })
+      case 'auth/too-many-requests':
+        return setErrorMessages({
+          ...errorMessages,
+          password: 'To many requests, try later.'
         })
       default:
         return setErrorMessages(defaultErrorMessages)

@@ -23,6 +23,8 @@ export const register = async ({ email, password, firstName, lastName }) => {
   const { user } = await firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
+  console.log(user)
+  await user.sendEmailVerification()
   const userProfile = { uid: user.uid, firstName, lastName, email }
   await updateUserProfile(userProfile)
 
@@ -77,6 +79,5 @@ export const updateUserPassword = async (newPassword, oldPassword) => {
 
 export const resetPassword = email => {
   let auth = firebase.auth()
-
   auth.sendPasswordResetEmail(email)
 }

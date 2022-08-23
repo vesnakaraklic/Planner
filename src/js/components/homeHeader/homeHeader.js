@@ -10,7 +10,6 @@ import './homeHeader.scss'
 
 export default function HomeHeader({ currentActive, setCurrentActive }) {
   const note = useSelector(state => state.note.note)
-  const user = useSelector(state => state.user.user)
   const dispatch = useDispatch()
   const history = useHistory()
   const [open, setOpen] = useState(false)
@@ -75,15 +74,6 @@ export default function HomeHeader({ currentActive, setCurrentActive }) {
                   Profile
                   <FontAwesomeIcon icon={faUser} />
                 </button>
-                {/* <button
-                  className="buttonInMenu"
-                  id="notification"
-                  onClick={onNotificationClick}
-                >
-                  {' '}
-                  <label>Notification</label>
-                  <FontAwesomeIcon icon={faBell} />
-                </button> */}
                 <button className="buttonInMenu" onClick={onLogoutClick}>
                   Logout
                   <FontAwesomeIcon icon={faUser} />

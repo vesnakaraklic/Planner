@@ -29,6 +29,8 @@ export default function DateHeader({
   currentActive
 }) {
   const dateRedux = useSelector(state => state.datePicker.date)
+  const user = useSelector(state => state.user.user)
+  const noteRedux = useSelector(state => state.note)
   const date = new Date(dateRedux)
   const [clicked, setClicked] = useState(false)
   const dispatch = useDispatch()
@@ -36,8 +38,6 @@ export default function DateHeader({
   const selected = useSelector(state => state.weekDays.filter)
   const changesToSave = useSelector(state => state.changesToSave.changesToSave)
   const datePickerButtonRef = useRef(null)
-
-  const user = useSelector(state => state.user.user)
 
   const options = [
     { value: 'food', label: 'Food' },
@@ -119,6 +119,17 @@ export default function DateHeader({
     }
   }
 
+  const onFocusOutNoteSave = event => {
+    if (event?.relatedTarget?.id === 'cancelId') {
+      dispatch(noteActions.getNoteById(user.uid + dateRedux))
+    } else {
+      dispatch(
+        noteActions.updateNote(user.uid + dateRedux, { note: noteRedux.note })
+      )
+    }
+    dispatch(changesToSaveActions.clearArray())
+  }
+
   useEffect(() => {
     document.addEventListener('click', handleClickOutsideDatePicker, true)
     return () => {
@@ -173,6 +184,7 @@ export default function DateHeader({
                 value={note}
                 onChange={e => onChangeNote(e.target.value)}
                 className="input-without-borders"
+                onBlur={event => onFocusOutNoteSave(event)}
               />
             </div>
           </div>

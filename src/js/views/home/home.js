@@ -12,6 +12,10 @@ import getTimeByString from '../../utils/getTimeByString'
 import 'react-toastify/dist/ReactToastify.css'
 import '../../styles/toast.scss'
 import './home.scss'
+import firebase from 'firebase'
+import { userActions } from '../../store/actions/user.actions'
+import { useHistory } from 'react-router-dom'
+import NormalButton from '../../components/normalButton/normalButton'
 
 export default function Home() {
   const [currentActive, setCurrentActive] = useState(1)
@@ -19,6 +23,7 @@ export default function Home() {
   const notifications = useSelector(state => state.notifications)
   const todayDate = new Date()
   const dispatch = useDispatch()
+  const history = useHistory()
   const [timeouts, setTimeouts] = useState([])
 
   const notificationsForPlans = (text, time) => {
@@ -66,6 +71,25 @@ export default function Home() {
       })
     }
   }, [notifications])
+  const onLogoutClick = () => {
+    dispatch(userActions.logout()).then(() => {
+      history.push('/login')
+    })
+  }
+  if (!firebase.auth().currentUser.emailVerified)
+    return (
+      <div className="message-container">
+        <p className="message-text">
+          Activation link successfully sent to your email address.
+        </p>
+        <p className="message-text">Activate the link and log in!</p>
+        <NormalButton
+          className="back-button"
+          buttonName="Back"
+          onClick={onLogoutClick}
+        />
+      </div>
+    )
 
   return (
     <>

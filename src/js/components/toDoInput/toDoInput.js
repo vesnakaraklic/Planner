@@ -6,7 +6,6 @@ import {
 } from '@fortawesome/fontawesome-free-solid'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './toDoInput.scss'
-import { useSelector } from 'react-redux'
 
 export default function ToDoInput({
   onCheckChange,
@@ -16,7 +15,8 @@ export default function ToDoInput({
   descriptionValue = '',
   onDescriptionChange,
   onExpanderClick,
-  isOpened
+  isOpened,
+  onFocusOutToDoSave
 }) {
   const onCheckHandle = () => {
     onCheckChange && onCheckChange()
@@ -32,7 +32,6 @@ export default function ToDoInput({
 
   const onExpanderArrowClick = () => {
     onExpanderClick && onExpanderClick()
-    // setExpanded(!expanded)
   }
 
   return (
@@ -47,6 +46,7 @@ export default function ToDoInput({
           value={inputValue}
           onChange={onChangeInputHandler}
           className={`to-do-input ${isChecked ? 'checked-text' : ''}`}
+          onBlur={onFocusOutToDoSave}
         />
         <div
           onClick={() => onExpanderArrowClick()}
@@ -63,6 +63,7 @@ export default function ToDoInput({
           className="to-do-textarea"
           value={descriptionValue}
           onChange={onCheckDescriptionHandler}
+          onBlur={onFocusOutToDoSave}
         ></textarea>
       </div>
     </div>

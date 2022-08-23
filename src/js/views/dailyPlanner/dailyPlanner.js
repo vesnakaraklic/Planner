@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changesToSaveActions } from '../../store/actions/changesToSave.actions'
 import { exerciseActions } from '../../store/actions/exercise.actions'
@@ -22,6 +22,7 @@ import './dailyPlanner.scss'
 export default function DailyPlanner() {
   const dispatch = useDispatch()
   const todayDate = new Date()
+  const containerRef = useRef()
   const user = useSelector(state => state.user.user)
   const { money, food, waterDrink, exercise, plans, toDo, note } = useSelector(
     state => state
@@ -100,19 +101,35 @@ export default function DailyPlanner() {
 
   return (
     <>
-      <div className="daily-planner-wrapper">
-        <Plans plans={plans} />
+      <div
+        className="daily-planner-wrapper"
+        onKeyPress={event => {
+          if (event.key === 'Enter') {
+            if (changesToSave.length > 0) {
+              onSaveDaily()
+            }
+          }
+        }}
+        ref={containerRef}
+      >
+        <Plans plans={plans} user={user} dateRedux={dateRedux} />
         <div className="right-container">
           <div className="right-top-container">
             <div className="water-food-container">
-              <Water water={waterDrink} />
-              <Food food={food} />
+              <Water water={waterDrink} user={user} dateRedux={dateRedux} />
+              <Food food={food} user={user} dateRedux={dateRedux} />
             </div>
-            <Money moneyIn={money.moneyIn} moneyOut={money.moneyOut} />
+            <Money
+              moneyIn={money.moneyIn}
+              moneyOut={money.moneyOut}
+              user={user}
+              dateRedux={dateRedux}
+              money={money}
+            />
           </div>
           <div className="right-bottom-container">
             <div className="form-with-buttons">
-              <ToDoList toDo={toDo} />
+              <ToDoList toDo={toDo} user={user} dateRedux={dateRedux} />
               <div
                 className={`buttons-wrapper ${
                   changesToSave.length > 0 ? 'visible' : ''
@@ -121,12 +138,13 @@ export default function DailyPlanner() {
                 <SaveAndCancelButtons
                   onCancel={onCancelClick}
                   onSave={onSaveDaily}
+                  cancelId="cancelId"
                 />
               </div>
             </div>
 
             <div className="exercise-container">
-              <Exercise exercise={exercise} />
+              <Exercise dateRedux={dateRedux} user={user} exercise={exercise} />
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ import FlexibleButton from '../../../../components/flexibleButton/flexibleButton
 import './toDoList.scss'
 import ToDoInput from '../../../../components/toDoInput/toDoInput'
 
-export default function ToDoList({ toDo }) {
+export default function ToDoList({ toDo, user, dateRedux }) {
   const dispatch = useDispatch()
   const changesToSave = useSelector(state => state.changesToSave.changesToSave)
   const [openedDescription, setOpenedDescription] = useState(null)
@@ -63,6 +63,18 @@ export default function ToDoList({ toDo }) {
     }
   }
 
+  const onFocusOutToDoSave = (event) => {
+    if(event?.relatedTarget?.id === "cancelId") {
+      dispatch(toDoActions.getToDoById(user.uid + dateRedux))
+    } else {
+      dispatch(toDoActions.updateToDo(user.uid + dateRedux, { ...toDo }))
+    }
+    dispatch(changesToSaveActions.clearArray())
+  }
+
+  // useEffect(() => {
+  // }, [changesToSave])
+
   useEffect(() => {
     if (changesToSaveIsSaved) {
       setOpenedDescription(null)
@@ -115,6 +127,7 @@ export default function ToDoList({ toDo }) {
                   }
                   isOpened={index === openedDescription ? true : false}
                   onExpanderClick={() => onExpanderClick(index)}
+                  onFocusOutToDoSave = {event => onFocusOutToDoSave(event)}
                 />
 
                 {index > 9 && (

@@ -156,16 +156,16 @@
     color: $brown700;
   }
   .select-filter {
-    width: 21vh;
-    background: #dcc4a3;
+    width: 21vh !important;
+    background: #dcc4a3 !important;
     text-align: center;
     color: $brown700;
     font-family: mv boli;
     font-size: 1.5vh;
-    margin-left: 2vh;
-    border-radius: 2vh;
+    margin-left: 2vh !important;
+    border-radius: 2vh !important;
     font-weight: bold;
-    border-color: #b3966b;
+    border-color: #b3966b !important;
   }
 }
 

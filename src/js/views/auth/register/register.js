@@ -11,8 +11,9 @@ import InputWithIcon from '../../../components/inputWithIcon/inputWithIcon'
 import NormalButton from '../../../components/normalButton/normalButton'
 import { getUsers } from '../../../api/users'
 import { userActions } from '../../../store/actions/user.actions'
-import { Link } from 'react-router-dom'
 import './register.scss'
+import { toastService } from '../../../services/toast.service'
+import { toast, ToastContainer } from 'react-toastify'
 
 const form = { firstName: '', lastName: '', email: '', password: '' }
 const defaultErrorMessages = {
@@ -30,15 +31,21 @@ export default function RegisterForm({ setActive }) {
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 
   const onSubmit = () => {
-    const tempErrorMessages = { ...defaultErrorMessages }
-    Object.keys(registerForm).map(key => {
-      tempErrorMessages[key] = validateField(key, registerForm[key])
-    })
-    if (registerForm.email !== '') {
-      tempErrorMessages.email = validateEmail(registerForm.email)
+    if (navigator.onLine) {
+      const tempErrorMessages = { ...defaultErrorMessages }
+      Object.keys(registerForm).map(key => {
+        tempErrorMessages[key] = validateField(key, registerForm[key])
+      })
+      if (registerForm.email !== '') {
+        tempErrorMessages.email = validateEmail(registerForm.email)
+      }
+      isFormValid(tempErrorMessages) &&
+        dispatch(userActions.register(registerForm))
+    } else {
+      toastService('error', 'No internet connection!', {
+        position: toast.POSITION.BOTTOM_RIGHT
+      })
     }
-    isFormValid(tempErrorMessages) &&
-      dispatch(userActions.register(registerForm))
   }
 
   const handleInputChange = (event, key) => {
@@ -176,6 +183,7 @@ export default function RegisterForm({ setActive }) {
           </p>
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }

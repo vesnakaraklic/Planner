@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './money.scss'
 import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
 
-export default function Money({ moneyOut = '0', moneyIn = '0' }) {
+export default function Money({ moneyOut = '0', moneyIn = '0', user, dateRedux, money}) {
   const [result, setResult] = useState('0')
   const dispatch = useDispatch()
   const changesToSave = useSelector(state => state.changesToSave.changesToSave)
@@ -48,15 +48,24 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
     if (!changesToSave.includes('money'))
       dispatch(changesToSaveActions.pushChanges('money'))
   }
-  const onMoneyInputBlur = (type, value) => {
-    if (type === 'moneyIn') {
-      dispatch(moneyActions.changeMoneyIn(formatFloatNumbers(value)))
-    } else if (type === 'moneyOut') {
-      dispatch(moneyActions.changeMoneyOut(formatFloatNumbers(value)))
+  const onMoneyInputBlur = (type, e) => {
+    if(e?.relatedTarget?.id === "cancelId") {
+      dispatch(moneyActions.getMoneyById(user.uid + dateRedux))
+    } else {
+      if (type === 'moneyIn') {
+        dispatch(moneyActions.changeMoneyIn(formatFloatNumbers(e.target.value)))
+      } else if (type === 'moneyOut') {
+        dispatch(moneyActions.changeMoneyOut(formatFloatNumbers(e.target.value)))
+      }
+      dispatch(moneyActions.updateMoney(user.uid + dateRedux, { ...money }))
     }
 
     if (!changesToSave.includes('money'))
+    {
       dispatch(changesToSaveActions.pushChanges('money'))
+    }
+    
+    dispatch(changesToSaveActions.clearArray())
   }
   useEffect(() => {
     if (moneyIn && moneyOut) setResult(moneyIn - moneyOut)
@@ -74,7 +83,7 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
               onMoneyInputChange('moneyIn', e.target.value)
             }}
             onBlur={e => {
-              onMoneyInputBlur('moneyIn', e.target.value)
+              onMoneyInputBlur('moneyIn', e)
             }}
             className="money-field input"
             maxLength={10}
@@ -91,7 +100,7 @@ export default function Money({ moneyOut = '0', moneyIn = '0' }) {
               onMoneyInputChange('moneyOut', e.target.value)
             }}
             onBlur={e => {
-              onMoneyInputBlur('moneyOut', e.target.value)
+              onMoneyInputBlur('moneyOut', e)
             }}
             className="money-field input"
           ></input>

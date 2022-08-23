@@ -1,43 +1,56 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMinus, faVolleyballBall } from '@fortawesome/free-solid-svg-icons'
-import { useDispatch, useSelector } from 'react-redux'
-import { exerciseActions } from '../../../../store/actions/exercise.actions'
-import './exercise.scss'
-import FlexibleButton from '../../../../components/flexibleButton/flexibleButton'
-import { changesToSaveActions } from '../../../../store/actions/changesToSave.actions'
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus, faVolleyballBall } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { exerciseActions } from "../../../../store/actions/exercise.actions";
+import "./exercise.scss";
+import FlexibleButton from "../../../../components/flexibleButton/flexibleButton";
+import { changesToSaveActions } from "../../../../store/actions/changesToSave.actions";
 
-export default function Exercise({ exercise }) {
-  const dispatch = useDispatch()
-  const changesToSave = useSelector(state => state.changesToSave.changesToSave)
+export default function Exercise({ exercise, dateRedux, user }) {
+  const dispatch = useDispatch();
+  const changesToSave = useSelector(
+    (state) => state.changesToSave.changesToSave
+  );
 
   const addExerciseOnChanges = () => {
-    if (!changesToSave.includes('exercise'))
-      dispatch(changesToSaveActions.pushChanges('exercise'))
-  }
+    if (!changesToSave.includes("exercise"))
+      dispatch(changesToSaveActions.pushChanges("exercise"));
+  };
   const onChangeInput = (value, key) => {
-    const newArray = [...exercise.exercises]
-    newArray[key] = value
-    dispatch(exerciseActions.changeExercise(newArray))
-    addExerciseOnChanges()
-  }
+    const newArray = [...exercise.exercises];
+    newArray[key] = value;
+    dispatch(exerciseActions.changeExercise(newArray));
+    addExerciseOnChanges();
+  };
 
   const onExerciseAddClick = () => {
-    const newArray = [...exercise.exercises, '']
-    dispatch(exerciseActions.changeExercise(newArray))
-    addExerciseOnChanges()
-  }
+    const newArray = [...exercise.exercises, ""];
+    dispatch(exerciseActions.changeExercise(newArray));
+    addExerciseOnChanges();
+  };
 
-  const onExerciseMinusClick = index => {
-    const newArray = [...exercise.exercises]
-    newArray.splice(index, 1)
-    dispatch(exerciseActions.changeExercise(newArray))
-    addExerciseOnChanges()
-  }
+  const onExerciseMinusClick = (index) => {
+    const newArray = [...exercise.exercises];
+    newArray.splice(index, 1);
+    dispatch(exerciseActions.changeExercise(newArray));
+    addExerciseOnChanges();
+  };
 
-  const onChangeSteps = value => {
-    dispatch(exerciseActions.changeSteps(value))
-    addExerciseOnChanges()
+  const onChangeSteps = (value) => {
+    dispatch(exerciseActions.changeSteps(value));
+    addExerciseOnChanges();
+  };
+
+  const onFocusOutExerciseSave = (event) => {
+    if(event?.relatedTarget?.id === "cancelId") {
+      dispatch(exerciseActions.getExerciseById(user.uid + dateRedux))
+    } else {
+      dispatch(
+        exerciseActions.updateExercise(user.uid + dateRedux, { ...exercise })
+      )
+    }
+    dispatch(changesToSaveActions.clearArray())
   }
 
   return (
@@ -52,26 +65,27 @@ export default function Exercise({ exercise }) {
                 onClick={onExerciseAddClick}
                 widht="1.2vw"
                 height="1.3vw"
-                sign={'+'}
+                sign={"+"}
               />
             </div>
 
             <div
-              className={exercise.exercises.length > 7 ? 'scroll-exercise' : ''}
+              className={exercise.exercises.length > 7 ? "scroll-exercise" : ""}
             >
               {exercise?.exercises?.map((exerciseValue, index) => (
                 <div key={index} className="exercise-form-input-container">
                   <span>
                     <FontAwesomeIcon
                       icon={faVolleyballBall}
-                      style={{ color: 'rgb(79 2 0)' }}
+                      style={{ color: "rgb(79 2 0)" }}
                     />
                   </span>
                   <input
-                    type={'text'}
+                    type={"text"}
                     className="exercise-form-input"
                     value={exerciseValue}
-                    onChange={e => onChangeInput(e.target.value, index)}
+                    onChange={(e) => onChangeInput(e.target.value, index)}
+                    onBlur={event => onFocusOutExerciseSave(event)}
                   />
 
                   {index > 6 && (
@@ -88,15 +102,16 @@ export default function Exercise({ exercise }) {
           </div>
           <div className="exercise-step-container">
             <input
-              type={'number'}
+              type={"number"}
               value={exercise.steps}
               className="exercise-step-input"
-              onChange={e => onChangeSteps(e.target.value)}
+              onChange={(e) => onChangeSteps(e.target.value)}
+              onBlur={onFocusOutExerciseSave}
             ></input>
             <label className="exercise-step-title">Steps</label>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
